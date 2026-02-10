@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>대리점 관리 메뉴</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .menu {
+      width: 200px;
+    }
+
+    .menu-item {
+      margin-bottom: 10px;
+    }
+
+    .menu-title {
+      font-size: 18px;
+      font-weight: bold;
+      display: block;
+      padding: 10px;
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .menu-title:hover {
+      background-color: #0056b3;
+    }
+
+    .submenu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      height: 0;
+      overflow: hidden;
+      transition: height 0.3s ease;
+    }
+
+    .submenu.open {
+      height: auto;
+    }
+
+    .submenu li {
+      padding: 8px 10px;
+      background-color: #f1f1f1;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .submenu li a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .submenu li a:hover {
+      color: #007BFF;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="menu">
+<?
+include "left.php";
+?>
+  </div>
+
+  <script>
+    // 모든 메뉴 항목을 가져옵니다.
+    const menuTitles = document.querySelectorAll('.menu-title');
+    const submenus = document.querySelectorAll('.submenu');
+
+    // 메뉴 클릭 이벤트
+    menuTitles.forEach((menuTitle, index) => {
+      menuTitle.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        // 클릭된 메뉴의 서브메뉴
+        const submenu = submenus[index];
+
+        // 다른 열린 서브메뉴를 닫습니다.
+        submenus.forEach((otherSubmenu, otherIndex) => {
+          if (otherSubmenu !== submenu) {
+            otherSubmenu.style.height = '0';
+          }
+        });
+
+        // 현재 클릭된 서브메뉴를 토글합니다.
+        if (submenu.style.height === '0px' || submenu.style.height === '') {
+          // 서브메뉴를 열기 위한 높이를 설정합니다.
+          submenu.style.height = submenu.scrollHeight + 'px';
+        } else {
+          // 서브메뉴를 닫습니다.
+          submenu.style.height = '0';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

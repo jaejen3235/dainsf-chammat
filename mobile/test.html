@@ -1,0 +1,35 @@
+<script>
+// PHP에서 전달받은 paymentData
+const paymentData = [
+    {
+        paymentName: 'Payment 1',
+        changeDevice: 'Device A',
+        moveTelecom: 'Telecom A',
+        joinTelecom: 100000,
+        supportFund: 50000,
+        supportChangeDevice: 30000,
+        supportMoveTelecom: 20000,
+        supportJoinTelecom: 10000
+    },
+    {
+        paymentName: 'Payment 2',
+        changeDevice: 'Device B',
+        moveTelecom: 'Telecom B',
+        joinTelecom: 150000,
+        supportFund: 60000,
+        supportChangeDevice: 35000,
+        supportMoveTelecom: 25000,
+        supportJoinTelecom: 15000
+    }
+    // 추가 데이터
+];
+
+// 특정 paymentName을 기준으로 값을 찾기
+function findPaymentData(paymentName) {
+    return paymentData.find(item => item.paymentName === paymentName);
+}
+
+// 예시로 'Payment 1'에 해당하는 데이터 가져오기
+const result = findPaymentData('Payment 2');
+console.log(result.joinTelecom); // 'Payment 1'에 해당하는 객체가 반환됨    
+</script>

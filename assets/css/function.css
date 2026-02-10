@@ -1,0 +1,254 @@
+/*==================================== 페이징 ====================================*/
+.paging-area {
+	text-align: center;
+	padding: 15px;
+}
+
+.pagination {
+	display: inline-block;
+}
+
+.pagination a,
+.pagination span {
+	padding: 8px 16px;
+	margin: 2px;
+	text-decoration: none;
+	border: 1px solid #ddd;
+	color : black;
+    cursor: pointer;
+}
+
+.pagination a.active,
+.pagination span.active {
+	background-color: #4caf50;
+	border: 1px solid #4caf50;
+	color: white;
+}
+
+.pagination a:hover:not(.active),
+.pagination span:hover:not(.active) {
+	background-color: #ddd;
+}
+
+.pagination a:first-child,
+.pagination span:first-child {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.pagination a:last-child,
+.pagination span:last-child {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+/*==================================== 기능성 ====================================*/
+.mt1 { margin-top : 1px !important; }
+.mt5 { margin-top : 5px !important; }
+.mt10 { margin-top : 10px !important; }
+.mt15 { margin-top : 15px !important; }
+.mt20 { margin-top : 20px !important; }
+.mt25 { margin-top : 25px !important; }
+.mt30 { margin-top : 30px !important; }
+.mt35 { margin-top : 35px !important; }
+.mt40 { margin-top : 40px !important; }
+.mt45 { margin-top : 45px !important; }
+.mt50 { margin-top : 50px !important; }
+
+.mb5 { margin-bottom : 5px !important; }
+.mb10 { margin-bottom : 10px !important; }
+.mb15 { margin-bottom : 15px !important; }
+.mb20 { margin-bottom : 20px !important; }
+.mb25 { margin-bottom : 25px !important; }
+.mb30 { margin-bottom : 30px !important; }
+.mb35 { margin-bottom : 35px !important; }
+.mb40 { margin-bottom : 40px !important; }
+.mb45 { margin-bottom : 45px !important; }
+.mb50 { margin-bottom : 50px !important; }
+
+.ml1 { margin-left : 1px !important; }
+.ml2 { margin-left : 2px !important; }
+.ml3 { margin-left : 3px !important; }
+.ml4 { margin-left : 4px !important; }
+.ml5 { margin-left : 5px !important; }
+.ml10 { margin-left : 10px !important; }
+.ml15 { margin-left : 15px !important; }
+.ml20 { margin-left : 20px !important; }
+.ml25 { margin-left : 25px !important; }
+.ml30 { margin-left : 30px !important; }
+.ml35 { margin-left : 35px !important; }
+.ml40 { margin-left : 40px !important; }
+.ml45 { margin-left : 45px !important; }
+.ml50 { margin-left : 50px !important; }
+
+.mr1 { margin-right : 1px !important; }
+.mr2 { margin-right : 2px !important; }
+.mr3 { margin-right : 3px !important; }
+.mr4 { margin-right : 4px !important; }
+.mr5 { margin-right : 5px !important; }
+.mr10 { margin-right : 10px !important; }
+.mr15 { margin-right : 15px !important; }
+.mr20 { margin-right : 20px !important; }
+.mr25 { margin-right : 25px !important; }
+.mr30 { margin-right : 30px !important; }
+.mr35 { margin-right : 35px !important; }
+.mr40 { margin-right : 40px !important; }
+.mr45 { margin-right : 45px !important; }
+.mr50 { margin-right : 50px !important; }
+
+.m20 { margin : 20px !important; }
+
+.p1 { width : 1% !important; }
+.p14 { width : 14% !important; }
+.p15 { width : 15% !important; }
+.p16 { width : 16% !important; }
+.p20 { width : 20% !important; }
+.p24 { width : 24% !important; }
+.p25 { width : 25% !important; }
+.p30 { width : 30% !important; }
+.p31 { width : 31% !important; }
+.p32 { width : 32% !important; }
+.p33 { width : 33% !important; }
+.p35 { width : 35% !important; }
+.p38 { width : 38% !important; }
+.p40 { width : 40% !important; }
+.p45 { width : 45% !important; }
+.p46 { width : 46% !important; }
+.p47 { width : 47% !important; }
+.p48 { width : 48% !important; }
+.p49 { width : 49% !important; }
+.p50 { width : 50% !important; }
+.p54 { width : 54% !important; }
+.p59 { width : 59% !important; }
+.p64 { width : 64% !important; }
+.p69 { width : 69% !important; }
+.p70 { width : 70% !important; }
+.p80 { width : 80% !important; }
+.p90 { width : 90% !important; }
+.p100 { width : 100% !important; }
+
+.w10 { width : 10px !important; }
+.w20 { width : 20px !important; }
+.w30 { width : 30px !important; }
+.w40 { width : 40px !important; }
+.w50 { width : 50px !important; }
+.w60 { width : 60px !important; }
+.w70 { width : 70px !important; }
+.w80 { width : 80px !important; }
+.w90 { width : 90px !important; }
+.w100 { width : 100px !important; }
+.w110 { width : 110px !important; }
+.w120 { width : 120px !important; }
+.w130 { width : 130px !important; }
+.w140 { width : 140px !important; }
+.w150 { width : 150px !important; }
+.w200 { width : 200px !important; }
+.w250 { width : 250px !important; }
+.w300 { width : 300px !important; }
+.w350 { width : 350px !important; }
+.w400 { width : 400px !important; }
+.w450 { width : 450px !important; }
+.w500 { width : 500px !important; }
+
+.hand {
+	cursor : pointer;
+}
+
+.center {
+	text-align : center;
+}
+.left {
+	text-align : left;
+}
+.right {
+	text-align : right;
+}
+.bold {
+	font-weight : 600;
+}
+.nonBorder {
+	border : none !important;
+	outline : none !important;
+}
+.red {
+	font-weight: 600;
+	color : red;
+}
+.flex {
+	display : flex;
+	justify-content : space-between;
+	align-items: center;
+}
+.flex-top {
+	display : flex;
+	justify-content : space-between;
+	align-items: flex-start;
+}
+.flex-start {
+	display : flex;
+	justify-content : space-start;
+    align-content: flex-start;
+	align-items: flex-start;
+}
+.flex-start-top {
+	display : flex;
+	justify-content : space-between;
+    align-content: flex-start;
+	align-items: flex-start;
+}
+.flex-start-center {
+	display : flex;
+	justify-content : space-start;
+	align-items: center;
+}
+.flex-bottom {
+	display : flex;
+	justify-content : space-between;
+    align-content: flex-end;
+	align-items: flex-end;
+}
+/* 숨기기 */
+.hidden {
+	display : none;
+}
+
+.left-div-1 {flex : 1; }
+.left-div-2 {flex : 2; }
+.left-div-24 {flex : 2.4; }
+.left-div-25 {flex : 2.5; }
+.left-div-3 {flex : 3; }
+.left-div-4 {flex : 4; }
+.left-div-5 {flex : 5; }
+.left-div-6 {flex : 6; }
+.left-div-7 {flex : 7; }
+.left-div-8 {flex : 8; }
+.left-div-9 {flex : 9; }
+
+.right-div-1 {flex : 1; }
+.right-div-2 {flex : 2; }
+.right-div-3 {flex : 3; }
+.right-div-4 {flex : 4; }
+.right-div-5 {flex : 5; }
+.right-div-6 {flex : 6; }
+
+.right-div-7 {flex : 7; }
+.right-div-74 {flex : 7.4; }
+.right-div-75 {flex : 7.5; }
+.right-div-8 {flex : 8; }
+.right-div-9 {flex : 9; }
+
+.gap5 { gap : 5px; }
+.gap10 { gap : 10px; }
+.gap15 { gap : 15px; }
+.gap20 { gap : 20px; }
+.gap25 { gap : 25px; }
+.gap30 { gap : 30px; }
+
+.pd5 { padding : 5px !important; }
+.pd10 { padding : 10px !important; }
+
+.circle {
+	padding : 3px;
+	border-radius: 50%;
+	margin-left : 3px;
+}

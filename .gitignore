@@ -1,0 +1,8 @@
+.cache/
+.local/
+log/
+uploads/
+attach/
+*.bak
+*.log
+

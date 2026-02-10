@@ -1,0 +1,4961 @@
+﻿/* ===== Base ===== */
+body {
+    margin: 0;
+    padding: 2mm 0 0;
+}
+
+/* ===== Common reset ===== */
+.hce,
+.hme,
+.hhe,
+.hhi,
+.hls,
+.hfS,
+.hcD,
+.hcI,
+.hcS,
+.hfN,
+.hmB,
+.hmO,
+.hmT,
+.hpN,
+.htC,
+.haN,
+.hdu,
+.hdS,
+.hsC,
+.hsR,
+.hsG,
+.hsL,
+.hsT,
+.hsE,
+.hsA,
+.hsP,
+.hsV,
+.hsO,
+.hsU,
+.hpi,
+.hch,
+.hcG,
+.heq,
+.heG,
+.htA,
+.hvi,
+.htb,
+.htG,
+.hfJ,
+.hfG,
+.hfB,
+.hfR,
+.hfC,
+.hfO,
+.hfL,
+.hfM,
+.hfE,
+.hpl,
+.hs,
+.hrt,
+.hco,
+.hcc {
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== Position groups ===== */
+.hce,
+.hme,
+.hls,
+.hfS,
+.hcD,
+.hcI,
+.hcS,
+.hmB,
+.hmO,
+.hmT,
+.hdS,
+.hsC,
+.hsR,
+.hsG,
+.hsL,
+.hpi,
+.hch,
+.hcG,
+.heq,
+.heG,
+.htA,
+.hvi,
+.htb,
+.htG,
+.hfJ,
+.hfG,
+.hfB,
+.hfR,
+.hfC,
+.hfO,
+.hfL,
+.hfM,
+.hfE,
+.hpl,
+.hs,
+.hcc {
+    position: absolute;
+}
+
+.hhe,
+.hhi,
+.hfN,
+.hpN,
+.htC,
+.haN,
+.hdu,
+.hrt,
+.hco {
+    position: relative;
+}
+
+/* ===== Display helpers ===== */
+.hhi,
+.hpN,
+.htC,
+.haN,
+.hrt,
+.hco {
+    display: inline-block;
+}
+
+/* ===== Overflow helpers ===== */
+.hce {
+    overflow: hidden;
+}
+
+.htC {
+    vertical-align: top;
+    overflow: hidden;
+}
+
+.hsT,
+.hsE,
+.hsA,
+.hsP,
+.hsV,
+.hsU {
+    overflow: hidden;
+}
+
+.hs {
+    overflow: visible;
+}
+
+/* ===== Misc ===== */
+.hhi {
+    background-size: contain;
+}
+
+.hpN {
+    white-space: nowrap;
+}
+
+.hrt,
+.hco {
+    white-space: inherit;
+}
+
+.hrt {
+    line-height: 1.1;
+}
+
+.hls {
+    clear: both;
+}
+
+[onclick] {
+    cursor: pointer;
+}
+
+/* ===== Page wrapper ===== */
+.hpa {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    margin: 0 0 2mm 2mm;
+    /* left 2mm, bottom 2mm */
+    border: 1px solid #000;
+    box-shadow: 1mm 1mm 0 #aaa;
+}
+
+.hpa::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #fff;
+    z-index: -2;
+}
+
+/* ===== Font styles ===== */
+.cs0 {
+    font: 11pt "문체부 바탕체";
+    color: #000;
+}
+
+.cs1,
+.cs3 {
+    font: bold 11pt "바탕";
+    color: #000;
+}
+
+.cs2 {
+    font: 20pt "HY견명조";
+    color: #000;
+}
+
+.cs4 {
+    font: 20pt "HY견고딕";
+    color: #000;
+}
+
+.cs5,
+.cs7,
+.cs12,
+.cs15,
+.cs26,
+.cs31,
+.cs32 {
+    font: 10pt "바탕";
+    color: #000;
+}
+
+.cs6 {
+    font: 11.48pt "돋움";
+    color: #000;
+    letter-spacing: -0.03em;
+}
+
+.cs8,
+.cs16 {
+    font: bold 11.48pt "바탕";
+    color: #000;
+}
+
+.cs9,
+.cs19 {
+    font: 11pt "HY견명조";
+    color: #000;
+}
+
+.cs10 {
+    font: 9pt "굴림";
+    color: #000;
+}
+
+.cs11,
+.cs14 {
+    font: 10pt "굴림";
+    color: #000;
+}
+
+.cs13 {
+    font: 9pt "바탕";
+    color: #000;
+    letter-spacing: -0.03em;
+}
+
+.cs14 {
+    letter-spacing: -0.03em;
+}
+
+.cs17 {
+    font: 10pt "맑은 고딕";
+    color: #000;
+}
+
+.cs18 {
+    font: 13pt "굴림";
+    color: #000;
+}
+
+.cs20 {
+    font: 20pt "바탕";
+    color: #000;
+}
+
+.cs21 {
+    font: 13pt "HY견명조";
+    color: #000;
+}
+
+.cs22 {
+    font: 16pt "HY견고딕";
+    color: #000;
+}
+
+.cs23 {
+    font: 20pt "HY견명조";
+    color: #000;
+}
+
+.cs24 {
+    font: bold 9pt "바탕";
+    color: #000;
+}
+
+.cs25 {
+    font: 10pt "바탕";
+    color: #000;
+    letter-spacing: 0.01em;
+}
+
+.cs27,
+.cs29,
+.cs30 {
+    font: 10pt "바탕";
+    color: #000;
+    letter-spacing: -0.02em;
+}
+
+.cs28 {
+    font: bold 10pt "바탕";
+    color: #000;
+    letter-spacing: -0.02em;
+}
+
+.cs33 {
+    font: 10pt "바탕";
+    color: #000;
+    letter-spacing: -0.01em;
+}
+
+/* ===== Paragraph align ===== */
+.ps0,
+.ps1,
+.ps3,
+.ps5,
+.ps8,
+.ps10,
+.ps11,
+.ps12,
+.ps13,
+.ps14,
+.ps15,
+.ps16,
+.ps17,
+.ps18,
+.ps19,
+.ps20,
+.ps21,
+.ps22,
+.ps31,
+.ps32,
+.ps33,
+.ps34,
+.ps35 {
+    text-align: justify;
+}
+
+.ps2,
+.ps4,
+.ps6,
+.ps7,
+.ps9,
+.ps24,
+.ps25,
+.ps27,
+.ps28,
+.ps29 {
+    text-align: center;
+}
+
+.ps23,
+.ps26,
+.ps30 {
+    text-align: right;
+}
+
+/* ===== Layout extracted from inline styles ===== */
+
+/* hpa size */
+.hpa {
+    width: 210mm;
+    height: 297mm;
+}
+
+/* main content position */
+.hcD {
+    left: 20mm;
+    top: 15mm;
+}
+
+/* vertical container */
+.hls.ps23 {
+    left: 0mm;
+    top: 0mm;
+    width: 180mm;
+    height: 262.11mm;
+    line-height: 262.11mm;
+    white-space: nowrap;
+}
+
+/* inner block */
+.htb {
+    width: 177.12mm;
+    height: 262.11mm;
+    display: inline-block;
+    position: relative;
+    vertical-align: -15%;
+    line-height: 262.11mm;
+}
+
+/* ===== Header block extracted from inline styles ===== */
+
+/* cell 1 */
+.hce.hd1 {
+    left: 0mm;
+    top: 0mm;
+    width: 19.86mm;
+    height: 19.99mm;
+}
+
+.hce.hd1 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.hd1 .hcI {
+    top: 7.56mm;
+}
+
+.hce.hd1 .hls.ps7 {
+    left: 0mm;
+    top: -0.19mm;
+    width: 18.87mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+/* cell 2 (title) */
+.hce.hd2 {
+    left: 19.86mm;
+    top: 0mm;
+    width: 101.9mm;
+    height: 19.99mm;
+}
+
+.hce.hd2 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.hd2 .hcI {
+    top: 0.32mm;
+}
+
+.hce.hd2 .hls.ps9 {
+    left: 0mm;
+    top: -0.35mm;
+    width: 100.91mm;
+    height: 7.06mm;
+    line-height: 6.28mm;
+    white-space: nowrap;
+}
+
+.hce.hd2 .hls.ps24 {
+    left: 0mm;
+    top: 10.94mm;
+    width: 100.91mm;
+    height: 7.06mm;
+    line-height: 6.28mm;
+    white-space: nowrap;
+}
+
+/* cell 3 (결/재) */
+.hce.hd3 {
+    left: 121.77mm;
+    top: 0mm;
+    width: 7.84mm;
+    height: 19.99mm;
+}
+
+.hce.hd3 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.hd3 .hcI {
+    top: 4.45mm;
+}
+
+.hce.hd3 .hls.ps6.t1 {
+    left: 0mm;
+    top: -0.19mm;
+    width: 6.83mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+.hce.hd3 .hls.ps6.t2 {
+    left: 0mm;
+    top: 6.01mm;
+    width: 6.83mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+/* cell 4 (작성자 라벨) */
+.hce.hd4 {
+    left: 129.6mm;
+    top: 0mm;
+    width: 24.71mm;
+    height: 6.87mm;
+}
+
+.hce.hd4 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.hd4 .hcI {
+    top: 1mm;
+}
+
+.hce.hd4 .hls.ps6 {
+    left: 0mm;
+    top: -0.19mm;
+    width: 23.71mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+/* cell 5 (승인자 라벨) */
+.hce.hd5 {
+    left: 154.32mm;
+    top: 0mm;
+    width: 21.81mm;
+    height: 6.87mm;
+}
+
+.hce.hd5 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.hd5 .hcI {
+    top: 1mm;
+}
+
+.hce.hd5 .hls.ps6 {
+    left: 0mm;
+    top: -0.19mm;
+    width: 20.81mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+/* cell 6 (작성자 칸) */
+.hce.hd6 {
+    left: 129.6mm;
+    top: 6.87mm;
+    width: 24.71mm;
+    height: 13.12mm;
+}
+
+.hce.hd6 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.hd6 .hcI {
+    top: 4.12mm;
+}
+
+.hce.hd6 .hls.ps6 {
+    left: 0mm;
+    top: -0.19mm;
+    width: 23.71mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+/* cell 7 (승인자 칸) */
+.hce.hd7 {
+    left: 154.32mm;
+    top: 6.87mm;
+    width: 21.81mm;
+    height: 13.12mm;
+}
+
+.hce.hd7 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.hd7 .hcI {
+    top: 4.12mm;
+}
+
+.hce.hd7 .hls.ps6 {
+    left: 0mm;
+    top: -0.19mm;
+    width: 20.81mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+/* cell 8 (작성일자 라벨) */
+.hce.hd8 {
+    left: 0mm;
+    top: 19.99mm;
+    width: 19.86mm;
+    height: 8.87mm;
+}
+
+.hce.hd8 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.hd8 .hcI {
+    top: 2mm;
+}
+
+.hce.hd8 .hls.ps7 {
+    left: 0mm;
+    top: -0.19mm;
+    width: 18.87mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+/* cell 9 (작성일자 입력 영역) */
+.hce.hd9 {
+    left: 19.86mm;
+    top: 19.99mm;
+    width: 60.35mm;
+    height: 8.87mm;
+}
+
+.hce.hd9 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.hd9 .hcI {
+    top: 2mm;
+}
+
+.hce.hd9 .hls.ps4 {
+    left: 2mm;
+    top: -0.19mm;
+    width: 59.35mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+/* date input extracted */
+.date-input {
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0;
+    margin: 0;
+    vertical-align: baseline;
+    -webkit-appearance: none;
+}
+
+.date-input.year {
+    width: 11mm;
+}
+
+.date-input.month {
+    width: 7mm;
+}
+
+.date-input.day {
+    width: 5mm;
+}
+
+/* ===== Section: inspector + limit 기준 + 방법 + 품명 header ===== */
+
+/* 점검자 라벨 */
+.hce.sc1 {
+    left: 80.21mm;
+    top: 19.99mm;
+    width: 30.49mm;
+    height: 8.87mm;
+}
+
+.hce.sc1 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc1 .hcI {
+    top: 2mm;
+}
+
+.hce.sc1 .hls.ps7 {
+    left: 0mm;
+    top: -0.19mm;
+    width: 29.49mm;
+    /* height: 3.88mm; */
+    line-height: 3.1mm;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 점검자 입력칸 */
+.hce.sc2 {
+    left: 110.71mm;
+    top: 19.99mm;
+    width: 65.42mm;
+    height: 8.87mm;
+}
+
+.hce.sc2 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc2 .hcI {
+    top: 2mm;
+}
+
+.hce.sc2 .hls.ps7 {
+    left: 0mm;
+    top: -0.19mm;
+    width: 64.42mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+.checker {
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+
+    /* font-family: inherit; */
+    font-size: inherit;
+    padding: 0;
+    margin: 0;
+    vertical-align: baseline;
+    -webkit-appearance: none;
+}
+
+.checker.name {
+    width: 30mm;
+    text-align: center;
+}
+
+/* 한계기준 라벨 (좌측 큰칸) */
+.hce.sc3 {
+    left: 0mm;
+    top: 28.86mm;
+    width: 19.86mm;
+    height: 22.8mm;
+}
+
+.hce.sc3 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc3 .hcI {
+    top: 8.96mm;
+}
+
+.hce.sc3 .hls.ps6 {
+    left: 0mm;
+    top: -0.19mm;
+    width: 18.87mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+/* 세척수량 (상단 헤더) */
+.hce.sc4 {
+    left: 19.86mm;
+    top: 28.86mm;
+    width: 16.33mm;
+    height: 9.11mm;
+}
+
+.hce.sc4 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc4 .hcI {
+    top: 2.29mm;
+}
+
+.hce.sc4 .hls.ps4 {
+    left: 0mm;
+    top: -0.18mm;
+    width: 15.32mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* 1차 세척 (상단 헤더) */
+.hce.sc5 {
+    left: 36.19mm;
+    top: 28.86mm;
+    width: 36.23mm;
+    height: 4.52mm;
+}
+
+.hce.sc5 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc5 .hls.ps4 {
+    left: 0mm;
+    top: -0.18mm;
+    width: 35.24mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* 2차 세척 (상단 헤더) */
+.hce.sc6 {
+    left: 72.43mm;
+    top: 28.86mm;
+    width: 81.36mm;
+    height: 4.52mm;
+}
+
+.hce.sc6 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc6 .hls.ps4 {
+    left: 0mm;
+    top: -0.18mm;
+    width: 80.36mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* 세척수 교체주기 (상단 헤더: 2줄) */
+.hce.sc7 {
+    left: 153.79mm;
+    top: 28.86mm;
+    width: 22.34mm;
+    height: 9.11mm;
+}
+
+.hce.sc7 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc7 .hls.ps24.l1 {
+    left: 0mm;
+    top: -0.18mm;
+    width: 21.34mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc7 .hls.ps24.l2 {
+    left: 0mm;
+    top: 4.41mm;
+    width: 21.34mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* 1차 세척 하위 헤더(원물투입량/세척시간) */
+.hce.sc8 {
+    left: 36.19mm;
+    top: 33.38mm;
+    width: 20.33mm;
+    height: 4.59mm;
+}
+
+.hce.sc8 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc8 .hcI {
+    top: 0.03mm;
+}
+
+.hce.sc8 .hls.ps4 {
+    left: 0mm;
+    top: -0.18mm;
+    width: 19.33mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc9 {
+    left: 56.52mm;
+    top: 33.38mm;
+    width: 15.9mm;
+    height: 4.59mm;
+}
+
+.hce.sc9 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc9 .hcI {
+    top: 0.03mm;
+}
+
+.hce.sc9 .hls.ps4 {
+    left: 0mm;
+    top: -0.18mm;
+    width: 14.9mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* 2차 세척 하위 헤더(세척횟수/세척시간/세척방법) */
+.hce.sc10 {
+    left: 72.43mm;
+    top: 33.38mm;
+    width: 15.77mm;
+    height: 4.59mm;
+}
+
+.hce.sc10 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc10 .hcI {
+    top: 0.03mm;
+}
+
+.hce.sc10 .hls.ps4 {
+    left: 0mm;
+    top: -0.18mm;
+    width: 14.76mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc11 {
+    left: 88.19mm;
+    top: 33.38mm;
+    width: 18.97mm;
+    height: 4.59mm;
+}
+
+.hce.sc11 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc11 .hcI {
+    top: 0.03mm;
+}
+
+.hce.sc11 .hls.ps4 {
+    left: 0mm;
+    top: -0.18mm;
+    width: 17.96mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc12 {
+    left: 107.16mm;
+    top: 33.38mm;
+    width: 46.63mm;
+    height: 4.59mm;
+}
+
+.hce.sc12 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc12 .hcI {
+    top: 0.03mm;
+}
+
+.hce.sc12 .hls.ps4 {
+    left: 0mm;
+    top: -0.18mm;
+    width: 45.62mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* 한계기준 값 행들(3줄/1줄 등) */
+.hce.sc13 {
+    left: 19.86mm;
+    top: 37.97mm;
+    width: 16.33mm;
+    height: 13.69mm;
+}
+
+.hce.sc13 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc13 .hls.ps24.a1 {
+    left: 0mm;
+    top: -0.18mm;
+    width: 15.32mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc13 .hls.ps24.a2 {
+    left: 0mm;
+    top: 4.41mm;
+    width: 15.32mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc13 .hls.ps24.a3 {
+    left: 0mm;
+    top: 9mm;
+    width: 15.32mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc14 {
+    left: 36.19mm;
+    top: 37.97mm;
+    width: 20.33mm;
+    height: 13.69mm;
+}
+
+.hce.sc14 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc14 .hcI {
+    top: 4.59mm;
+}
+
+.hce.sc14 .hls.ps24 {
+    left: 0mm;
+    top: -0.18mm;
+    width: 19.33mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc15 {
+    left: 56.52mm;
+    top: 37.97mm;
+    width: 15.9mm;
+    height: 13.69mm;
+}
+
+.hce.sc15 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc15 .hcI {
+    top: 2.29mm;
+}
+
+.hce.sc15 .hls.ps24.b1 {
+    left: 0mm;
+    top: -0.18mm;
+    width: 14.9mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc15 .hls.ps24.b2 {
+    left: 0mm;
+    top: 4.41mm;
+    width: 14.9mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc16 {
+    left: 72.43mm;
+    top: 37.97mm;
+    width: 15.77mm;
+    height: 13.69mm;
+}
+
+.hce.sc16 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc16 .hcI {
+    top: 4.59mm;
+}
+
+.hce.sc16 .hls.ps24 {
+    left: 0mm;
+    top: -0.18mm;
+    width: 14.76mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc17 {
+    left: 88.19mm;
+    top: 37.97mm;
+    width: 18.97mm;
+    height: 13.69mm;
+}
+
+.hce.sc17 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc17 .hcI {
+    top: 2.29mm;
+}
+
+.hce.sc17 .hls.ps24.c1 {
+    left: 0mm;
+    top: -0.18mm;
+    width: 17.96mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc17 .hls.ps24.c2 {
+    left: 0mm;
+    top: 4.41mm;
+    width: 17.96mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc18 {
+    left: 107.16mm;
+    top: 37.97mm;
+    width: 46.63mm;
+    height: 13.69mm;
+}
+
+.hce.sc18 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc18 .hls.ps24.d1 {
+    left: 0mm;
+    top: -0.18mm;
+    width: 45.62mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc18 .hls.ps24.d2 {
+    left: 0mm;
+    top: 4.41mm;
+    width: 45.62mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc18 .hls.ps24.d3 {
+    left: 0mm;
+    top: 9mm;
+    width: 45.62mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc19 {
+    left: 153.79mm;
+    top: 37.97mm;
+    width: 22.34mm;
+    height: 13.69mm;
+}
+
+.hce.sc19 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc19 .hcI {
+    top: 2.29mm;
+}
+
+.hce.sc19 .hls.ps24.e1 {
+    left: 0mm;
+    top: -0.18mm;
+    width: 21.34mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc19 .hls.ps24.e2 {
+    left: 0mm;
+    top: 4.41mm;
+    width: 21.34mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hc-num {
+    width: 4mm;
+    /* 필요시 조절 */
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    /* 👈 밑줄 유지 */
+    outline: 0;
+    background: transparent;
+
+    font: inherit;
+    font-size: 13px;
+    text-align: center;
+
+    padding: 0;
+    margin: 0;
+
+    height: 1.2em;
+    /* baseline 영향 제거 */
+    line-height: 1;
+    /* 👈 아래로 쏠림 방지 */
+
+    vertical-align: middle;
+    box-sizing: border-box;
+
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* 주기 */
+.hce.sc20 {
+    left: 0mm;
+    top: 51.66mm;
+    width: 19.86mm;
+    height: 6.87mm;
+}
+
+.hce.sc20 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc20 .hcI {
+    top: 1mm;
+}
+
+.hce.sc20 .hls.ps6 {
+    left: 0mm;
+    top: -0.19mm;
+    width: 18.87mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+.hce.sc21 {
+    left: 19.86mm;
+    top: 51.66mm;
+    width: 156.26mm;
+    height: 6.87mm;
+}
+
+.hce.sc21 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc21 .hcI {
+    top: 1.17mm;
+}
+
+.hce.sc21 .hls.ps29 {
+    left: 0mm;
+    top: -0.18mm;
+    width: 155.26mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* 방법 */
+.hce.sc22 {
+    left: 0mm;
+    top: 58.53mm;
+    width: 19.86mm;
+    height: 33.02mm;
+}
+
+.hce.sc22 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc22 .hcI {
+    top: 14.07mm;
+}
+
+.hce.sc22 .hls.ps6 {
+    left: 0mm;
+    top: -0.19mm;
+    width: 18.87mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+.hce.sc23 {
+    left: 19.86mm;
+    top: 58.53mm;
+    width: 156.26mm;
+    height: 33.02mm;
+}
+
+.hce.sc23 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc23 .hcI {
+    top: 1mm;
+}
+
+.hce.sc23 .hls.ps31.m1 {
+    left: 0mm;
+    top: -0.18mm;
+    width: 155.26mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc23 .hls.ps35.m2 {
+    left: 0mm;
+    top: 4.24mm;
+    width: 155.26mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc23 .hls.ps35.m3 {
+    left: 0mm;
+    top: 8.66mm;
+    width: 155.26mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+    padding-left: 7.48mm;
+}
+
+.hce.sc23 .hls.ps31.m4 {
+    left: 0mm;
+    top: 13.07mm;
+    width: 155.26mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc23 .hls.ps31.m5 {
+    left: 0mm;
+    top: 17.49mm;
+    width: 155.26mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc23 .hls.ps32.m6 {
+    left: 0mm;
+    top: 21.91mm;
+    width: 155.26mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc23 .hls.ps32.m7 {
+    left: 0mm;
+    top: 26.32mm;
+    width: 155.26mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+    padding-left: 5.8mm;
+}
+
+/* 품명 & 헤더 (측정시각/세척수량/1차/2차) */
+.hc01-wrap {
+    width: 100%;
+}
+
+/* 표 기본 */
+.hc01-table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+    font-family: inherit;
+    font-size: 12px;
+    /* 필요시 조절 */
+}
+
+.hc01-table th,
+.hc01-table td {
+    border: 1px solid #000;
+    padding: 0;
+    height: 28px;
+    /* 행 높이 */
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* 헤더 */
+.hc01-table thead th {
+    font-weight: 600;
+}
+
+/* 셀 안 정렬 */
+.hc-cell {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /* ✅ 세로 가운데 */
+    justify-content: center;
+    /* 가로 가운데 */
+    gap: 4px;
+}
+
+/* input 밑줄 살리기 */
+.hc-input {
+    border: 0;
+    border-bottom: 1px solid #000;
+    /* ✅ 밑줄 */
+    background: transparent;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* 시간 input */
+.hc-time {
+    width: 18px;
+}
+
+.hc-colon {
+    display: inline-block;
+    width: 8px;
+    text-align: center;
+}
+
+/* 숫자 input */
+.hc-3 {
+    width: 34px;
+    /* 000 */
+}
+
+.hc-ox {
+    width: 34px;
+    /* ○/× */
+}
+
+/* 단위 표시 */
+.hc-unit {
+    white-space: nowrap;
+}
+
+/* 작업 전/끝처럼 대각선 처리 */
+.hc-diag {
+    position: relative;
+    background: linear-gradient(to bottom right,
+            transparent calc(50% - 0.5px),
+            #000 calc(50% - 0.5px),
+            #000 calc(50% + 0.5px),
+            transparent calc(50% + 0.5px));
+}
+
+/* 세척수 교체 셀 (오전/오후) */
+.hc-change {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+    padding: 6px 4px;
+}
+
+.hc-change-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    line-height: 1.1;
+}
+
+.hce.sc24 {
+    left: 0mm;
+    top: 91.55mm;
+    width: 19.86mm;
+    height: 9.05mm;
+}
+
+.hce.sc24 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc24 .hcI {
+    top: 2.08mm;
+}
+
+.hce.sc24 .hls.ps7 {
+    left: 0mm;
+    top: -0.19mm;
+    width: 18.87mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+.hce.sc25 {
+    left: 19.86mm;
+    top: 91.55mm;
+    width: 15.33mm;
+    height: 9.05mm;
+}
+
+.hce.sc25 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc25 .hcI {
+    top: 2.26mm;
+}
+
+.hce.sc25 .hls.ps7 {
+    left: 0mm;
+    top: -0.18mm;
+    width: 14.34mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc26 {
+    left: 35.2mm;
+    top: 91.55mm;
+    width: 20.19mm;
+    height: 9.05mm;
+}
+
+.hce.sc26 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc26 .hcI {
+    top: 2.26mm;
+}
+
+.hce.sc26 .hls.ps7 {
+    left: 0mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc27 {
+    left: 55.38mm;
+    top: 91.55mm;
+    width: 40.37mm;
+    height: 4.52mm;
+}
+
+.hce.sc27 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc27 .hls.ps28 {
+    left: 0mm;
+    top: -0.18mm;
+    width: 39.37mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.sc28 {
+    left: 95.75mm;
+    top: 91.55mm;
+    width: 60.56mm;
+    height: 4.52mm;
+}
+
+.hce.sc28 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.sc28 .hls.ps28 {
+    left: 0mm;
+    top: -0.18mm;
+    width: 59.56mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* ===== Section : 91.55mm ~ 100.6mm ===== */
+
+/* 세척수 교체 */
+.hce.s91_01 {
+    left: 156.31mm;
+    top: 91.55mm;
+    width: 19.82mm;
+    height: 9.05mm;
+}
+
+.hce.s91_01 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s91_01 .hcI {
+    top: 2.26mm;
+}
+
+.hce.s91_01 .hls {
+    left: 0mm;
+    top: -0.18mm;
+    width: 18.81mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* 원물투입량 */
+.hce.s91_02 {
+    left: 55.38mm;
+    top: 96.08mm;
+    width: 20.19mm;
+    height: 4.52mm;
+}
+
+.hce.s91_02 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s91_02 .hls {
+    left: 0mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* 세척시간 */
+.hce.s91_03 {
+    left: 75.57mm;
+    top: 96.08mm;
+    width: 20.19mm;
+    height: 4.52mm;
+}
+
+.hce.s91_03 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s91_03 .hls {
+    left: 0mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* 세척횟수 및 시간 */
+.hce.s91_04 {
+    left: 95.75mm;
+    top: 96.08mm;
+    width: 40.37mm;
+    height: 4.52mm;
+}
+
+.hce.s91_04 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s91_04 .hls {
+    left: 0mm;
+    top: -0.18mm;
+    width: 39.37mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* 세척방법 */
+.hce.s91_05 {
+    left: 136.13mm;
+    top: 96.08mm;
+    width: 20.19mm;
+    height: 4.52mm;
+}
+
+.hce.s91_05 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s91_05 .hls {
+    left: 0mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* 작업 전 */
+.hce.s100_01 {
+    left: 0mm;
+    top: 100.6mm;
+    width: 19.86mm;
+    height: 6.98mm;
+}
+
+.hce.s100_01 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s100_01 .hcI {
+    top: 1.05mm;
+}
+
+.hce.s100_01 .hls {
+    left: 0mm;
+    top: -0.19mm;
+    width: 18.87mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+/* ===== Section : 100.6mm ~ 107.58mm (inputs 포함) ===== */
+
+/* (100.6) 측정시각 입력 (rows[0]) */
+.hce.s100_02 {
+    left: 19.86mm;
+    top: 100.6mm;
+    width: 15.33mm;
+    height: 6.98mm;
+}
+
+.hce.s100_02 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s100_02 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s100_02 .hls {
+    left: 0mm;
+    top: -0.18mm;
+    width: 14.34mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* 시간/분 input (rows[0]) */
+.hce.s100_02 input.mesure-time-01.hour,
+.hce.s100_02 input.mesure-time-01.minute {
+    display: inline-block;
+    width: 5mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    /* font: inherit; */
+    font-size: 12px;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s100_02 .time-colon {
+    display: inline-block;
+    width: 0.5mm;
+    text-align: center;
+}
+
+/* (100.6) 세척수량 입력 (rows[0]) */
+.hce.s100_03 {
+    left: 35.2mm;
+    top: 100.6mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s100_03 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s100_03 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s100_03 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* litre input (rows[0]) */
+.hce.s100_03 input.litre-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+/* 리터 단위 */
+.hce.s100_03 .unit {
+    display: inline-block;
+    width: 4mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (100.6) 빈칸 칸들 */
+.hce.s100_04 {
+    left: 55.38mm;
+    top: 100.6mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s100_04 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s100_04 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s100_04 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s100_05 {
+    left: 75.57mm;
+    top: 100.6mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s100_05 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s100_05 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s100_05 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s100_06 {
+    left: 95.75mm;
+    top: 100.6mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s100_06 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s100_06 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s100_06 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s100_07 {
+    left: 115.94mm;
+    top: 100.6mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s100_07 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s100_07 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s100_07 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s100_08 {
+    left: 136.13mm;
+    top: 100.6mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s100_08 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s100_08 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s100_08 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* (100.6) 세척수 교체 안내(세로 긴 칸) */
+/* s100_09 안의 ox 줄 높이 꽉 채우기(필요할 때만) */
+.hce.s100_09 .hls.ox-cell {
+    left: 5mm;
+}
+
+.hce.s100_09 {
+    left: 156.31mm;
+    top: 100.6mm;
+    width: 19.82mm;
+    height: 62.86mm;
+}
+
+.hce.s100_09 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s100_09 .hcI {
+    top: 13.12mm;
+}
+
+.hce.s100_09 .hls {
+    left: 0mm;
+    width: 18.81mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s100_09 .line1 {
+    top: -0.18mm;
+}
+
+.hce.s100_09 .line2 {
+    top: 4.41mm;
+}
+
+.hce.s100_09 .line3 {
+    top: 9mm;
+}
+
+.hce.s100_09 .line4 {
+    top: 13.58mm;
+}
+
+.hce.s100_09 .line5 {
+    top: 18.17mm;
+}
+
+.hce.s100_09 .line6 {
+    top: 22.75mm;
+}
+
+.hce.s100_09 .line7 {
+    top: 27.34mm;
+}
+
+.hce.s100_09 .line8 {
+    top: 27.93mm;
+}
+
+/* (107.58) 품명: 절임갓 */
+.hce.s107_01 {
+    left: 0mm;
+    top: 107.58mm;
+    width: 19.86mm;
+    height: 6.98mm;
+}
+
+.hce.s107_01 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s107_01 .hcI {
+    top: 1.05mm;
+}
+
+.hce.s107_01 .hls {
+    left: 0mm;
+    top: -0.19mm;
+    width: 18.87mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+/* (107.58) 측정시각 입력 (rows[1]) */
+.hce.s107_02 {
+    left: 19.86mm;
+    top: 107.58mm;
+    width: 15.33mm;
+    height: 6.98mm;
+}
+
+.hce.s107_02 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s107_02 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s107_02 .hls {
+    left: 0mm;
+    top: -0.18mm;
+    width: 14.34mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* 시간/분 input (rows[1]) */
+.hce.s107_02 input.time-input.hour,
+.hce.s107_02 input.time-input.minute {
+    display: inline-block;
+    width: 5mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font-size: 12px;
+
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s107_02 .time-colon {
+    display: inline-block;
+    width: 0.5mm;
+    text-align: center;
+}
+
+/* (107.58) 세척수량 입력 (rows[1]) */
+.hce.s107_03 {
+    left: 35.2mm;
+    top: 107.58mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s107_03 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s107_03 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s107_03 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s107_03 input.litre-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s107_03 .unit {
+    display: inline-block;
+    width: 4mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (107.58) kg 입력 */
+.hce.s107_04 {
+    left: 55.38mm;
+    top: 107.58mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s107_04 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s107_04 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s107_04 .hls {
+    left: 0mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s107_04 input.kg-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+/* (107.58) sec 입력 */
+.hce.s107_05 {
+    left: 75.57mm;
+    top: 107.58mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s107_05 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s107_05 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s107_05 .hls {
+    left: -3mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s107_05 input.sec-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s107_06 input.sec-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+/* (107.58) "초" 텍스트 */
+.hce.s107_06 {
+    left: 95.75mm;
+    top: 107.58mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s107_06 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s107_06 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s107_06 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* ===== Section : 107.58mm ~ 135.52mm (추가분) ===== */
+
+/* (107.58) sec-input (115.94mm) */
+.hce.s107_07 {
+    left: 115.94mm;
+    top: 107.58mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s107_07 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s107_07 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s107_07 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s107_07 input.sec-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+/* (107.58) ○ / × (136.13mm) */
+.hce.s107_08 {
+    left: 136.13mm;
+    top: 107.58mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s107_08 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s107_08 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s107_08 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* ✅ 핵심: 이 칸 내부에서만 동작하게 스코프 고정 */
+.hce.s107_08 .hls.ps4.ox-cell {
+    position: relative;
+    /* absolute 기준 */
+    width: 19.19mm;
+    height: 100%;
+    line-height: 3.53mm;
+    /* overflow: hidden; 칸 밖으로 못 나감 */
+}
+
+/* 텍스트는 가운데 */
+.hce.s107_08 .ox-text {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* 글자 위 클릭도 label이 먹게 */
+}
+
+/* 클릭영역은 좌/우 반씩 덮기 */
+.hce.s107_08 .ox-hit {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.hce.s107_08 .ox-left {
+    left: 0;
+}
+
+.hce.s107_08 .ox-right {
+    right: 0;
+}
+
+.hce.s107_08 .ox-hit input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* 선택 표시 */
+.hce.s107_08 .ox-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.8mm;
+    height: 2.8mm;
+    border-radius: 999px;
+}
+
+/* ✅ 선택되면 동그라미 테두리 */
+.hce.s107_08 .ox-left:has(input:checked)~.ox-text .ox-o {
+    outline: 0.45pt solid #000;
+    outline-offset: 0.3mm;
+}
+
+.hce.s107_08 .ox-right:has(input:checked)~.ox-text .ox-x {
+    outline: 0.45pt solid #000;
+    outline-offset: 0.3mm;
+}
+
+/* =========================
+   O/X 공통 컴포넌트 스타일
+   ========================= */
+
+/* ox-cell은 칸 내부 absolute 기준 */
+.hce .hls.ox-cell {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;
+}
+
+/* 텍스트는 가운데 고정 */
+.hce .ox-cell .ox-text {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* 글자 위 클릭도 label이 먹게 */
+}
+
+/* 클릭영역 좌/우 반 */
+.hce .ox-cell .ox-hit {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.hce .ox-cell .ox-left {
+    left: 0;
+}
+
+.hce .ox-cell .ox-right {
+    right: 0;
+}
+
+.hce .ox-cell .ox-hit input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ○/× 마크 공통 */
+.hce .ox-cell .ox-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.8mm;
+    height: 2.8mm;
+    border-radius: 999px;
+}
+
+/* ✅ 선택되면 테두리(동그라미) */
+.hce .ox-cell .ox-left:has(input:checked)~.ox-text .ox-o {
+    outline: 0.45pt solid #000;
+    outline-offset: 0.3mm;
+}
+
+.hce .ox-cell .ox-right:has(input:checked)~.ox-text .ox-x {
+    outline: 0.45pt solid #000;
+    outline-offset: 0.3mm;
+}
+
+/* (114.57) 품명: 절임갓 */
+.hce.s114_01 {
+    left: 0mm;
+    top: 114.57mm;
+    width: 19.86mm;
+    height: 6.98mm;
+}
+
+.hce.s114_01 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s114_01 .hcI {
+    top: 1.05mm;
+}
+
+.hce.s114_01 .hls {
+    left: 0mm;
+    top: -0.19mm;
+    width: 18.87mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+/* (114.57) 측정시각 */
+.hce.s114_02 {
+    left: 19.86mm;
+    top: 114.57mm;
+    width: 15.33mm;
+    height: 6.98mm;
+}
+
+.hce.s114_02 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s114_02 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s114_02 .hls {
+    left: 0mm;
+    top: -0.18mm;
+    width: 14.34mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s114_02 input.time-input.hour,
+.hce.s114_02 input.time-input.minute {
+    display: inline-block;
+    width: 5mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font-size: 12px;
+
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s114_02 .time-colon {
+    display: inline-block;
+    width: 0.5mm;
+    text-align: center;
+}
+
+/* (114.57) litre */
+.hce.s114_03 {
+    left: 35.2mm;
+    top: 114.57mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s114_03 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s114_03 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s114_03 .hls {
+    left: 0mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s114_03 input.litre-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+/* (114.57) kg */
+.hce.s114_04 {
+    left: 55.38mm;
+    top: 114.57mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s114_04 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s114_04 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s114_04 .hls {
+    left: -2mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s114_04 input.kg-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+/* (114.57) sec (75.57) */
+.hce.s114_05 {
+    left: 75.57mm;
+    top: 114.57mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s114_05 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s114_05 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s114_05 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s114_05 input.sec-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+/* (114.57) sec (95.75) */
+.hce.s114_06 {
+    left: 95.75mm;
+    top: 114.57mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s114_06 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s114_06 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s114_06 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s114_06 input.sec-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+/* (114.57) sec (115.94) */
+.hce.s114_07 {
+    left: 115.94mm;
+    top: 114.57mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s114_07 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s114_07 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s114_07 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s114_07 input.sec-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+/* (114.57) ○ / × */
+.hce.s114_08 {
+    left: 136.13mm;
+    top: 114.57mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s114_08 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s114_08 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s114_08 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* (121.55) 품명 */
+.hce.s121_01 {
+    left: 0mm;
+    top: 121.55mm;
+    width: 19.86mm;
+    height: 6.98mm;
+}
+
+.hce.s121_01 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s121_01 .hcI {
+    top: 1.05mm;
+}
+
+.hce.s121_01 .hls {
+    left: 0mm;
+    top: -0.19mm;
+    width: 18.87mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+/* (121.55) 측정시각 */
+.hce.s121_02 {
+    left: 19.86mm;
+    top: 121.55mm;
+    width: 15.33mm;
+    height: 6.98mm;
+}
+
+.hce.s121_02 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s121_02 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s121_02 .hls {
+    left: 0mm;
+    top: -0.18mm;
+    width: 14.34mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s121_02 input.time-input.hour,
+.hce.s121_02 input.time-input.minute {
+    display: inline-block;
+    width: 5mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font-size: 12px;
+
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s121_02 .time-colon {
+    display: inline-block;
+    width: 0.5mm;
+    text-align: center;
+}
+
+/* (121.55) litre + unit */
+.hce.s121_03 {
+    left: 35.2mm;
+    top: 121.55mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s121_03 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s121_03 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s121_03 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s121_03 input.litre-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s121_03 .unit {
+    display: inline-block;
+    width: 4mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (121.55) kg + unit(KG) */
+.hce.s121_04 {
+    left: 55.38mm;
+    top: 121.55mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s121_04 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s121_04 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s121_04 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s121_04 input.kg-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s121_04 .unit {
+    display: inline-block;
+    width: 3mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (121.55) sec + unit(초) */
+.hce.s121_05 {
+    left: 75.57mm;
+    top: 121.55mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s121_05 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s121_05 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s121_05 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s121_05 input.sec-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s121_05 .unit {
+    display: inline-block;
+    width: 3mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (121.55) sec + unit(초) (95.75) */
+.hce.s121_06 {
+    left: 95.75mm;
+    top: 121.55mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s121_06 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s121_06 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s121_06 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s121_06 input.sec-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s121_06 .unit {
+    display: inline-block;
+    width: 3mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (121.55) sec + unit(초) (115.94) */
+.hce.s121_07 {
+    left: 115.94mm;
+    top: 121.55mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s121_07 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s121_07 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s121_07 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s121_07 input.sec-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s121_07 .unit {
+    display: inline-block;
+    width: 3mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (121.55) ○ / × */
+.hce.s121_08 {
+    left: 136.13mm;
+    top: 121.55mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s121_08 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s121_08 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s121_08 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* (128.54) 품명 */
+.hce.s128_01 {
+    left: 0mm;
+    top: 128.54mm;
+    width: 19.86mm;
+    height: 6.98mm;
+}
+
+.hce.s128_01 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s128_01 .hcI {
+    top: 1.05mm;
+}
+
+.hce.s128_01 .hls {
+    left: 0mm;
+    top: -0.19mm;
+    width: 18.87mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+/* (128.54) 측정시각 */
+.hce.s128_02 {
+    left: 19.86mm;
+    top: 128.54mm;
+    width: 15.33mm;
+    height: 6.98mm;
+}
+
+.hce.s128_02 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s128_02 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s128_02 .hls {
+    left: 0mm;
+    top: -0.18mm;
+    width: 14.34mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s128_02 input.time-input.hour,
+.hce.s128_02 input.time-input.minute {
+    display: inline-block;
+    width: 5mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font-size: 12px;
+
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s128_02 .time-colon {
+    display: inline-block;
+    width: 0.5mm;
+    text-align: center;
+}
+
+/* (128.54) litre + unit */
+.hce.s128_03 {
+    left: 35.2mm;
+    top: 128.54mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s128_03 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s128_03 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s128_03 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s128_03 input.litre-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s128_03 .unit {
+    display: inline-block;
+    width: 4mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (135.52) 품명 */
+.hce.s135_01 {
+    left: 0mm;
+    top: 135.52mm;
+    width: 19.86mm;
+    height: 6.98mm;
+}
+
+.hce.s135_01 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s135_01 .hcI {
+    top: 1.05mm;
+}
+
+.hce.s135_01 .hls {
+    left: 0mm;
+    top: -0.19mm;
+    width: 18.87mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+/* (135.52) 측정시각 */
+.hce.s135_02 {
+    left: 19.86mm;
+    top: 135.52mm;
+    width: 15.33mm;
+    height: 6.98mm;
+}
+
+.hce.s135_02 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s135_02 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s135_02 .hls {
+    left: 0mm;
+    top: -0.18mm;
+    width: 14.34mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s135_02 input.time-input.hour,
+.hce.s135_02 input.time-input.minute {
+    display: inline-block;
+    width: 5mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font-size: 12px;
+
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s135_02 .time-colon {
+    display: inline-block;
+    width: 0.5mm;
+    text-align: center;
+}
+
+/* (135.52) litre + unit */
+.hce.s135_03 {
+    left: 35.2mm;
+    top: 135.52mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s135_03 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s135_03 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s135_03 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s135_03 input.litre-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s135_03 .unit {
+    display: inline-block;
+    width: 4mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* ===== Section : 128.54mm ~ 156.48mm (추가분) ===== */
+
+/* (128.54) kg + unit(KG) */
+.hce.s128_04 {
+    left: 55.38mm;
+    top: 128.54mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s128_04 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s128_04 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s128_04 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s128_04 input.kg-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s128_04 .unit {
+    display: inline-block;
+    width: 3mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (128.54) sec + unit(초) (75.57) */
+.hce.s128_05 {
+    left: 75.57mm;
+    top: 128.54mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s128_05 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s128_05 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s128_05 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s128_05 input.sec-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s128_05 .unit {
+    display: inline-block;
+    width: 3mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (128.54) sec + unit(초) (95.75) */
+.hce.s128_06 {
+    left: 95.75mm;
+    top: 128.54mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s128_06 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s128_06 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s128_06 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s128_06 input.sec-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s128_06 .unit {
+    display: inline-block;
+    width: 3mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (128.54) sec (115.94) - unit 없음 */
+.hce.s128_07 {
+    left: 115.94mm;
+    top: 128.54mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s128_07 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s128_07 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s128_07 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s128_07 input.sec-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+/* (128.54) ○ / × */
+.hce.s128_08 {
+    left: 136.13mm;
+    top: 128.54mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s128_08 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s128_08 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s128_08 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* (135.52) kg + unit(KG) */
+.hce.s135_04 {
+    left: 55.38mm;
+    top: 135.52mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s135_04 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s135_04 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s135_04 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s135_04 input.kg-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s135_04 .unit {
+    display: inline-block;
+    width: 3mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (135.52) sec + unit(초) (75.57) */
+.hce.s135_05 {
+    left: 75.57mm;
+    top: 135.52mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s135_05 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s135_05 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s135_05 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s135_05 input.sec-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s135_05 .unit {
+    display: inline-block;
+    width: 3mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (135.52) sec + unit(초) (95.75) */
+.hce.s135_06 {
+    left: 95.75mm;
+    top: 135.52mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s135_06 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s135_06 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s135_06 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s135_06 input.sec-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s135_06 .unit {
+    display: inline-block;
+    width: 3mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (135.52) sec + unit(초) (115.94) */
+.hce.s135_07 {
+    left: 115.94mm;
+    top: 135.52mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s135_07 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s135_07 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s135_07 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s135_07 input.sec-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s135_07 .unit {
+    display: inline-block;
+    width: 3mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (135.52) ○ / × */
+.hce.s135_08 {
+    left: 136.13mm;
+    top: 135.52mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s135_08 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s135_08 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s135_08 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* (142.51) 품명: 절임갓 */
+.hce.s142_01 {
+    left: 0mm;
+    top: 142.51mm;
+    width: 19.86mm;
+    height: 6.98mm;
+}
+
+.hce.s142_01 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s142_01 .hcI {
+    top: 1.05mm;
+}
+
+.hce.s142_01 .hls {
+    left: 0mm;
+    top: -0.19mm;
+    width: 18.87mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+/* (142.51) time */
+.hce.s142_02 {
+    left: 19.86mm;
+    top: 142.51mm;
+    width: 15.33mm;
+    height: 6.98mm;
+}
+
+.hce.s142_02 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s142_02 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s142_02 .hls {
+    left: 0mm;
+    top: -0.18mm;
+    width: 14.34mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s142_02 input.time-input.hour,
+.hce.s142_02 input.time-input.minute {
+    display: inline-block;
+    width: 5mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font-size: 12px;
+
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s142_02 .time-colon {
+    display: inline-block;
+    width: 0.5mm;
+    text-align: center;
+}
+
+/* (142.51) litre + unit */
+.hce.s142_03 {
+    left: 35.2mm;
+    top: 142.51mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s142_03 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s142_03 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s142_03 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s142_03 input.litre-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s142_03 .unit {
+    display: inline-block;
+    width: 4mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (142.51) kg + unit */
+.hce.s142_04 {
+    left: 55.38mm;
+    top: 142.51mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s142_04 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s142_04 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s142_04 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s142_04 input.kg-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s142_04 .unit {
+    display: inline-block;
+    width: 3mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (142.51) sec + unit */
+.hce.s142_05 {
+    left: 75.57mm;
+    top: 142.51mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s142_05 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s142_05 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s142_05 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s142_05 input.sec-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s142_05 .unit {
+    display: inline-block;
+    width: 3mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (142.51) sec + unit */
+.hce.s142_06 {
+    left: 95.75mm;
+    top: 142.51mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s142_06 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s142_06 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s142_06 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s142_06 input.sec-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s142_06 .unit {
+    display: inline-block;
+    width: 3mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (142.51) sec + unit */
+.hce.s142_07 {
+    left: 115.94mm;
+    top: 142.51mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s142_07 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s142_07 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s142_07 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s142_07 input.sec-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s142_07 .unit {
+    display: inline-block;
+    width: 3mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (142.51) ○ / × */
+.hce.s142_08 {
+    left: 136.13mm;
+    top: 142.51mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s142_08 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s142_08 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s142_08 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* (149.49) 품명 */
+.hce.s149_01 {
+    left: 0mm;
+    top: 149.49mm;
+    width: 19.86mm;
+    height: 6.98mm;
+}
+
+.hce.s149_01 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s149_01 .hcI {
+    top: 1.05mm;
+}
+
+.hce.s149_01 .hls {
+    left: 0mm;
+    top: -0.19mm;
+    width: 18.87mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+/* (149.49) time */
+.hce.s149_02 {
+    left: 19.86mm;
+    top: 149.49mm;
+    width: 15.33mm;
+    height: 6.98mm;
+}
+
+.hce.s149_02 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s149_02 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s149_02 .hls {
+    left: 0mm;
+    top: -0.18mm;
+    width: 14.34mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s149_02 input.time-input.hour,
+.hce.s149_02 input.time-input.minute {
+    display: inline-block;
+    width: 5mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font-size: 12px;
+
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s149_02 .time-colon {
+    display: inline-block;
+    width: 0.5mm;
+    text-align: center;
+}
+
+/* (149.49) litre + unit */
+.hce.s149_03 {
+    left: 35.2mm;
+    top: 149.49mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s149_03 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s149_03 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s149_03 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s149_03 input.litre-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s149_03 .unit {
+    display: inline-block;
+    width: 4mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (149.49) kg + unit */
+.hce.s149_04 {
+    left: 55.38mm;
+    top: 149.49mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s149_04 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s149_04 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s149_04 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s149_04 input.kg-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s149_04 .unit {
+    display: inline-block;
+    width: 3mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (149.49) sec + unit */
+.hce.s149_05 {
+    left: 75.57mm;
+    top: 149.49mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s149_05 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s149_05 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s149_05 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s149_05 input.sec-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+/* (149.49) sec (95.75) + unit */
+.hce.s149_06 {
+    left: 95.75mm;
+    top: 149.49mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s149_06 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s149_06 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s149_06 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s149_06 input.sec-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s149_06 .unit {
+    display: inline-block;
+    width: 3mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* (149.49) sec (115.94) - unit 없음 */
+.hce.s149_07 {
+    left: 115.94mm;
+    top: 149.49mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s149_07 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s149_07 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s149_07 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s149_07 input.sec-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+/* (149.49) ○ / × */
+.hce.s149_08 {
+    left: 136.13mm;
+    top: 149.49mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s149_08 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s149_08 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s149_08 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+/* (156.48) 라벨: 작업 끝 */
+.hce.s156_01 {
+    left: 0mm;
+    top: 156.48mm;
+    width: 19.86mm;
+    height: 6.98mm;
+}
+
+.hce.s156_01 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s156_01 .hcI {
+    top: 1.05mm;
+}
+
+.hce.s156_01 .hls {
+    left: 0mm;
+    top: -0.19mm;
+    width: 18.87mm;
+    height: 3.88mm;
+    line-height: 3.1mm;
+    white-space: nowrap;
+}
+
+/* (156.48) time */
+.hce.s156_02 {
+    left: 19.86mm;
+    top: 156.48mm;
+    width: 15.33mm;
+    height: 6.98mm;
+}
+
+.hce.s156_02 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s156_02 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s156_02 .hls {
+    left: 0mm;
+    top: -0.18mm;
+    width: 14.34mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s156_02 input.time-input.hour,
+.hce.s156_02 input.time-input.minute {
+    display: inline-block;
+    width: 5mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font-size: 12px;
+
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s156_02 .time-colon {
+    display: inline-block;
+    width: 0.5mm;
+    text-align: center;
+}
+
+/* (156.48) litre + unit */
+.hce.s156_03 {
+    left: 35.2mm;
+    top: 156.48mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s156_03 .hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s156_03 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s156_03 .hls {
+    left: -4mm;
+    top: -0.18mm;
+    width: 19.19mm;
+    height: 3.53mm;
+    line-height: 2.79mm;
+    white-space: nowrap;
+}
+
+.hce.s156_03 input.litre-input {
+    display: inline-block;
+    width: 7mm;
+    border: 0;
+    border-bottom: 0.5pt solid #000;
+    background: transparent;
+    text-align: center;
+    font: inherit;
+    height: 3.53mm;
+    line-height: 2.79mm;
+}
+
+.hce.s156_03 .unit {
+    display: inline-block;
+    width: 4mm;
+    text-align: left;
+    margin-left: 0.5mm;
+    font: inherit;
+}
+
+/* =========================
+   156.48mm row (빈칸 5개)
+========================= */
+.hce.s156_55 {
+    left: 55.38mm;
+    top: 156.48mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s156_75 {
+    left: 75.57mm;
+    top: 156.48mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s156_95 {
+    left: 95.75mm;
+    top: 156.48mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s156_115 {
+    left: 115.94mm;
+    top: 156.48mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s156_136 {
+    left: 136.13mm;
+    top: 156.48mm;
+    width: 20.19mm;
+    height: 6.98mm;
+}
+
+.hce.s156_55>.hcD,
+.hce.s156_75>.hcD,
+.hce.s156_95>.hcD,
+.hce.s156_115>.hcD,
+.hce.s156_136>.hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s156_55 .hcI,
+.hce.s156_75 .hcI,
+.hce.s156_95 .hcI,
+.hce.s156_115 .hcI,
+.hce.s156_136 .hcI {
+    top: 1.23mm;
+}
+
+.hce.s156_55 .hls,
+.hce.s156_75 .hls,
+.hce.s156_95 .hls,
+.hce.s156_115 .hls,
+.hce.s156_136 .hls {
+    line-height: 2.79mm;
+    white-space: nowrap;
+    left: 0mm;
+    top: -0.18mm;
+    height: 3.53mm;
+    width: 19.19mm;
+}
+
+/* =========================
+   개선조치 방법 (0mm, 163.46mm)
+========================= */
+.hce.s163_left {
+    left: 0mm;
+    top: 163.46mm;
+    width: 19.86mm;
+    height: 63.94mm;
+}
+
+.hce.s163_left>.hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s163_left .hcI {
+    top: 27.01mm;
+}
+
+.hce.s163_left .hls.line1 {
+    line-height: 3.1mm;
+    white-space: nowrap;
+    left: 0mm;
+    top: -0.19mm;
+    height: 3.88mm;
+    width: 18.87mm;
+}
+
+.hce.s163_left .hls.line2 {
+    line-height: 3.1mm;
+    white-space: nowrap;
+    left: 0mm;
+    top: 4.86mm;
+    height: 3.88mm;
+    width: 18.87mm;
+}
+
+/* =========================
+   개선조치 내용 (19.86mm, 163.46mm)
+   ✅ 이 구간은 "각 줄 top"이 핵심이라 줄별로 그대로 이관
+========================= */
+.hce.s163_right {
+    left: 19.86mm;
+    top: 163.46mm;
+    width: 156.26mm;
+    height: 63.94mm;
+}
+
+.hce.s163_right>.hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s163_right .hcI {
+    top: 1mm;
+}
+
+/* 공통(기본) */
+.hce.s163_right .hls.base {
+    line-height: 2.79mm;
+    white-space: nowrap;
+    left: 0mm;
+    height: 3.53mm;
+    width: 155.26mm;
+}
+
+/* 줄별 top */
+.hce.s163_right .hls.t0 {
+    top: -0.18mm;
+}
+
+.hce.s163_right .hls.t1 {
+    top: 4.24mm;
+}
+
+.hce.s163_right .hls.t2 {
+    top: 8.66mm;
+}
+
+.hce.s163_right .hls.t3 {
+    top: 13.07mm;
+    padding-left: 6.58mm;
+}
+
+.hce.s163_right .hls.t4 {
+    top: 17.49mm;
+}
+
+.hce.s163_right .hls.t5 {
+    top: 21.91mm;
+}
+
+.hce.s163_right .hls.t6 {
+    top: 26.32mm;
+    padding-left: 6.58mm;
+}
+
+.hce.s163_right .hls.t7 {
+    top: 30.74mm;
+}
+
+.hce.s163_right .hls.t8 {
+    top: 35.16mm;
+}
+
+.hce.s163_right .hls.t9 {
+    top: 39.57mm;
+}
+
+.hce.s163_right .hls.t10 {
+    top: 43.99mm;
+}
+
+.hce.s163_right .hls.t11 {
+    top: 48.41mm;
+    padding-left: 4.4mm;
+}
+
+.hce.s163_right .hls.t12 {
+    top: 52.82mm;
+}
+
+.hce.s163_right .hls.t13 {
+    top: 57.24mm;
+    padding-left: 6.58mm;
+}
+
+/* =========================
+   227.4mm 헤더 4칸
+========================= */
+.hce.s227_0 {
+    left: 0mm;
+    top: 227.4mm;
+    width: 69.43mm;
+    height: 7.87mm;
+}
+
+.hce.s227_1 {
+    left: 69.43mm;
+    top: 227.4mm;
+    width: 62.17mm;
+    height: 7.87mm;
+}
+
+.hce.s227_2 {
+    left: 131.6mm;
+    top: 227.4mm;
+    width: 21.22mm;
+    height: 7.87mm;
+}
+
+.hce.s227_3 {
+    left: 152.82mm;
+    top: 227.4mm;
+    width: 23.31mm;
+    height: 7.87mm;
+}
+
+.hce.s227_0>.hcD,
+.hce.s227_1>.hcD,
+.hce.s227_2>.hcD,
+.hce.s227_3>.hcD {
+    left: 0.5mm;
+    top: 0.5mm;
+}
+
+.hce.s227_0 .hcI,
+.hce.s227_1 .hcI,
+.hce.s227_2 .hcI,
+.hce.s227_3 .hcI {
+    top: 1.5mm;
+}
+
+.hce.s227_0 .hls,
+.hce.s227_1 .hls,
+.hce.s227_2 .hls,
+.hce.s227_3 .hls {
+    line-height: 3.1mm;
+    white-space: nowrap;
+    left: 0mm;
+    top: -0.19mm;
+    height: 3.88mm;
+}
+
+.hce.s227_0 .hls {
+    width: 68.42mm;
+}
+
+.hce.s227_1 .hls {
+    width: 61.17mm;
+}
+
+.hce.s227_2 .hls {
+    width: 20.22mm;
+}
+
+.hce.s227_3 .hls {
+    width: 22.31mm;
+}
+
+/* =========================
+   235.27mm 내용 4칸(빈칸)
+========================= */
+.hce.s235_0 {
+    left: 0mm;
+    top: 235.27mm;
+    width: 69.43mm;
+    height: 25.84mm;
+}
+
+.hce.s235_1 {
+    left: 69.43mm;
+    top: 235.27mm;
+    width: 62.17mm;
+    height: 25.84mm;
+}
+
+.hce.s235_2 {
+    left: 131.6mm;
+    top: 235.27mm;
+    width: 21.22mm;
+    height: 25.84mm;
+}
+
+.hce.s235_3 {
+    left: 152.82mm;
+    top: 235.27mm;
+    width: 23.31mm;
+    height: 25.84mm;
+}
+
+.hce.s235_0>.hcD,
+.hce.s235_1>.hcD,
+.hce.s235_2>.hcD,
+.hce.s235_3>.hcD {
+    left: 0mm;
+    top: 0mm;
+    width: 100%;
+    height: 100%;
+}
+
+.hce.s235_0 .hcI,
+.hce.s235_1 .hcI,
+.hce.s235_2 .hcI,
+.hce.s235_3 .hcI {
+    top: 0mm;
+    left: 0mm;
+    width: 100%;
+    height: 100%;
+}
+
+.hce.s235_0 .hls,
+.hce.s235_1 .hls,
+.hce.s235_2 .hls,
+.hce.s235_3 .hls {
+    line-height: 3.1mm;
+    white-space: nowrap;
+    left: 0mm;
+    top: -0.19mm;
+    height: 3.88mm;
+}
+
+.hce.s235_0 .hls {
+    width: 68.42mm;
+}
+
+.hce.s235_1 .hls {
+    width: 61.17mm;
+}
+
+.hce.s235_2 .hls {
+    width: 20.22mm;
+}
+
+.hce.s235_3 .hls {
+    width: 22.31mm;
+}
+
+/* =========================
+   235 구역: textarea 입력용 확장
+========================= */
+
+/* s235 구역은 여러 줄 입력이므로 hls를 셀 높이로 확장 */
+.hce.s235_0 .hls,
+.hce.s235_1 .hls,
+.hce.s235_2 .hls,
+.hce.s235_3 .hls {
+    width: 100%;
+    height: 100%;
+    left: 0mm;
+    top: 0mm;
+    white-space: normal;
+    line-height: normal;
+}
+
+/* textarea 공통 */
+.hce .cell-textarea {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    outline: 0;
+    resize: none;
+    /* 크기조절 핸들 제거 */
+    background: transparent;
+    /* 종이 양식 위에 자연스럽게 */
+    padding: 1.2mm 1.2mm;
+    /* 글자 가장자리 붙지 않게 */
+    box-sizing: border-box;
+    font: inherit;
+    /* 기존 폰트 스타일 상속 */
+    color: inherit;
+    overflow: hidden;
+    /* 필요하면 auto로 바꿔도 됨 */
+}
+
+/* 인쇄/미리보기에서 placeholder 안 보이게 하고 싶으면 */
+.hce .cell-textarea::placeholder {
+    color: transparent;
+}
+
+/* print 전용 */
+@page {
+    size: A4;
+    margin: 0;
+}
+
+@media print {
+
+    html,
+    body {
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+        padding: 0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+}

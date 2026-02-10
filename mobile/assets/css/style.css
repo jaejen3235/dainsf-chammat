@@ -1,0 +1,524 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+/* Noto Sans KR 설정 */
+@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 100;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.otf) format('opentype');}
+
+@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 300;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.otf) format('opentype');}
+
+@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 400;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf) format('opentype');}
+
+@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 500;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.otf) format('opentype');}
+
+@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 700;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.otf) format('opentype');}
+
+@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 900;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.otf) format('opentype');}
+
+
+/* 
+Martel:
+
+폰트 패밀리: 'Martel', sans-serif;
+Noto Sans KR:
+
+폰트 패밀리: 'Noto Sans KR', sans-serif;
+Open Sans:
+
+폰트 패밀리: 'Open Sans', sans-serif;
+Poppins:
+
+폰트 패밀리: 'Poppins', sans-serif;
+Roboto:
+
+폰트 패밀리: 'Roboto', sans-serif;
+*/
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+}
+
+/* 프린트 할 때 상단, 하단 공백을 없애기 위함 */
+@media print { 
+	@page { 
+		margin-top: 0; 
+		margin-bottom: 0; 
+	} 
+	body { 
+		margin: 0cm; 
+	} 
+}
+
+:root {
+	/* 핑크색 */
+	/* --main-color: #dd2f6e; */
+	/* 차콜색 */
+	--main-color: #61696e;
+	--main-text-color: #000000;
+	--color-dart: #1d2231;
+	--text-gray: #8390a2;
+	--color-pink : pink;
+	--color-green : green;
+	--color-blue : blue;
+	--color-red : red;
+}
+
+body::-webkit-scrollbar {
+	width : 0px;
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+	text-decoration: none;
+    color: #000; /* 마우스 오버 시 */
+}
+
+select {
+	position : relative;
+	top : 2px;
+	height : 28px;
+	border : 1px solid #ccc;
+	border-radius : 3px;
+	outline : none;
+	font-size : 14px;
+	padding-left : 8px;
+}
+
+textarea {
+	width : 100%;
+	outline : none;
+	border : 1px solid #ccc;
+	padding : 10px;
+	white-space : normal;
+}
+
+input[type='text'] {
+	position : relative;
+	top : 1px;
+	height : 28px;
+	border : 1px solid #ccc;
+	border-radius : 3px;
+	outline : none;
+	font-size : 13px;
+	padding : 13px;
+}
+
+input[type='password'] {
+	position : relative;
+	top : 2px;
+	height : 28px;
+	border : 1px solid #ccc;
+	border-radius : 3px;
+	outline : none;
+	font-size : 13px;
+	padding : 13px;
+}
+
+input[type='button'] {
+	cursor : pointer;
+}
+
+input[type='checkbox'] {
+	height : 20px;
+	width : 20px;
+	cursor : pointer;
+}
+
+input[type='radio'] {
+	cursor : pointer;
+}
+
+input[type=radio]:checked ~ .check {
+    border: 5px solid #0DFF92;
+}
+
+input[type=radio]:checked ~ .check::before{
+    background: #0DFF92;
+}
+
+input[type=radio]:checked ~ label{
+    color: #000000;
+}
+
+input::placeholder {
+	color: #b7bfc7;
+}
+
+textarea::placeholder {
+	color: #b7bfc7;
+}
+
+hr {
+	border : 1px dotted #ddd;
+}
+
+.btn {
+	padding : 9px 15.4px;
+	font-size : 13px;
+	font-weight : 400;
+	border-radius : 0.25rem;
+	opacity : 0.95;
+	outline : none;
+	border : none;
+	font-family: 'Roboto', sans-serif;
+	text-align : center;
+	vertical-align : middle;
+}
+
+.btn-large {
+	padding : 12.2px 20.2px;
+	font-size : 16.25px;
+	font-weight : 400;
+	border-radius : 0.25rem;
+	opacity : 0.95;
+	outline : none;
+	border : none;
+	font-family: 'Roboto', sans-serif;
+	text-align : center;
+	vertical-align : middle;
+}
+
+/* function */
+.center {
+    text-align: center !important;
+}
+
+.left {
+    text-align: left !important;
+}
+
+.right {
+    text-align: right !important;
+}
+
+.red {
+    color: #e04f3a;
+}
+
+.hands {
+    cursor: pointer;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.black {
+    color: #000;
+}
+
+.mt30 {
+    margin-top: 30px;
+}
+
+
+.primary {
+	color : #ffffff;
+	background : #405189;
+}
+
+.secondary {
+	color : #ffffff;
+	background : #3577F1;
+}
+
+.success {
+	color : #ffffff;
+	background : #0AB39c;
+}
+
+.info {
+	color : #ffffff;
+	background : #299CDB;
+}
+
+.warning {
+	color : #ffffff;
+	background : #F7B84B;
+}
+
+.danger {
+	color : #ffffff;
+	background : #F06548;
+}
+
+header {
+    width: 100%;
+
+    .container {
+        .wrapper {
+            width: 100%;
+            height: 85px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px 0 15px;
+
+            .logo-section {                
+                display: flex;
+                justify-content: flex-start;
+                align-items: first baseline;
+                gap: 10px;
+                cursor: pointer;
+
+                .logo-box {
+                    top: 3px;
+                }
+
+                .text-box {
+                    font-size: 14px;
+                    font-weight: 600;
+                }
+            }
+
+            .menu-section {
+                display: none;
+            }
+            .hamburger-menu {
+                display: block;
+            }
+        }
+    }
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -100%; /* 화면 밖으로 숨겨진 상태 */
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    transition: transform 0.3s ease-in-out; /* 애니메이션을 위한 transition */
+    z-index: 999; /* 다른 요소 위에 표시되도록 z-index 설정 */
+}
+
+.mobile-menu.active {
+    transform: translateX(100%); /* active 클래스가 붙으면 메뉴가 화면에 나타남 */
+}
+
+.close-menu {
+    font-size: 24px;
+    color: black;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.mobile-menu a {
+    color: black;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+main {
+    padding : 10px;
+
+    .content-container {
+        width: 100%;
+        margin: auto;
+
+        .title {
+            margin-bottom :5px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #E04F3A;
+        }
+        
+        .btn-wrapper {                
+            width: 80%;
+            margin: auto;
+            margin-top: 34px;
+            height: 50px;
+            background-color: #f5f6f8;
+            border-radius: 50px;
+            border: solid 1px #b6bfc7;
+            padding: 10px;
+            text-align: center;     
+            
+            i {
+                font-size: 25px;
+                color:#e04f3a;
+                margin-right: 10px;
+            }
+            input {
+                flex: 1;
+                height: 40px;
+                border: none;
+                outline: none;
+                font-size: 14px;
+                background-color: #f5f6f8;
+                padding-right: 10px;
+            }
+        }
+        table {
+            width: 100% !important;
+            border-collapse: collapse;
+
+            tr {
+                margin-bottom: 10px; /* 각 줄 사이에 간격 추가 */
+
+                &:first-child {
+                    border-top: 2px solid #000; /* 상단 테두리 추가 */
+                }
+
+                td, th {
+                    text-align: left !important;
+                    padding: 5px;
+                    height : 50px;
+                    box-sizing: border-box;
+                    font-size: 14px;
+                }
+
+                th {
+                    font-weight: bold;
+                    background-color: #f0f0f0;
+                }
+            }
+        }
+    }
+    .login-container {
+        width: 100%;
+        background-color: #f5f6f8;
+        padding: 55px 10px 0px 10px;
+        .login-wrapper {
+            width: 100%;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            .client-logo {                    
+                margin-bottom: 10px;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img {
+                    width: 100%;
+                }
+            }
+            input {
+                width: 100%;
+                height: 48px;
+                padding: 16px;
+                border-radius: 5px;
+                border: solid 1px #dee5ec;
+                background-color: #f5f6f8;
+                margin-bottom: 15px;                
+            }
+            .btn-login {
+                width: 100%;
+                height: 48px;
+                font-size: 16px;
+                color: #fff;
+                padding: 14px 144px 14px 143px;
+                border-radius: 5px;
+                background-color: #e04f3a;
+                margin-top: 15px;
+            }
+        }
+    }
+    /*==================================== 페이징 ====================================*/
+    .paging-area {
+        text-align: center;
+        margin-top: 40px;
+        padding: 15px;
+    }
+    .pagination {
+        display: inline-block;
+    }
+    .pagination a,
+    .pagination span {
+        padding: 8px 16px;
+        margin: 2px;
+        text-decoration: none;
+        color : black;
+        cursor: pointer;
+    }
+    .pagination a.active,
+    .pagination span.active {
+        border-radius: 5px;
+        background-color: #e04f3a;
+        color: white;
+    }
+    .pagination a:hover:not(.active),
+    .pagination span:hover:not(.active) {
+        border-radius: 5px;
+        background-color: #edc6c0;
+    }
+}
+.bx-check {
+    color: red;
+}
+.fa-search {
+    cursor: pointer;
+}
+
+
+
+/* ---------- 반응형 테이블 시작 ---------- */
+.responsive-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.responsive-table td, .responsive-table th {
+    border: 1px solid #ddd !important;
+    text-align: center;
+}
+
+.responsive-table th {
+    background-color: #555;
+    color: #fff;
+}
+
+.responsive-table tbody tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+@media(max-width: 500px) {
+    .responsive-table thead {
+        display: none;
+    }
+
+    .responsive-table, .responsive-table tbody, .responsive-table tr, .responsive-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .responsive-table tr:not(:last-child) {
+        border-bottom: none !important;
+    }
+
+    .responsive-table tr {
+        margin-bottom: 15px;
+    }
+
+    .responsive-table td {
+        text-align: right;
+        padding-left: 50%;
+        text-align: right;
+        position: relative;
+    }
+
+    .responsive-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left:0;
+        width: 50%;
+        padding-left:15px;
+        font-weight:bold;
+        text-align:left;
+    }
+}
+/* ---------- 반응형 테이블 끝 ---------- */

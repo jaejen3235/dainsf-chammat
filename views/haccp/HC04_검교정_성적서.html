@@ -1,0 +1,2231 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<head>
+    <title>검교정 성적서</title>
+    <meta http_quiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/검교정_성적서_style.css" />
+</head>
+
+<body>
+    <script>
+        document.addEventListener("input", (e) => {
+            if (e.target.classList.contains("date-input-numeric")) {
+                e.target.value = e.target.value.replace(/[^0-9]/g, "");
+            }
+
+        });
+        function handleResize(obj, maxRows) {
+            // 1. 엔터(Line break) 개수로 줄 수 제한
+            let lines = obj.value.split('\n');
+            if (lines.length > maxRows) {
+                obj.value = lines.slice(0, maxRows).join('\n');
+            }
+
+            // 2. 만약 자동 줄바꿈 때문에 높이가 높아지는 것도 막고 싶다면
+            // (선택 사항: CSS에서 height를 고정했다면 이 부분은 없어도 됩니다)
+            obj.style.height = 'auto';
+            let lineHeight = 15; // CSS에서 설정한 line-height 값 (예: 15px)
+            let maxHeight = lineHeight * maxRows;
+
+            if (obj.scrollHeight > maxHeight) {
+                obj.style.height = maxHeight + 'px';
+            } else {
+                obj.style.height = (lineHeight * lines.length) + 'px';
+            }
+        }
+
+        function setTodayDate(elementId) {
+            var today = new Date();
+            var yyyy = today.getFullYear();
+            var mm = String(today.getMonth() + 1).padStart(2, '0');
+            var dd = String(today.getDate()).padStart(2, '0');
+
+            var dateStr = yyyy + '년 ' + mm + '월 ' + dd + '일';
+            document.getElementById(elementId).value = dateStr;
+            console.log(dateStr);
+        }
+    </script>
+
+    <div class='main-container'>
+        <div class='content-wrapper'>
+            <form id="monitoringForm" action="/your-submit-url" method="post">
+                <div class="hpa" style="width: 210mm; height: 297mm">
+                    <div class="hcD" style="left: 20mm; top: 15mm">
+                        <div class="hcI">
+                            <div class="hls ps23" style="
+                                line-height: 3.76mm;
+                                white-space: nowrap;
+                                left: 0mm;
+                                top: -0.23mm;
+                                height: 4.59mm;
+                                width: 180mm;
+                            "></div>
+                            <div class="hls ps23" style="
+                                line-height: 235.45mm;
+                                white-space: nowrap;
+                                left: 0mm;
+                                top: 7.34mm;
+                                height: 235.45mm;
+                                width: 180mm;
+                            ">
+                                <div class="htb" style="
+                                    width: 170.8mm;
+                                    height: 235.45mm;
+                                    display: inline-block;
+                                    position: relative;
+                                    vertical-align: -15%;
+                                    line-height: 235.45mm;
+                                ">
+                                    <svg class="hs" viewBox="-2.50 -2.50 175.80 240.45"
+                                        style="left: -2.5mm; top: -2.5mm; width: 175.8mm; height: 240.45mm">
+
+
+                                        <path d="M0.20,49.17 L10.50,49.17"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M0.20,49.70 L10.50,49.70"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M10.50,49.17 L58.41,49.17"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M10.50,49.70 L58.41,49.70"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M58.41,49.17 L104.49,49.17"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M58.41,49.70 L104.49,49.70"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M104.49,49.17 L122.45,49.17"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M104.49,49.70 L122.45,49.70"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M122.45,49.17 L168.61,49.17"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M122.45,49.70 L168.61,49.70"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M0.20,49.17 L10.50,49.17"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M0.20,49.70 L10.50,49.70"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M10.50,49.17 L58.41,49.17"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M10.50,49.70 L58.41,49.70"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M58.41,49.17 L104.49,49.17"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M58.41,49.70 L104.49,49.70"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M104.49,49.17 L122.45,49.17"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M104.49,49.70 L122.45,49.70"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M122.45,49.17 L168.61,49.17"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M122.45,49.70 L168.61,49.70"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M0.20,142.25 L14.47,142.25"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M0.20,142.78 L14.47,142.78"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M14.47,142.25 L41.44,142.25"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M14.47,142.78 L41.44,142.78"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M41.44,142.25 L63.45,142.25"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M41.44,142.78 L63.45,142.78"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M63.45,142.25 L85.47,142.25"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M63.45,142.78 L85.47,142.78"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M85.47,142.25 L107.48,142.25"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M85.47,142.78 L107.48,142.78"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M107.48,142.25 L142.70,142.25"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M107.48,142.78 L142.70,142.78"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M142.70,142.25 L168.61,142.25"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M142.70,142.78 L168.61,142.78"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M0.20,142.25 L14.47,142.25"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M0.20,142.78 L14.47,142.78"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M14.41,142.25 L41.44,142.25"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M14.41,142.78 L41.44,142.78"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M41.44,142.25 L63.45,142.25"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M41.44,142.78 L63.45,142.78"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M63.45,142.25 L85.47,142.25"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M63.45,142.78 L85.47,142.78"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M85.47,142.25 L107.48,142.25"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M85.47,142.78 L107.48,142.78"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M107.48,142.25 L142.70,142.25"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M107.48,142.78 L142.70,142.78"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M142.76,142.25 L168.61,142.25"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M142.76,142.78 L168.61,142.78"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M0.20,201.91 L62.33,201.91"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M0.20,202.44 L62.33,202.44"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M62.33,201.91 L128.44,201.91"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M62.33,202.44 L128.44,202.44"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M128.44,201.91 L148.63,201.91"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M128.44,202.44 L148.63,202.44"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M148.63,201.91 L168.61,201.91"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M148.63,202.44 L168.61,202.44"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M0.20,201.91 L62.33,201.91"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M0.20,202.44 L62.33,202.44"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M62.33,201.91 L128.44,201.91"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M62.33,202.44 L128.44,202.44"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M128.44,201.91 L148.63,201.91"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M128.44,202.44 L148.63,202.44"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M148.63,201.91 L168.61,201.91"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M148.63,202.44 L168.61,202.44"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.18"></path>
+                                        <path d="M0,0 L0,233.46"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.4"></path>
+                                        <path d="M10.50,42.57 L10.50,122.31"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M14.47,142.86 L14.47,195.30"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M24.39,0 L24.39,34.29"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M41.44,130.59 L41.44,195.30"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M58.41,42.57 L58.41,122.31"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M62.33,195.30 L62.33,233.46"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M63.45,130.59 L63.45,195.30"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M81.40,29.05 L81.40,34.29"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M85.47,130.59 L85.47,195.30"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M104.49,42.57 L104.49,122.31"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M107.48,29.05 L107.48,34.29"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M107.48,130.59 L107.48,195.30"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M115.47,0 L115.47,29.06"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.4"></path>
+                                        <path d="M122.45,42.57 L122.45,122.31"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M124.45,0 L124.45,29.06"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M128.44,195.30 L128.44,233.46"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M142.70,130.59 L142.70,195.30"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M146.63,0 L146.63,29.06"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M148.63,195.30 L148.63,233.46"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M168.81,0 L168.81,233.46"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.4"></path>
+                                        <path d="M-0.20,0 L169.01,0"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.4"></path>
+                                        <path d="M124.39,6.23 L169.01,6.23"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M-0.20,29.05 L169.01,29.05"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.4"></path>
+                                        <path d="M-0.20,34.28 L169.01,34.28"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.4"></path>
+                                        <path d="M-0.20,42.57 L169.01,42.57"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.4"></path>
+                                        <path d="M-0.20,58.55 L169.01,58.55"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M-0.20,67.66 L169.01,67.66"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M-0.20,76.76 L169.01,76.76"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M-0.20,85.87 L169.01,85.87"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M-0.20,94.98 L169.01,94.98"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M-0.20,104.09 L169.01,104.09"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M-0.20,113.20 L169.01,113.20"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M-0.20,122.31 L10.56,122.31"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M-0.20,122.31 L169.01,122.31"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.4"></path>
+                                        <path d="M10.44,122.31 L169.01,122.31"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M-0.20,130.59 L169.01,130.59"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.4"></path>
+                                        <path d="M14.41,152.66 L142.77,152.66"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M-0.20,164.87 L169.01,164.87"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M-0.20,175.02 L169.01,175.02"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M-0.20,185.16 L169.01,185.16"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                        <path d="M-0.20,195.30 L169.01,195.30"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.4"></path>
+                                        <path d="M-0.20,233.45 L169.01,233.45"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.4"></path>
+                                        <path d="M168.81,0 L168.81,233.46"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.4"></path>
+                                        <path d="M0,0 L0,233.46"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.4"></path>
+                                        <path d="M-0.20,233.45 L169.01,233.45"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.4"></path>
+                                        <path d="M-0.20,0 L169.01,0"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.4"></path>
+
+                                        <path d="M-0.20,152.66 L14.41,152.66"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+
+                                        <path d="M142.76,152.66 L168.61,152.66"
+                                            style="stroke: #000000; stroke-linecap: butt; stroke-width: 0.12"></path>
+                                    </svg>
+
+                                    <div class="hce" style="left: 0mm; top: 0mm; width: 24.39mm; height: 29.05mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 12.09mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 23.4mm;
+                                                ">
+                                                    <span class="hrt cs17">매년 5월</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce" style="left: 24.39mm; top: 0mm; width: 91.08mm; height: 29.05mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 10.5mm">
+                                                <div class="hls ps24" style="
+                                                    line-height: 6.28mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.35mm;
+                                                    height: 7.06mm;
+                                                    width: 90.07mm;
+                                                ">
+                                                    <span class="hrt cs5">검·교정 성적서</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce" style="left: 115.47mm; top: 0mm; width: 8.98mm; height: 29.05mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 8.99mm">
+                                                <div class="hls ps13" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 7.99mm;
+                                                ">
+                                                    <span class="hrt cs21">결</span>
+                                                </div>
+                                                <div class="hls ps13" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: 6.01mm;
+                                                    height: 3.88mm;
+                                                    width: 7.99mm;
+                                                ">
+                                                    <span class="hrt cs21">재</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce" style="left: 124.45mm; top: 0mm; width: 22.18mm; height: 6.23mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 0.67mm">
+                                                <div class="hls ps13" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 21.18mm;
+                                                ">
+                                                    <span class="hrt cs21">작성자</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce" style="left: 146.63mm; top: 0mm; width: 22.18mm; height: 6.23mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 0.67mm">
+                                                <div class="hls ps13" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 21.18mm;
+                                                ">
+                                                    <span class="hrt cs21">승인자</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce"
+                                        style="left: 124.45mm; top: 6.23mm; width: 22.18mm; height: 22.83mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 6.97mm">
+                                                <div class="hls ps13" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 21.18mm;">
+                                                        <input type="text" id="writer_name" class="writer_name"
+                                                            placeholder="작성자" maxlength="20"
+                                                            style="width: 100%; height: 115%; text-align: center; border: none; background: transparent;" />
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce"
+                                        style="left: 146.63mm; top: 6.23mm; width: 22.18mm; height: 22.83mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 8.97mm">
+                                                <div class="hls ps13" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 21.18mm;
+                                                "></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce" style="left: 0mm; top: 29.05mm; width: 24.39mm; height: 5.23mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 0.18mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 23.4mm;
+                                                ">
+                                                    <span class="hrt cs3">작성일자</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce hc10-date"
+                                        style="left: 24.39mm; top: 29.05mm; width: 57.01mm; height: 5.23mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 0.18mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 56.01mm;
+                                                ">
+                                                    <div class="date-row" style="width: 100%;">
+                                                        <input id="HC10_writeDate" name="HC10_writeDate" type="text"
+                                                            class="date-input" style="width: 100%;" />
+                                                        <script>
+                                                            (function () {
+                                                                var today = new Date();
+                                                                var yyyy = today.getFullYear();
+                                                                var mm = String(today.getMonth() + 1).padStart(2, '0');
+                                                                var dd = String(today.getDate()).padStart(2, '0');
+                                                                document.getElementById('HC10_writeDate').value = yyyy + '년 ' + mm + '월 ' + dd + '일';
+                                                            })();
+                                                        </script>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="hce" style="left: 81.4mm; top: 29.05mm; width: 26.08mm; height: 5.23mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 0.18mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 25.08mm;
+                                                ">
+                                                    <span class="hrt cs3">점검자</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce hc10-checker"
+                                        style="left: 107.48mm; top: 29.05mm; width: 61.33mm; height: 5.23mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 0.18mm">
+                                                <div class="hls ps7"
+                                                    style="line-height: 3.1mm; white-space: nowrap; left: 0mm; top: -0.19mm; height: 4.88mm; width: 60.32mm;">
+                                                    <input style="text-align: center; height: 100%;" id="HC10_inspector"
+                                                        class="checker-input" placeholder="점검자" name="HC10_inspector" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce" style="left: 0mm; top: 34.28mm; width: 168.81mm; height: 8.28mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 1mm">
+                                                <div class="hls ps13" style="
+                                                    line-height: 4.44mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.26mm;
+                                                    height: 5.29mm;
+                                                    width: 167.81mm;
+                                                ">
+                                                    <span class="hrt cs20">외부 검교정</span><span
+                                                        class="hrt cs4">&nbsp;</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce" style="left: 0mm; top: 42.57mm; width: 10.5mm; height: 6.87mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 1mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 9.5mm;
+                                                ">
+                                                    <span class="hrt cs1">번호</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce" style="left: 10.5mm; top: 42.57mm; width: 47.92mm; height: 6.87mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 1mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 46.92mm;
+                                                ">
+                                                    <span class="hrt cs1">기기명</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce"
+                                        style="left: 58.41mm; top: 42.57mm; width: 46.07mm; height: 6.87mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 1mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 45.07mm;
+                                                ">
+                                                    <span class="hrt cs1">검교정일</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce"
+                                        style="left: 104.49mm; top: 42.57mm; width: 17.97mm; height: 6.87mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 1mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 16.96mm;
+                                                ">
+                                                    <span class="hrt cs1">주기</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce"
+                                        style="left: 122.45mm; top: 42.57mm; width: 46.35mm; height: 6.87mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 1mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 45.35mm;
+                                                ">
+                                                    <span class="hrt cs1">검교정처</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- =========================
+ HC10 - 검교정대장 1번
+========================= -->
+
+                                    <!-- 번호 (그대로) -->
+                                    <div class="hce" style="left: 0mm; top: 49.44mm; width: 10.5mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.12mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 9.5mm;
+                                                ">
+                                                    <span class="hrt cs17">1</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 기기명 (한 줄 + 글씨 작게) -->
+                                    <div class="hce" style="left: 10.5mm; top: 49.44mm; width: 47.92mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.0mm; top: 0.5mm; width: 100%; height: 100%;">
+                                            <div class="hcI" style="top: 0mm; width: 100%; height: 100%;">
+                                                <div class="hls ps4 input-cell hc10-device-single"
+                                                    style="line-height: 2.79mm; white-space: nowrap; left: 0mm; top: 0mm; height: 100%; width: 100%;">
+                                                    <textarea id="HC10_row1_device" name="HC10_row1_device"
+                                                        class="cell-input-inline hrt cs24" rows="2"
+                                                        oninput="handleResize(this, 2)">디지털 온습도계 (S/N : 103483)B</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 검교정일 (년/월/일) -->
+                                    <div class="hce"
+                                        style="left: 58.41mm; top: 49.44mm; width: 46.07mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 0mm">
+                                                <div class="hls ps4"
+                                                    style="line-height: 2.79mm; white-space: nowrap; left: 0mm; top: -1.18mm; height: 3.53mm; width: 45.07mm;">
+                                                    <span class="hrt cs8">
+                                                        <input id="HC10_row1_date" name="HC10_row1_date" type="text"
+                                                            class="date-input"
+                                                            style="font-size: 14px; border-width: 0px; height: 100%; width: 100%;"
+                                                            value="-" onclick="setTodayDate('HC10_row1_date')" />
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 주기 -->
+                                    <div class="hce"
+                                        style="left: 104.49mm; top: 49.44mm; width: 17.97mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.29mm">
+                                                <div class="hls ps4 input-cell" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.18mm;
+                                                    height: 3.53mm;
+                                                    width: 16.96mm;
+                                                ">
+                                                    <input type="text" id="HC10_row1_cycle" name="HC10_row1_cycle"
+                                                        class="cell-input-inline hrt cs24" style="font-size: 14px; border-width: 0px;"
+                                                        value="1년" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 검교정처 -->
+                                    <div class="hce"
+                                        style="left: 122.45mm; top: 49.44mm; width: 46.35mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.29mm">
+                                                <div class="hls ps4 input-cell" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.18mm;
+                                                    height: 3.53mm;
+                                                    width: 45.35mm;
+                                                ">
+                                                    <input id="HC10_row1_agency" type="text" name="HC10_row1_agency"
+                                                        class="cell-input-inline hrt cs24" style="font-size: 12px; border-width: 0px;"
+                                                        value="교정기술원(주)" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- =========================
+ HC10 - 검교정대장 2번
+========================= -->
+
+                                    <!-- 번호 (그대로) -->
+                                    <div class="hce" style="left: 0mm; top: 58.55mm; width: 10.5mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.12mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 9.5mm;
+                                                ">
+                                                    <span class="hrt cs17">2</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 기기명 (한 줄 + 글씨 작게) -->
+                                    <div class="hce" style="left: 10.5mm; top: 58.55mm; width: 47.92mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0mm; top: 0mm; width: 100%; height: 100%;">
+                                            <div class="hcI" style="top: 0mm; width: 100%; height: 100%;">
+                                                <div class="hls ps4 input-cell hc10-device-single" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    height: 100%;
+                                                    width: 100%;
+                                                ">
+                                                    <textarea id="HC10_row2_device" name="HC10_row2_device"
+                                                        class="cell-input-inline hrt cs24" rows="2"
+                                                        oninput="handleResize(this, 2)">디지털 온도계 (S/N : CS-201)</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 검교정일 -->
+                                    <div class="hce"
+                                        style="left: 58.41mm; top: 58.55mm; width: 46.07mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 0mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    top: -1.18mm;
+                                                    height: 3.53mm;
+                                                    width: 45.07mm;
+                                                ">
+                                                    <span class="hrt cs8">
+                                                        <input id="HC10_row2_date" name="HC10_row2_date" type="text"
+                                                            class="date-input"
+                                                            style="font-size: 14px; height: 100%; width: 100%; border-width: 0px;"
+                                                            value="-" onclick="setTodayDate('HC10_row2_date')" />
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 주기 -->
+                                    <div class="hce"
+                                        style="left: 104.49mm; top: 58.55mm; width: 17.97mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.29mm">
+                                                <div class="hls ps4 input-cell" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.18mm;
+                                                    height: 3.53mm;
+                                                    width: 16.96mm;
+                                                ">
+                                                    <input type="text" id="HC10_row2_cycle" name="HC10_row2_cycle"
+                                                        class="cell-input-inline hrt cs24" style="font-size: 14px; border-width: 0px;"
+                                                        value="1년" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 검교정처 -->
+                                    <div class="hce"
+                                        style="left: 122.45mm; top: 58.55mm; width: 46.35mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.29mm">
+                                                <div class="hls ps4 input-cell" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.18mm;
+                                                    height: 3.53mm;
+                                                    width: 45.35mm;
+                                                ">
+                                                    <input id="HC10_row2_agency" type="text" name="HC10_row2_agency"
+                                                        class="cell-input-inline hrt cs24" style="font-size: 12px; border-width: 0px;"
+                                                        value="교정기술원(주)" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- =========================
+ 3번 (수정본)
+========================= -->
+                                    <div class="hce" style="left: 0mm; top: 67.66mm; width: 10.5mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.12mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 9.5mm;
+                                                ">
+                                                    <span class="hrt cs17">3</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 기기명 (한 줄 + 글씨 작게 + name) -->
+                                    <div class="hce" style="left: 10.5mm; top: 67.66mm; width: 47.92mm; height: 9.11mm">
+                                        <div class="hcD" style="width: 100%; height: 100%;">
+                                            <div class="hcI" style="width: 100%; height: 100%;">
+                                                <div class="hls ps4 input-cell hc10-device-single" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    height: 100%;
+                                                    width: 100%;
+                                                ">
+                                                    <textarea id="HC10_row3_device" name="HC10_row3_device"
+                                                        class="cell-input-inline hrt cs24" rows="2"
+                                                        oninput="handleResize(this, 2)">광조도계 (S/N : 120201306)</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 검교정일 (name) -->
+                                    <!-- 검교정일 (1·2번과 동일한 스타일) -->
+                                    <div class="hce"
+                                        style="left: 58.41mm; top: 67.66mm; width: 46.07mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 0mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -1.18mm;
+                                                    height: 3.53mm;
+                                                    width: 45.07mm;
+                                                ">
+                                                    <span class="hrt cs8">
+                                                        <input id="HC10_row3_date" name="HC10_row3_date" type="text"
+                                                            class="date-input"
+                                                            style="font-size: 14px; height: 100%; width: 100%; border-width: 0px;"
+                                                            value="-" onclick="setTodayDate('HC10_row3_date')" />
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 주기 (글씨 작게 + name) -->
+                                    <div class="hce"
+                                        style="left: 104.49mm; top: 67.66mm; width: 17.97mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.29mm">
+                                                <div class="hls ps4 input-cell" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.18mm;
+                                                    height: 3.53mm;
+                                                    width: 16.96mm;
+                                                ">
+                                                    <input type="text" id="HC10_row3_cycle" name="HC10_row3_cycle"
+                                                        class="cell-input-inline hrt cs24" style="font-size: 14px; border-width: 0px;"
+                                                        value="1년" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 검교정처 (글씨 작게 + name) -->
+                                    <div class="hce"
+                                        style="left: 122.45mm; top: 67.66mm; width: 46.35mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.29mm">
+                                                <div class="hls ps4 input-cell" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.18mm;
+                                                    height: 3.53mm;
+                                                    width: 45.35mm;
+                                                ">
+                                                    <input id="HC10_row3_agency" type="text" name="HC10_row3_agency"
+                                                        class="cell-input-inline hrt cs24" style="font-size: 12px; border-width: 0px;"
+                                                        value="교정기술원(주)" />
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- =========================
+ 4번 (수정본)
+========================= -->
+                                    <div class="hce" style="left: 0mm; top: 76.76mm; width: 10.5mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.12mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 9.5mm;
+                                                ">
+                                                    <span class="hrt cs17">4</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 기기명 (한 줄 + 글씨 작게 + name) -->
+                                    <div class="hce" style="left: 10.5mm; top: 76.76mm; width: 47.92mm; height: 9.11mm">
+                                        <div class="hcD" style="width: 100%; height: 100%;">
+                                            <div class="hcI" style="width: 100%; height: 100%;">
+                                                <div class="hls ps4 input-cell hc10-device-single" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    height: 100%;
+                                                    width: 100%;
+                                                ">
+                                                    <textarea id="HC10_row4_device" name="HC10_row4_device"
+                                                        class="cell-input-inline hrt cs24" rows="2"
+                                                        oninput="handleResize(this, 2)">분동/전기식지시저울</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 검교정일 (name) -->
+                                    <div class="hce"
+                                        style="left: 58.41mm; top: 76.76mm; width: 46.07mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 0mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -1.18mm;
+                                                    height: 3.53mm;
+                                                    width: 45.07mm;
+                                                ">
+                                                    <span class="hrt cs8">
+                                                        <input id="HC10_row4_date" name="HC10_row4_date" type="text"
+                                                            class="date-input"
+                                                            style="font-size: 14px; height: 100%; width: 100%; border-width: 0px;"
+                                                            value="-" onclick="setTodayDate('HC10_row4_date')" />
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 주기 (글씨 작게 + name) -->
+                                    <div class="hce"
+                                        style="left: 104.49mm; top: 76.76mm; width: 17.97mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.29mm">
+                                                <div class="hls ps4 input-cell" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.18mm;
+                                                    height: 3.53mm;
+                                                    width: 16.96mm;
+                                                ">
+                                                    <input type="text" id="HC10_row4_cycle" name="HC10_row4_cycle"
+                                                        class="cell-input-inline hrt cs24" style="font-size: 14px; border-width: 0px;"
+                                                        value="1년" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 검교정처 (글씨 작게 + name) -->
+                                    <div class="hce"
+                                        style="left: 122.45mm; top: 76.76mm; width: 46.35mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.29mm">
+                                                <div class="hls ps4 input-cell" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.18mm;
+                                                    height: 3.53mm;
+                                                    width: 45.35mm;
+                                                ">
+                                                    <input id="HC10_row4_agency" type="text" name="HC10_row4_agency"
+                                                        class="cell-input-inline hrt cs24" style="font-size: 12px; border-width: 0px;"
+                                                        value="㈜코라테크코리아" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- =========================
+ 5번 (3/4번 스타일 그대로)
+========================= -->
+                                    <div class="hce" style="left: 0mm; top: 85.87mm; width: 10.5mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.12mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 9.5mm;
+                                                ">
+                                                    <span class="hrt cs17">5</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 기기명 -->
+                                    <div class="hce" style="left: 10.5mm; top: 85.87mm; width: 47.92mm; height: 9.11mm">
+                                        <div class="hcD" style="width: 100%; height: 100%;">
+                                            <div class="hcI" style="width: 100%; height: 100%;">
+                                                <div class="hls ps4 input-cell hc10-device-single" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    height: 100%;
+                                                    width: 100%;
+                                                ">
+                                                    <textarea id="HC10_row5_device" name="HC10_row5_device"
+                                                        class="cell-input-inline hrt cs24" rows="2"
+                                                        oninput="handleResize(this, 2)">금속검출기</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 검교정일 (3/4번과 동일) -->
+                                    <div class="hce"
+                                        style="left: 58.41mm; top: 85.87mm; width: 46.07mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 0mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -1.18mm;
+                                                    height: 3.53mm;
+                                                    width: 45.07mm;
+                                                ">
+                                                    <span class="hrt cs8">
+                                                        <input id="HC10_row5_date" name="HC10_row5_date" type="text"
+                                                            class="date-input"
+                                                            style="font-size: 14px; height: 100%; width: 100%; border-width: 0px;"
+                                                            value="-" onclick="setTodayDate('HC10_row5_date')" />
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 주기 -->
+                                    <div class="hce"
+                                        style="left: 104.49mm; top: 85.87mm; width: 17.97mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.29mm">
+                                                <div class="hls ps4 input-cell" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.18mm;
+                                                    height: 3.53mm;
+                                                    width: 16.96mm;
+                                                ">
+                                                    <input type="text" id="HC10_row5_cycle" name="HC10_row5_cycle"
+                                                        class="cell-input-inline hrt cs24" style="font-size: 14px; border-width: 0px;"
+                                                        value="1년" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 검교정처 -->
+                                    <div class="hce"
+                                        style="left: 122.45mm; top: 85.87mm; width: 46.35mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.29mm">
+                                                <div class="hls ps4 input-cell" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.18mm;
+                                                    height: 3.53mm;
+                                                    width: 45.35mm;
+                                                ">
+                                                    <input id="HC10_row5_agency" type="text" name="HC10_row5_agency"
+                                                        class="cell-input-inline hrt cs24" style="font-size: 12px; border-width: 0px;"
+                                                        value="모든다해" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- =========================
+ 6번 (3/4번 스타일 그대로 - 빈칸)
+========================= -->
+                                    <div class="hce" style="left: 0mm; top: 94.98mm; width: 10.5mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.12mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 9.5mm;
+                                                ">
+                                                    <span class="hrt cs17">6</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 기기명 -->
+                                    <div class="hce" style="left: 10.5mm; top: 94.98mm; width: 47.92mm; height: 9.11mm">
+                                        <div class="hcD" style="width: 100%; height: 100%;">
+                                            <div class="hcI" style="width: 100%; height: 100%;">
+                                                <div class="hls ps4 input-cell hc10-device-single" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    height: 100%;
+                                                    width: 100%;
+                                                ">
+                                                    <textarea id="HC10_row6_device" name="HC10_row6_device"
+                                                        class="cell-input-inline hrt cs24" rows="2"
+                                                        oninput="handleResize(this, 2)">-</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 검교정일 -->
+                                    <div class="hce"
+                                        style="left: 58.41mm; top: 94.98mm; width: 46.07mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 0mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -1.18mm;
+                                                    height: 3.53mm;
+                                                    width: 45.07mm;
+                                                ">
+                                                    <span class="hrt cs8">
+                                                        <input id="HC10_row6_date" name="HC10_row6_date" type="text"
+                                                            class="date-input"
+                                                            style="font-size: 14px; height: 100%; width: 100%; border-width: 0px;"
+                                                            value="-" onclick="setTodayDate('HC10_row6_date')" />
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 주기 -->
+                                    <div class="hce"
+                                        style="left: 104.49mm; top: 94.98mm; width: 17.97mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.29mm">
+                                                <div class="hls ps4 input-cell" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.18mm;
+                                                    height: 3.53mm;
+                                                    width: 16.96mm;
+                                                ">
+                                                    <input type="text" id="HC10_row6_cycle" name="HC10_row6_cycle"
+                                                        class="cell-input-inline hrt cs24" style="font-size: 14px; border-width: 0px;"
+                                                        value="-" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 검교정처 -->
+                                    <div class="hce"
+                                        style="left: 122.45mm; top: 94.98mm; width: 46.35mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.29mm">
+                                                <div class="hls ps4 input-cell" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.18mm;
+                                                    height: 3.53mm;
+                                                    width: 45.35mm;
+                                                ">
+                                                    <input id="HC10_row6_agency" type="text" name="HC10_row6_agency"
+                                                        class="cell-input-inline hrt cs24" style="font-size: 12px; border-width: 0px;"
+                                                        value="-" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="hce" style="left: 0mm; top: 104.09mm; width: 10.5mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.12mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 9.5mm;
+                                                ">
+                                                    <span class="hrt cs17">7</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce"
+                                        style="left: 10.5mm; top: 104.09mm; width: 47.92mm; height: 9.11mm">
+                                        <div class="hcD" style="width: 100%; height: 100%;">
+                                            <div class="hcI" style="width: 100%; height: 100%;">
+                                                <div class="hls ps4" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    height: 100%;
+                                                    width: 100%;
+                                                ">
+                                                    <textarea id="HC10_row7_device" name="HC10_row7_device"
+                                                        class="cell-input-inline hrt cs24" rows="2"
+                                                        oninput="handleResize(this, 2)">-</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce"
+                                        style="left: 58.41mm; top: 104.09mm; width: 46.07mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 0mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -1.18mm;
+                                                    height: 3.53mm;
+                                                    width: 45.07mm;
+                                                ">
+                                                    <span class="hrt cs8">
+                                                        <input id="HC10_row7_date" name="HC10_row7_date" type="text"
+                                                            class="date-input"
+                                                            style="font-size: 14px; height: 100%; width: 100%; border-width: 0px;"
+                                                            value="-" onclick="setTodayDate('HC10_row7_date')" />
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce"
+                                        style="left: 104.49mm; top: 104.09mm; width: 17.97mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.29mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.18mm;
+                                                    height: 3.53mm;
+                                                    width: 16.96mm;
+                                                ">
+                                                    <input type="text" id="HC10_row7_cycle" name="HC10_row7_cycle"
+                                                        class="cell-input-inline hrt cs24" style="font-size: 14px; border-width: 0px;"
+                                                        value="-" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce"
+                                        style="left: 122.45mm; top: 104.09mm; width: 46.35mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.29mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.18mm;
+                                                    height: 3.53mm;
+                                                    width: 45.35mm;
+                                                ">
+                                                    <input id="HC10_row7_agency" type="text" name="HC10_row7_agency"
+                                                        class="cell-input-inline hrt cs24" style="font-size: 12px; border-width: 0px;"
+                                                        value="-" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce" style="left: 0mm; top: 113.2mm; width: 10.5mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.12mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 9.5mm;
+                                                ">
+                                                    <span class="hrt cs17">8</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce" style="left: 10.5mm; top: 113.2mm; width: 47.92mm; height: 9.11mm">
+                                        <div class="hcD" style="width: 100%; height: 100%;">
+                                            <div class="hcI" style="width: 100%; height: 100%;">
+                                                <div class="hls ps4" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    height: 100%;
+                                                    width: 100%;
+                                                ">
+                                                    <textarea id="HC10_row8_device" name="HC10_row8_device"
+                                                        class="cell-input-inline hrt cs24" rows="2"
+                                                        oninput="handleResize(this, 2)">-</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce"
+                                        style="left: 58.41mm; top: 113.2mm; width: 46.07mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 0mm">
+                                                <div class="hls ps7" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -1.18mm;
+                                                    height: 3.53mm;
+                                                    width: 45.07mm;
+                                                ">
+                                                    <span class="hrt cs8">
+                                                        <input id="HC10_row8_date" name="HC10_row8_date" type="text"
+                                                            class="date-input"
+                                                            style="font-size: 14px; height: 100%; width: 100%; border-width: 0px;"
+                                                            value="-" onclick="setTodayDate('HC10_row8_date')" />
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce"
+                                        style="left: 104.49mm; top: 113.2mm; width: 17.97mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.29mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.18mm;
+                                                    height: 3.53mm;
+                                                    width: 16.96mm;
+                                                ">
+                                                    <input id="HC10_row8_cycle" type="text" name="HC10_row8_cycle"
+                                                        class="cell-input-inline hrt cs24" style="font-size: 14px; border-width: 0px;"
+                                                        value="-" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce"
+                                        style="left: 122.45mm; top: 113.2mm; width: 46.35mm; height: 9.11mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.29mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 2.79mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.18mm;
+                                                    height: 3.53mm;
+                                                    width: 45.35mm;
+                                                ">
+                                                    <input id="HC10_row8_agency" type="text" name="HC10_row8_agency"
+                                                        class="cell-input-inline hrt cs24" style="font-size: 12px; border-width: 0px;"
+                                                        value="-" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce" style="left: 0mm; top: 122.31mm; width: 168.81mm; height: 8.28mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 1mm">
+                                                <div class="hls ps13" style="
+                                                    line-height: 4.44mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.26mm;
+                                                    height: 5.29mm;
+                                                    width: 167.81mm;
+                                                ">
+                                                    <span class="hrt cs20">내부 자체 검교정</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce" style="left: 0mm; top: 130.59mm; width: 41.44mm; height: 11.92mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 3.52mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 40.44mm;
+                                                ">
+                                                    <span class="hrt cs1">모니터링 기기</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce"
+                                        style="left: 41.44mm; top: 130.59mm; width: 22.01mm; height: 11.92mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 3.52mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 21.01mm;
+                                                ">
+                                                    <span class="hrt cs1">기준치</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce"
+                                        style="left: 63.45mm; top: 130.59mm; width: 22.01mm; height: 11.92mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 3.52mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 21.01mm;
+                                                ">
+                                                    <span class="hrt cs1">측정치</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce"
+                                        style="left: 85.47mm; top: 130.59mm; width: 22.01mm; height: 11.92mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 3.52mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 21.01mm;
+                                                ">
+                                                    <span class="hrt cs1">오차</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce"
+                                        style="left: 107.48mm; top: 130.59mm; width: 35.22mm; height: 11.92mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 3.52mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 34.22mm;
+                                                ">
+                                                    <span class="hrt cs1">검교정 일자</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce"
+                                        style="left: 142.7mm; top: 130.59mm; width: 26.11mm; height: 11.92mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 1mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 25.1mm;
+                                                ">
+                                                    <span class="hrt cs1">표준검교정기</span>
+                                                </div>
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: 4.86mm;
+                                                    height: 3.88mm;
+                                                    width: 25.1mm;
+                                                ">
+                                                    <span class="hrt cs1">검정 일자</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- =========================
+ 냉장고 (1행 / 2행)
+========================= -->
+                                    <div class="hce" style="left: 0mm; top: 142.51mm; width: 14.47mm; height: 10.14mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.63mm">
+                                                <div class="hls ps4 input-cell" style="width: 13.48mm; height: 3.88mm">
+                                                    <input id="HC11_row1_device_type" type="text"
+                                                        name="HC11_row1_device_type" class="cell-input-inline hrt cs17"
+                                                        style="border-width: 0px;"
+                                                        value="냉장고" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- =========================
+ 모니터링 기기 (원/부재료 / 완제품)
+========================= -->
+                                    <div class="hce"
+                                        style="left: 14.47mm; top: 142.51mm; width: 26.97mm; height: 10.14mm;">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm;">
+                                            <div class="hcI" style="top: 2.63mm;">
+                                                <div class="hls ps4 input-cell" style="width: 25.96mm; height: 3.88mm;">
+                                                    <input id="HC11_row1_device_name" type="text"
+                                                        name="HC11_row1_device_name" class="cell-input-inline hrt cs9"
+                                                        style="border-width: 0px; font-size: 10px;"
+                                                        value="원/부재료 냉장고" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- =========================
+ 기준치 (1 / 2)
+========================= -->
+                                    <div class="hce"
+                                        style="left: 41.44mm; top: 142.51mm; width: 22.01mm; height: 10.14mm;">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm;">
+                                            <div class="hcI" style="top: 2.63mm;">
+                                                <div class="hls ps4 input-cell" style="width: 21.01mm; height: 3.88mm;">
+                                                    <input id="HC11_row1_std_temp" type="text" name="HC11_row1_std_temp"
+                                                    style="border-width: 0px;"
+                                                    class="cell-input-inline hrt cs17" value="3.6℃" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- =========================
+ 측정치
+========================= -->
+                                    <div class="hce"
+                                        style="left: 63.45mm; top: 142.51mm; width: 22.01mm; height: 10.14mm;">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm;">
+                                            <div class="hcI" style="top: 2.63mm;">
+                                                <div class="hls ps4 input-cell" style="width: 21.01mm; height: 3.88mm;">
+                                                    <input id="HC11_row1_meas_temp" type="text"
+                                                        name="HC11_row1_meas_temp" class="cell-input-inline hrt cs17"
+                                                        style="border-width: 0px;"
+                                                        value="3.6℃" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- =========================
+ 오차
+========================= -->
+                                    <div class="hce"
+                                        style="left: 85.47mm; top: 142.51mm; width: 22.01mm; height: 10.14mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.63mm;">
+                                                <div class="hls ps4 input-cell" style="width: 21.01mm; height: 3.88mm">
+                                                    <input id="HC11_row1_diff_temp" type="text"
+                                                        name="HC11_row1_diff_temp" class="cell-input-inline hrt cs17"
+                                                        style="border-width: 0px;"
+                                                        value="0.0℃" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- =========================
+ 검교정 일자 (년/월/일 분리)
+========================= -->
+                                    <div class="hce"
+                                        style="left: 107.48mm; top: 142.51mm; width: 35.22mm; height: 10.14mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.63mm">
+                                                <div class="hls ps4 input-cell" style="width: 34.22mm; height: 3.88mm">
+                                                    <span class="hrt cs8">
+                                                        <input id="HC11_row1_calib_date" name="HC11_row1_calib_date"
+                                                            type="text" class="date-input"
+                                                            style="font-size: 14px; height: 100%; width: 100%; border-width: 0px;"
+                                                            value="-" onclick="setTodayDate('HC11_row1_calib_date')" />
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- =========================
+ 표준검교정기 / 검정 일자 (textarea 그대로 + name은 이미 있음)
+========================= -->
+                                    <div class="hce"
+                                        style="left: 142.7mm; top: 142.51mm; width: 26.11mm; height: 10.14mm">
+                                        <div class="hcD" style="width: 100%; height: 100%;">
+                                            <div class="hcI" style="width: 100%; height: 100%;">
+                                                <div class="hls ps4"
+                                                    style="line-height: 2.79mm; white-space: nowrap; height: 100%; width: 100%;">
+                                                    <textarea id="HC11_row1_stdTool" name="HC11_row1_stdTool"
+                                                        class="cell-input-inline hrt cs24" rows="2"
+                                                        oninput="handleResize(this, 3)">외부검교정&#13;&#10;표준온도계
+                                                </textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 냉장고 (2행) ========================= -->
+                                    <div class="hce" style="left: 0mm; top: 153.65mm; width: 14.47mm; height: 10.14mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.63mm">
+                                                <div class="hls ps4 input-cell" style="width: 13.48mm; height: 3.88mm">
+                                                    <input id="HC11_row2_device_type" type="text"
+                                                        name="HC11_row2_device_type" class="cell-input-inline hrt cs17"
+                                                        style="border-width: 0px;"
+                                                        value="냉장고" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- =========================모니터링 기기 (완제품) ========================= -->
+                                    <div class="hce"
+                                        style="left: 14.47mm; top: 153.65mm; width: 26.97mm; height: 10.14mm;">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm;">
+                                            <div class="hcI" style="top: 2.63mm;">
+                                                <div class="hls ps4 input-cell" style="width: 25.96mm; height: 3.88mm;">
+                                                    <input id="HC11_row2_device_name" type="text"
+                                                        name="HC11_row2_device_name" class="cell-input-inline hrt cs9"
+                                                        style="border-width: 0px; font-size: 10px;"
+                                                        value="완제품 냉장고" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- =========================기준치 (2) ========================= -->
+                                    <div class="hce"
+                                        style="left: 41.44mm; top: 153.65mm; width: 22.01mm; height: 10.14mm;">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm;">
+                                            <div class="hcI" style="top: 2.63mm;">
+                                                <div class="hls ps4 input-cell" style="width: 21.01mm; height: 3.88mm;">
+                                                    <input id="HC11_row2_std_temp" type="text" name="HC11_row2_std_temp"
+                                                    style="border-width: 0px;"
+                                                    class="cell-input-inline hrt cs17" value="3.0℃" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 측정치 ========================= -->
+                                    <div class="hce"
+                                        style="left: 63.45mm; top: 153.65mm; width: 22.01mm; height: 10.14mm;">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm;">
+                                            <div class="hcI" style="top: 2.63mm;">
+                                                <div class="hls ps4 input-cell" style="width: 21.01mm; height: 3.88mm;">
+                                                    <input id="HC11_row2_meas_temp" type="text"
+                                                        name="HC11_row2_meas_temp" class="cell-input-inline hrt cs17"
+                                                        style="border-width: 0px;"
+                                                        value="3.1℃" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 오차 ========================= -->
+                                    <div class="hce"
+                                        style="left: 85.47mm; top: 153.65mm; width: 22.01mm; height: 10.14mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.63mm;">
+                                                <div class="hls ps4 input-cell" style="width: 21.01mm; height: 3.88mm">
+                                                    <input id="HC11_row2_diff_temp" type="text"
+                                                        name="HC11_row2_diff_temp" class="cell-input-inline hrt cs17"
+                                                        style="border-width: 0px;"
+                                                        value="0.1℃" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 검교정 일자 (년/월/일 분리) ========================= -->
+                                    <div class="hce"
+                                        style="left: 107.48mm; top: 153.65mm; width: 35.22mm; height: 10.14mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.63mm">
+                                                <div class="hls ps4 input-cell" style="width: 34.22mm; height: 3.88mm">
+                                                    <span class="hrt cs8">
+                                                        <input id="HC11_row2_calib_date" name="HC11_row2_calib_date"
+                                                            type="text" class="date-input"
+                                                            style="font-size: 14px; height: 100%; width: 100%; border-width: 0px;"
+                                                            value="-" onclick="setTodayDate('HC11_row2_calib_date')" />
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 표준검교정기 / 검정 일자 ========================= -->
+                                    <div class="hce"
+                                        style="left: 142.7mm; top: 153.65mm; width: 26.11mm; height: 10.14mm">
+                                        <div class="hcD" style="width: 100%; height: 100%;">
+                                            <div class="hcI" style="width: 100%; height: 100%;">
+                                                <div class="hls ps4"
+                                                    style="line-height: 2.79mm; white-space: nowrap; height: 100%; width: 100%;">
+                                                    <textarea id="HC11_row2_stdTool" name="HC11_row2_stdTool"
+                                                        class="cell-input-inline hrt cs24" rows="2"
+                                                        oninput="handleResize(this, 3)">2019년 05월 28일
+                                                </textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 냉장고 ========================= -->
+                                    <div class="hce" style="left: 0mm; top: 164.87mm; width: 14.47mm; height: 10.14mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.63mm">
+                                                <div class="hls ps4 input-cell" style="width: 13.48mm; height: 3.88mm">
+                                                    <input id="HC11_row3_device_type" type="text"
+                                                        name="HC11_row3_device_type" class="cell-input-inline hrt cs17"
+                                                        style="border-width: 0px;"
+                                                        value="-" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 모니터링 기기  ========================= -->
+                                    <div class="hce"
+                                        style="left: 14.47mm; top: 164.87mm; width: 26.97mm; height: 10.14mm;">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm;">
+                                            <div class="hcI" style="top: 2.63mm;">
+                                                <div class="hls ps4 input-cell" style="width: 25.96mm; height: 3.88mm;">
+                                                    <input id="HC11_row3_device_name" type="text"
+                                                        name="HC11_row3_device_name" class="cell-input-inline hrt cs9"
+                                                        style="border-width: 0px;"
+                                                        value="수도미터" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 기준치 ========================= -->
+                                    <div class="hce"
+                                        style="left: 41.44mm; top: 164.87mm; width: 22.01mm; height: 10.14mm;">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm;">
+                                            <div class="hcI" style="top: 2.63mm;">
+                                                <div class="hls ps4 input-cell" style="width: 21.01mm; height: 3.88mm;">
+                                                    <input id="HC11_row3_std_temp" type="text" name="HC11_row3_std_temp"
+                                                    style="border-width: 0px;"
+                                                    class="cell-input-inline hrt cs17" value="-" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 측정치 ========================= -->
+                                    <div class="hce"
+                                        style="left: 63.45mm; top: 164.87mm; width: 22.01mm; height: 10.14mm;">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm;">
+                                            <div class="hcI" style="top: 2.63mm;">
+                                                <div class="hls ps4 input-cell" style="width: 21.01mm; height: 3.88mm;">
+                                                    <input id="HC11_row3_meas_temp" type="text"
+                                                        name="HC11_row3_meas_temp" class="cell-input-inline hrt cs17"
+                                                        style="border-width: 0px;"
+                                                        value="-" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 오차 ========================= -->
+                                    <div class="hce"
+                                        style="left: 85.47mm; top: 164.87mm; width: 22.01mm; height: 10.14mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.63mm;">
+                                                <div class="hls ps4 input-cell" style="width: 21.01mm; height: 3.88mm">
+                                                    <input id="HC11_row3_diff_temp" type="text"
+                                                        name="HC11_row3_diff_temp" class="cell-input-inline hrt cs17"
+                                                        style="border-width: 0px;"
+                                                        value="-" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 검교정 일자 (년/월/일 분리) ========================= -->
+                                    <div class="hce"
+                                        style="left: 107.48mm; top: 164.87mm; width: 35.22mm; height: 10.14mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.63mm">
+                                                <div class="hls ps4 input-cell" style="width: 34.22mm; height: 3.88mm">
+                                                    <span class="hrt cs8">
+                                                        <input id="HC11_row3_calib_date" name="HC11_row3_calib_date"
+                                                            type="text" class="date-input"
+                                                            style="font-size: 14px; height: 100%; width: 100%; border-width: 0px;"
+                                                            value="-" onclick="setTodayDate('HC11_row3_calib_date')" />
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 표준검교정기 / 검정 일자 ========================= -->
+                                    <div class="hce"
+                                        style="left: 142.7mm; top: 164.87mm; width: 26.11mm; height: 10.14mm">
+                                        <div class="hcD" style="width: 100%; height: 100%;">
+                                            <div class="hcI" style="width: 100%; height: 100%;">
+                                                <div class="hls ps4"
+                                                    style="line-height: 2.79mm; white-space: nowrap; height: 100%; width: 100%;">
+                                                    <textarea id="HC11_row3_stdTool" name="HC11_row3_stdTool"
+                                                        class="cell-input-inline hrt cs24" rows="2"
+                                                        oninput="handleResize(this, 3)">-
+                                            </textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ========================= 냉장고 ========================= -->
+                                    <div class="hce" style="left: 0mm; top: 174.87mm; width: 14.47mm; height: 10.14mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.63mm">
+                                                <div class="hls ps4 input-cell" style="width: 13.48mm; height: 3.88mm">
+                                                    <input id="HC11_row4_device_type" type="text"
+                                                        name="HC11_row4_device_type" class="cell-input-inline hrt cs17"
+                                                        style="border-width: 0px;"
+                                                        value="-" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 모니터링 기기  ========================= -->
+                                    <div class="hce"
+                                        style="left: 14.47mm; top: 174.87mm; width: 26.97mm; height: 10.14mm;">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm;">
+                                            <div class="hcI" style="top: 2.63mm;">
+                                                <div class="hls ps4 input-cell" style="width: 25.96mm; height: 3.88mm;">
+                                                    <input id="HC11_row4_device_name" type="text"
+                                                        name="HC11_row4_device_name" class="cell-input-inline hrt cs9"
+                                                        style="border-width: 0px;"
+                                                        value="초시계" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 기준치 ========================= -->
+                                    <div class="hce"
+                                        style="left: 41.44mm; top: 174.87mm; width: 22.01mm; height: 10.14mm;">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm;">
+                                            <div class="hcI" style="top: 2.63mm;">
+                                                <div class="hls ps4 input-cell" style="width: 21.01mm; height: 3.88mm;">
+                                                    <input id="HC11_row4_std_temp" type="text" name="HC11_row4_std_temp"
+                                                    style="border-width: 0px;"
+                                                        class="cell-input-inline hrt cs17" value="60.00" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 측정치 ========================= -->
+                                    <div class="hce"
+                                        style="left: 63.45mm; top: 174.87mm; width: 22.01mm; height: 10.14mm;">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm;">
+                                            <div class="hcI" style="top: 2.63mm;">
+                                                <div class="hls ps4 input-cell" style="width: 21.01mm; height: 3.88mm;">
+                                                    <input id="HC11_row4_meas_temp" type="text"
+                                                        name="HC11_row4_meas_temp" class="cell-input-inline hrt cs17"
+                                                        style="border-width: 0px;"
+                                                        value="60.57" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 오차 ========================= -->
+                                    <div class="hce"
+                                        style="left: 85.47mm; top: 174.87mm; width: 22.01mm; height: 10.14mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.63mm;">
+                                                <div class="hls ps4 input-cell" style="width: 21.01mm; height: 3.88mm">
+                                                    <input id="HC11_row4_diff_temp" type="text"
+                                                        name="HC11_row4_diff_temp" class="cell-input-inline hrt cs17"
+                                                        style="border-width: 0px;"
+                                                        value="0.57" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 검교정 일자 (년/월/일 분리) ========================= -->
+                                    <div class="hce"
+                                        style="left: 107.48mm; top: 174.87mm; width: 35.22mm; height: 10.14mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.63mm">
+                                                <div class="hls ps4 input-cell" style="width: 34.22mm; height: 3.88mm">
+                                                    <span class="hrt cs8">
+                                                        <input id="HC11_row4_calib_date" name="HC11_row4_calib_date"
+                                                            type="text" class="date-input"
+                                                            style="font-size: 14px; height: 100%; width: 100%; border-width: 0px;"
+                                                            value="-" onclick="setTodayDate('HC11_row4_calib_date')" />
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 표준검교정기 / 검정 일자 ========================= -->
+                                    <div class="hce"
+                                        style="left: 142.7mm; top: 174.87mm; width: 26.11mm; height: 10.14mm">
+                                        <div class="hcD" style="width: 100%; height: 100%;">
+                                            <div class="hcI" style="width: 100%; height: 100%;">
+                                                <div class="hls ps4"
+                                                    style="line-height: 2.79mm; white-space: nowrap; height: 100%; width: 100%;">
+                                                    <textarea id="HC11_row4_stdTool" name="HC11_row4_stdTool"
+                                                        class="cell-input-inline hrt cs24" rows="2"
+                                                        oninput="handleResize(this, 3)">-
+                                            </textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 냉장고 ========================= -->
+                                    <div class="hce" style="left: 0mm; top: 185.16mm; width: 14.47mm; height: 10.14mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.63mm">
+                                                <div class="hls ps4 input-cell" style="width: 13.48mm; height: 3.88mm">
+                                                    <input id="HC11_row5_device_type" type="text"
+                                                        name="HC11_row5_device_type" class="cell-input-inline hrt cs17"
+                                                        style="border-width: 0px;"
+                                                        value="-" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 모니터링 기기  ========================= -->
+                                    <div class="hce"
+                                        style="left: 14.47mm; top: 185.16mm; width: 26.97mm; height: 10.14mm;">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm;">
+                                            <div class="hcI" style="top: 2.63mm;">
+                                                <div class="hls ps4 input-cell" style="width: 25.96mm; height: 3.88mm;">
+                                                    <input id="HC11_row5_device_name" type="text"
+                                                        name="HC11_row5_device_name" class="cell-input-inline hrt cs9"
+                                                        style="border-width: 0px;"
+                                                        value="-" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 기준치 ========================= -->
+                                    <div class="hce"
+                                        style="left: 41.44mm; top: 185.16mm; width: 22.01mm; height: 10.14mm;">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm;">
+                                            <div class="hcI" style="top: 2.63mm;">
+                                                <div class="hls ps4 input-cell" style="width: 21.01mm; height: 3.88mm;">
+                                                    <input id="HC11_row5_std_temp" type="text" name="HC11_row5_std_temp"
+                                                    style="border-width: 0px;"
+                                                        class="cell-input-inline hrt cs17" value="-" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 측정치 ========================= -->
+                                    <div class="hce"
+                                        style="left: 63.45mm; top: 185.16mm; width: 22.01mm; height: 10.14mm;">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm;">
+                                            <div class="hcI" style="top: 2.63mm;">
+                                                <div class="hls ps4 input-cell" style="width: 21.01mm; height: 3.88mm;">
+                                                    <input id="HC11_row5_meas_temp" type="text"
+                                                        name="HC11_row5_meas_temp" class="cell-input-inline hrt cs17"
+                                                        style="border-width: 0px;"
+                                                        value="-" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 오차 ========================= -->
+                                    <div class="hce"
+                                        style="left: 85.47mm; top: 185.16mm; width: 22.01mm; height: 10.14mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.63mm;">
+                                                <div class="hls ps4 input-cell" style="width: 21.01mm; height: 3.88mm">
+                                                    <input id="HC11_row5_diff_temp" type="text"
+                                                        name="HC11_row5_diff_temp" class="cell-input-inline hrt cs17"
+                                                        style="border-width: 0px;"
+                                                        value="-" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 검교정 일자 (년/월/일 분리) ========================= -->
+                                    <div class="hce"
+                                        style="left: 107.48mm; top: 185.16mm; width: 35.22mm; height: 10.14mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 2.63mm">
+                                                <div class="hls ps4 input-cell" style="width: 34.22mm; height: 3.88mm">
+                                                    <span class="hrt cs8">
+                                                        <input id="HC11_row5_calib_date" name="HC11_row5_calib_date"
+                                                            type="text" class="date-input"
+                                                            style="font-size: 14px; height: 100%; width: 100%; border-width: 0px;"
+                                                            value="-" onclick="setTodayDate('HC11_row5_calib_date')" />
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ========================= 표준검교정기 / 검정 일자 ========================= -->
+                                    <div class="hce"
+                                        style="left: 142.7mm; top: 185.16mm; width: 26.11mm; height: 10.14mm">
+                                        <div class="hcD" style="width: 100%; height: 100%;">
+                                            <div class="hcI" style="width: 100%; height: 100%;">
+                                                <div class="hls ps4"
+                                                    style="line-height: 2.79mm; white-space: nowrap; height: 100%; width: 100%;">
+                                                    <textarea id="HC11_row5_stdTool" name="HC11_row5_stdTool"
+                                                        class="cell-input-inline hrt cs24" rows="2"
+                                                        oninput="handleResize(this, 3)">-
+                                            </textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="hce" style="left: 0mm; top: 195.3mm; width: 62.33mm; height: 6.87mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 1mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 61.33mm;
+                                                ">
+                                                    <span class="hrt cs1">한계기준 이탈내용</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce"
+                                        style="left: 62.33mm; top: 195.3mm; width: 66.11mm; height: 6.87mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 1mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 65.11mm;
+                                                ">
+                                                    <span class="hrt cs1">개선조치 및 결과</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce"
+                                        style="left: 128.44mm; top: 195.3mm; width: 20.18mm; height: 6.87mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 1mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 19.18mm;
+                                                ">
+                                                    <span class="hrt cs1">조 치 자</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hce"
+                                        style="left: 148.63mm; top: 195.3mm; width: 20.18mm; height: 6.87mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 1mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 19.18mm;
+                                                ">
+                                                    <span class="hrt cs1">확 인</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- =========================
+ HC10 한계기준 이탈내용 / 개선조치 및 결과 / 조치자 / 확인
+========================= -->
+
+                                    <!-- 한계기준 이탈내용 (textarea) -->
+                                    <div class="hce" style="left: 0mm; top: 202.17mm; width: 62.33mm; height: 31.28mm">
+                                        <div class="hcD" style="left: 1mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 0mm">
+                                                <div class="hls ps6 memo-box"
+                                                    style="left: 0mm; top: 0mm; width: 60.33mm; height: 30.28mm">
+                                                    <textarea id="HC11_limit_deviation" name="HC11_limit_deviation"
+                                                        class="memo-textarea" style="font-size: 12px; font-weight: normal;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 개선조치 및 결과 (textarea) -->
+                                    <div class="hce"
+                                        style="left: 62.33mm; top: 202.17mm; width: 66.11mm; height: 31.28mm">
+                                        <div class="hcD" style="left: 1mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 0mm">
+                                                <div class="hls ps6 memo-box"
+                                                    style="left: 0mm; top: 0mm; width: 64.11mm; height: 30.28mm">
+                                                    <textarea id="HC11_improvement_action_result"
+                                                        name="HC11_improvement_action_result"
+                                                        class="memo-textarea" style="font-size: 12px; font-weight: normal;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 조치자 (input + 밑줄) -->
+                                    <div class="hce"
+                                        style="left: 128.44mm; top: 202.17mm; width: 20.18mm; height: 31.28mm">
+                                        <div class="hcD" style="left: 1mm; top: 0.5mm">
+                                            <!-- ✅ 가운데쯤 배치 -->
+                                            <div class="hcI" style="top: 10.2mm">
+                                                <div class="hls ps6" style="
+                                                    left: 0mm;
+                                                    top: 0mm;
+                                                    width: 18.18mm;
+                                                    height: 3.88mm;
+                                                    line-height: 3.1mm;
+                                                ">
+                                                    <input id="HC11_action_person" type="text" name="HC11_action_person"
+                                                        class="cell-input-inline hrt cs24-like" style="font-size: 14px; font-weight: normal; border-width: 0px;" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 확인 (그대로 유지: 빈칸) -->
+                                    <div class="hce"
+                                        style="left: 148.63mm; top: 202.17mm; width: 20.18mm; height: 31.28mm">
+                                        <div class="hcD" style="left: 1mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 13.2mm">
+                                                <div class="hls ps6" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: 0mm;
+                                                    height: 3.88mm;
+                                                    width: 18.18mm;
+                                                "></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

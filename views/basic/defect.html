@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>불량 사유 마스터 콘텐츠 (JS 포함)</title>
+    <style>
+        /* Global CSS Variables */
+        :root {
+            --primary-color: #00bcd4;     
+            --secondary-color: #673ab7;   
+            --background: #f8f9fa;
+            --card-bg: white;
+            --main-font: #343a40;
+            --border-color: #dee2e6;
+            --status-success: #4caf50;
+            --status-info: #2196f3;
+        }
+
+        body {
+            font-family: 'Malgun Gothic', 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background);
+            color: var(--main-font);
+        }
+        
+        /* --- MAIN CONTAINER & CONTENT STYLES --- */
+        .main-container {
+            padding: 30px;
+            max-width: 1600px; 
+            margin: 0 auto;
+            background-color: var(--background);
+        }
+
+        .page-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .analysis-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+
+        .card-header {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--main-font);
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* Table and Badge Styles */
+        .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        .data-table th, .data-table td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--border-color); }
+        .data-table th { background-color: #f0f4f7; color: var(--secondary-color); font-weight: 600; }
+        .data-table tr:hover { background-color: #f5f5f5; cursor: pointer; }
+        
+        .btn { padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; }
+        .btn-primary { background-color: var(--primary-color); color: white; }
+        .btn-submit { background-color: var(--secondary-color); color: white; margin-top: 20px; }
+
+        .status-badge { display: inline-block; padding: 4px 8px; border-radius: 3px; font-weight: 700; font-size: 11px; color: white; }
+        .status-success { background-color: var(--status-success); }
+        .reason-badge { background-color: var(--status-info); margin-right: 5px; }
+
+        /* --- Modal (Popup) Styles --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4); 
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; 
+            padding: 30px;
+            border-radius: 8px;
+            width: 600px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .modal-close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 5px; color: var(--secondary-color); }
+        .form-group input, .form-group textarea { 
+            width: calc(100% - 20px); 
+            padding: 10px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            box-sizing: border-box; 
+        }
+        .checkbox-group label { display: inline-block; margin-right: 15px; font-weight: normal; color: var(--main-font); }
+        .checkbox-group input[type="checkbox"] { width: auto; margin-right: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+
+        <div id="defect-page" style="display: block;">
+            <div class="page-title">🐞 불량 사유 마스터 관리 (Defect Reason Code Master)</div>
+            
+            <div class="analysis-card">
+                <div class="card-header">
+                    <span>불량 사유 등록 목록</span>
+                    <button class="btn btn-primary" onclick="openDefectReasonModal('New')">+ 신규 불량 사유 등록</button>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>불량 코드</th>
+                            <th>불량 사유명</th>
+                            <th>적용 영역</th>
+                            <th>등록일</th>
+                            <th>사용 여부</th>
+                            <th>상세</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr onclick="openDefectReasonModal('D-101')">
+                            <td>D-101</td>
+                            <td>**표면 흠집**</td>
+                            <td><span class="status-badge reason-badge">공정 중 검사</span><span class="status-badge reason-badge">출하 검사</span></td>
+                            <td>2025.01.10</td>
+                            <td><span class="status-badge status-success">사용</span></td>
+                            <td><button class="btn btn-primary btn-sm">상세</button></td>
+                        </tr>
+                        <tr onclick="openDefectReasonModal('D-300')">
+                            <td>D-300</td>
+                            <td>**오염**</td>
+                            <td><span class="status-badge reason-badge">수입검사</span></td>
+                            <td>2025.11.11</td>
+                            <td><span class="status-badge status-success">사용</span></td>
+                            <td><button class="btn btn-primary btn-sm">상세</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div> <div id="defect-reason-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeDefectReasonModal()">&times;</span>
+            <h2 id="df-reason-modal-title">신규 불량 사유 등록</h2>
+            <form id="defect-reason-form">
+                
+                <div class="form-group">
+                    <label for="reason-code">🚨 불량 코드</label>
+                    <input type="text" id="reason-code" placeholder="예: D-101" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="reason-name">불량 사유명</label>
+                    <input type="text" id="reason-name" placeholder="예: 표면 흠집, 치수 오차" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>🔍 **적용 영역 (복수 선택 가능)**</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="apply_area" value="수입검사"> 수입검사</label>
+                        <label><input type="checkbox" name="apply_area" value="공정 중 검사"> 공정 중 검사</label>
+                        <label><input type="checkbox" name="apply_area" value="출하 검사"> 출하 검사</label>
+                        <label><input type="checkbox" name="apply_area" value="필드 클레임"> 필드 클레임</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="reason-detail">상세 정의 및 기준</label>
+                    <textarea id="reason-detail" rows="3" placeholder="해당 불량 사유의 판단 기준 및 상세 설명"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-submit" id="df-reason-submit-button">불량 사유 등록/수정</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        // --- MOCK Data for Defect Reason Master ---
+        const MOCK_DEFECT_REASONS = {
+            'D-101': { code: 'D-101', name: '표면 흠집', areas: ['공정 중 검사', '출하 검사'], detail: '제품 표면에 육안으로 확인 가능한 흠집 발생.' },
+            'D-300': { code: 'D-300', name: '오염', areas: ['수입검사'], detail: '자재 표면에 오일 또는 이물질 발견.' }
+        };
+
+        // --- Defect Reason Master Functions ---
+        
+        /** 체크박스 상태 초기화/설정 */
+        function setCheckboxes(areas) {
+            document.querySelectorAll('#defect-reason-form input[name="apply_area"]').forEach(cb => {
+                // 배열 포함 여부 확인 (예: data.areas가 ['수입검사']를 포함하는지)
+                cb.checked = areas.includes(cb.value);
+            });
+        }
+
+        /** 불량 사유 등록/상세 팝업을 열고 정보를 채웁니다. */
+        function openDefectReasonModal(reasonCode) {
+            const modal = document.getElementById('defect-reason-modal');
+            const form = document.getElementById('defect-reason-form');
+            form.reset();
+            
+            if (reasonCode === 'New') {
+                document.getElementById('df-reason-modal-title').textContent = '신규 불량 사유 등록';
+                document.getElementById('reason-code').disabled = false;
+                document.getElementById('df-reason-submit-button').textContent = '불량 사유 등록';
+                setCheckboxes([]);
+            } else {
+                const data = MOCK_DEFECT_REASONS[reasonCode];
+                document.getElementById('df-reason-modal-title').textContent = `불량 사유 상세/수정 (${reasonCode})`;
+                document.getElementById('reason-code').value = data.code;
+                document.getElementById('reason-code').disabled = true; // 코드는 수정 불가 처리
+                document.getElementById('reason-name').value = data.name;
+                document.getElementById('reason-detail').value = data.detail;
+                setCheckboxes(data.areas);
+                document.getElementById('df-reason-submit-button').textContent = '불량 사유 수정';
+            }
+
+            modal.style.display = 'block';
+        }
+
+        /** 불량 사유 팝업을 닫습니다. */
+        function closeDefectReasonModal() {
+            document.getElementById('defect-reason-modal').style.display = 'none';
+        }
+
+        // --- Form Submission Simulation ---
+        document.getElementById('defect-reason-form').addEventListener('submit', (e) => {
+            e.preventDefault(); 
+            const selectedAreas = Array.from(document.querySelectorAll('#defect-reason-form input[name="apply_area"]:checked'))
+                                     .map(cb => cb.value);
+
+            alert(`🎉 불량 사유: ${document.getElementById('reason-name').value}가 성공적으로 처리되었습니다.\n\n[적용 영역]: ${selectedAreas.join(', ')}`); 
+            closeDefectReasonModal();
+        });
+        
+        // --- Common Modal Close Logic (외부 클릭 시 닫기) ---
+        window.onclick = function(event) {
+            const modal = document.getElementById('defect-reason-modal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>CCP-1BP 모니터링일지</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "맑은 고딕", "Malgun Gothic", sans-serif;
+      font-size: 13px;
+      margin: 20px;
+      background: #f5f5f5;
+    }
+    .ccp-wrapper {
+      width: 1000px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px 25px;
+      border: 1px solid #333;
+    }
+    .ccp-title-row {
+      display: grid;
+      grid-template-columns: 1.2fr 3fr 0.8fr 1.2fr 1.2fr;
+      align-items: stretch;
+      border: 1px solid #000;
+      border-bottom: none;
+    }
+    .ccp-title-row > div {
+      border-right: 1px solid #000;
+      padding: 6px 8px;
+      text-align: center;
+      line-height: 1.3;
+      white-space: pre-line;
+    }
+    .ccp-title-row > div:last-child {
+      border-right: none;
+    }
+    .ccp-title-main {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .ccp-title-sub {
+      font-weight: bold;
+    }
+
+    .ccp-meta-row {
+      display: grid;
+      grid-template-columns: 1.2fr 3fr 1fr 1.2fr 1.2fr;
+      align-items: stretch;
+      border: 1px solid #000;
+      border-top: none;
+    }
+    .ccp-meta-row > div {
+      border-right: 1px solid #000;
+      padding: 6px 8px;
+      line-height: 1.4;
+      white-space: pre-line;
+    }
+    .ccp-meta-row > div:last-child {
+      border-right: none;
+    }
+
+    .meta-label {
+      background: #eaeaea;
+      text-align: center;
+      font-weight: bold;
+    }
+    .meta-input {
+      text-align: left;
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="time"],
+    textarea {
+      width: 100%;
+      font-family: inherit;
+      font-size: 13px;
+      padding: 3px 4px;
+      border: 1px solid #bbb;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    .ccp-section-title {
+      margin-top: 16px;
+      font-weight: bold;
+    }
+
+    table.ccp-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 4px;
+      table-layout: fixed;
+    }
+    table.ccp-table th,
+    table.ccp-table td {
+      border: 1px solid #000;
+      padding: 4px 5px;
+      text-align: center;
+      vertical-align: middle;
+      white-space: pre-line;
+      word-break: keep-all;
+    }
+    table.ccp-table th {
+      background: #f0f0f0;
+    }
+    .align-left {
+      text-align: left !important;
+    }
+    .small-text {
+      font-size: 11px;
+      line-height: 1.4;
+    }
+    .note-box {
+      margin-top: 8px;
+      border: 1px solid #000;
+      padding: 6px 8px;
+      font-size: 11px;
+      white-space: pre-line;
+    }
+
+    .ccp-bottom-grid {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1.1fr 2.4fr 0.9fr 0.9fr;
+      border: 1px solid #000;
+    }
+    .ccp-bottom-grid > div {
+      border-right: 1px solid #000;
+      border-bottom: 1px solid #000;
+      padding: 4px 5px;
+      white-space: pre-line;
+    }
+    .ccp-bottom-grid > div:nth-child(2),
+    .ccp-bottom-grid > div:nth-child(3),
+    .ccp-bottom-grid > div:nth-child(4) {
+      border-top: none;
+    }
+    .ccp-bottom-grid > div:last-child {
+      border-right: none;
+    }
+    .bottom-label {
+      background: #f0f0f0;
+      font-weight: bold;
+      text-align: center;
+    }
+    .bottom-textarea {
+      grid-column: 2 / span 3;
+      border-top: none;
+      border-right: none;
+      border-left: 1px solid #000;
+    }
+    .footer-page {
+      margin-top: 4px;
+      text-align: right;
+      font-size: 11px;
+    }
+
+    .actions {
+      margin-top: 18px;
+      text-align: right;
+    }
+    .actions button {
+      padding: 6px 12px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<div class="ccp-wrapper">
+  <form method="post" action="save_ccp_1bp.php">
+    <!-- 상단 제목/결재 영역 -->
+    <div class="ccp-title-row">
+      <div>작업 시</div>
+      <div class="ccp-title-main">CCP-1BP 모니터링일지</div>
+      <div class="ccp-title-sub">결<br>재</div>
+      <div class="ccp-title-sub">작성자</div>
+      <div class="ccp-title-sub">승인자</div>
+    </div>
+
+    <!-- 작성일자 / 공정명 / 점검자 -->
+    <div class="ccp-meta-row">
+      <div class="meta-label">작성일자</div>
+      <div class="meta-input">
+        <input type="text" name="write_date" placeholder="예) 2025-12-29">
+      </div>
+      <div class="meta-label">공정명</div>
+      <div class="meta-input">
+        [세척공정 : 절임갓]
+      </div>
+      <div class="meta-input">
+        점검자:
+        <input type="text" name="checker" placeholder="성명">
+      </div>
+    </div>
+
+    <!-- 한계기준 / 주기 / 방법 설명 영역 -->
+    <div class="ccp-section-title">1. 한계기준</div>
+    <table class="ccp-table">
+      <colgroup>
+        <col style="width: 10%;">
+        <col style="width: 15%;">
+        <col style="width: 10%;">
+        <col style="width: 10%;">
+        <col style="width: 10%;">
+        <col style="width: 10%;">
+        <col style="width: 25%;">
+        <col style="width: 10%;">
+      </colgroup>
+      <thead>
+      <tr>
+        <th rowspan="2">구분</th>
+        <th rowspan="2">한계기준</th>
+        <th colspan="2">1차 세척</th>
+        <th colspan="2">2차 세척</th>
+        <th rowspan="2">세척방법</th>
+        <th rowspan="2">세척수<br>교체주기</th>
+      </tr>
+      <tr>
+        <th>원물투입량</th>
+        <th>세척시간</th>
+        <th>세척횟수</th>
+        <th>세척시간</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>절임갓</td>
+        <td>1분당<br>20리터 이상</td>
+        <td>5Kg 이하</td>
+        <td>30초 이상</td>
+        <td>2회</td>
+        <td>1회당<br>10초 이상</td>
+        <td class="small-text align-left">
+          갓(3~4쪽)을 충분히 벌린 후,<br>
+          상하좌우로 3회 이상 흔들며<br>
+          손으로 비벼서 세척
+        </td>
+        <td>오전작업 후<br>오후작업 후</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="ccp-section-title">2. 모니터링 주기</div>
+    <div class="note-box small-text">
+      주기: 작업시작 시 / 작업 중 1시간 마다 / 작업종료 시
+    </div>
+
+    <div class="ccp-section-title">3. 모니터링 방법</div>
+    <div class="note-box small-text">
+      ① 초시계와 수도미터를 확인하여 세척수량이 1분에 20리터 이상인지 확인한다.
+      ② 절임갓은 처음으로 계량하여...한계기준 이탈 시, HACCP팀장에게 보고한 후
+      HACCP팀과 개선조치를 실시한 후 결과를 기록 한다.
+    </div>
+
+    <!-- 측정값 기록 테이블 -->
+    <div class="ccp-section-title" style="margin-top:18px;">4. 세척공정 모니터링 기록</div>
+    <table class="ccp-table">
+      <colgroup>
+        <col style="width: 12%;">  <!-- 품명 -->
+        <col style="width: 12%;">  <!-- 측정시각 -->
+        <col style="width: 10%;">  <!-- 세척수량 -->
+        <col style="width: 10%;">  <!-- 1차 원물투입량 -->
+        <col style="width: 10%;">  <!-- 1차 세척시간 -->
+        <col style="width: 10%;">  <!-- 2차 세척횟수 -->
+        <col style="width: 10%;">  <!-- 2차 세척시간 -->
+        <col style="width: 10%;">  <!-- 세척방법 -->
+        <col style="width: 8%;">   <!-- 세척수 교체(오전) -->
+        <col style="width: 8%;">   <!-- 세척수 교체(오후) -->
+      </colgroup>
+      <thead>
+      <tr>
+        <th rowspan="2">품명</th>
+        <th rowspan="2">측정시각</th>
+        <th rowspan="2">세척수량<br>(리터)</th>
+        <th colspan="2">1차 세척</th>
+        <th colspan="2">2차 세척</th>
+        <th rowspan="2">세척방법<br>(◯ / ✕)</th>
+        <th colspan="2">세척수 교체</th>
+      </tr>
+      <tr>
+        <th>원물투입량<br>(Kg)</th>
+        <th>세척시간<br>(초)</th>
+        <th>세척횟수<br>(회)</th>
+        <th>세척시간<br>(초)</th>
+        <th>오전작업<br>종료 후</th>
+        <th>오후작업<br>종료 후</th>
+      </tr>
+      </thead>
+      <tbody>
+      <!-- 작업 전 -->
+      <tr>
+        <td>작업 전</td>
+        <td><input type="time" name="rows[0][time]"></td>
+        <td><input type="number" step="0.1" name="rows[0][water_l]"></td>
+        <td><input type="number" step="0.1" name="rows[0][w1_kg]"></td>
+        <td><input type="number" step="0.1" name="rows[0][t1_sec]"></td>
+        <td><input type="number" step="1" name="rows[0][w2_count]"></td>
+        <td><input type="number" step="0.1" name="rows[0][t2_sec]"></td>
+        <td>
+          <label><input type="radio" name="rows[0][method_ok]" value="O">◯</label>
+          <label><input type="radio" name="rows[0][method_ok]" value="X">✕</label>
+        </td>
+        <td>
+          <label><input type="checkbox" name="rows[0][swap_am]" value="1">◯</label>
+        </td>
+        <td>
+          <label><input type="checkbox" name="rows[0][swap_pm]" value="1">◯</label>
+        </td>
+      </tr>
+
+      <!-- 절임갓 (예: 6줄) -->
+      <!-- i=1..6 -->
+      <!-- 필요하면 PHP/JS로 동적 생성 가능 -->
+      <tr>
+        <td>절임갓</td>
+        <td><input type="time" name="rows[1][time]"></td>
+        <td><input type="number" step="0.1" name="rows[1][water_l]"></td>
+        <td><input type="number" step="0.1" name="rows[1][w1_kg]"></td>
+        <td><input type="number" step="0.1" name="rows[1][t1_sec]"></td>
+        <td><input type="number" step="1" name="rows[1][w2_count]"></td>
+        <td><input type="number" step="0.1" name="rows[1][t2_sec]"></td>
+        <td>
+          <label><input type="radio" name="rows[1][method_ok]" value="O">◯</label>
+          <label><input type="radio" name="rows[1][method_ok]" value="X">✕</label>
+        </td>
+        <td>
+          <label><input type="checkbox" name="rows[1][swap_am]" value="1">◯</label>
+        </td>
+        <td>
+          <label><input type="checkbox" name="rows[1][swap_pm]" value="1">◯</label>
+        </td>
+      </tr>
+      <tr>
+        <td>절임갓</td>
+        <td><input type="time" name="rows[2][time]"></td>
+        <td><input type="number" step="0.1" name="rows[2][water_l]"></td>
+        <td><input type="number" step="0.1" name="rows[2][w1_kg]"></td>
+        <td><input type="number" step="0.1" name="rows[2][t1_sec]"></td>
+        <td><input type="number" step="1" name="rows[2][w2_count]"></td>
+        <td><input type="number" step="0.1" name="rows[2][t2_sec]"></td>
+        <td>
+          <label><input type="radio" name="rows[2][method_ok]" value="O">◯</label>
+          <label><input type="radio" name="rows[2][method_ok]" value="X">✕</label>
+        </td>
+        <td>
+          <label><input type="checkbox" name="rows[2][swap_am]" value="1">◯</label>
+        </td>
+        <td>
+          <label><input type="checkbox" name="rows[2][swap_pm]" value="1">◯</label>
+        </td>
+      </tr>
+      <tr>
+        <td>절임갓</td>
+        <td><input type="time" name="rows[3][time]"></td>
+        <td><input type="number" step="0.1" name="rows[3][water_l]"></td>
+        <td><input type="number" step="0.1" name="rows[3][w1_kg]"></td>
+        <td><input type="number" step="0.1" name="rows[3][t1_sec]"></td>
+        <td><input type="number" step="1" name="rows[3][w2_count]"></td>
+        <td><input type="number" step="0.1" name="rows[3][t2_sec]"></td>
+        <td>
+          <label><input type="radio" name="rows[3][method_ok]" value="O">◯</label>
+          <label><input type="radio" name="rows[3][method_ok]" value="X">✕</label>
+        </td>
+        <td>
+          <label><input type="checkbox" name="rows[3][swap_am]" value="1">◯</label>
+        </td>
+        <td>
+          <label><input type="checkbox" name="rows[3][swap_pm]" value="1">◯</label>
+        </td>
+      </tr>
+      <tr>
+        <td>절임갓</td>
+        <td><input type="time" name="rows[4][time]"></td>
+        <td><input type="number" step="0.1" name="rows[4][water_l]"></td>
+        <td><input type="number" step="0.1" name="rows[4][w1_kg]"></td>
+        <td><input type="number" step="0.1" name="rows[4][t1_sec]"></td>
+        <td><input type="number" step="1" name="rows[4][w2_count]"></td>
+        <td><input type="number" step="0.1" name="rows[4][t2_sec]"></td>
+        <td>
+          <label><input type="radio" name="rows[4][method_ok]" value="O">◯</label>
+          <label><input type="radio" name="rows[4][method_ok]" value="X">✕</label>
+        </td>
+        <td>
+          <label><input type="checkbox" name="rows[4][swap_am]" value="1">◯</label>
+        </td>
+        <td>
+          <label><input type="checkbox" name="rows[4][swap_pm]" value="1">◯</label>
+        </td>
+      </tr>
+      <tr>
+        <td>절임갓</td>
+        <td><input type="time" name="rows[5][time]"></td>
+        <td><input type="number" step="0.1" name="rows[5][water_l]"></td>
+        <td><input type="number" step="0.1" name="rows[5][w1_kg]"></td>
+        <td><input type="number" step="0.1" name="rows[5][t1_sec]"></td>
+        <td><input type="number" step="1" name="rows[5][w2_count]"></td>
+        <td><input type="number" step="0.1" name="rows[5][t2_sec]"></td>
+        <td>
+          <label><input type="radio" name="rows[5][method_ok]" value="O">◯</label>
+          <label><input type="radio" name="rows[5][method_ok]" value="X">✕</label>
+        </td>
+        <td>
+          <label><input type="checkbox" name="rows[5][swap_am]" value="1">◯</label>
+        </td>
+        <td>
+          <label><input type="checkbox" name="rows[5][swap_pm]" value="1">◯</label>
+        </td>
+      </tr>
+      <!-- 작업 끝 -->
+      <tr>
+        <td>작업 끝</td>
+        <td><input type="time" name="rows[6][time]"></td>
+        <td><input type="number" step="0.1" name="rows[6][water_l]"></td>
+        <td><input type="number" step="0.1" name="rows[6][w1_kg]"></td>
+        <td><input type="number" step="0.1" name="rows[6][t1_sec]"></td>
+        <td><input type="number" step="1" name="rows[6][w2_count]"></td>
+        <td><input type="number" step="0.1" name="rows[6][t2_sec]"></td>
+        <td>
+          <label><input type="radio" name="rows[6][method_ok]" value="O">◯</label>
+          <label><input type="radio" name="rows[6][method_ok]" value="X">✕</label>
+        </td>
+        <td>
+          <label><input type="checkbox" name="rows[6][swap_am]" value="1">◯</label>
+        </td>
+        <td>
+          <label><input type="checkbox" name="rows[6][swap_pm]" value="1">◯</label>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <!-- 개선조치 방법 설명 -->
+    <div class="ccp-section-title">5. 개선조치 방법</div>
+    <div class="note-box small-text">
+      □ 세척수량, 원료투입량, 세척횟수, 세척시간, 세척방법, 세척수교체주기 이탈 시
+      ① 모니터링담당자는 즉시 세척공정을 중지하고, 이탈원인을 분석하여 적절한 조치를 실시한다.
+      ② ... (원문 내용 그대로 추가)
+      ③ 모니터링담당자는 이탈발생 내역을 CCP-1BP 모니터링 점검표 개선조치란에 기록하고,
+         HACCP팀장에게 보고한다.
+    </div>
+
+    <!-- 하단 한계기준 이탈내용 / 개선조치 및 결과 / 조치자 / 확인 -->
+    <div class="ccp-bottom-grid">
+      <div class="bottom-label">한계기준 이탈내용</div>
+      <div class="bottom-label">개선조치 및 결과</div>
+      <div class="bottom-label">조치자</div>
+      <div class="bottom-label">확&nbsp;&nbsp;&nbsp;&nbsp;인</div>
+
+      <div style="border-top:none;">
+        <textarea name="deviation" class="small-text" style="height:110px;"></textarea>
+      </div>
+      <div class="bottom-textarea">
+        <textarea name="action_result" class="small-text" style="height:110px;"></textarea>
+      </div>
+      <div style="border-top:none;">
+        <input type="text" name="action_person">
+      </div>
+      <div style="border-top:none;">
+        <input type="text" name="confirm_person">
+      </div>
+    </div>
+
+    <div class="footer-page">- 101 -</div>
+
+    <div class="actions">
+      <button type="submit">저장</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>

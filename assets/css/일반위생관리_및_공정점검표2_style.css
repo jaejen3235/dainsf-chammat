@@ -1,0 +1,748 @@
+﻿body {
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-top: 2mm;
+}
+.hce {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    overflow: hidden;
+}
+.hme {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hhe {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+.hhi {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    background-size: contain;
+}
+.hls {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hfS {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hcD {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hcI {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hcS {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hfN {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+.hmB {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hmO {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hmT {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hpN {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    white-space: nowrap;
+}
+.htC {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    vertical-align: top;
+    overflow: hidden;
+}
+.haN {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+.hdu {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+.hdS {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hsC {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hsR {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hsG {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hsL {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hsT {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    overflow: hidden;
+}
+.hsE {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    overflow: hidden;
+}
+.hsA {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    overflow: hidden;
+}
+.hsP {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    overflow: hidden;
+}
+.hsV {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    overflow: hidden;
+}
+.hsO {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hsU {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    overflow: hidden;
+}
+.hpi {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hch {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hcG {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.heq {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.heG {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.htA {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hvi {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.htb {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.htG {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hfJ {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hfG {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hfB {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hfR {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hfC {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hfO {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hfL {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hfM {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hfE {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hpl {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hs {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    overflow: visible;
+}
+.hpa {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    margin-left: 2mm;
+    margin-right: 0mm;
+    margin-bottom: 2mm;
+    margin-top: 0mm;
+    border: 1px black solid;
+    box-shadow: 1mm 1mm 0 #aaaaaa;
+}
+.hpa::after {
+    content: "";
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: white;
+    z-index: -2;
+}
+.hrt {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    white-space: inherit;
+    line-height: 1.1;
+}
+.hco {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    white-space: inherit;
+}
+.hcc {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+.hls {
+    clear: both;
+}
+[onclick] {
+    cursor: pointer;
+}
+.cs0 {
+    font-size: 11pt;
+    color: #000000;
+    font-family: "문체부 바탕체";
+}
+.cs1 {
+    font-size: 11pt;
+    color: #000000;
+    font-family: "바탕";
+    font-weight: bold;
+}
+.cs2 {
+    font-size: 20pt;
+    color: #000000;
+    font-family: "HY견명조";
+}
+.cs3 {
+    font-size: 10pt;
+    color: #000000;
+    font-family: "바탕";
+}
+.cs4 {
+    font-size: 11.48pt;
+    color: #000000;
+    font-family: "돋움";
+    letter-spacing: -0.03em;
+}
+.cs5 {
+    font-size: 11pt;
+    color: #000000;
+    font-family: "바탕";
+}
+.cs6 {
+    font-size: 11pt;
+    color: #000000;
+    font-family: "HY견명조";
+}
+.cs7 {
+    font-size: 9pt;
+    color: #000000;
+    font-family: "굴림";
+}
+.cs8 {
+    font-size: 10pt;
+    color: #000000;
+    font-family: "굴림";
+}
+.cs9 {
+    font-size: 10pt;
+    color: #000000;
+    font-family: "바탕";
+}
+.cs10 {
+    font-size: 9pt;
+    color: #000000;
+    font-family: "바탕";
+    letter-spacing: -0.03em;
+}
+.cs11 {
+    font-size: 9pt;
+    color: #000000;
+    font-family: "굴림";
+    letter-spacing: -0.03em;
+}
+.cs12 {
+    font-size: 10pt;
+    color: #000000;
+    font-family: "바탕";
+}
+.cs13 {
+    font-size: 11pt;
+    color: #000000;
+    font-family: "바탕";
+}
+.cs14 {
+    font-size: 10pt;
+    color: #000000;
+    font-family: "맑은 고딕";
+}
+.cs15 {
+    font-size: 13pt;
+    color: #000000;
+    font-family: "굴림";
+}
+.cs16 {
+    font-size: 20pt;
+    color: #000000;
+    font-family: "바탕";
+}
+.cs17 {
+    font-size: 13pt;
+    color: #000000;
+    font-family: "HY견명조";
+}
+.cs18 {
+    font-size: 11pt;
+    color: #000000;
+    font-family: "바탕";
+    letter-spacing: 0.03em;
+}
+.cs19 {
+    font-size: 10pt;
+    color: #000000;
+    font-family: "바탕";
+    font-weight: bold;
+}
+.cs20 {
+    font-size: 20pt;
+    color: #000000;
+    font-family: "HY견고딕";
+    letter-spacing: -0.04em;
+}
+.cs21 {
+    font-size: 10pt;
+    color: #000000;
+    font-family: "HY견명조";
+}
+.cs22 {
+    font-size: 11pt;
+    color: #000000;
+    font-family: "바탕";
+}
+.ps0 {
+    text-align: justify;
+}
+.ps1 {
+    text-align: justify;
+}
+.ps2 {
+    text-align: center;
+}
+.ps3 {
+    text-align: justify;
+}
+.ps4 {
+    text-align: center;
+}
+.ps5 {
+    text-align: justify;
+}
+.ps6 {
+    text-align: center;
+}
+.ps7 {
+    text-align: justify;
+}
+.ps8 {
+    text-align: justify;
+}
+.ps9 {
+    text-align: justify;
+}
+.ps10 {
+    text-align: justify;
+}
+.ps11 {
+    text-align: justify;
+}
+.ps12 {
+    text-align: center;
+}
+.ps13 {
+    text-align: justify;
+}
+.ps14 {
+    text-align: justify;
+}
+.ps15 {
+    text-align: justify;
+}
+.ps16 {
+    text-align: justify;
+}
+.ps17 {
+    text-align: justify;
+}
+.ps18 {
+    text-align: justify;
+}
+.ps19 {
+    text-align: justify;
+}
+.ps20 {
+    text-align: justify;
+}
+.ps21 {
+    text-align: justify;
+}
+.ps22 {
+    text-align: right;
+}
+.ps23 {
+    text-align: center;
+}
+.ps24 {
+    text-align: center;
+}
+.ps25 {
+    text-align: center;
+}
+.ps26 {
+    text-align: center;
+}
+.ps27 {
+    text-align: justify;
+}
+/* 날짜 input */
+.date-input {
+    display: inline-block;
+    height: 4.1mm;
+    line-height: 3.1mm;
+    font-size: 14px;
+    border: none;
+    /* border-bottom: 1px solid #000; */
+    outline: none;
+    padding: 0;
+    margin: 0 0.8mm;
+    vertical-align: top;
+    background: transparent;
+    text-align: center;
+}
+
+.date-input.year {
+    width: 10mm;
+}
+.date-input.month,
+.date-input.day {
+    width: 6mm;
+}
+
+/* 점검자 input */
+.inspector-input {
+    display: inline-block;
+    width: 100%;
+    height: 4.1mm;
+    line-height: 3.1mm;
+    font-size: 14px;
+    border: none;
+    /* border-bottom: 1px solid #000; */
+    outline: none;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    text-align: center;
+}
+
+.cell-input-inline {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+
+    /* 줄바꿈 없는 칸이므로 */
+    white-space: nowrap;
+    overflow: hidden !important;
+    /* 기존 글씨랑 동일 톤 */
+    font: inherit;
+    font-size: 11px;
+    color: inherit;
+    line-height: normal; /* 기존 line-height 영향 제거 */
+    height: auto;
+    vertical-align: middle;
+    resize: none;
+}
+
+/* HC04 예/아니오 체크(라디오) */
+.hc04-check {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* 실제 라디오는 숨김 */
+.hc04-check input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ✅ 박스 크기 완전 고정 (선택/비선택 동일) */
+.hc04-box {
+    width: 3.1mm;
+    height: 3.1mm;
+    border: 0.35mm solid #000;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    /* 흔들림 방지: 폰트/라인 영향 제거 */
+    font-size: 0;
+    line-height: 0;
+    /* 기본은 비움 */
+    background: transparent;
+}
+
+/* ✅ 체크 시: 내부를 동일 크기 안에서만 채움 (크기 변화 없음) */
+.hc04-check input[type="radio"]:checked + .hc04-box {
+    /* inset shadow로 내부 채우기 → 레이아웃/크기 절대 변화 없음 */
+    box-shadow: inset 0 0 0 1.2mm #000;
+}
+/* HC04 특이사항/개선조치 textarea */
+.hc04-textarea {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+
+    background: transparent;
+
+    /* 폰트 작게 */
+    font-size: 10px;
+    line-height: 3.1mm; /* 기존 라인 높이와 비슷하게 */
+    padding: 0;
+
+    /* ✅ 줄넘김/자동줄바꿈 */
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+
+    /* textarea 기본 폰트가 달라지는 경우 방지 */
+    font-family: inherit;
+}
+
+/* HC04 조치자 input */
+.hc04-actor-input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 3.1mm; /* 한 줄 입력 */
+    line-height: 3.1mm;
+    font-size: 11px;
+
+    border: none;
+    border-bottom: 1px solid #000; /* 기존 input 스타일과 통일 */
+    outline: none;
+    padding: 0;
+    margin: 0;
+
+    background: transparent;
+}
+/* ✅ 입력칸 부모를 기준으로 잡기 */
+.hc04-field {
+    position: relative; /* 자식 absolute 기준 */
+    left: 1mm; /* 기존 hcD left/top 역할 */
+    top: 0.5mm;
+    width: calc(100% - 1mm); /* 테두리 안으로 조금 여백 */
+    height: calc(100% - 0.5mm);
+}
+
+/* ✅ 기존 hcI의 top:22.93mm 같은 밀림 제거 */
+.hc04-field-inner {
+    position: relative;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100%;
+    height: 100%;
+}
+
+/* textarea: 박스 안에 고정 */
+.hc04-textarea {
+    position: absolute; /* 부모(.hc04-field-inner) 안에서만 */
+    inset: 0; /* top/right/bottom/left 0 */
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    resize: none;
+    background: transparent;
+
+    font-family: inherit;
+    font-size: 10px;
+    line-height: 3.1mm;
+    padding: 0;
+
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* textarea 공통 */
+.hc04-textarea {
+    box-sizing: border-box;
+    resize: none;
+    border: none;
+    outline: none;
+    font-size: 9px;
+    line-height: 1.4;
+    padding: 4px;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+/* 조치자 칸: 셀 중앙에서 입력 시작 + 클릭 보장 */
+.hc04-center {
+    display: flex;
+    align-items: center; /* 세로 중앙 */
+    justify-content: center; /* 가로 중앙 */
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 50; /* 위에 덮는 레이어보다 앞으로 */
+    pointer-events: auto;
+}
+
+.hc04-action-input {
+    width: 100%;
+    height: 3.1mm; /* 한 줄 높이 */
+    line-height: 3.1mm;
+    font-size: 14px;
+    border: none;
+    /* border-bottom: 1px solid #000; */
+    outline: none;
+    background: transparent;
+    text-align: center;
+    pointer-events: auto;
+    position: relative;
+    z-index: 51;
+}
+
+@media print {
+    .hpa {
+        margin: 0;
+        border: 0 black none;
+        box-shadow: none;
+    }
+    body {
+        padding: 0;
+    }
+}
