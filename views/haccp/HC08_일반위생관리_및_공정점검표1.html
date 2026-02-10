@@ -283,8 +283,7 @@
                                                     left: 0mm;
                                                     top: -0.18mm;
                                                     height: 3.53mm;
-                                                    width: 21.05mm;
-                                                ">
+                                                    width: 21.05mm;">
                                                     <span class="hrt cs29">작성자</span>
                                                 </div>
                                             </div>
@@ -318,6 +317,8 @@
                                                     height: 3.53mm;
                                                     width: 21.05mm;">
                                                     <input type="text" id="HC08_writer" name="HC08_writer"
+                                                    style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
+                                                    placeholder="-"
                                                         class="inspector-input" />
                                                 </div>
                                             </div>
@@ -358,7 +359,7 @@
 
                                     <!-- 작성일자 입력 -->
                                     <div class="hce"
-                                        style="left: 21.86mm; top: 21.99mm; width: 60.35mm; height: 7.87mm">
+                                        style="left: 21.86mm; top: 20.99mm; width: 60.35mm; height: 7.87mm">
                                         <div class="hcD" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI" style="top: 1.5mm">
                                                 <div class="hls ps4" style="
@@ -370,7 +371,9 @@
                                                     width: 59.35mm;
                                                 ">
                                                     <input id="HC08_writeDate" name="HC08_writeDate" type="text"
-                                                        class="date-input" style="width: 100%;" onclick="(function () {
+                                                    style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
+                                                        class="date-input" style="width: 100%;" 
+                                                        onclick="(function () {
                                                         var today = new Date();
                                                         var yyyy = today.getFullYear();
                                                         var mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -403,13 +406,14 @@
 
                                     <!-- 점검자 입력 -->
                                     <div class="hce"
-                                        style="left: 110.15mm; top: 21.99mm; width: 55.69mm; height: 7.87mm">
+                                        style="left: 110.15mm; top: 20.99mm; width: 55.69mm; height: 7.87mm">
                                         <div class="hcD" style="left: 0mm; top: 0mm">
-                                            <div class="hcI" style="top: 1.6mm">
+                                            <div class="hcI" style="top: 0mm">
                                                 <div class="hls ps7"
-                                                    style="line-height: 3.1mm; white-space: nowrap; width: 59.69mm">
+                                                    style="top: 0mm; line-height: 3.1mm; white-space: nowrap; width: 59.69mm">
                                                     <input type="text" id="HC08_inspector" name="HC08_inspector"
-                                                        class="inspector-input" value="-" />
+                                                        class="inspector-input"
+                                                        style="border-width: 0px;" placeholder="-"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -596,10 +600,9 @@
                                                     top: -0.19mm;
                                                     height: 3.88mm;
                                                     width: 12.8mm;">
-                                                    <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW01_RESULT_Y"
-                                                            name="HC08_ROW01_RESULT_Y" value="Y" />
-                                                    </label>
+                                                    <input type="checkbox" id="HC08_ROW01_RESULT_Y"
+                                                    class="check-input checkbox"
+                                                        name="HC08_ROW01_RESULT_Y" value="Y" />
                                                 </div>
                                             </div>
                                         </div>
@@ -613,12 +616,10 @@
                                                     left: 0mm;
                                                     top: -0.19mm;
                                                     height: 3.88mm;
-                                                    width: 12.8mm;
-                                                ">
-                                                    <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW01_RESULT_N"
-                                                            name="HC08_ROW01_RESULT_N" value="N" />
-                                                    </label>
+                                                    width: 12.8mm;">
+                                                    <input type="checkbox" id="HC08_ROW01_RESULT_N"
+                                                    class="check-input checkbox"
+                                                        name="HC08_ROW01_RESULT_N" value="N" />
                                                 </div>
                                             </div>
                                         </div>
