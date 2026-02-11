@@ -1,310 +1,383 @@
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-cly1{text-align:left;vertical-align:middle}
-.tg .tg-zv4m{border-color:#ffffff;text-align:left;vertical-align:top}
-.tg .tg-baqh{text-align:center;vertical-align:top}
-.tg .tg-8jgo{border-color:#ffffff;text-align:center;vertical-align:top}
-.tg .tg-lqy6{text-align:right;vertical-align:top}
-.tg .tg-8sl0{font-size:26px;text-align:center;vertical-align:middle}
-.tg .tg-nrix{text-align:center;vertical-align:middle}
-.tg .tg-0lax{text-align:left;vertical-align:top}
+<link rel="stylesheet" type="text/css" href="/assets/css/CCP-1BP_모니터링일지_style.css" />
+<style>
+    .ccp1bp-split-container {
+        display: flex;
+        width: 100%;
+        min-height: calc(100vh - 120px);
+    }
+    .ccp1bp-left-panel {
+        width: 30%;
+        border-right: 1px solid #ccc;
+        padding: 10px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+    }
+    .ccp1bp-right-panel {
+        width: 70%;
+        padding: 15px;
+        box-sizing: border-box;
+        overflow-y: auto;
+    }
+
+    /* 좌측 패널 - 상단 버튼 영역 */
+    .ccp1bp-action-bar {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 10px;
+        flex-shrink: 0;
+    }
+    .ccp1bp-action-bar button {
+        padding: 6px 14px;
+        border: 1px solid #aaa;
+        background: #f5f5f5;
+        cursor: pointer;
+        font-size: 12px;
+        border-radius: 3px;
+        white-space: nowrap;
+    }
+    .ccp1bp-action-bar button:hover {
+        background: #e0e0e0;
+    }
+    .ccp1bp-action-bar .btn-new {
+        background: #1976d2;
+        color: #fff;
+        border-color: #1565c0;
+    }
+    .ccp1bp-action-bar .btn-new:hover {
+        background: #1565c0;
+    }
+    .ccp1bp-action-bar .btn-print {
+        background: #fff;
+        color: #333;
+    }
+    .ccp1bp-action-bar .btn-save {
+        margin-left: auto;
+        background: #2e7d32;
+        color: #fff;
+        border-color: #1b5e20;
+    }
+    .ccp1bp-action-bar .btn-save:hover {
+        background: #1b5e20;
+    }
+
+    /* 좌측 패널 - 목록 테이블 */
+    .ccp1bp-list-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 11px;
+    }
+    .ccp1bp-list-table thead th {
+        background: #f0f0f0;
+        border: 1px solid #ccc;
+        padding: 5px 3px;
+        text-align: center;
+        font-weight: 600;
+        white-space: nowrap;
+        position: sticky;
+        top: 0;
+    }
+    .ccp1bp-list-table tbody td {
+        border: 1px solid #ddd;
+        padding: 4px 3px;
+        text-align: center;
+        vertical-align: middle;
+    }
+    .ccp1bp-list-table tbody tr:hover {
+        background: #e3f2fd;
+    }
+    .ccp1bp-list-table tbody tr.selected {
+        background: #bbdefb;
+    }
+    .ccp1bp-list-table .btn-tbl {
+        padding: 2px 6px;
+        border: 1px solid #bbb;
+        background: #fafafa;
+        cursor: pointer;
+        font-size: 10px;
+        border-radius: 2px;
+        margin: 1px;
+    }
+    .ccp1bp-list-table .btn-tbl:hover {
+        background: #e0e0e0;
+    }
+    .ccp1bp-list-table .btn-view { color: #1976d2; }
+    .ccp1bp-list-table .btn-edit { color: #f57c00; }
+    .ccp1bp-list-table .btn-del  { color: #d32f2f; }
+
+    /* 좌측 패널 - 페이징 */
+    .ccp1bp-pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2px;
+        padding: 8px 0 2px;
+        flex-shrink: 0;
+    }
+    .ccp1bp-pagination button {
+        min-width: 26px;
+        height: 26px;
+        border: 1px solid #ccc;
+        background: #fff;
+        cursor: pointer;
+        font-size: 11px;
+        border-radius: 3px;
+    }
+    .ccp1bp-pagination button:hover {
+        background: #e3f2fd;
+    }
+    .ccp1bp-pagination button.active {
+        background: #1976d2;
+        color: #fff;
+        border-color: #1565c0;
+        font-weight: bold;
+    }
+    .ccp1bp-pagination button:disabled {
+        opacity: 0.4;
+        cursor: default;
+    }
+
+    .ox-cell {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        height: 100% !important;
+        left: 0 !important;
+        top: 0 !important;
+    }
+
+    .ox-text {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        height: 100% !important;
+        pointer-events: none;
+        text-align: center !important;
+    }
+
+    .ox-mark.selected {
+        color: #d32f2f;
+        font-weight: bold;
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+    }
+
+    .ox-hit input[type="radio"] {
+        display: none;
+    }
+
+    .ox-hit {
+        position: absolute !important;
+        width: 45% !important;
+        height: 100% !important;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    .ox-left {
+        left: 0 !important;
+    }
+
+    .ox-right {
+        right: 0 !important;
+    }
+
+    /* 인쇄 시 우측 문서 영역만 출력 */
+    @media print {
+        html, body {
+            overflow: hidden !important;
+            height: auto !important;
+        }
+
+        /* 헤더, 좌측메뉴, 토글버튼, 좌측패널 숨김 */
+        header,
+        .left-container,
+        .hidden-container,
+        .ccp1bp-left-panel { display: none !important; }
+
+        /* 컨테이너 레이아웃 초기화 */
+        main, .main-container, .content-wrapper,
+        .ccp1bp-split-container {
+            display: block !important;
+            width: 100% !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            overflow: visible !important;
+            height: auto !important;
+            min-height: 0 !important;
+            border: none !important;
+        }
+
+        /* 우측 패널 전체폭 */
+        .ccp1bp-right-panel {
+            width: 100% !important;
+            padding: 0 !important;
+            overflow: visible !important;
+            height: auto !important;
+            border: none !important;
+        }
+
+        /* 문서 테두리/그림자 제거 */
+        .hpa {
+            border: none !important;
+            box-shadow: none !important;
+            margin: 0 !important;
+        }
+    }
 </style>
+
+<script>
+    function toggleOX(el) {
+        const parent = el.closest('.ox-cell');
+        const marks = parent.querySelectorAll('.ox-mark');
+        const isChecked = el.dataset.checked === 'true';
+
+        const radios = document.getElementsByName(el.name);
+        radios.forEach(r => {
+            r.checked = false;
+            r.dataset.checked = 'false';
+        });
+        marks.forEach(m => m.classList.remove('selected'));
+
+        if (!isChecked) {
+            el.checked = true;
+            el.dataset.checked = 'true';
+            const markClass = (el.value === 'O') ? '.ox-o' : '.ox-x';
+            parent.querySelector(markClass).classList.add('selected');
+        }
+    }
+
+    // ── 좌측 패널 CRUD 함수 ──
+    function ccp1bpNew() {
+        // TODO: DB 연동 시 구현
+        alert('새로 작성');
+    }
+    function ccp1bpPrint() {
+        window.print();
+    }
+    function ccp1bpSave() {
+        // TODO: DB 연동 시 구현
+        alert('저장');
+    }
+    function ccp1bpView(uid) {
+        // TODO: DB 연동 시 구현
+        alert('보기: uid=' + uid);
+    }
+    function ccp1bpEdit(uid) {
+        // TODO: DB 연동 시 구현
+        alert('수정: uid=' + uid);
+    }
+    function ccp1bpDelete(uid) {
+        if (confirm('삭제하시겠습니까?')) {
+            // TODO: DB 연동 시 구현
+            alert('삭제: uid=' + uid);
+        }
+    }
+    function ccp1bpGoPage(page) {
+        // TODO: DB 연동 시 구현
+        alert('페이지 이동: ' + page);
+    }
+</script>
 
 <div class='main-container'>
     <div class='content-wrapper'>
-        <div class='print-btn-wrapper'>
-            <button class='btn-large primary' id='btnPrint' onclick='printTable()'>인쇄</button>
-        </div>
-        <div>
-            <form id='frm'>
-                <input type='hidden' name='controller' value='mes'>
-                <input type='hidden' name='mode' value='registeHaccpPage1'>
+        <div class="ccp1bp-split-container">
+            <!-- 왼쪽 영역 (30%) : 문서 목록 -->
+            <div class="ccp1bp-left-panel">
+                <!-- 상단 버튼 -->
+                <div class="ccp1bp-action-bar">
+                    <button class="btn-new" onclick="ccp1bpNew()">📝 새로 작성</button>
+                    <button class="btn-print" onclick="ccp1bpPrint()">🖨️ 인쇄</button>
+                    <button class="btn-save" onclick="ccp1bpSave()">💾 저장</button>
+                </div>
 
-                <table class="tg"><thead>
-                    <tr>
-                        <th class="tg-nrix" rowspan="4">작업 시</th>
-                        <th class="tg-8sl0" colspan="7" rowspan="4">CCP-1BP 모니터링일지<br>[세척공정 : 절임갓]</th>
-                        <th class="tg-0lax" rowspan="4">결<br>재</th>
-                        <th class="tg-0lax">작성자</th>
-                        <th class="tg-0lax">승인자</th>
-                    </tr>
-                    <tr>
-                        <th class="tg-0lax" rowspan="3">　<br><br></th>
-                        <th class="tg-0lax" rowspan="3">　<br><br></th>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
-                    </tr></thead>
-                    <tbody>
-                    <tr>
-                        <td class="tg-nrix">작성일자</td>
-                        <td class="tg-0lax" colspan="4">          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    년      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월            일</td>
-                        <td class="tg-baqh">점검자</td>
-                        <td class="tg-0lax" colspan="5">　&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-nrix" rowspan="3">한계기준</td>
-                        <td class="tg-nrix" rowspan="2">세척수량</td>
-                        <td class="tg-nrix" colspan="2">1차 세척</td>
-                        <td class="tg-nrix" colspan="6">2차 세척</td>
-                        <td class="tg-nrix" rowspan="2">세척수<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;교체주기</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-nrix">원물투입량</td>
-                        <td class="tg-nrix">세척시간</td>
-                        <td class="tg-nrix">세척횟수</td>
-                        <td class="tg-nrix">세척시간</td>
-                        <td class="tg-nrix" colspan="4">세척방법</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-nrix">1분당<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20리터<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이상</td>
-                        <td class="tg-nrix">5Kg 이하</td>
-                        <td class="tg-nrix">30초<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이상</td>
-                        <td class="tg-nrix">2회</td>
-                        <td class="tg-nrix">1회당<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10초 이상</td>
-                        <td class="tg-nrix" colspan="4">갓(3~4쪽)을&nbsp;&nbsp;&nbsp;충분히 벌린 후,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;상하좌우로 3회 이상<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;흔들며 손으로 비벼서 세척</td>
-                        <td class="tg-nrix">오전작업&nbsp;&nbsp;&nbsp;후<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;오후작업 후</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-nrix">주기</td>
-                        <td class="tg-nrix" colspan="10">작업시작 시 / 작업 중 1시간 마다 /&nbsp;&nbsp;&nbsp;작업종료 시</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-nrix" rowspan="4">방법</td>
-                        <td class="tg-cly1" colspan="10" rowspan="4"> ① 초시계와 수도미터를 확인하여 세척수량이 1분에 20리터 이상인지&nbsp;&nbsp;&nbsp;확인한다.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ② 절임갓은 처음으로 계량하여 1차 세척용량 5kg 이하를 투입한&nbsp;&nbsp;&nbsp;후, 초시계를 이용하여 30초 이상 세척되는지 확인한다.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ③ 절임갓은 2차 세척물에서 각 10초씩 2회씩 세척방법에 따라&nbsp;&nbsp;&nbsp;세척하는지 확인한다.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ④ 세척수를 세척수 교체주기마다 교체하는지 확인한다.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;□ CCP-1BP 모니터링담당자는 한계기준 이탈 시, HACCP팀장에게 보고한 후 HACCP팀과&nbsp;&nbsp;&nbsp;개선조치를 실시한 후 결과를 기록 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    한다.</td>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
-                        <td class="tg-nrix" rowspan="2">품명</td>
-                        <td class="tg-nrix" rowspan="2">측정시각</td>
-                        <td class="tg-nrix" rowspan="2">세척수량</td>
-                        <td class="tg-nrix" colspan="2">1차 세척</td>
-                        <td class="tg-nrix" colspan="4">2차세척</td>
-                        <td class="tg-nrix" colspan="2" rowspan="2">세척수 교체</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-nrix">원물투입량</td>
-                        <td class="tg-nrix">세척시간</td>
-                        <td class="tg-nrix" colspan="2">세척횟수 및 시간</td>
-                        <td class="tg-nrix" colspan="2">세척방법</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-nrix">작업 전</td>
-                        <td class="tg-baqh">:</td>
-                        <td class="tg-lqy6">리터</td>
-                        <td class="tg-lqy6">　</td>
-                        <td class="tg-lqy6">　</td>
-                        <td class="tg-lqy6">　</td>
-                        <td class="tg-lqy6">　</td>
-                        <td class="tg-baqh" colspan="2">　 </td>
-                        <td class="tg-nrix" colspan="2" rowspan="9">오전작업<br>     종료 후<br>     (◯ / ✕)<br>     <br>     <br>     오후작업<br>     종료 후<br>     (◯ / ✕)</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-nrix">절임갓</td>
-                        <td class="tg-baqh">:</td>
-                        <td class="tg-lqy6">리터</td>
-                        <td class="tg-lqy6">KG</td>
-                        <td class="tg-lqy6">초</td>
-                        <td class="tg-lqy6">초</td>
-                        <td class="tg-lqy6">초</td>
-                        <td class="tg-baqh" colspan="2">◯ / ✕</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-nrix">절임갓</td>
-                        <td class="tg-baqh">:</td>
-                        <td class="tg-lqy6">리터</td>
-                        <td class="tg-lqy6">KG</td>
-                        <td class="tg-lqy6">초</td>
-                        <td class="tg-lqy6">초</td>
-                        <td class="tg-lqy6">초</td>
-                        <td class="tg-baqh" colspan="2">◯ / ✕</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-nrix">절임갓</td>
-                        <td class="tg-baqh">:</td>
-                        <td class="tg-lqy6">리터</td>
-                        <td class="tg-lqy6">KG</td>
-                        <td class="tg-lqy6">초</td>
-                        <td class="tg-lqy6">초</td>
-                        <td class="tg-lqy6">초</td>
-                        <td class="tg-baqh" colspan="2">◯ / ✕</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-nrix">절임갓</td>
-                        <td class="tg-baqh">:</td>
-                        <td class="tg-lqy6">리터</td>
-                        <td class="tg-lqy6">KG</td>
-                        <td class="tg-lqy6">초</td>
-                        <td class="tg-lqy6">초</td>
-                        <td class="tg-lqy6">초</td>
-                        <td class="tg-baqh" colspan="2">◯ / ✕</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-nrix">절임갓</td>
-                        <td class="tg-baqh">:</td>
-                        <td class="tg-lqy6">리터</td>
-                        <td class="tg-lqy6">KG</td>
-                        <td class="tg-lqy6">초</td>
-                        <td class="tg-lqy6">초</td>
-                        <td class="tg-lqy6">초</td>
-                        <td class="tg-baqh" colspan="2">◯ / ✕</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-nrix">절임갓</td>
-                        <td class="tg-baqh">:</td>
-                        <td class="tg-lqy6">리터</td>
-                        <td class="tg-lqy6">KG</td>
-                        <td class="tg-lqy6">초</td>
-                        <td class="tg-lqy6">초</td>
-                        <td class="tg-lqy6">초</td>
-                        <td class="tg-baqh" colspan="2">◯ / ✕</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-nrix">절임갓</td>
-                        <td class="tg-baqh">:</td>
-                        <td class="tg-lqy6">리터</td>
-                        <td class="tg-lqy6">KG</td>
-                        <td class="tg-lqy6">초</td>
-                        <td class="tg-lqy6">초</td>
-                        <td class="tg-lqy6">초</td>
-                        <td class="tg-baqh" colspan="2">◯ / ✕</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-nrix">작업 끝</td>
-                        <td class="tg-baqh">:</td>
-                        <td class="tg-lqy6">리터</td>
-                        <td class="tg-lqy6">　</td>
-                        <td class="tg-lqy6">　</td>
-                        <td class="tg-lqy6">　</td>
-                        <td class="tg-lqy6">　</td>
-                        <td class="tg-baqh" colspan="2">　 </td>
-                    </tr>
-                    <tr>
-                        <td class="tg-nrix" rowspan="7">개선조치<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;방법</td>
-                        <td class="tg-0lax" colspan="10" rowspan="7">□ 세척수량, 원료투입량, 세척횟수, 세척시간, 세척방법, 세척수교체주기 이탈 시&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ① 모니터링담당자는 즉시 세척작업자에게 공정품 다시 세척을&nbsp;&nbsp;&nbsp;실시한다.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ② 다시 세척 후에는 모니터링담당자(전무)는 공정품을 분리하고&nbsp;&nbsp;&nbsp;즉시 HACCP팀장에게 보고한 후 공정품 검사를 실시한다.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ③ 검사결과에 이상이 없으면 다음 공정을 진행하고, 기준을&nbsp;&nbsp;&nbsp;벗어나면 폐기하도록 즉시 조치한다.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ④ 모니터링담당자는 이탈발생 내역을 CCP-1BP 모니터링 점검표&nbsp;&nbsp;&nbsp;개선조치란에 기록하고, HACCP팀장에게 보고한다.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;□ 기계적 고장인 경우(세척기, 수도미터, 급수배관)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ① 세척담당자는&nbsp;&nbsp;&nbsp;즉시 세척작업을 중지하고 공정품을 보류한 뒤, HACCP팀장에게 보고한다.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ② HACCP팀장은 기계를 즉시 수리하고, 수리가 불가능할 경우&nbsp;&nbsp;&nbsp;협력업체에 수리 의뢰한다.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ③ 모니터링담당자는 수리 완료 후 세척 부적합 공정품(이전&nbsp;&nbsp;&nbsp;모니터링 시점 이후 공정품)에 대하여 다시 세척을 실시하고<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     HACCP팀장에게 보고한다.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ④ 모니터링담당자는 이탈발생 내역을 CCP-1BP 모니터링 점검표&nbsp;&nbsp;&nbsp;개선조치란에 기록하고, HACCP팀장에게 보고한다.</td>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
-                        <td class="tg-baqh" colspan="4">한계기준 이탈내용</td>
-                        <td class="tg-baqh" colspan="5">개선조치 및 결과</td>
-                        <td class="tg-baqh">조치자</td>
-                        <td class="tg-baqh">확    인</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-0lax" colspan="4" rowspan="3">　&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;</td>
-                        <td class="tg-0lax" colspan="5" rowspan="3">　&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                        <td class="tg-0lax" rowspan="3">　<br><br></td>
-                        <td class="tg-0lax" rowspan="3">　<br><br></td>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
-                        <td class="tg-zv4m"></td>
-                        <td class="tg-zv4m"></td>
-                        <td class="tg-zv4m"></td>
-                        <td class="tg-zv4m"></td>
-                        <td class="tg-zv4m"></td>
-                        <td class="tg-zv4m"></td>
-                        <td class="tg-zv4m"></td>
-                        <td class="tg-zv4m"></td>
-                        <td class="tg-zv4m"></td>
-                        <td class="tg-zv4m"></td>
-                        <td class="tg-zv4m"></td>
-                    </tr>
-                    <tr>
-                        <td class="tg-8jgo" colspan="11">- 101 -</td>
-                    </tr>
+                <!-- 문서 목록 테이블 -->
+                <table class="ccp1bp-list-table">
+                    <thead>
+                        <tr>
+                            <th>작성일자</th>
+                            <th>페이지</th>
+                            <th>작성자</th>
+                            <th>점검자</th>
+                            <th>조치자</th>
+                            <th colspan="3">관리</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ccp1bp-list-body">
+                        <!-- 샘플 데이터 (DB 연동 전 화면 확인용) -->
+                        <tr>
+                            <td>2026-02-11</td>
+                            <td>1</td>
+                            <td>홍길동</td>
+                            <td>김점검</td>
+                            <td>이조치</td>
+                            <td><button class="btn-tbl btn-view" onclick="ccp1bpView(1)">보기</button></td>
+                            <td><button class="btn-tbl btn-edit" onclick="ccp1bpEdit(1)">수정</button></td>
+                            <td><button class="btn-tbl btn-del"  onclick="ccp1bpDelete(1)">삭제</button></td>
+                        </tr>
+                        <tr>
+                            <td>2026-02-10</td>
+                            <td>2</td>
+                            <td>홍길동</td>
+                            <td>김점검</td>
+                            <td>이조치</td>
+                            <td><button class="btn-tbl btn-view" onclick="ccp1bpView(2)">보기</button></td>
+                            <td><button class="btn-tbl btn-edit" onclick="ccp1bpEdit(2)">수정</button></td>
+                            <td><button class="btn-tbl btn-del"  onclick="ccp1bpDelete(2)">삭제</button></td>
+                        </tr>
+                        <tr>
+                            <td>2026-02-09</td>
+                            <td>1</td>
+                            <td>박작성</td>
+                            <td>김점검</td>
+                            <td>최조치</td>
+                            <td><button class="btn-tbl btn-view" onclick="ccp1bpView(3)">보기</button></td>
+                            <td><button class="btn-tbl btn-edit" onclick="ccp1bpEdit(3)">수정</button></td>
+                            <td><button class="btn-tbl btn-del"  onclick="ccp1bpDelete(3)">삭제</button></td>
+                        </tr>
+                        <tr>
+                            <td>2026-02-08</td>
+                            <td>1</td>
+                            <td>홍길동</td>
+                            <td>박점검</td>
+                            <td>이조치</td>
+                            <td><button class="btn-tbl btn-view" onclick="ccp1bpView(4)">보기</button></td>
+                            <td><button class="btn-tbl btn-edit" onclick="ccp1bpEdit(4)">수정</button></td>
+                            <td><button class="btn-tbl btn-del"  onclick="ccp1bpDelete(4)">삭제</button></td>
+                        </tr>
+                        <tr>
+                            <td>2026-02-07</td>
+                            <td>1</td>
+                            <td>박작성</td>
+                            <td>김점검</td>
+                            <td>이조치</td>
+                            <td><button class="btn-tbl btn-view" onclick="ccp1bpView(5)">보기</button></td>
+                            <td><button class="btn-tbl btn-edit" onclick="ccp1bpEdit(5)">수정</button></td>
+                            <td><button class="btn-tbl btn-del"  onclick="ccp1bpDelete(5)">삭제</button></td>
+                        </tr>
                     </tbody>
                 </table>
-            </form>
-        <div class="paging-area mt20"></div>
+
+                <!-- 페이징 -->
+                <div class="ccp1bp-pagination">
+                    <button onclick="ccp1bpGoPage(1)" disabled>&laquo;</button>
+                    <button onclick="ccp1bpGoPage(1)" disabled>&lsaquo;</button>
+                    <button class="active">1</button>
+                    <button onclick="ccp1bpGoPage(2)">2</button>
+                    <button onclick="ccp1bpGoPage(3)">3</button>
+                    <button onclick="ccp1bpGoPage(2)">&rsaquo;</button>
+                    <button onclick="ccp1bpGoPage(3)">&raquo;</button>
+                </div>
+            </div>
+            <!-- 오른쪽 영역 (70%) -->
+            <div class="ccp1bp-right-panel">
+                <?php
+                    $lines = file(__DIR__ . '/HC01_CCP-1BP_모니터링일지.html');
+                    echo implode('', array_slice($lines, 82, 1785));
+                ?>
+            </div>
+        </div>
     </div>
 </div>
-
-<script>
-const printTable = () => {
-    // 인쇄용 스타일 생성
-    const printStyle = document.createElement('style');
-    printStyle.innerHTML = `
-        @media print {
-            @page {
-                size: A4;
-                margin: 5mm; /* 여백을 최소화 (약 0.5cm) */
-            }
-            body {
-                margin: 0;
-                padding: 0;
-                -webkit-print-color-adjust: exact;
-            }
-            body * {
-                visibility: hidden;
-            }
-            .content-wrapper, .content-wrapper * {
-                visibility: visible;
-            }
-            .content-wrapper {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-            }
-            
-            /* 인쇄 시 불필요한 요소 숨김 */
-            .print-btn-wrapper, .paging-area, 
-            button, input[type="text"], input[type="checkbox"], input[type="radio"] {
-                display: none !important;
-            }
-
-            /* 테이블 스타일 강제 조정 (핵심 부분) */
-            table.tg {
-                width: 100%;
-                table-layout: fixed; /* 셀 너비 고정 */
-            }
-            
-            /* 글자 크기와 여백을 대폭 줄임 */
-            .tg td, .tg th {
-                font-size: 10pt !important;  /* 기존 14px -> 9pt로 축소 */
-                padding: 3px !important;    /* 기존 10px -> 2px로 축소 */
-                line-height: 1.1 !important; /* 줄 간격 좁힘 */
-                height: auto !important;     /* 불필요한 높이 제거 */
-            }
-
-            /* 제목 부분(CCP-2BP...) 폰트 크기 별도 조정 */
-            .tg .tg-crli {
-                font-size: 14pt !important; /* 제목은 너무 작지 않게 */
-            }
-
-            /* 전체 내용을 강제로 축소 (필요시 수치 조절: 0.8 등) */
-            .content-wrapper {
-                zoom: 85%; /* 전체 크기를 85%로 축소하여 한 페이지에 맞춤 */
-            }
-        }
-    `;
-    document.head.appendChild(printStyle);
-    window.print();
-    document.head.removeChild(printStyle);
-};
-</script>

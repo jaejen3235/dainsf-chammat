@@ -340,6 +340,16 @@ $left_menu = [
         'submenus' => [
             [
                 'controller' => 'haccp',
+                'action' => 'CCP-1BP_모니터링일지',
+                'title' => 'CCP-1BP 모니터링일지 관리'
+            ],
+            [
+                'controller' => 'haccp',
+                'action' => 'CCP-2BP_모니터링일지',
+                'title' => 'CCP-2BP 모니터링일지 관리'
+            ],
+            [
+                'controller' => 'haccp',
                 'action' => 'HC01_CCP-1BP_모니터링일지',
                 'title' => 'CCP-1BP 모니터링일지'
             ],
