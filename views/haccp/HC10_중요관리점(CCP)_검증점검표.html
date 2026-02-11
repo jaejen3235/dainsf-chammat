@@ -257,7 +257,7 @@
                                     <div class="hce"
                                         style="left: 136.42mm; top: 5.87mm; width: 20.18mm; height: 16.87mm">
                                         <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 5.99mm">
+                                            <div class="hcI" style="top: 3.99mm">
                                                 <div class="hls ps6" style="
                                                     line-height: 3.1mm;
                                                     white-space: nowrap;
@@ -266,7 +266,8 @@
                                                     height: 3.88mm;
                                                     width: 19.18mm;">
                                                     <input type="text" id="HC10_writer" name="HC10_writer"
-                                                        class="hc08-inspector-input" value="-" />
+                                                        style="border-width: 0px;" class="hc08-inspector-input"
+                                                        placeholder="-" />
                                                 </div>
                                             </div>
                                         </div>
@@ -307,13 +308,14 @@
                                             <div class="hcI hc08-dateWrap"
                                                 style="top: 0mm; width: 62mm; height: 7.22mm">
                                                 <input id="HC10_writeDate" name="HC10_writeDate" type="text"
-                                                    class="hc08-date-input" style="width: 100%;" onclick="(function () {
+                                                    class="hc08-date-input" style="border-width: 0px; width: 100%;"
+                                                    onclick="(function () {
                                                         var today = new Date();
                                                         var yyyy = today.getFullYear();
                                                         var mm = String(today.getMonth() + 1).padStart(2, '0');
                                                         var dd = String(today.getDate()).padStart(2, '0');
                                                         document.getElementById('HC10_writeDate').value = yyyy + '년 ' + mm + '월 ' + dd + '일';
-                                                    })();" value="-" />
+                                                    })();" placeholder="-" />
 
                                             </div>
                                         </div>
@@ -343,7 +345,8 @@
                                             <div class="hcI hc08-center"
                                                 style="top: 0mm; width: 59.32mm; height: 7.22mm">
                                                 <input type="text" id="HC10_inspector" name="HC10_inspector"
-                                                    class="hc08-inspector-input" value="-" />
+                                                    style="border-width: 0px;" class="hc08-inspector-input"
+                                                    placeholder="-" />
                                             </div>
                                         </div>
                                     </div>
@@ -484,8 +487,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 10.95mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW01_RESULT_Y"
-                                                        name="HC10_ROW01_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW01_RESULT_Y" name="HC10_ROW01_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -499,13 +502,14 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 10.95mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW01_RESULT_N"
-                                                        name="HC10_ROW01_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW01_RESULT_N" name="HC10_ROW01_RESULT_N" value="N" />
                                                 </label>
 
                                                 <!-- ✅ 아니오 선택 시에만 표시될 사유 input -->
                                                 <input type="text" id="HC10_ROW01_REASON" name="HC10_ROW01_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -535,8 +539,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW02_RESULT_Y"
-                                                        name="HC10_ROW02_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW02_RESULT_Y" name="HC10_ROW02_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -550,12 +554,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW02_RESULT_N"
-                                                        name="HC10_ROW02_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW02_RESULT_N" name="HC10_ROW02_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW02_REASON" name="HC10_ROW02_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -584,8 +589,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW03_RESULT_Y"
-                                                        name="HC10_ROW03_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW03_RESULT_Y" name="HC10_ROW03_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -599,11 +604,12 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW03_RESULT_N"
-                                                        name="HC10_ROW03_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW03_RESULT_N" name="HC10_ROW03_RESULT_N" value="N" />
                                                 </label>
                                                 <input type="text" id="HC10_ROW03_REASON" name="HC10_ROW03_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -633,8 +639,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW04_RESULT_Y"
-                                                        name="HC10_ROW04_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW04_RESULT_Y" name="HC10_ROW04_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -648,12 +654,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW04_RESULT_N"
-                                                        name="HC10_ROW04_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW04_RESULT_N" name="HC10_ROW04_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW04_REASON" name="HC10_ROW04_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -683,8 +690,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW05_RESULT_Y"
-                                                        name="HC10_ROW05_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW05_RESULT_Y" name="HC10_ROW05_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -698,12 +705,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW05_RESULT_N"
-                                                        name="HC10_ROW05_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW05_RESULT_N" name="HC10_ROW05_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW05_REASON" name="HC10_ROW05_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -733,8 +741,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW06_RESULT_Y"
-                                                        name="HC10_ROW06_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW06_RESULT_Y" name="HC10_ROW06_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -748,12 +756,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW06_RESULT_N"
-                                                        name="HC10_ROW06_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW06_RESULT_N" name="HC10_ROW06_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW06_REASON" name="HC10_ROW06_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -783,8 +792,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW07_RESULT_Y"
-                                                        name="HC10_ROW07_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW07_RESULT_Y" name="HC10_ROW07_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -798,12 +807,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW07_RESULT_N"
-                                                        name="HC10_ROW07_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW07_RESULT_N" name="HC10_ROW07_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW07_REASON" name="HC10_ROW07_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -834,8 +844,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW08_RESULT_Y"
-                                                        name="HC10_ROW08_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW08_RESULT_Y" name="HC10_ROW08_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -849,12 +859,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW08_RESULT_N"
-                                                        name="HC10_ROW08_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW08_RESULT_N" name="HC10_ROW08_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW08_REASON" name="HC10_ROW08_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -885,8 +896,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW09_RESULT_Y"
-                                                        name="HC10_ROW09_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW09_RESULT_Y" name="HC10_ROW09_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -900,12 +911,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW09_RESULT_N"
-                                                        name="HC10_ROW09_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW09_RESULT_N" name="HC10_ROW09_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW09_REASON" name="HC10_ROW09_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -971,8 +983,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 10.95mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW10_RESULT_Y"
-                                                        name="HC10_ROW10_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW10_RESULT_Y" name="HC10_ROW10_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -986,12 +998,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 10.95mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW10_RESULT_N"
-                                                        name="HC10_ROW10_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW10_RESULT_N" name="HC10_ROW10_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW10_REASON" name="HC10_ROW10_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -1022,8 +1035,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW11_RESULT_Y"
-                                                        name="HC10_ROW11_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW11_RESULT_Y" name="HC10_ROW11_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -1037,12 +1050,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW11_RESULT_N"
-                                                        name="HC10_ROW11_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW11_RESULT_N" name="HC10_ROW11_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW11_REASON" name="HC10_ROW11_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -1073,8 +1087,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW12_RESULT_Y"
-                                                        name="HC10_ROW12_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW12_RESULT_Y" name="HC10_ROW12_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -1088,12 +1102,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW12_RESULT_N"
-                                                        name="HC10_ROW12_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW12_RESULT_N" name="HC10_ROW12_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW12_REASON" name="HC10_ROW12_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -1124,8 +1139,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW13_RESULT_Y"
-                                                        name="HC10_ROW13_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW13_RESULT_Y" name="HC10_ROW13_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -1139,12 +1154,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW13_RESULT_N"
-                                                        name="HC10_ROW13_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW13_RESULT_N" name="HC10_ROW13_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW13_REASON" name="HC10_ROW13_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -1175,8 +1191,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW14_RESULT_Y"
-                                                        name="HC10_ROW14_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW14_RESULT_Y" name="HC10_ROW14_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -1190,12 +1206,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW14_RESULT_N"
-                                                        name="HC10_ROW14_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW14_RESULT_N" name="HC10_ROW14_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW14_REASON" name="HC10_ROW14_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -1226,8 +1243,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW15_RESULT_Y"
-                                                        name="HC10_ROW15_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW15_RESULT_Y" name="HC10_ROW15_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -1241,12 +1258,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW15_RESULT_N"
-                                                        name="HC10_ROW15_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW15_RESULT_N" name="HC10_ROW15_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW15_REASON" name="HC10_ROW15_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -1277,8 +1295,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW16_RESULT_Y"
-                                                        name="HC10_ROW16_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW16_RESULT_Y" name="HC10_ROW16_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -1292,12 +1310,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW16_RESULT_N"
-                                                        name="HC10_ROW16_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW16_RESULT_N" name="HC10_ROW16_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW16_REASON" name="HC10_ROW16_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -1328,8 +1347,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW17_RESULT_Y"
-                                                        name="HC10_ROW17_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW17_RESULT_Y" name="HC10_ROW17_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -1343,12 +1362,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW17_RESULT_N"
-                                                        name="HC10_ROW17_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW17_RESULT_N" name="HC10_ROW17_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW17_REASON" name="HC10_ROW17_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -1379,8 +1399,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW18_RESULT_Y"
-                                                        name="HC10_ROW18_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW18_RESULT_Y" name="HC10_ROW18_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -1394,12 +1414,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.23mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW18_RESULT_N"
-                                                        name="HC10_ROW18_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW18_RESULT_N" name="HC10_ROW18_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW18_REASON" name="HC10_ROW18_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -1454,8 +1475,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.52mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW19_RESULT_Y"
-                                                        name="HC10_ROW19_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW19_RESULT_Y" name="HC10_ROW19_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -1469,12 +1490,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.52mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW19_RESULT_N"
-                                                        name="HC10_ROW19_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW19_RESULT_N" name="HC10_ROW19_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW19_REASON" name="HC10_ROW19_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -1504,8 +1526,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.52mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW20_RESULT_Y"
-                                                        name="HC10_ROW20_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW20_RESULT_Y" name="HC10_ROW20_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -1519,12 +1541,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.52mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW20_RESULT_N"
-                                                        name="HC10_ROW20_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW20_RESULT_N" name="HC10_ROW20_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW20_REASON" name="HC10_ROW20_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -1555,8 +1578,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.52mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW21_RESULT_Y"
-                                                        name="HC10_ROW21_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW21_RESULT_Y" name="HC10_ROW21_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -1570,12 +1593,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.52mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW21_RESULT_N"
-                                                        name="HC10_ROW21_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW21_RESULT_N" name="HC10_ROW21_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW21_REASON" name="HC10_ROW21_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -1605,8 +1629,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.52mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW22_RESULT_Y"
-                                                        name="HC10_ROW22_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW22_RESULT_Y" name="HC10_ROW22_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -1620,12 +1644,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.52mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW22_RESULT_N"
-                                                        name="HC10_ROW22_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW22_RESULT_N" name="HC10_ROW22_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW22_REASON" name="HC10_ROW22_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -1656,8 +1681,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.52mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW23_RESULT_Y"
-                                                        name="HC10_ROW23_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW23_RESULT_Y" name="HC10_ROW23_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -1671,12 +1696,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.52mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW23_RESULT_N"
-                                                        name="HC10_ROW23_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW23_RESULT_N" name="HC10_ROW23_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW23_REASON" name="HC10_ROW23_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -1707,8 +1733,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.52mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW24_RESULT_Y"
-                                                        name="HC10_ROW24_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW24_RESULT_Y" name="HC10_ROW24_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -1722,12 +1748,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.52mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW24_RESULT_N"
-                                                        name="HC10_ROW24_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW24_RESULT_N" name="HC10_ROW24_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW24_REASON" name="HC10_ROW24_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>
@@ -1758,8 +1785,8 @@
                                             <div class="hcI hc08-choiceCell"
                                                 style="top: 0mm; width: 10.98mm; height: 7.52mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW25_RESULT_Y"
-                                                        name="HC10_ROW25_RESULT_Y" value="Y" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW25_RESULT_Y" name="HC10_ROW25_RESULT_Y" value="Y" />
                                                 </label>
                                             </div>
                                         </div>
@@ -1773,12 +1800,13 @@
                                             <div class="hcI hc08-noWrap"
                                                 style="top: 0mm; width: 57.33mm; height: 7.52mm">
                                                 <label class="hc04-check">
-                                                    <input type="checkbox" id="HC10_ROW25_RESULT_N"
-                                                        name="HC10_ROW25_RESULT_N" value="N" />
+                                                    <input type="checkbox" style="display:inline-block !important;"
+                                                        id="HC10_ROW25_RESULT_N" name="HC10_ROW25_RESULT_N" value="N" />
                                                 </label>
 
                                                 <input type="text" id="HC10_ROW25_REASON" name="HC10_ROW25_REASON"
-                                                    class="hc08-reason" style="width: 100%;" placeholder="(사유)" />
+                                                    style="border-width: 0px; width: 100%; margin-left:-6mm;"
+                                                    class="hc08-reason" placeholder="(사유)" />
                                             </div>
                                         </div>
                                     </div>

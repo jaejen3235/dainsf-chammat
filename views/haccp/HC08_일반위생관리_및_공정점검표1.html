@@ -317,9 +317,8 @@
                                                     height: 3.53mm;
                                                     width: 21.05mm;">
                                                     <input type="text" id="HC08_writer" name="HC08_writer"
-                                                    style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
-                                                        class="inspector-input" />
+                                                        style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
+                                                        placeholder="-" class="inspector-input" />
                                                 </div>
                                             </div>
                                         </div>
@@ -371,9 +370,8 @@
                                                     width: 59.35mm;
                                                 ">
                                                     <input id="HC08_writeDate" name="HC08_writeDate" type="text"
-                                                    style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        class="date-input" style="width: 100%;" 
-                                                        onclick="(function () {
+                                                        style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
+                                                        class="date-input" style="width: 100%;" onclick="(function () {
                                                         var today = new Date();
                                                         var yyyy = today.getFullYear();
                                                         var mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -412,8 +410,8 @@
                                                 <div class="hls ps7"
                                                     style="top: 0mm; line-height: 3.1mm; white-space: nowrap; width: 59.69mm">
                                                     <input type="text" id="HC08_inspector" name="HC08_inspector"
-                                                        class="inspector-input"
-                                                        style="border-width: 0px;" placeholder="-"/>
+                                                        class="inspector-input" style="border-width: 0px;"
+                                                        placeholder="-" />
                                                 </div>
                                             </div>
                                         </div>
@@ -600,9 +598,11 @@
                                                     top: -0.19mm;
                                                     height: 3.88mm;
                                                     width: 12.8mm;">
-                                                    <input type="checkbox" id="HC08_ROW01_RESULT_Y"
-                                                    class="check-input checkbox"
-                                                        name="HC08_ROW01_RESULT_Y" value="Y" />
+                                                    <label class="hc05-check">
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW01_RESULT_Y" name="HC08_ROW01_RESULT_Y"
+                                                            value="Y" />
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
@@ -617,9 +617,11 @@
                                                     top: -0.19mm;
                                                     height: 3.88mm;
                                                     width: 12.8mm;">
-                                                    <input type="checkbox" id="HC08_ROW01_RESULT_N"
-                                                    class="check-input checkbox"
-                                                        name="HC08_ROW01_RESULT_N" value="N" />
+                                                    <label class="hc05-check">
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW01_RESULT_N" name="HC08_ROW01_RESULT_N"
+                                                            value="N" />
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
@@ -655,8 +657,9 @@
                                                     width: 12.8mm;
                                                 ">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW02_RESULT_Y"
-                                                            name="HC08_ROW02_RESULT_Y" value="Y" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW02_RESULT_Y" name="HC08_ROW02_RESULT_Y"
+                                                            value="Y" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -674,8 +677,9 @@
                                                     width: 12.8mm;
                                                 ">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW02_RESULT_N"
-                                                            name="HC08_ROW02_RESULT_N" value="N" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW02_RESULT_N" name="HC08_ROW02_RESULT_N"
+                                                            value="N" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -711,8 +715,9 @@
                                                     width: 12.8mm;
                                                 ">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW03_RESULT_Y"
-                                                            name="HC08_ROW03_RESULT_Y" value="Y" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW03_RESULT_Y" name="HC08_ROW03_RESULT_Y"
+                                                            value="Y" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -731,8 +736,9 @@
                                                     width: 12.8mm;
                                                 ">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW03_RESULT_N"
-                                                            name="HC08_ROW03_RESULT_N" value="N" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW03_RESULT_N" name="HC08_ROW03_RESULT_N"
+                                                            value="N" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -791,8 +797,9 @@
                                             <div class="hcI" style="top: 2.53mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW04_RESULT_Y"
-                                                            name="HC08_ROW04_RESULT_Y" value="Y" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW04_RESULT_Y" name="HC08_ROW04_RESULT_Y"
+                                                            value="Y" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -805,8 +812,9 @@
                                             <div class="hcI" style="top: 2.53mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW04_RESULT_N"
-                                                            name="HC08_ROW04_RESULT_N" value="N" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW04_RESULT_N" name="HC08_ROW04_RESULT_N"
+                                                            value="N" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -854,8 +862,9 @@
                                             <div class="hcI" style="top: 2.53mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW05_RESULT_Y"
-                                                            name="HC08_ROW05_RESULT_Y" value="Y" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW05_RESULT_Y" name="HC08_ROW05_RESULT_Y"
+                                                            value="Y" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -868,8 +877,9 @@
                                             <div class="hcI" style="top: 2.53mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW05_RESULT_N"
-                                                            name="HC08_ROW05_RESULT_N" value="N" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW05_RESULT_N" name="HC08_ROW05_RESULT_N"
+                                                            value="N" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -918,8 +928,9 @@
                                             <div class="hcI" style="top: 3.02mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW06_RESULT_Y"
-                                                            name="HC08_ROW06_RESULT_Y" value="Y" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW06_RESULT_Y" name="HC08_ROW06_RESULT_Y"
+                                                            value="Y" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -933,8 +944,9 @@
                                             <div class="hcI" style="top: 3.02mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW06_RESULT_N"
-                                                            name="HC08_ROW06_RESULT_N" value="N" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW06_RESULT_N" name="HC08_ROW06_RESULT_N"
+                                                            value="N" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -991,8 +1003,9 @@
                                             <div class="hcI" style="top: 2.02mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW07_RESULT_Y"
-                                                            name="HC08_ROW07_RESULT_Y" value="Y" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW07_RESULT_Y" name="HC08_ROW07_RESULT_Y"
+                                                            value="Y" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -1006,8 +1019,9 @@
                                             <div class="hcI" style="top: 2.02mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW07_RESULT_N"
-                                                            name="HC08_ROW07_RESULT_N" value="N" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW07_RESULT_N" name="HC08_ROW07_RESULT_N"
+                                                            value="N" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -1091,8 +1105,9 @@
                                             <div class="hcI" style="top: 2.53mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW08_RESULT_Y"
-                                                            name="HC08_ROW08_RESULT_Y" value="Y" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW08_RESULT_Y" name="HC08_ROW08_RESULT_Y"
+                                                            value="Y" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -1106,8 +1121,9 @@
                                             <div class="hcI" style="top: 2.53mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW08_RESULT_N"
-                                                            name="HC08_ROW08_RESULT_N" value="N" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW08_RESULT_N" name="HC08_ROW08_RESULT_N"
+                                                            value="N" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -1139,8 +1155,9 @@
                                             <div class="hcI" style="top: 2.53mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW09_RESULT_Y"
-                                                            name="HC08_ROW09_RESULT_Y" value="Y" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW09_RESULT_Y" name="HC08_ROW09_RESULT_Y"
+                                                            value="Y" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -1154,8 +1171,9 @@
                                             <div class="hcI" style="top: 2.53mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW09_RESULT_N"
-                                                            name="HC08_ROW09_RESULT_N" value="N" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW09_RESULT_N" name="HC08_ROW09_RESULT_N"
+                                                            value="N" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -1187,8 +1205,9 @@
                                             <div class="hcI" style="top: 2.53mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW10_RESULT_Y"
-                                                            name="HC08_ROW10_RESULT_Y" value="Y" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW10_RESULT_Y" name="HC08_ROW10_RESULT_Y"
+                                                            value="Y" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -1202,8 +1221,9 @@
                                             <div class="hcI" style="top: 2.53mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW10_RESULT_N"
-                                                            name="HC08_ROW10_RESULT_N" value="N" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW10_RESULT_N" name="HC08_ROW10_RESULT_N"
+                                                            value="N" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -1235,8 +1255,9 @@
                                             <div class="hcI" style="top: 2.53mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW11_RESULT_Y"
-                                                            name="HC08_ROW11_RESULT_Y" value="Y" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW11_RESULT_Y" name="HC08_ROW11_RESULT_Y"
+                                                            value="Y" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -1250,8 +1271,9 @@
                                             <div class="hcI" style="top: 2.53mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW11_RESULT_N"
-                                                            name="HC08_ROW11_RESULT_N" value="N" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW11_RESULT_N" name="HC08_ROW11_RESULT_N"
+                                                            value="N" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -1283,8 +1305,9 @@
                                             <div class="hcI" style="top: 2.53mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW12_RESULT_Y"
-                                                            name="HC08_ROW12_RESULT_Y" value="Y" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW12_RESULT_Y" name="HC08_ROW12_RESULT_Y"
+                                                            value="Y" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -1298,8 +1321,9 @@
                                             <div class="hcI" style="top: 2.53mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW12_RESULT_N"
-                                                            name="HC08_ROW12_RESULT_N" value="N" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW12_RESULT_N" name="HC08_ROW12_RESULT_N"
+                                                            value="N" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -1331,8 +1355,9 @@
                                             <div class="hcI" style="top: 2.53mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW13_RESULT_Y"
-                                                            name="HC08_ROW13_RESULT_Y" value="Y" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW13_RESULT_Y" name="HC08_ROW13_RESULT_Y"
+                                                            value="Y" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -1346,8 +1371,9 @@
                                             <div class="hcI" style="top: 2.53mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW13_RESULT_N"
-                                                            name="HC08_ROW13_RESULT_N" value="N" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW13_RESULT_N" name="HC08_ROW13_RESULT_N"
+                                                            value="N" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -1432,8 +1458,9 @@
                                             <div class="hcI" style="top: 2.53mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW14_RESULT_Y"
-                                                            name="HC08_ROW14_RESULT_Y" value="Y" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW14_RESULT_Y" name="HC08_ROW14_RESULT_Y"
+                                                            value="Y" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -1446,8 +1473,9 @@
                                             <div class="hcI" style="top: 2.53mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW14_RESULT_N"
-                                                            name="HC08_ROW14_RESULT_N" value="N" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW14_RESULT_N" name="HC08_ROW14_RESULT_N"
+                                                            value="N" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -1506,8 +1534,9 @@
                                             <div class="hcI" style="top: 2.53mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW15_RESULT_Y"
-                                                            name="HC08_ROW15_RESULT_Y" value="Y" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW15_RESULT_Y" name="HC08_ROW15_RESULT_Y"
+                                                            value="Y" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -1521,8 +1550,9 @@
                                             <div class="hcI" style="top: 2.53mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW15_RESULT_N"
-                                                            name="HC08_ROW15_RESULT_N" value="N" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW15_RESULT_N" name="HC08_ROW15_RESULT_N"
+                                                            value="N" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -1572,8 +1602,9 @@
                                             <div class="hcI" style="top: 2.53mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW16_RESULT_Y"
-                                                            name="HC08_ROW16_RESULT_Y" value="Y" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW16_RESULT_Y" name="HC08_ROW16_RESULT_Y"
+                                                            value="Y" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -1587,8 +1618,9 @@
                                             <div class="hcI" style="top: 2.53mm">
                                                 <div class="hls ps4" style="line-height: 3.1mm; width: 12.8mm">
                                                     <label class="hc05-check">
-                                                        <input type="checkbox" id="HC08_ROW16_RESULT_N"
-                                                            name="HC08_ROW16_RESULT_N" value="N" />
+                                                        <input type="checkbox" style="display:inline-block !important;"
+                                                            id="HC08_ROW16_RESULT_N" name="HC08_ROW16_RESULT_N"
+                                                            value="N" />
                                                     </label>
                                                 </div>
                                             </div>
@@ -1683,10 +1715,19 @@
 
                                     <div class="hce"
                                         style="left: 117.1mm; top: 209.36mm; width: 25.6mm; height: 50.74mm">
-                                        <div class="hcD hc05-field">
-                                            <div class="hcI hc05-field-inner">
-                                                <input type="text" id="HC08_actor" name="HC08_actor"
-                                                    class="hc05-actor-input" value="-" />
+                                        <div class="hcD" style="left: 1mm; top: 0.5mm">
+                                            <div class="hcI" style="top: 22.93mm">
+                                                <div class="hls ps4" style="
+                                                    line-height: 3.1mm;
+                                                    white-space: nowrap;
+                                                    left: 0mm;
+                                                    top: -0.19mm;
+                                                    height: 3.88mm;
+                                                    width: 23.6mm;">
+                                                    <input type="text" id="HC08_actor" name="HC08_actor"
+                                                        style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; background: transparent;"
+                                                        placeholder="-" class="inspector-input" />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

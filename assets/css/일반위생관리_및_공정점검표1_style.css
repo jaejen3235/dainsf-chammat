@@ -5,22 +5,26 @@ body {
     padding-bottom: 0;
     padding-top: 2mm;
 }
+
 .hce {
     margin: 0;
     padding: 0;
     position: absolute;
     overflow: hidden;
 }
+
 .hme {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hhe {
     margin: 0;
     padding: 0;
     position: relative;
 }
+
 .hhi {
     display: inline-block;
     margin: 0;
@@ -28,51 +32,61 @@ body {
     position: relative;
     background-size: contain;
 }
+
 .hls {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hfS {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hcD {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hcI {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hcS {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hfN {
     margin: 0;
     padding: 0;
     position: relative;
 }
+
 .hmB {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hmO {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hmT {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hpN {
     display: inline-block;
     margin: 0;
@@ -80,6 +94,7 @@ body {
     position: relative;
     white-space: nowrap;
 }
+
 .htC {
     display: inline-block;
     margin: 0;
@@ -88,184 +103,219 @@ body {
     vertical-align: top;
     overflow: hidden;
 }
+
 .haN {
     display: inline-block;
     margin: 0;
     padding: 0;
     position: relative;
 }
+
 .hdu {
     margin: 0;
     padding: 0;
     position: relative;
 }
+
 .hdS {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hsC {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hsR {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hsG {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hsL {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hsT {
     margin: 0;
     padding: 0;
     position: absolute;
     overflow: hidden;
 }
+
 .hsE {
     margin: 0;
     padding: 0;
     position: absolute;
     overflow: hidden;
 }
+
 .hsA {
     margin: 0;
     padding: 0;
     position: absolute;
     overflow: hidden;
 }
+
 .hsP {
     margin: 0;
     padding: 0;
     position: absolute;
     overflow: hidden;
 }
+
 .hsV {
     margin: 0;
     padding: 0;
     position: absolute;
     overflow: hidden;
 }
+
 .hsO {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hsU {
     margin: 0;
     padding: 0;
     position: absolute;
     overflow: hidden;
 }
+
 .hpi {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hch {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hcG {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .heq {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .heG {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .htA {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hvi {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .htb {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .htG {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hfJ {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hfG {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hfB {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hfR {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hfC {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hfO {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hfL {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hfM {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hfE {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hpl {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hs {
     margin: 0;
     padding: 0;
     position: absolute;
     overflow: visible;
 }
+
 .hpa {
     position: relative;
     padding: 0;
@@ -277,6 +327,7 @@ body {
     border: 1px black solid;
     box-shadow: 1mm 1mm 0 #aaaaaa;
 }
+
 .hpa::after {
     content: "";
     position: absolute;
@@ -289,6 +340,7 @@ body {
     background-color: white;
     z-index: -2;
 }
+
 .hrt {
     display: inline-block;
     margin: 0;
@@ -297,6 +349,7 @@ body {
     white-space: inherit;
     line-height: 1.1;
 }
+
 .hco {
     display: inline-block;
     margin: 0;
@@ -304,170 +357,202 @@ body {
     position: relative;
     white-space: inherit;
 }
+
 .hcc {
     margin: 0;
     padding: 0;
     position: absolute;
 }
+
 .hls {
     clear: both;
 }
+
 [onclick] {
     cursor: pointer;
 }
+
 .cs0 {
     font-size: 11pt;
     color: #000000;
     font-family: "문체부 바탕체";
 }
+
 .cs1 {
     font-size: 11pt;
     color: #000000;
     font-family: "바탕";
     font-weight: bold;
 }
+
 .cs2 {
     font-size: 20pt;
     color: #000000;
     font-family: "HY견명조";
 }
+
 .cs3 {
     font-size: 11pt;
     color: #000000;
     font-family: "바탕";
     font-weight: bold;
 }
+
 .cs4 {
     font-size: 10pt;
     color: #000000;
     font-family: "바탕";
 }
+
 .cs5 {
     font-size: 11.48pt;
     color: #000000;
     font-family: "돋움";
     letter-spacing: -0.03em;
 }
+
 .cs6 {
     font-size: 10pt;
     color: #000000;
     font-family: "바탕";
 }
+
 .cs7 {
     font-size: 11pt;
     color: #000000;
     font-family: "바탕";
 }
+
 .cs8 {
     font-size: 11pt;
     color: #000000;
     font-family: "HY견명조";
 }
+
 .cs9 {
     font-size: 9pt;
     color: #000000;
     font-family: "굴림";
 }
+
 .cs10 {
     font-size: 10pt;
     color: #000000;
     font-family: "굴림";
 }
+
 .cs11 {
     font-size: 10pt;
     color: #000000;
     font-family: "바탕";
 }
+
 .cs12 {
     font-size: 9pt;
     color: #000000;
     font-family: "바탕";
     letter-spacing: -0.03em;
 }
+
 .cs13 {
     font-size: 9pt;
     color: #000000;
     font-family: "굴림";
     letter-spacing: -0.03em;
 }
+
 .cs14 {
     font-size: 10pt;
     color: #000000;
     font-family: "바탕";
 }
+
 .cs15 {
     font-size: 11pt;
     color: #000000;
     font-family: "바탕";
     font-weight: bold;
 }
+
 .cs16 {
     font-size: 10pt;
     color: #000000;
     font-family: "맑은 고딕";
 }
+
 .cs17 {
     font-size: 13pt;
     color: #000000;
     font-family: "굴림";
 }
+
 .cs18 {
     font-size: 20pt;
     color: #000000;
     font-family: "바탕";
 }
+
 .cs19 {
     font-size: 13pt;
     color: #000000;
     font-family: "HY견명조";
 }
+
 .cs20 {
     font-size: 12pt;
     color: #000000;
     font-family: "HY견명조";
 }
+
 .cs21 {
     font-size: 11pt;
     color: #000000;
     font-family: "바탕";
     letter-spacing: -0.02em;
 }
+
 .cs22 {
     font-size: 11pt;
     color: #000000;
     font-family: "바탕";
     letter-spacing: -0.05em;
 }
+
 .cs23 {
     font-size: 11pt;
     color: #000000;
     font-family: "바탕";
     letter-spacing: -0.01em;
 }
+
 .cs24 {
     font-size: 11pt;
     color: #000000;
     font-family: "바탕";
     letter-spacing: -0.02em;
 }
+
 .cs25 {
     font-size: 10.8pt;
     color: #000000;
     font-family: "바탕";
     letter-spacing: -0.06em;
 }
+
 .cs26 {
     font-size: 20pt;
     color: #000000;
     font-family: "HY견고딕";
     letter-spacing: -0.04em;
 }
+
 .cs27 {
     font-size: 10pt;
     color: #000000;
     font-family: "바탕";
     font-weight: bold;
 }
+
 .cs28 {
     font-size: 10pt;
     color: #000000;
@@ -475,92 +560,121 @@ body {
     letter-spacing: -0.08em;
     font-weight: bold;
 }
+
 .cs29 {
     font-size: 10pt;
     color: #000000;
     font-family: "HY견명조";
 }
+
 .ps0 {
     text-align: justify;
 }
+
 .ps1 {
     text-align: justify;
 }
+
 .ps2 {
     text-align: center;
 }
+
 .ps3 {
     text-align: justify;
 }
+
 .ps4 {
     text-align: center;
 }
+
 .ps5 {
     text-align: justify;
 }
+
 .ps6 {
     text-align: center;
 }
+
 .ps7 {
     text-align: justify;
 }
+
 .ps8 {
     text-align: justify;
 }
+
 .ps9 {
     text-align: justify;
 }
+
 .ps10 {
     text-align: justify;
 }
+
 .ps11 {
     text-align: justify;
 }
+
 .ps12 {
     text-align: center;
 }
+
 .ps13 {
     text-align: justify;
 }
+
 .ps14 {
     text-align: justify;
 }
+
 .ps15 {
     text-align: justify;
 }
+
 .ps16 {
     text-align: justify;
 }
+
 .ps17 {
     text-align: justify;
 }
+
 .ps18 {
     text-align: justify;
 }
+
 .ps19 {
     text-align: justify;
 }
+
 .ps20 {
     text-align: justify;
 }
+
 .ps21 {
     text-align: justify;
 }
+
 .ps22 {
     text-align: right;
 }
+
 .ps23 {
     text-align: center;
 }
+
 .ps24 {
     text-align: center;
 }
+
 .ps25 {
     text-align: center;
 }
+
 .ps26 {
     text-align: center;
 }
+
 .ps27 {
     text-align: justify;
 }
@@ -585,10 +699,12 @@ body {
     width: 10mm;
     text-align: center;
 }
+
 .date-input.month {
     width: 6mm;
     text-align: center;
 }
+
 .date-input.day {
     width: 6mm;
     text-align: center;
@@ -610,6 +726,7 @@ body {
     text-align: center;
     background: transparent;
 }
+
 .cell-input-inline {
     width: 100%;
     height: 100%;
@@ -626,7 +743,8 @@ body {
     font: inherit;
     font-size: 11px;
     color: inherit;
-    line-height: normal; /* 기존 line-height 영향 제거 */
+    line-height: normal;
+    /* 기존 line-height 영향 제거 */
     height: auto;
     vertical-align: middle;
     resize: none;
@@ -639,6 +757,7 @@ textarea.cell-input-inline.textarea-vcenter {
     padding-bottom: 0.4em;
     white-space: normal;
 }
+
 .check-input {
     display: inline-block;
     width: 100%;
@@ -656,6 +775,10 @@ textarea.cell-input-inline.textarea-vcenter {
     font-size: 14px;
     border: none;
     outline: none;
+    -webkit-appearance: checkbox;
+    /* 브라우저 기본 체크박스 형태 유지 */
+    appearance: checkbox;
+    cursor: pointer;
 }
 
 /* HC04 예/아니오 체크(라디오) */
@@ -663,6 +786,18 @@ textarea.cell-input-inline.textarea-vcenter {
     display: inline-flex;
     align-items: center;
     cursor: pointer;
+}
+
+/* 체크박스가 전역 CSS(nstyle.css)의 display:none을 오버라이드 */
+.hc05-check input[type="checkbox"] {
+    display: inline-block !important;
+    width: 3.1mm;
+    height: 3.1mm;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    -webkit-appearance: checkbox;
+    appearance: checkbox;
 }
 
 /* 실제 라디오는 숨김 */
@@ -688,10 +823,11 @@ textarea.cell-input-inline.textarea-vcenter {
 }
 
 /* ✅ 체크 시: 내부를 동일 크기 안에서만 채움 (크기 변화 없음) */
-.hc05-check input[type="radio"]:checked + .hc05-box {
+.hc05-check input[type="radio"]:checked+.hc05-box {
     /* inset shadow로 내부 채우기 → 레이아웃/크기 절대 변화 없음 */
     box-shadow: inset 0 0 0 1.2mm #000;
 }
+
 /* HC04 특이사항/개선조치 textarea */
 .hc05-textarea {
     box-sizing: border-box;
@@ -705,7 +841,8 @@ textarea.cell-input-inline.textarea-vcenter {
 
     /* 폰트 작게 */
     font-size: 10px;
-    line-height: 3.1mm; /* 기존 라인 높이와 비슷하게 */
+    line-height: 3.1mm;
+    /* 기존 라인 높이와 비슷하게 */
     padding: 0;
 
     /* ✅ 줄넘김/자동줄바꿈 */
@@ -721,7 +858,8 @@ textarea.cell-input-inline.textarea-vcenter {
 .hc05-actor-input {
     box-sizing: border-box;
     width: 100%;
-    height: 3.1mm; /* 한 줄 입력 */
+    height: 3.1mm;
+    /* 한 줄 입력 */
     line-height: 3.1mm;
     font-size: 11px;
 
@@ -733,12 +871,16 @@ textarea.cell-input-inline.textarea-vcenter {
 
     background: transparent;
 }
+
 /* ✅ 입력칸 부모를 기준으로 잡기 */
 .hc05-field {
-    position: relative; /* 자식 absolute 기준 */
-    left: 1mm; /* 기존 hcD left/top 역할 */
+    position: relative;
+    /* 자식 absolute 기준 */
+    left: 1mm;
+    /* 기존 hcD left/top 역할 */
     top: 0.5mm;
-    width: calc(100% - 1mm); /* 테두리 안으로 조금 여백 */
+    width: calc(100% - 1mm);
+    /* 테두리 안으로 조금 여백 */
     height: calc(100% - 0.5mm);
 }
 
@@ -753,8 +895,10 @@ textarea.cell-input-inline.textarea-vcenter {
 
 /* textarea: 박스 안에 고정 */
 .hc05-textarea {
-    position: absolute; /* 부모(.hc05-field-inner) 안에서만 */
-    inset: 0; /* top/right/bottom/left 0 */
+    position: absolute;
+    /* 부모(.hc05-field-inner) 안에서만 */
+    inset: 0;
+    /* top/right/bottom/left 0 */
     box-sizing: border-box;
     border: none;
     outline: none;
@@ -773,27 +917,29 @@ textarea.cell-input-inline.textarea-vcenter {
 
 /* 조치자 input: 위쪽에 한 줄로 고정 */
 .hc05-actor-input {
-    position: absolute;
+    display: inline-block !important;
+    position: absolute !important;
 
     /* ✅ 세로 중앙 시작 */
-    top: 23.8mm;
+    top: 23.8mm !important;
 
-    left: 0;
-    right: 0;
+    left: 0 !important;
+    right: 0 !important;
 
-    height: 4.1mm;
-    line-height: 3.1mm;
-    font-size: 14px;
+    height: 4.1mm !important;
+    line-height: 3.1mm !important;
+    font-size: 14px !important;
 
-    border: none;
+    border: none !important;
     /* border-bottom: 1px solid #000; */
-    outline: none;
-    padding: 0;
-    margin: 0;
+    outline: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
 
-    background: transparent;
+    background: transparent !important;
     box-sizing: border-box;
     text-align: center;
+    border-radius: 0 !important;
 }
 
 @media print {
@@ -802,6 +948,7 @@ textarea.cell-input-inline.textarea-vcenter {
         border: 0 black none;
         box-shadow: none;
     }
+
     body {
         padding: 0;
     }
