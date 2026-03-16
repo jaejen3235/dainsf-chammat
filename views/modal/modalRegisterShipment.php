@@ -5,10 +5,10 @@
 			<span class="btn-close" id="btnClose"><i class='bx bx-x'></i></span>
 		</div>
 		<div class="modal-body center" style="overflow:auto">
-            <form id='frm'>
-                <input type='hidden' name='controller' id='controller' value='mes' />
-                <input type='hidden' name='mode' id='mode' value='registerDeliveryOrder' />
-                <input type='hidden' class='input' name='uid' id='uid' value="<?php echo $_GET['uid']; ?>" />
+            <form id='frmRegisterShipment'>
+                <input type='hidden' name='controller' value='mes' />
+                <input type='hidden' name='mode' value='registerDeliveryOrder' />
+                <input type='hidden' class='input' name='uid' id='uidShipment' value="<?php echo isset($_GET['uid']) ? $_GET['uid'] : ''; ?>" />
                 <input type='hidden' class='input' name='remain' id='remain' value='0' />
                 <input type='hidden' class='input' name='stock' id='stock' value='0' />
 
@@ -144,12 +144,11 @@ window.addEventListener('DOMContentLoaded', ()=>{
     }
 });    
 
-// 납품 등록
+// 납품 등록 (수주 품목 기준 출하지시 - 이 모달 전용 폼 사용)
 const registerShipment = () => {    
-    const frm = document.getElementById('frm');
-
+    const frm = document.getElementById('frmRegisterShipment');
     if(frm) {
-        if(check('frm')) {
+        if(check('frmRegisterShipment')) {
             const formData = new FormData(frm);
 
             fetch('./handler.php', {
@@ -182,7 +181,8 @@ const registerShipment = () => {
 }
 
 const getShipmentItem = async (uid) => {
-    document.getElementById('uid').value = uid;
+    const uidEl = document.querySelector('#modalRegisterShipment input[name=uid]');
+    if (uidEl) uidEl.value = uid;
 
     const formData = new FormData();
     formData.append('controller', 'mes');

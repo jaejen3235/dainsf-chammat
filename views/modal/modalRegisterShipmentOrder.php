@@ -33,7 +33,7 @@
                         <th><i class='bx bx-check'></i> 품목</th>
                         <td>
                             <select name='item' id='item'>
-                                <option>== 선택 ==</option>
+                                <option value="">== 선택 ==</option>
                             </select>
                         </td>
                         <th><i class='bx bx-check'></i> 품번</th>
@@ -270,9 +270,9 @@ const setItemList = (data) => {
     if (data && data.data.length > 0 && select) {
         select.innerHTML = ''; // 기존 옵션 제거
 
-        // 기본 선택 옵션 추가
+        // 기본 선택 옵션 추가 (value="" 로 미선택 시 빈 값 전송, SQL 오류 방지)
         const defaultOption = document.createElement('option');
-        defaultOption.value = '0';
+        defaultOption.value = '';
         defaultOption.textContent = '== 선택 ==';
         select.appendChild(defaultOption);
 

@@ -111,6 +111,14 @@ class Login extends Functions
             'registerDate' => $currentDateTime
         );
         $this->insert($data);
+
+        // 스마트공장 로그 적재 (로그인: DO6001)
+        try {
+            require_once("apis/SmartFactoryLogger.php");
+            SmartFactoryLogger::queueLog(SmartFactoryLogger::USE_LOGIN, $loginId);
+        } catch (Exception $e) {
+            // 로그 적재 실패가 로그인에 영향을 주지 않도록 예외 무시
+        }
     }
 }
 ?>

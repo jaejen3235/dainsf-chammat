@@ -12,7 +12,64 @@ class Mes extends Functions
 	private $param;
 	private $now;
 	private $nowTime;
-    private $response = [];    
+    private $response = [];
+
+    /** 디버그 로그 파일 (실시간 확인: 터미널에서 tail -f log/mes_debug.log) */
+    const DEBUG_LOG_FILE = __DIR__ . '/../log/mes_debug.log';
+    /** 롤링: 파일당 최대 크기 (1 MB) */
+    const DEBUG_LOG_MAX_SIZE = 1024 * 1024;
+    /** 롤링: 유지할 로그 파일 개수 */
+    const DEBUG_LOG_MAX_FILES = 5;
+
+    /**
+     * 디버그 로그 출력 (frontend console.log처럼 실시간 확인용)
+     * 1MB × 5개 파일 Rolling append 방식.
+     * 사용: $this->debugLog('메시지'); 또는 $this->debugLog('라벨', $변수);
+     * 터미널에서 확인: tail -f log/mes_debug.log
+     */
+    protected function debugLog($message, $context = null) {
+        $logDir = realpath(__DIR__ . '/..') ?: (__DIR__ . '/..');
+        $logDir = rtrim($logDir, '/') . '/log';
+        if (!is_dir($logDir)) {
+            @mkdir($logDir, 0777, true);
+        }
+        $logFile = $logDir . '/mes_debug.log';
+
+        $ts = date('Y-m-d H:i:s');
+        $line = "[{$ts}] {$message}";
+        if ($context !== null) {
+            $line .= ' ' . (is_string($context) ? $context : json_encode($context, JSON_UNESCAPED_UNICODE));
+        }
+        $line .= "\n";
+
+        if (file_exists($logFile) && filesize($logFile) >= self::DEBUG_LOG_MAX_SIZE) {
+            $this->rotateDebugLog($logFile);
+        }
+        if (@file_put_contents($logFile, $line, FILE_APPEND | LOCK_EX) === false) {
+            error_log('[Mes::debugLog] 쓰기 실패 path=' . $logFile . ' dir_exists=' . (is_dir($logDir) ? '1' : '0') . ' writable=' . (is_writable($logDir) ? '1' : '0'));
+        }
+    }
+
+    /**
+     * 디버그 로그 롤링: mes_debug.log.5 삭제 후 .4→.5, .3→.4, .2→.3, .1→.2, 현재→.1
+     * @param string $base 풀 경로 기준 파일 (예: .../log/mes_debug.log)
+     */
+    private function rotateDebugLog($base) {
+        $max = self::DEBUG_LOG_MAX_FILES;
+        if (file_exists($base . '.' . $max)) {
+            @unlink($base . '.' . $max);
+        }
+        for ($n = $max - 1; $n >= 1; $n--) {
+            $src = $base . '.' . $n;
+            $dst = $base . '.' . ($n + 1);
+            if (file_exists($src)) {
+                @rename($src, $dst);
+            }
+        }
+        if (file_exists($base)) {
+            @rename($base, $base . '.1');
+        }
+    }
 
 	public function __construct($param) {
 		$this->param = $param;
@@ -1720,13 +1777,31 @@ class Mes extends Functions
     //===============================================================================================================================//    
     // 출하지시 등록
     public function registerDeliveryOrder() {
-        $uid = $this->param['uid'];
+        $uid = isset($this->param['uid']) ? trim($this->param['uid']) : '';
+        if ($uid === '' || !ctype_digit((string)$uid) || (int)$uid <= 0) {
+            $this->response = [
+                'result' => 'error',
+                'message' => '수주 품목을 선택해 주세요.'
+            ];
+            echo json_encode($this->response);
+            return;
+        }
+        $uid = (int) $uid;
         $delivery_date = $this->param['delivery_date'];
         $delivery_qty = $this->removeComma($this->param['delivery_qty']);
 
         $query = "select * from mes_order_items where uid={$uid}";
         $this->query($query);
         $order = $this->fetch();
+
+        if (empty($order) || !is_array($order)) {
+            $this->response = [
+                'result' => 'error',
+                'message' => '수주 품목 정보를 찾을 수 없습니다'
+            ];
+            echo json_encode($this->response);
+            return;
+        }
 
         if($order['delivery_remain_qty'] < $delivery_qty || $delivery_qty == 0) {
             $this->response = [
@@ -1787,13 +1862,36 @@ class Mes extends Functions
 
     // 납품 등록
     public function registerDelivery() {
-        $uid = $this->param['uid'];
+        $uid = isset($this->param['uid']) ? trim($this->param['uid']) : '';
+        if ($uid === '' || !ctype_digit((string)$uid) || (int)$uid <= 0) {
+            $this->response = [
+                'result' => 'error',
+                'message' => '유효하지 않은 출하지시입니다.'
+            ];
+            echo json_encode($this->response);
+            return;
+        }
+        $uid = (int)$uid;
+
         $delivery_date = $this->param['delivery_date'];
         $delivery_qty = $this->removeComma($this->param['delivery_qty']);
 
         $query = "select * from mes_delivery where uid={$uid}";
         $this->query($query);
         $delivery = $this->fetch();
+
+        // 출하지시 정보 검증
+        if (empty($delivery) || !is_array($delivery)) {
+            $this->response = [
+                'result' => 'error',
+                'message' => '출하지시 정보를 찾을 수 없습니다.'
+            ];
+            echo json_encode($this->response);
+            return;
+        }
+
+        // 수주 품목 참조 (0이면 개별 출하 지시 건이므로 수주/수주품목 갱신 생략)
+        $orderUid = isset($delivery['order_uid']) ? (int)$delivery['order_uid'] : 0;
 
         // 납품 테이블에 등록한다
         $data = array(
@@ -1847,65 +1945,63 @@ class Mes extends Functions
             exit;
         }
 
-
-        // 수주 품목의 잔여출하수량 변경
-        $query = "select * from mes_order_items where fid={$delivery['order_uid']}";
-        $this->query($query);
-        $order_item = $this->fetch();
-
-        $remain_qty3 = $order_item['delivery_remain_qty'] - $delivery_qty;
-        if($remain_qty3 == 0 || $remain_qty3 < 0) {
-            $status = '출하완료';
-            if($remain_qty3 < 0) $remain_qty3 = 0;
-        } else {
-            $status = '부분출하중';
+        // 품목 재고에서 출하 수량만큼 차감 (재고 부족 허용, 0 미만 가능)
+        try {
+            $itemUid = isset($delivery['item_uid']) ? (int)$delivery['item_uid'] : 0;
+            if ($itemUid > 0 && $delivery_qty > 0) {
+                // updateStockQty는 minus/plus 둘 다 허용하며, 0 미만도 그대로 반영
+                $this->updateStockQty($itemUid, $delivery_qty, 'minus');
+            }
+        } catch (\Throwable $e) {
+            // 재고 차감 실패해도 출하 처리는 진행되도록 에러만 로그 처리
+            error_log('[registerDelivery] stock update failed: ' . $e->getMessage());
         }
 
-        $data = array(
-            'table' => 'mes_order_items',
-            'where' => 'uid=' . $order_item['uid'],
-            'delivery_remain_qty' => $remain_qty3,
-            'shipment_status' => $status
-        );
-        $result3 = $this->update($data);
+        // 수주 연동 건만: 수주 품목·수주 테이블 잔여 수량/상태 갱신 (order_uid > 0 일 때만)
+        if ($orderUid > 0) {
+            $query = "select * from mes_order_items where fid={$orderUid}";
+            $this->query($query);
+            $order_item = $this->fetch();
 
-        if(!$result3) {
-            $this->response = [
-                'result' => 'error',
-                'message' => '수주 품목의 잔여출하수량 변경에 실패하였습니다'
-            ];
-            echo json_encode($this->response);
-            exit;
+            if (!empty($order_item) && is_array($order_item)) {
+                $remain_qty3 = $order_item['delivery_remain_qty'] - $delivery_qty;
+                if($remain_qty3 == 0 || $remain_qty3 < 0) {
+                    $status = '출하완료';
+                    if($remain_qty3 < 0) $remain_qty3 = 0;
+                } else {
+                    $status = '부분출하중';
+                }
+
+                $data = array(
+                    'table' => 'mes_order_items',
+                    'where' => 'uid=' . $order_item['uid'],
+                    'delivery_remain_qty' => $remain_qty3,
+                    'shipment_status' => $status
+                );
+                $result3 = $this->update($data);
+
+                if($result3) {
+                    $query = "select * from mes_order_items where fid={$order_item['fid']} and shipment_status!='출하완료'";
+                    $this->query($query);
+                    if($this->getRows() <= 0) {
+                        $status = '출하완료';
+                    } else {
+                        $status = '부분출하중';
+                    }
+                    $data = array(
+                        'table' => 'mes_orders',
+                        'where' => 'uid=' . $order_item['fid'],
+                        'status' => $status
+                    );
+                    $this->update($data);
+                }
+            }
         }
 
-        // 수주 테이블의 잔여 수량을 변경한다
-        $query = "select * from mes_order_items where fid={$order_item['fid']} and shipment_status!='출하완료'";
-        $this->query($query);
-        if($this->getRows() <= 0) {
-            $status = '출하완료';
-        } else {
-            $status = '부분출하중';
-        }
-
-        $data = array(
-            'table' => 'mes_orders',
-            'where' => 'uid=' . $order_item['fid'],
-            'status' => $status
-        );
-        $result4 = $this->update($data);
-
-        if(!$result4) {
-            $this->response = [
-                'result' => 'error',
-                'message' => '수주 테이블의 잔여 수량을 변경에 실패하였습니다'
-            ];
-        } else {
-            $this->response = [
-                'result' => 'success',
-                'message' => '정상적으로 등록이 되었습니다'
-            ];
-        }
-
+        $this->response = [
+            'result' => 'success',
+            'message' => '정상적으로 등록이 되었습니다'
+        ];
         echo json_encode($this->response);
     }
 
@@ -3146,6 +3242,60 @@ class Mes extends Functions
         echo json_encode($this->response);
     }
 
+    // 계획 생산지시 수정 (모달에서 생산지시 일자·수량 변경 후 등록)
+    public function modifyPlanWorkOrder() {
+        $uid = isset($this->param['modify_plan_uid']) ? trim($this->param['modify_plan_uid']) : '';
+        if ($uid === '' || !ctype_digit((string)$uid) || (int)$uid <= 0) {
+            $this->response = ['result' => 'error', 'message' => '유효하지 않은 작업지시입니다.'];
+            echo json_encode($this->response);
+            return;
+        }
+        $uid = (int)$uid;
+
+        $order_date = isset($this->param['modify_plan_work_date']) ? trim($this->param['modify_plan_work_date']) : '';
+        $order_qty = isset($this->param['modify_plan_work_qty']) ? $this->removeComma($this->param['modify_plan_work_qty']) : 0;
+        if ($order_date === '') {
+            $this->response = ['result' => 'error', 'message' => '생산지시 일자를 선택해 주세요.'];
+            echo json_encode($this->response);
+            return;
+        }
+        if ($order_qty <= 0) {
+            $this->response = ['result' => 'error', 'message' => '생산지시 수량을 입력해 주세요.'];
+            echo json_encode($this->response);
+            return;
+        }
+
+        $query = "SELECT * FROM mes_work_order WHERE uid={$uid} AND classification='계획생산'";
+        $this->query($query);
+        $row = $this->fetch();
+        if (empty($row)) {
+            $this->response = ['result' => 'error', 'message' => '계획 생산지시를 찾을 수 없습니다.'];
+            echo json_encode($this->response);
+            return;
+        }
+        if ($row['status'] !== '생산대기') {
+            $this->response = ['result' => 'error', 'message' => '생산대기 상태에서만 수정할 수 있습니다.'];
+            echo json_encode($this->response);
+            return;
+        }
+
+        $data = array(
+            'table' => 'mes_work_order',
+            'where' => 'uid=' . $uid,
+            'order_date' => $order_date,
+            'order_qty' => $order_qty,
+            'remain_qty' => $order_qty
+        );
+        $result = $this->update($data);
+
+        if ($result) {
+            $this->response = ['result' => 'success', 'message' => '수정하였습니다.'];
+        } else {
+            $this->response = ['result' => 'error', 'message' => '수정에 실패하였습니다.'];
+        }
+        echo json_encode($this->response);
+    }
+
     // 작업지시 등록
     public function registerWorkOrder() {
         $currentDate = date('Y-m-d');
@@ -3359,6 +3509,46 @@ class Mes extends Functions
             }, $results)
         ];
     
+        echo json_encode($this->response);
+    }
+
+    // 계획 생산지시 한 건 조회 (수정 모달용)
+    public function getPlanWorkOrder() {
+        $uid = isset($this->param['uid']) ? (int)$this->param['uid'] : 0;
+        if ($uid <= 0) {
+            $this->response = ['error' => 'Invalid uid'];
+            echo json_encode($this->response);
+            return;
+        }
+        $query = "SELECT * FROM mes_work_order WHERE uid={$uid} AND classification='계획생산'";
+        $this->query($query);
+        $row = $this->fetch();
+        if (empty($row)) {
+            $this->response = ['error' => 'No data found'];
+            echo json_encode($this->response);
+            return;
+        }
+        $stock_qty = 0;
+        if (!empty($row['item_uid'])) {
+            $this->query("SELECT stock_qty FROM mes_items WHERE uid=" . (int)$row['item_uid']);
+            $item = $this->fetch();
+            if ($item) $stock_qty = (int)($item['stock_qty'] ?? 0);
+        }
+        $this->response = [
+            'uid' => $row['uid'],
+            'item_uid' => $row['item_uid'],
+            'item_name' => $row['item_name'] ?? '',
+            'item_code' => $row['item_code'] ?? '',
+            'standard' => $row['standard'] ?? '',
+            'unit' => $row['unit'] ?? '',
+            'order_date' => $row['order_date'] ?? '',
+            'order_qty' => $row['order_qty'] ?? 0,
+            'stock_qty' => $stock_qty,
+            'group_uid' => $row['group_uid'] ?? '',
+            'gender' => $row['gender'] ?? '',
+            'size_uid' => $row['size_uid'] ?? '',
+            'color_uid' => $row['color_uid'] ?? ''
+        ];
         echo json_encode($this->response);
     }
 
@@ -3843,7 +4033,7 @@ class Mes extends Functions
     public function deleteWorkReport() {
         $uid = $this->param['uid'];
         
-        $query = "delete from all_daily_work where uid={$uid}";
+        $query = "delete from mes_daily_work where uid={$uid}";
         $result = $this->query($query);
 
         if($result) {
@@ -4392,12 +4582,50 @@ class Mes extends Functions
     //===============================================================================================================================//
 
     public function registerShipmentOrder() {
-        $order_uid = (empty($this->param['uid'])) ? 0 : $this->param['uid'];
-        $item = $this->getData('mes_items', $this->param['item']);
-        $account = $this->getData('mes_account', $this->param['account']);
+        // 필수값 검증 (거래처·품목·출하일자·수량 등)
+        $account_uid = isset($this->param['account']) ? trim($this->param['account']) : '';
+        $item_uid = isset($this->param['item']) ? trim($this->param['item']) : '';
+        $shipment_date = isset($this->param['shipmentDate']) ? trim($this->param['shipmentDate']) : '';
+        $qty = $this->removeComma(isset($this->param['qty']) ? $this->param['qty'] : '');
+
+        if ($account_uid === '' || $account_uid === '0' || !ctype_digit((string)$account_uid)) {
+            $this->response = ['result' => 'error', 'message' => '거래처를 선택해 주세요.'];
+            echo json_encode($this->response);
+            return;
+        }
+        if ($item_uid === '' || $item_uid === '0' || !ctype_digit((string)$item_uid) || (int)$item_uid <= 0) {
+            $this->response = ['result' => 'error', 'message' => '품목을 선택해 주세요.'];
+            echo json_encode($this->response);
+            return;
+        }
+        if ($shipment_date === '') {
+            $this->response = ['result' => 'error', 'message' => '출하 일자를 입력해 주세요.'];
+            echo json_encode($this->response);
+            return;
+        }
+        if ($qty === '' || $qty <= 0) {
+            $this->response = ['result' => 'error', 'message' => '출하 수량을 입력해 주세요.'];
+            echo json_encode($this->response);
+            return;
+        }
+
+        $order_uid = (empty($this->param['uid']) || $this->param['uid'] === '0') ? 0 : (int)$this->param['uid'];
+        $item = $this->getData('mes_items', (int)$item_uid);
+        $account = $this->getData('mes_account', (int)$account_uid);
         $qty = $this->removeComma($this->param['qty']);
 
-        if(empty($this->param['uid'])) {
+        if (empty($item) || !is_array($item)) {
+            $this->response = ['result' => 'error', 'message' => '선택한 품목 정보를 찾을 수 없습니다.'];
+            echo json_encode($this->response);
+            return;
+        }
+        if (empty($account) || !is_array($account)) {
+            $this->response = ['result' => 'error', 'message' => '선택한 거래처 정보를 찾을 수 없습니다.'];
+            echo json_encode($this->response);
+            return;
+        }
+
+        if(empty($this->param['uid']) || $this->param['uid'] === '0') {
             $data = array(
                 'table' => 'mes_delivery',
                 'order_uid' => $order_uid,
@@ -5664,7 +5892,7 @@ class Mes extends Functions
     }
 
     public function checkExistence($table, $field, $value) {
-        $query = "select * from {$table}";
+        $query = "select * from {$table} where {$field} = '{$value}'";
         $this->query($query);
         $data = $this->fetch();
         if($data) {
@@ -5682,7 +5910,7 @@ class Mes extends Functions
         
         if(empty($this->param['uid'])) {
             // 해당 사원이 이미 등록이 되어 있는지 확인
-            if(!$this->checkExistence('mes_user', 'employee', $this->param['employee'])) {
+            if($this->checkExistence('mes_user', 'employee', $this->param['employee'])) {
                 $this->response = [
                     'result' => 'error',
                     'message' => '이미 등록된 사용자입니다'

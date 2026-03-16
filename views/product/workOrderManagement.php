@@ -4,7 +4,10 @@
         <div class='search-box'>
             <div class='search-section'>
                 <div class='search-input'>
-                    <input type="text" id='searchText' placeholder="검색">
+                    <input type="text" id='searchAccount' placeholder="거래처">
+                    <input type="text" id='searchItem' placeholder="수주품목">
+                    <input type="text" class='input datepicker' id='startOrderDate' placeholder="수주/납기 시작일">
+                    <input type="text" class='input datepicker' id='endOrderDate' placeholder="수주/납기 종료일">
                     <button class='btn-large primary' id='btnSearch'>검색</button>
                     <button class='btn-large success revision' id='btnRevision'><i class='bx bx-revision'></i></button>
                 </div>
@@ -56,7 +59,17 @@
             <div class='flex'>
                 <div class='title red'>생산지시 목록</div>
                 <div class='btn-box'>
-                    <input type='button' class='btn primary' value='전체보기' onclick='getWorkOrderList({page : 1})' />
+                    <input type="text" id='searchWorkItem' class='input' placeholder="작업품목">
+                    <select id='searchWorkStatus' class='input'>
+                        <option value="ALL">상태 전체</option>
+                        <option value="생산대기">생산대기</option>
+                        <option value="작업중">작업중</option>
+                        <option value="부분작업완료">부분작업완료</option>
+                        <option value="작업완료">작업완료</option>
+                    </select>
+                    <input type='text' class='input datepicker' id='startWorkOrderDate' placeholder='작업지시 시작일'/>
+                    <input type='text' class='input datepicker' id='endWorkOrderDate' placeholder='작업지시 종료일'/>
+                    <input type='button' class='btn primary' value='검색' onclick='searchWorkOrderList()' />
                 </div>
             </div>
             <table class='work-order-list list mt10'>
@@ -107,18 +120,33 @@
 <?php
 include "./views/modal/modalRegisterWorkOrder.php";
 include "./views/modal/modalRegisterPlanWorkOrder.php";
-//include "./views/modal/modalModifyPlanWorkOrder.php";
+include "./views/modal/modalModifyPlanWorkOrder.php";
 include "./views/modal/modalModifyWorkOrder.php";
 ?>
 
 <script>
 window.addEventListener('DOMContentLoaded', ()=>{
+    const today = new Date().toISOString().slice(0,10);
+    try {
+        const s1 = document.getElementById('startOrderDate');
+        const e1 = document.getElementById('endOrderDate');
+        if (s1 && !s1.value) s1.value = today;
+        if (e1 && !e1.value) e1.value = today;
+
+        const s2 = document.getElementById('startWorkOrderDate');
+        const e2 = document.getElementById('endWorkOrderDate');
+        if (s2 && !s2.value) s2.value = today;
+        if (e2 && !e2.value) e2.value = today;
+
+        const workStatus = document.getElementById('searchWorkStatus');
+        if (workStatus) workStatus.value = '생산대기';
+    } catch(e) {}
     // 검색
     try {
         const search = document.getElementById('btnSearch');
         if(search) {
             search.addEventListener('click', () => {
-                getOrdersList({page : document.getElementById('currentPage').value});
+                getOrdersList({page : 1});
             });
         }
     } catch(e) {}
@@ -165,13 +193,24 @@ const getOrdersList = async({page}) => {
     document.getElementById('currentPage').value = page;
     let where = `where product_status='주문' or product_status='생산중'`;
 
-    // 검색어가 있다면
+    // 거래처 / 수주품목 검색
     try {
-        const searchText = document.getElementById('searchText');
-        if(searchText) {
-            if(searchText.value != '') {
-                where += ` and item_name like '%${searchText.value}%'`;
-            }
+        const account = document.getElementById('searchAccount').value;
+        const item = document.getElementById('searchItem').value;
+        if (account) {
+            where += ` and account_name like '%${account}%'`;
+        }
+        if (item) {
+            where += ` and item_name like '%${item}%'`;
+        }
+    } catch(e) {}
+
+    // 수주일/납기일 기간 (둘 중 하나라도 기간 내에 있으면 포함)
+    try {
+        const start = document.getElementById('startOrderDate').value;
+        const end = document.getElementById('endOrderDate').value;
+        if (start && end) {
+            where += ` and ((order_date between '${start}' and '${end}') or (shipment_date between '${start}' and '${end}'))`;
         }
     } catch(e) {}
     
@@ -197,7 +236,7 @@ const getOrdersList = async({page}) => {
 
         getPaging('mes_order_items', 'uid', where, page, 3, 4, 'getOrdersList');
     } catch (error) {
-        console.error('사원 데이터를 가져오는 중 오류가 발생했습니다:', error);
+        console.error('데이터를 가져오는 중 오류가 발생했습니다:', error);
     }
 };
 
@@ -239,9 +278,43 @@ const setWorkOrder = (uid) => {
     getWorkOrderList({page : document.getElementById('currentWorkOrderPage').value, order_uid : uid});
 }
 
+const searchWorkOrderList = () => {
+    getWorkOrderList({page:1});
+}
+
 const getWorkOrderList = async ({page, order_uid = null}) => {   
     document.getElementById('currentWorkOrderPage').value = page;
-    let where = `where status='생산대기' or status='부분작업완료'`;
+    let where = `where 1=1`;
+
+    // 작업지시일 기간
+    try {
+        const start = document.getElementById('startWorkOrderDate').value;
+        const end = document.getElementById('endWorkOrderDate').value;
+        if (start && end) {
+            where += ` and order_date between '${start}' and '${end}'`;
+        }
+    } catch(e) {}
+
+    // 작업품목
+    try {
+        const item = document.getElementById('searchWorkItem').value;
+        if (item) {
+            where += ` and item_name like '%${item}%'`;
+        }
+    } catch(e) {}
+
+    // 상태 (기본: 생산대기,부분작업완료)
+    try {
+        const status = document.getElementById('searchWorkStatus').value;
+        if (status && status !== 'ALL') {
+            where += ` and status='${status}'`;
+        } else if (!status || status === 'ALL') {
+            where += ` and (status='생산대기' or status='부분작업완료')`;
+        }
+    } catch(e) {
+        where += ` and (status='생산대기' or status='부분작업완료')`;
+    }
+
     if(order_uid) {
         where += ` and order_uid=${order_uid}`;
     }
@@ -267,7 +340,7 @@ const getWorkOrderList = async ({page, order_uid = null}) => {
 
         getPagingTarget('mes_work_order', 'uid', where, page, 5, 4, 'getWorkOrderList', 'work-order-paging-area');
     } catch (error) {
-        console.error('사원 데이터를 가져오는 중 오류가 발생했습니다:', error);
+        console.error('데이터를 가져오는 중 오류가 발생했습니다:', error);
     }
 };
 
@@ -334,7 +407,7 @@ const deleteWorkOrder = async (uid) => {
                 getWorkOrderList({page : document.getElementById('currentWorkOrderPage').value});
             }
         } catch (error) {
-            console.error('사원 데이터를 가져오는 중 오류가 발생했습니다:', error);
+            console.error('데이터를 삭제하는 중 오류가 발생했습니다:', error);
         }
     }
 }

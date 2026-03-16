@@ -465,7 +465,7 @@ foreach ($data_list as $index => $item) {
                                             $unit = '';
                                             $work_order_uid = 0;
                                             $work_qty = 1;
-                                            $quality_status = 'Quality inspection completed';
+                                            $quality_status = '품질검사완료';
                                             if (!mysqli_stmt_bind_param($stmt, "sisiisssss", $work_date, $work_order_uid, $worker, $work_qty, $current_item_uid, $current_item_name, $item_code_insert, $standard_insert, $unit, $quality_status)) {
                                                 write_error_log("daily_work insert bind_param error: " . mysqli_stmt_error($stmt));
                                             } else {

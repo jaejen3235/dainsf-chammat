@@ -18,32 +18,28 @@
                         <col width='426'>
                     </colgroup>
                     <tr>
-                        <th>품목 그룹</th>
-                        <td>
-                            <span id='span_plan_group'></span>
-                        </td>
                         <th>작업 품목</th>
-                        <td colspan='3'>
+                        <td>
                             <span id='span_plan_item'></span>
                         </td>
-                    </tr>
-                    <tr>
-                        <th>성별</th>
+                        <th>품번</th>
                         <td>
-                            <span id='span_plan_gender'></span>
-                        </td>
-                        <th>사이즈</th>
-                        <td>
-                            <span id='span_plan_size'></span>
+                            <span id='span_plan_item_code'></span>
                         </td>
                     </tr>
                     <tr>
-                        <th>색상</th>
+                        <th>규격</th>
                         <td>
-                            <span id='span_plan_color'></span>
+                            <span id='span_plan_standard'></span>
                         </td>
+                        <th>단위</th>
+                        <td>
+                            <span id='span_plan_unit'></span>
+                        </td>
+                    </tr>
+                    <tr>
                         <th>재고 수량</th>
-                        <td>
+                        <td colspan='3'>
                             <span id='span_stock_qty'></span>
                         </td>
                     </tr>
@@ -56,7 +52,7 @@
                         <td>
                             <input type='text' class='input' name='modify_plan_work_qty' id='modify_plan_work_qty' />
                         </td>
-                    </tr>                    
+                    </tr>
                 </table>
             </form>
             <hr />
@@ -183,17 +179,16 @@ const getPlanWorkOrder = async (uid) => {
     }
 }
 
-// 수정시 데이터 설정
+// 수정시 데이터 설정 (계획 생산지시: 품목·품번·규격·단위·재고·일자·수량만 표시)
 const setPlanWorkOrderData = (data) => {
-    if (data) {                
-        document.getElementById('span_plan_group').innerHTML = data.group_uid;
-        document.getElementById('span_plan_item').innerHTML = data.item_uid;
-        document.getElementById('span_plan_gender').innerHTML = data.gender;
-        document.getElementById('span_plan_size').innerHTML = data.size_uid;
-        document.getElementById('span_plan_color').innerHTML = data.color_uid;
-        document.getElementById('modify_plan_work_date').value = data.work_date;
-        document.getElementById('modify_plan_work_qty').value = data.work_qty;
-        document.getElementById('span_stock_qty').innerHTML = comma(data.stock_qty);
+    if (data && !data.error) {
+        document.getElementById('span_plan_item').innerHTML = data.item_name || '-';
+        document.getElementById('span_plan_item_code').innerHTML = data.item_code || '-';
+        document.getElementById('span_plan_standard').innerHTML = data.standard || '-';
+        document.getElementById('span_plan_unit').innerHTML = data.unit || '-';
+        document.getElementById('span_stock_qty').innerHTML = data.stock_qty != null ? comma(data.stock_qty) : '0';
+        document.getElementById('modify_plan_work_date').value = data.order_date || '';
+        document.getElementById('modify_plan_work_qty').value = data.order_qty != null ? data.order_qty : '';
     }
 }
 </script>

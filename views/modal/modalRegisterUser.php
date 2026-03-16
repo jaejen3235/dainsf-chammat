@@ -92,17 +92,18 @@ window.addEventListener('DOMContentLoaded', ()=>{
         if (btnRegister) {            
             btnRegister.addEventListener('click', () => {
 
+                let fieldsArray;
                 if(document.getElementById('uid').value == '') {
                     // 배열을 전달하여 함수 호출
-                    const fieldsArray = [
+                    fieldsArray = [
                         { id: 'employee', message: '사용자를 선택하세요', type: 'select' },
                         { id: 'loginId', message: '로그인 아이디를 입력하세요', type: 'text' },
                         { id: 'loginPwd', message: '로그인 비밀번호를 입력하세요', type: 'text'},
                         { id: 'auth', message: '권한을 선택하세요', type: 'select'}
                     ];
                 } else {
-                        // 배열을 전달하여 함수 호출
-                    const fieldsArray = [
+                    // 배열을 전달하여 함수 호출
+                    fieldsArray = [
                         { id: 'employee', message: '사용자를 선택하세요', type: 'select' },
                         { id: 'loginId', message: '로그인 아이디를 입력하세요', type: 'text' },
                         { id: 'auth', message: '권한을 선택하세요', type: 'select'}

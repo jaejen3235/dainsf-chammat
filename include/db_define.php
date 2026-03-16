@@ -10,4 +10,7 @@ if (!$conn) {
 }
 mysqli_select_db($conn, DB_NAME);
 mysqli_query($conn, "SET NAMES 'utf8'");
+
+// 스마트공장 로그 API 인증키 (발급받은 인증키를 입력하세요)
+define('SF_LOG_API_KEY', '$5$API$/8hK9E0CqJ8s1TrU/P86tX7VPR7eytk3tAobersgnO6');
 ?>

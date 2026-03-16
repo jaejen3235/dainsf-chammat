@@ -20,7 +20,7 @@
 
 <?php
 include "./views/modal/modalRegisterDelivery.php";
-include "./views/modal/modalInvoice.php";
+include "./views/modal/modalNewInvoice.php";
 ?>
 
 <script>
@@ -35,7 +35,8 @@ const getDeliveryList = async ({
     orderBy = 'uid',
     order = 'desc'
 }) => {    
-    let where = `where 1=1`;
+    // 출하 대기만 표시 (출하완료 제외)
+    let where = `where 1=1 and status != '출하완료'`;
 
     // 검색어가 있다면
     try {
@@ -69,7 +70,7 @@ const getDeliveryList = async ({
 
         getPaging('mes_delivery', 'uid', where, page, per, block, 'getDeliveryList');
     } catch (error) {
-        console.error('사원 데이터를 가져오는 중 오류가 발생했습니다:', error);
+        console.error('데이터를 가져오는 중 오류가 발생했습니다:', error);
     }
 };
 
@@ -100,6 +101,7 @@ const registerDelivery = (uid) => {
 
 const openInvoiceModal = (uid) => {
     getInvoiceData(uid);
-    openModal('modalInvoice', 900, 700);
+    //openModal('modalInvoice', 900, 700);
+    openModal('modalNewInvoice', 900, 700);
 }
 </script>

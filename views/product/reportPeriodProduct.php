@@ -7,6 +7,7 @@
                 <div class='btn-box'>
                     <input type='text' class='input datepicker' id='start_date' placeholder='시작일' />
                     <input type='text' class='input datepicker' id='end_date' placeholder='종료일' />
+                    <input type='text' class='input' id='item_name' placeholder='품목' />
                     <input type='button' class='btn-middle primary' value='검색' id='btnSearch' />
                 </div>
             </div>
@@ -36,10 +37,27 @@
     </div> 
 </div>
 
-
+<input type='hidden' id='currentPage' value='1'>
 
 <script>
 window.addEventListener('DOMContentLoaded', async() => {
+    const today = new Date().toISOString().slice(0,10);
+    try {
+        const start = document.getElementById('start_date');
+        const end = document.getElementById('end_date');
+        if (start && !start.value) start.value = today;
+        if (end && !end.value) end.value = today;
+    } catch(e) {}
+
+    try {
+        const btn = document.getElementById('btnSearch');
+        if (btn) {
+            btn.addEventListener('click', () => {
+                getPeriodProductList({page : 1});
+            });
+        }
+    } catch(e) {}
+
     await getPeriodProductList({page : document.getElementById('currentPage').value});
 });
 
@@ -49,9 +67,13 @@ const getPeriodProductList = async({page}) => {
 
     const start_date = document.getElementById('start_date').value;
     const end_date = document.getElementById('end_date').value;
+    const itemName = document.getElementById('item_name').value;
 
     if(start_date && end_date) {
         where += ` and work_date between '${start_date}' and '${end_date}'`;
+    }
+    if (itemName) {
+        where += ` and item_name like '%${itemName}%'`;
     }
     
     const formData = new FormData();

@@ -156,7 +156,7 @@ const getOrdersItemList = async ({
 
         getPaging('mes_order_items', 'uid', where, page, per, block, 'getOrdersItemList');
     } catch (error) {
-        console.error('사원 데이터를 가져오는 중 오류가 발생했습니다:', error);
+        console.error('출하지시 데이터를 가져오는 중 오류가 발생했습니다:', error);
     }
 };
 

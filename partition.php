@@ -462,7 +462,7 @@
         };
 
         // 세척기 가동 기준 전력량 (kW) - 이 값 이상이면 가동으로 표시
-        const WASHER_POWER_THRESHOLD = 1.0;
+        const WASHER_POWER_THRESHOLD = 0.2;
         
         // 차트 인스턴스
         let washerPowerChart = null;

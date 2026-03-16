@@ -132,20 +132,12 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
 // 납품 등록
 const register = () => {      
-    const delivery_qty = document.getElementById('delivery_qty');
-    const stock = document.getElementById('stock');
-
-    if(parseInt(delivery_qty.value) > parseInt(stock.value)) {
-        alert('납품 수량이 재고 수량보다 큽니다');
-        return;
-    }
-
     const frm = document.getElementById('frm');
 
     if(frm) {
         if(check('frm')) {
+            console.log('register:frm', frm);
             const formData = new FormData(frm);
-
             fetch('./handler.php', {
                 method: 'post',
                 body : formData

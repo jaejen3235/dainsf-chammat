@@ -7,6 +7,14 @@
                 <div class='btn-box'>
                     <input type='text' class='input datepicker' name='start_order_date' id='start_order_date' placeholder='시작일'/>
                     <input type='text' class='input datepicker' name='end_order_date' id='end_order_date' placeholder='종료일'/>
+                    <select class='input' id='order_status_filter'>
+                        <option value='ALL'>상태 전체</option>
+                        <option value='생산대기'>생산대기</option>
+                        <option value='작업중'>작업중</option>
+                        <option value='부분작업완료'>부분작업완료</option>
+                        <option value='작업완료'>작업완료</option>
+                    </select>
+                    <input type='text' class='input' name='order_item_name' id='order_item_name' placeholder='작업 품목'/>
                     <input type='button' class='btn primary' value='검색' onclick='searchOrderList()' />
                 </div>
             </div>
@@ -53,6 +61,7 @@
                 <div class='btn-box'>
                     <input type='text' class='input datepicker' name='start_work_date' id='start_work_date' placeholder='시작일'/>
                     <input type='text' class='input datepicker' name='end_work_date' id='end_work_date' placeholder='종료일'/>
+                    <input type='text' class='input' name='work_item_name' id='work_item_name' placeholder='품목'/>
                     <input type='button' class='btn primary' value='검색' onclick='searchWorkReportList()' />
                 </div>
             </div>
@@ -97,6 +106,24 @@
 
 <script>
 window.addEventListener('DOMContentLoaded', ()=>{
+    const today = new Date().toISOString().slice(0,10);
+
+    try {
+        const startOrder = document.getElementById('start_order_date');
+        const endOrder = document.getElementById('end_order_date');
+        if (startOrder && !startOrder.value) startOrder.value = today;
+        if (endOrder && !endOrder.value) endOrder.value = today;
+        const statusFilter = document.getElementById('order_status_filter');
+        if (statusFilter) statusFilter.value = '작업완료'; // 초기 진입 시 생산완료(작업완료)만 조회
+    } catch(e) {}
+
+    try {
+        const startWork = document.getElementById('start_work_date');
+        const endWork = document.getElementById('end_work_date');
+        if (startWork && !startWork.value) startWork.value = today;
+        if (endWork && !endWork.value) endWork.value = today;
+    } catch(e) {}
+
     getWorkOrderList({page : document.getElementById('currentPage').value});
     getWorkReportList({page : document.getElementById('currentWorkReportPage').value});
 });
@@ -104,15 +131,16 @@ window.addEventListener('DOMContentLoaded', ()=>{
 const searchOrderList = () => {
     const start_order_date = document.getElementById('start_order_date').value;
     const end_order_date = document.getElementById('end_order_date').value;
+    const status = document.getElementById('order_status_filter').value;
+    const itemName = document.getElementById('order_item_name').value;
 
     if(start_order_date && end_order_date) {
-        getWorkOrderList({page : document.getElementById('currentPage').value});
+        getWorkOrderList({page : document.getElementById('currentPage').value, status, itemName});
     }
 }
 
-const getWorkOrderList = async ({page, order_uid = null}) => {    
+const getWorkOrderList = async ({page, order_uid = null, status = null, itemName = null}) => {    
     document.getElementById('currentPage').value = page;
-    //let where = `where status='생산대기'`;
     let where = `where 1=1`;
     const start_order_date = document.getElementById('start_order_date').value;
     const end_order_date = document.getElementById('end_order_date').value;
@@ -123,6 +151,18 @@ const getWorkOrderList = async ({page, order_uid = null}) => {
 
     if(start_order_date && end_order_date) {
         where += ` and order_date between '${start_order_date}' and '${end_order_date}'`;
+    }
+
+    // 상태 조건 (ALL 선택 시 조건 없음)
+    const statusFilter = status || document.getElementById('order_status_filter').value;
+    if (statusFilter && statusFilter !== 'ALL') {
+        where += ` and status='${statusFilter}'`;
+    }
+
+    // 작업 품목(품목명) 조건
+    const itemFilter = (itemName !== null ? itemName : document.getElementById('order_item_name').value) || '';
+    if (itemFilter) {
+        where += ` and item_name like '%${itemFilter}%'`;
     }
     
     const formData = new FormData();
@@ -146,7 +186,7 @@ const getWorkOrderList = async ({page, order_uid = null}) => {
 
         getPagingTarget('mes_work_order', 'uid', where, page, 5, 4, 'getWorkOrderList', 'work-order-paging-area');
     } catch (error) {
-        console.error('사원 데이터를 가져오는 중 오류가 발생했습니다:', error);
+        console.error('데이터를 가져오는 중 오류가 발생했습니다:', error);
     }
 };
 
@@ -249,13 +289,14 @@ const endWork = (uid, button) => {
 const searchWorkReportList = () => {
     const start_work_date = document.getElementById('start_work_date').value;
     const end_work_date = document.getElementById('end_work_date').value;
+    const itemName = document.getElementById('work_item_name').value;
 
     if(start_work_date && end_work_date) {
-        getWorkReportList({page : document.getElementById('currentWorkReportPage').value});
+        getWorkReportList({page : document.getElementById('currentWorkReportPage').value, itemName});
     }
 }
 
-const getWorkReportList = async ({page, work_order_uid = null}) => {
+const getWorkReportList = async ({page, work_order_uid = null, itemName = null}) => {
     document.getElementById('currentWorkReportPage').value = page;
     let where = `where 1=1`;
     const start_work_date = document.getElementById('start_work_date').value;
@@ -263,6 +304,11 @@ const getWorkReportList = async ({page, work_order_uid = null}) => {
 
     if(start_work_date && end_work_date) {
         where += ` and work_date between '${start_work_date}' and '${end_work_date}'`;
+    }
+
+    const itemFilter = (itemName !== null ? itemName : document.getElementById('work_item_name').value) || '';
+    if (itemFilter) {
+        where += ` and item_name like '%${itemFilter}%'`;
     }
 
     const formData = new FormData();
