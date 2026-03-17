@@ -5319,7 +5319,8 @@ class Mes extends Functions
                     'purchase_qty' => $data['purchase_qty'],
                     'remain_qty' => $data['remain_qty'],
                     'status' => $data['status'],
-                    'purchase_date' => $data['purchase_date']
+                    'purchase_date' => $data['purchase_date'],
+                    'in_date' => isset($data['in_date']) ? $data['in_date'] : ''
                 ];
             }, $results)
         ];
@@ -5645,6 +5646,30 @@ class Mes extends Functions
                 'result' => 'error',
                 'message' => '삭제 중 에러가 발생하였습니다'
             ];
+        }
+        echo json_encode($this->response);
+    }
+
+    // 구매요청 품목 선택 건별 삭제 (uid 배열)
+    public function deletePurchaseItems() {
+        $uids = isset($this->param['uids']) ? $this->param['uids'] : '';
+        if (is_array($uids)) {
+            $uidList = array_map('intval', $uids);
+        } else {
+            $uidList = array_filter(array_map('intval', explode(',', $uids)));
+        }
+        if (empty($uidList)) {
+            $this->response = ['result' => 'error', 'message' => '삭제할 항목이 없습니다'];
+            echo json_encode($this->response);
+            return;
+        }
+        $placeholders = implode(',', $uidList);
+        $query = "delete from mes_purchase_item where uid in ({$placeholders})";
+        $result = $this->query($query);
+        if ($result) {
+            $this->response = ['result' => 'success', 'message' => '정상적으로 삭제하였습니다'];
+        } else {
+            $this->response = ['result' => 'error', 'message' => '삭제 중 에러가 발생하였습니다'];
         }
         echo json_encode($this->response);
     }   

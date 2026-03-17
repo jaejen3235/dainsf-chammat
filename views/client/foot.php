@@ -44,7 +44,19 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 $(function(){
-    $('.datepicker').datepicker();
+    $('.datepicker').each(function () {
+        const $input = $(this);
+        $input.datepicker({
+            // 연/월을 변경해도 입력 포커스가 유지되는 동안은 달력을 계속 보여준다
+            onChangeMonthYear: function(year, month, inst) {
+                setTimeout(function () {
+                    if (document.activeElement === $input[0]) {
+                        $input.datepicker('show');
+                    }
+                }, 0);
+            }
+        });
+    });
 });
 
 ( function( factory ) {

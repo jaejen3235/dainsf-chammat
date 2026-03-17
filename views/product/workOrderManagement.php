@@ -43,8 +43,8 @@
                         <th>단위</th>
                         <th>수주수량</th>
                         <th>재고수량</th>
-                        <th>수주일</th>
-                        <th>납기일</th>
+                        <th class="center">수주일 <span class="sort-btns"><span class="sort-asc" data-col="order_date" title="오름차순">▲</span><span class="sort-desc" data-col="order_date" title="내림차순">▼</span></span></th>
+                        <th class="center">납기일 <span class="sort-btns"><span class="sort-asc" data-col="shipment_date" title="오름차순">▲</span><span class="sort-desc" data-col="shipment_date" title="내림차순">▼</span></span></th>
                         <th>상태</th>
                         <th>관리</th>
                     </tr>
@@ -92,7 +92,7 @@
                 <thead>
                     <tr>
                         <th>생산구분</th>
-                        <th>작업지시일</th>
+                        <th class="center">작업지시일 <span id="workOrder_sort_order" class="sort-btns" data-order="desc"><span class="sort-asc" title="오름차순">▲</span><span class="sort-desc" title="내림차순">▼</span></span></th>
                         <th>거래처</th>
                         <th>작업품목</th>                        
                         <th>품번</th>
@@ -116,6 +116,7 @@
 
 <input type='hidden' id='currentPage' value='1'>
 <input type='hidden' id='currentWorkOrderPage' value='1'>
+<div id="ordersListSort" data-orderby="order_date" data-order="desc" style="display:none" aria-hidden="true"></div>
 
 <?php
 include "./views/modal/modalRegisterWorkOrder.php";
@@ -124,6 +125,12 @@ include "./views/modal/modalModifyPlanWorkOrder.php";
 include "./views/modal/modalModifyWorkOrder.php";
 ?>
 
+<style>
+.sort-btns { margin-left: 4px; vertical-align: middle; }
+.sort-btns .sort-asc, .sort-btns .sort-desc { cursor: pointer; opacity: 0.5; padding: 0 1px; }
+.sort-btns .sort-asc:hover, .sort-btns .sort-desc:hover { opacity: 1; }
+.sort-btns .sort-active { opacity: 1; font-weight: bold; }
+</style>
 <script>
 window.addEventListener('DOMContentLoaded', ()=>{
     const today = new Date().toISOString().slice(0,10);
@@ -186,7 +193,37 @@ window.addEventListener('DOMContentLoaded', ()=>{
             });
         }
     } catch(e) {}
+
+    // 수주 품목 목록: 수주일/납기일 정렬
+    document.querySelectorAll('.order-list thead .sort-asc, .order-list thead .sort-desc').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const col = this.getAttribute('data-col');
+            const order = this.classList.contains('sort-asc') ? 'asc' : 'desc';
+            const el = document.getElementById('ordersListSort');
+            if (el) { el.setAttribute('data-orderby', col); el.setAttribute('data-order', order); }
+            updateOrdersListSortUI(col, order);
+            getOrdersList({ page: 1 });
+        });
+    });
+    updateOrdersListSortUI('order_date', 'desc');
+
+    // 생산지시 목록: 작업지시일 정렬
+    document.querySelector('#workOrder_sort_order .sort-asc').addEventListener('click', () => { setWorkOrderSort('asc'); getWorkOrderList({ page: 1 }); });
+    document.querySelector('#workOrder_sort_order .sort-desc').addEventListener('click', () => { setWorkOrderSort('desc'); getWorkOrderList({ page: 1 }); });
+    setWorkOrderSort('desc');
 });
+function updateOrdersListSortUI(orderby, order) {
+    document.querySelectorAll('.order-list thead .sort-asc, .order-list thead .sort-desc').forEach(el => {
+        el.classList.remove('sort-active');
+        if (el.getAttribute('data-col') === orderby && ((order === 'asc' && el.classList.contains('sort-asc')) || (order === 'desc' && el.classList.contains('sort-desc')))) el.classList.add('sort-active');
+    });
+}
+function setWorkOrderSort(dir) {
+    const wrap = document.getElementById('workOrder_sort_order');
+    if (!wrap) return;
+    wrap.setAttribute('data-order', dir);
+    wrap.querySelectorAll('.sort-asc, .sort-desc').forEach(el => { el.classList.remove('sort-active'); if ((el.classList.contains('sort-asc') && dir === 'asc') || (el.classList.contains('sort-desc') && dir === 'desc')) el.classList.add('sort-active'); });
+}
 
 
 const getOrdersList = async({page}) => {  
@@ -213,7 +250,10 @@ const getOrdersList = async({page}) => {
             where += ` and ((order_date between '${start}' and '${end}') or (shipment_date between '${start}' and '${end}'))`;
         }
     } catch(e) {}
-    
+
+    const sortEl = document.getElementById('ordersListSort');
+    const orderBy = sortEl ? (sortEl.getAttribute('data-orderby') || 'order_date') : 'order_date';
+    const order = sortEl ? (sortEl.getAttribute('data-order') || 'desc') : 'desc';
 
     const formData = new FormData();
     formData.append('controller', 'mes');
@@ -221,8 +261,8 @@ const getOrdersList = async({page}) => {
     formData.append('where', where);
     formData.append('page', page);
     formData.append('per', 3);
-    formData.append('orderby', 'uid');
-    formData.append('asc', 'desc');
+    formData.append('orderby', orderBy);
+    formData.append('asc', order);
 
     try {
         const response = await fetch('./handler.php', {
@@ -318,15 +358,18 @@ const getWorkOrderList = async ({page, order_uid = null}) => {
     if(order_uid) {
         where += ` and order_uid=${order_uid}`;
     }
-    
+
+    const orderBy = 'order_date';
+    const order = (document.getElementById('workOrder_sort_order') && document.getElementById('workOrder_sort_order').getAttribute('data-order')) || 'desc';
+
     const formData = new FormData();
     formData.append('controller', 'mes');
     formData.append('mode', 'getWorkOrderList');
     formData.append('where', where);
     formData.append('page', page);
     formData.append('per', 5);
-    formData.append('orderby', 'uid');
-    formData.append('asc', 'desc');
+    formData.append('orderby', orderBy);
+    formData.append('asc', order);
 
     try {
         const response = await fetch('./handler.php', {

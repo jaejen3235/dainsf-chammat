@@ -22,7 +22,7 @@
                 </colgroup>
                 <thead>
                     <tr>
-                        <th>작업일자</th>
+                        <th class='center'>작업일자 <span id='work_date_sort' class='sort-btns' data-order='desc'><span class='sort-asc' title='오름차순'>▲</span><span class='sort-desc' title='내림차순'>▼</span></span></th>
                         <th>작업자</th>
                         <th>품목</th>
                         <th>품번</th>
@@ -38,6 +38,13 @@
 </div>
 
 <input type='hidden' id='currentPage' value='1'>
+
+<style>
+.sort-btns { margin-left: 4px; vertical-align: middle; }
+.sort-btns .sort-asc, .sort-btns .sort-desc { cursor: pointer; opacity: 0.5; padding: 0 1px; }
+.sort-btns .sort-asc:hover, .sort-btns .sort-desc:hover { opacity: 1; }
+.sort-btns .sort-active { opacity: 1; font-weight: bold; }
+</style>
 
 <script>
 window.addEventListener('DOMContentLoaded', async() => {
@@ -58,8 +65,29 @@ window.addEventListener('DOMContentLoaded', async() => {
         }
     } catch(e) {}
 
+    try {
+        const sortWrap = document.getElementById('work_date_sort');
+        if (sortWrap) {
+            sortWrap.querySelector('.sort-asc').addEventListener('click', () => { setWorkDateSort('asc'); getPeriodProductList({page : 1}); });
+            sortWrap.querySelector('.sort-desc').addEventListener('click', () => { setWorkDateSort('desc'); getPeriodProductList({page : 1}); });
+            setWorkDateSort('desc');
+        }
+    } catch(e) {}
+
     await getPeriodProductList({page : document.getElementById('currentPage').value});
 });
+
+function setWorkDateSort(dir) {
+    const wrap = document.getElementById('work_date_sort');
+    if (!wrap) return;
+    wrap.setAttribute('data-order', dir);
+    wrap.querySelectorAll('.sort-asc, .sort-desc').forEach(el => {
+        el.classList.remove('sort-active');
+        if ((el.classList.contains('sort-asc') && dir === 'asc') || (el.classList.contains('sort-desc') && dir === 'desc')) {
+            el.classList.add('sort-active');
+        }
+    });
+}
 
 const getPeriodProductList = async({page}) => {  
     document.getElementById('currentPage').value = page;
@@ -76,14 +104,18 @@ const getPeriodProductList = async({page}) => {
         where += ` and item_name like '%${itemName}%'`;
     }
     
+    const sortWrap = document.getElementById('work_date_sort');
+    const orderBy = 'work_date';
+    const order = sortWrap ? (sortWrap.getAttribute('data-order') || 'desc') : 'desc';
+
     const formData = new FormData();
     formData.append('controller', 'mes');
     formData.append('mode', 'getDailyWorkList');
     formData.append('where', where);
     formData.append('page', page);
     formData.append('per', 15);
-    formData.append('orderby', 'uid');
-    formData.append('asc', 'desc');
+    formData.append('orderby', orderBy);
+    formData.append('asc', order);
 
     try {
         const response = await fetch('./handler.php', {
