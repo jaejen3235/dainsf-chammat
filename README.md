@@ -64,6 +64,11 @@
   - CCP-1BP 모니터링일지(`views/haccp/HC01_CCP-1BP_모니터링일지.html`)
     - 작성자(`writer_name`) 입력 영역을 다중 라인 입력이 가능하도록 `textarea`로 변경
     - 승인자(`approver_name`) 입력 영역에 대해서도 동일하게 `textarea` 적용(표시 라인 수 통일)
+    - 점검표 O/X 선택 영역들을 라디오 UI에서 사용자 직접 입력(`input[type="text"]`) 방식으로 변경 (`rows[n][ox]`)
+    - 중복 배치로 인해 겹침이 발생하던 `.hce.s135_02` 블록(행 인덱스 `rows[6]` 사용)을 제거하여 row/col 충돌 해소
+  - CCP-2BP 모니터링일지(`views/haccp/HC02_CCP-2BP_모니터링일지.html`)
+    - 점검자/승인자 입력을 `textarea`(2줄)로 변경하고 중앙 정렬/스크롤 제거 적용
+    - 서명/확인 영역(`HC02_actor`, `HC02_verifier`) 입력을 `textarea`로 변경(부모 영역 100% 채움) 및 줄간격 축소(`line-height: 1.1`)
   - 스타일 조정(`assets/css/CCP-1BP_모니터링일지_style.css`)
     - 작성자/승인자 입력 영역 높이 확장(2줄 입력이 보이도록 영역 높이 조정)
     - 입력 영역을 flex 기반 중앙 정렬로 배치(가로/세로 중앙 정렬)

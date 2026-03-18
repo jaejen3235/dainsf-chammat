@@ -292,7 +292,7 @@
                                             <div class="hcI">
                                                 <div class="hls ps6"">
                                                     <textarea name="writer_name" id="writer_name" rows="2"
-                                                        class="text-input writer-textarea" placeholder="작성자" style="resize: none;"></textarea>
+                                                        class="text-input writer-textarea" style="resize: none;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -303,7 +303,7 @@
                                             <div class="hcI">
                                                 <div class="hls ps6">
                                                     <textarea name="approver_name" id="approver_name" rows="2"
-                                                        class="text-input approver-textarea" placeholder="승인자" style="resize: none;"></textarea>
+                                                        class="text-input approver-textarea" style="resize: none;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -882,21 +882,9 @@
                                         <div class="hcD" style="width: 100%; height: 100%; left: 0; top: 0;">
                                             <div class="hcI" style="width: 100%; height: 100%; left: 0; top: 0;">
                                                 <div class="hls ps4 ox-cell">
-                                                    <label class="ox-hit ox-left">
-                                                        <input type="radio" name="rows[1][ox]" id="HC01T01_OX_O"
-                                                            value="O" onclick="toggleOX(this)" data-checked="false" />
-                                                    </label>
-
-                                                    <label class="ox-hit ox-right">
-                                                        <input type="radio" name="rows[1][ox]" id="HC01T01_OX_X"
-                                                            value="X" onclick="toggleOX(this)" data-checked="false" />
-                                                    </label>
-
-                                                    <span class="hrt cs7 ox-text">
-                                                        <span class="ox-mark ox-o">○</span>
-                                                        <span class="ox-slash"> / </span>
-                                                        <span class="ox-mark ox-x">×</span>
-                                                    </span>
+                                                    <input type="text" name="rows[1][ox]" id="HC01T01_OX"
+                                                        autocomplete="off"
+                                                        style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; outline: none; box-sizing: border-box;" />
                                                 </div>
                                             </div>
                                         </div>
@@ -924,7 +912,6 @@
                                                 <div
                                                     style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1000;">
                                                     <textarea class="cs31" id="HC01T02_TIME" name="rows[2][hh_mm]"
-                                                        placeholder="HH:mm"
                                                         style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; resize: none; overflow: hidden; padding-top: 4px; box-sizing: border-box; line-height: 1.2;"
                                                         oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"
                                                         onkeydown="if(event.keyCode===13)event.preventDefault();"></textarea>
@@ -1008,21 +995,9 @@
                                         <div class="hcD" style="width: 100%; height: 100%; left: 0; top: 0;">
                                             <div class="hcI" style="width: 100%; height: 100%; left: 0; top: 0;">
                                                 <div class="hls ps4 ox-cell">
-                                                    <label class="ox-hit ox-left">
-                                                        <input type="radio" name="rows[2][ox]" id="HC01T02_OX_O"
-                                                            value="O" onclick="toggleOX(this)" data-checked="false" />
-                                                    </label>
-
-                                                    <label class="ox-hit ox-right">
-                                                        <input type="radio" name="rows[2][ox]" id="HC01T02_OX_X"
-                                                            value="X" onclick="toggleOX(this)" data-checked="false" />
-                                                    </label>
-
-                                                    <span class="hrt cs7 ox-text">
-                                                        <span class="ox-mark ox-o">○</span>
-                                                        <span class="ox-slash"> / </span>
-                                                        <span class="ox-mark ox-x">×</span>
-                                                    </span>
+                                                    <input type="text" name="rows[2][ox]" id="HC01T02_OX"
+                                                        autocomplete="off"
+                                                        style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; outline: none; box-sizing: border-box;" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1050,7 +1025,6 @@
                                                 <div
                                                     style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1000;">
                                                     <textarea class="cs31" id="HC01T03_TIME" name="rows[3][hh_mm]"
-                                                        placeholder="HH:mm"
                                                         style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; resize: none; overflow: hidden; padding-top: 4px; box-sizing: border-box; line-height: 1.2;"
                                                         oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"
                                                         onkeydown="if(event.keyCode===13)event.preventDefault();"></textarea>
@@ -1134,21 +1108,9 @@
                                         <div class="hcD" style="width: 100%; height: 100%; left: 0; top: 0;">
                                             <div class="hcI" style="width: 100%; height: 100%; left: 0; top: 0;">
                                                 <div class="hls ps4 ox-cell">
-                                                    <label class="ox-hit ox-left">
-                                                        <input type="radio" name="rows[3][ox]" id="HC01T03_OX_O"
-                                                            value="O" onclick="toggleOX(this)" data-checked="false" />
-                                                    </label>
-
-                                                    <label class="ox-hit ox-right">
-                                                        <input type="radio" name="rows[3][ox]" id="HC01T03_OX_X"
-                                                            value="X" onclick="toggleOX(this)" data-checked="false" />
-                                                    </label>
-
-                                                    <span class="hrt cs7 ox-text">
-                                                        <span class="ox-mark ox-o">○</span>
-                                                        <span class="ox-slash"> / </span>
-                                                        <span class="ox-mark ox-x">×</span>
-                                                    </span>
+                                                    <input type="text" name="rows[3][ox]" id="HC01T03_OX"
+                                                        autocomplete="off"
+                                                        style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; outline: none; box-sizing: border-box;" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1176,7 +1138,6 @@
                                                 <div
                                                     style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1000;">
                                                     <textarea class="cs31" id="HC01T04_TIME" name="rows[4][hh_mm]"
-                                                        placeholder="HH:mm"
                                                         style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; resize: none; overflow: hidden; padding-top: 4px; box-sizing: border-box; line-height: 1.2;"
                                                         oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"
                                                         onkeydown="if(event.keyCode===13)event.preventDefault();"></textarea>
@@ -1193,51 +1154,6 @@
                                                     style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1000;">
                                                     <textarea class="cs31" id="HC01T04_LITER"
                                                         style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; resize: none; overflow: hidden; padding-top: 4px; box-sizing: border-box; line-height: 1.2; white-space: nowrap;"
-                                                        onkeydown="if(event.keyCode===13)event.preventDefault();">리터</textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- (135.52) 절임갓 -->
-                                    <div class="hce s135_01">
-                                        <div class="hcD" style="width: 100%; height: 100%; left: 0; top: 0;">
-                                            <div class="hcI" style="width: 100%; height: 100%; left: 0; top: 0;">
-                                                <div
-                                                    style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1000;">
-                                                    <textarea class="cs16" id="HC01T05_PRODUCT"
-                                                        name="rows[5][product_name]"
-                                                        style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; resize: none; overflow: hidden; padding-top: 4px; box-sizing: border-box; line-height: 1.2;"
-                                                        onkeydown="if(event.keyCode===13)event.preventDefault();">절임갓</textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- (135.52) time -->
-                                    <div class="hce s135_02">
-                                        <div class="hcD" style="width: 100%; height: 100%; left: 0; top: 0;">
-                                            <div class="hcI" style="width: 100%; height: 100%; left: 0; top: 0;">
-                                                <div
-                                                    style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1000;">
-                                                    <textarea class="cs31" id="HC01T05_TIME" name="rows[5][hh_mm]"
-                                                        placeholder="HH:mm"
-                                                        style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; resize: none; overflow: hidden; padding-top: 4px; box-sizing: border-box; line-height: 1.2;"
-                                                        oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"
-                                                        onkeydown="if(event.keyCode===13)event.preventDefault();"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- (135.52) litre + unit -->
-                                    <div class="hce s135_03">
-                                        <div class="hcD" style="width: 100%; height: 100%; left: 0; top: 0;">
-                                            <div class="hcI" style="width: 100%; height: 100%; left: 0; top: 0;">
-                                                <div
-                                                    style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1000;">
-                                                    <textarea class="cs31" id="HC01T05_LITER"
-                                                        style="width: 100%; font-size: 9pt; height: 100%; text-align: center; border: none; background: transparent; resize: none; overflow: hidden; padding-top: 4px; box-sizing: border-box; line-height: 1.2; white-space: nowrap;"
                                                         onkeydown="if(event.keyCode===13)event.preventDefault();">리터</textarea>
                                                 </div>
                                             </div>
@@ -1305,44 +1221,37 @@
                                         <div class="hcD" style="width: 100%; height: 100%; left: 0; top: 0;">
                                             <div class="hcI" style="width: 100%; height: 100%; left: 0; top: 0;">
                                                 <div class="hls ps4 ox-cell">
-                                                    <label class="ox-hit ox-left">
-                                                        <input type="radio" name="rows[4][ox]" id="HC01T04_OX_O"
-                                                            value="O" onclick="toggleOX(this)" data-checked="false" />
-                                                    </label>
-
-                                                    <label class="ox-hit ox-right">
-                                                        <input type="radio" name="rows[4][ox]" id="HC01T04_OX_X"
-                                                            value="X" onclick="toggleOX(this)" data-checked="false" />
-                                                    </label>
-
-                                                    <span class="hrt cs7 ox-text">
-                                                        <span class="ox-mark ox-o">○</span>
-                                                        <span class="ox-slash"> / </span>
-                                                        <span class="ox-mark ox-x">×</span>
-                                                    </span>
+                                                    <input type="text" name="rows[4][ox]" id="HC01T04_OX"
+                                                        autocomplete="off"
+                                                        style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; outline: none; box-sizing: border-box;" />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
+
                                     <!-- (135.52) 절임갓 -->
-                                    <!-- <div class="hce s135_01">
-                                <div class="hcD">
-                                    <div class="hcI">
-                                        <div class="hls ps7">
-                                            <span class="hrt cs16">절임갓</span>
+                                    <div class="hce s135_01">
+                                        <div class="hcD" style="width: 100%; height: 100%; left: 0; top: 0;">
+                                            <div class="hcI" style="width: 100%; height: 100%; left: 0; top: 0;">
+                                                <div
+                                                    style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1000;">
+                                                    <textarea class="cs16" id="HC01T05_PRODUCT"
+                                                        name="rows[5][product_name]"
+                                                        style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; resize: none; overflow: hidden; padding-top: 4px; box-sizing: border-box; line-height: 1.2;"
+                                                        onkeydown="if(event.keyCode===13)event.preventDefault();">절임갓</textarea>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div> -->
 
-                                    <!-- (135.52) time (duplicate hce - row 6) -->
+                                    <!-- (135.52) time -->
                                     <div class="hce s135_02">
                                         <div class="hcD" style="width: 100%; height: 100%; left: 0; top: 0;">
                                             <div class="hcI" style="width: 100%; height: 100%; left: 0; top: 0;">
                                                 <div
                                                     style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1000;">
-                                                    <textarea class="cs31" name="rows[6][hh_mm]" placeholder="HH:mm"
+                                                    <textarea class="cs31" id="HC01T05_TIME" name="rows[5][hh_mm]"
                                                         style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; resize: none; overflow: hidden; padding-top: 4px; box-sizing: border-box; line-height: 1.2;"
                                                         oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"
                                                         onkeydown="if(event.keyCode===13)event.preventDefault();"></textarea>
@@ -1350,6 +1259,21 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- (135.52) litre + unit -->
+                                    <div class="hce s135_03">
+                                        <div class="hcD" style="width: 100%; height: 100%; left: 0; top: 0;">
+                                            <div class="hcI" style="width: 100%; height: 100%; left: 0; top: 0;">
+                                                <div
+                                                    style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1000;">
+                                                    <textarea class="cs31" id="HC01T05_LITER"
+                                                        style="width: 100%; font-size: 9pt; height: 100%; text-align: center; border: none; background: transparent; resize: none; overflow: hidden; padding-top: 4px; box-sizing: border-box; line-height: 1.2; white-space: nowrap;"
+                                                        onkeydown="if(event.keyCode===13)event.preventDefault();">리터</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
 
                                     <!-- (135.52) kg + unit -->
                                     <div class="hce s135_04">
@@ -1412,21 +1336,9 @@
                                         <div class="hcD" style="width: 100%; height: 100%; left: 0; top: 0;">
                                             <div class="hcI" style="width: 100%; height: 100%; left: 0; top: 0;">
                                                 <div class="hls ps4 ox-cell">
-                                                    <label class="ox-hit ox-left">
-                                                        <input type="radio" name="rows[5][ox]" id="HC01T05_OX_O"
-                                                            value="O" onclick="toggleOX(this)" data-checked="false" />
-                                                    </label>
-
-                                                    <label class="ox-hit ox-right">
-                                                        <input type="radio" name="rows[5][ox]" id="HC01T05_OX_X"
-                                                            value="X" onclick="toggleOX(this)" data-checked="false" />
-                                                    </label>
-
-                                                    <span class="hrt cs7 ox-text">
-                                                        <span class="ox-mark ox-o">○</span>
-                                                        <span class="ox-slash"> / </span>
-                                                        <span class="ox-mark ox-x">×</span>
-                                                    </span>
+                                                    <input type="text" name="rows[5][ox]" id="HC01T05_OX"
+                                                        autocomplete="off"
+                                                        style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; outline: none; box-sizing: border-box;" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1454,7 +1366,6 @@
                                                 <div
                                                     style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1000;">
                                                     <textarea class="cs31" id="HC01T06_TIME" name="rows[6][hh_mm]"
-                                                        placeholder="HH:mm"
                                                         style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; resize: none; overflow: hidden; padding-top: 4px; box-sizing: border-box; line-height: 1.2;"
                                                         oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"
                                                         onkeydown="if(event.keyCode===13)event.preventDefault();"></textarea>
@@ -1538,21 +1449,9 @@
                                         <div class="hcD" style="width: 100%; height: 100%; left: 0; top: 0;">
                                             <div class="hcI" style="width: 100%; height: 100%; left: 0; top: 0;">
                                                 <div class="hls ps4 ox-cell">
-                                                    <label class="ox-hit ox-left">
-                                                        <input type="radio" name="rows[6][ox]" id="HC01T06_OX_O"
-                                                            value="O" onclick="toggleOX(this)" data-checked="false" />
-                                                    </label>
-
-                                                    <label class="ox-hit ox-right">
-                                                        <input type="radio" name="rows[6][ox]" id="HC01T06_OX_X"
-                                                            value="X" onclick="toggleOX(this)" data-checked="false" />
-                                                    </label>
-
-                                                    <span class="hrt cs7 ox-text">
-                                                        <span class="ox-mark ox-o">○</span>
-                                                        <span class="ox-slash"> / </span>
-                                                        <span class="ox-mark ox-x">×</span>
-                                                    </span>
+                                                    <input type="text" name="rows[6][ox]" id="HC01T06_OX"
+                                                        autocomplete="off"
+                                                        style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; outline: none; box-sizing: border-box;" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1580,7 +1479,6 @@
                                                 <div
                                                     style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1000;">
                                                     <textarea class="cs31" id="HC01T07_TIME" name="rows[7][hh_mm]"
-                                                        placeholder="HH:mm"
                                                         style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; resize: none; overflow: hidden; padding-top: 4px; box-sizing: border-box; line-height: 1.2;"
                                                         oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"
                                                         onkeydown="if(event.keyCode===13)event.preventDefault();"></textarea>
@@ -1664,21 +1562,9 @@
                                         <div class="hcD" style="width: 100%; height: 100%; left: 0; top: 0;">
                                             <div class="hcI" style="width: 100%; height: 100%; left: 0; top: 0;">
                                                 <div class="hls ps4 ox-cell">
-                                                    <label class="ox-hit ox-left">
-                                                        <input type="radio" name="rows[7][ox]" id="HC01T07_OX_O"
-                                                            value="O" onclick="toggleOX(this)" data-checked="false" />
-                                                    </label>
-
-                                                    <label class="ox-hit ox-right">
-                                                        <input type="radio" name="rows[7][ox]" id="HC01T07_OX_X"
-                                                            value="X" onclick="toggleOX(this)" data-checked="false" />
-                                                    </label>
-
-                                                    <span class="hrt cs7 ox-text">
-                                                        <span class="ox-mark ox-o">○</span>
-                                                        <span class="ox-slash"> / </span>
-                                                        <span class="ox-mark ox-x">×</span>
-                                                    </span>
+                                                    <input type="text" name="rows[7][ox]" id="HC01T07_OX"
+                                                        autocomplete="off"
+                                                        style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; outline: none; box-sizing: border-box;" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1706,7 +1592,6 @@
                                                 <div
                                                     style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1000;">
                                                     <textarea class="cs31" id="HC01T08_TIME" name="rows[8][hh_mm]"
-                                                        placeholder="HH:mm"
                                                         style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; resize: none; overflow: hidden; padding-top: 4px; box-sizing: border-box; line-height: 1.2;"
                                                         oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"
                                                         onkeydown="if(event.keyCode===13)event.preventDefault();"></textarea>

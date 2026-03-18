@@ -460,7 +460,7 @@ body {
 
 .hce.hd2 .hls.ps24 {
     left: 0mm;
-    top: 10.94mm;
+    top: 10.0mm;
     width: 100.91mm;
     height: 7.06mm;
     line-height: 6.28mm;
@@ -709,6 +709,7 @@ body {
     padding: 0;
     margin: 0;
     vertical-align: baseline;
+    appearance: none;
     -webkit-appearance: none;
 }
 
@@ -791,6 +792,7 @@ body {
     padding: 0;
     margin: 0;
     vertical-align: baseline;
+    appearance: none;
     -webkit-appearance: none;
 }
 
