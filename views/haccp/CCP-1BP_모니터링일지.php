@@ -375,7 +375,25 @@
             <div class="ccp1bp-right-panel">
                 <?php
                     $lines = file(__DIR__ . '/HC01_CCP-1BP_모니터링일지.html');
-                    echo implode('', array_slice($lines, 82, 1785));
+
+                    // form 시작/종료 태그 기준으로 동적으로 슬라이스
+                    $startIndex = null;
+                    $endIndex   = null;
+
+                    foreach ($lines as $idx => $line) {
+                        if ($startIndex === null && strpos($line, '<form') !== false) {
+                            $startIndex = $idx;
+                        }
+                        if (strpos($line, '</form>') !== false) {
+                            $endIndex = $idx;
+                            break;
+                        }
+                    }
+
+                    if ($startIndex !== null && $endIndex !== null && $endIndex >= $startIndex) {
+                        $length = $endIndex - $startIndex + 1;
+                        echo implode('', array_slice($lines, $startIndex, $length));
+                    }
                 ?>
             </div>
         </div>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
@@ -290,10 +290,9 @@
                                     <div class="hce hd6">
                                         <div class="hcD">
                                             <div class="hcI">
-                                                <div class="hls ps6">
-                                                    <input type="text" name="writer_name" id="writer_name"
-                                                        style="top: -1.0mm; border-width:0px; width: 100%; height: 100%; border: none; outline: none; text-align: center;"
-                                                        class="text-input" placeholder="작성자">
+                                                <div class="hls ps6"">
+                                                    <textarea name="writer_name" id="writer_name" rows="2"
+                                                        class="text-input writer-textarea" placeholder="작성자" style="resize: none;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -302,7 +301,10 @@
                                     <div class="hce hd7">
                                         <div class="hcD">
                                             <div class="hcI">
-                                                <div class="hls ps6"></div>
+                                                <div class="hls ps6">
+                                                    <textarea name="approver_name" id="approver_name" rows="2"
+                                                        class="text-input approver-textarea" placeholder="승인자" style="resize: none;"></textarea>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -353,7 +355,7 @@
                                                 <div class="hls ps7"
                                                     style="left: 0; top: 0; display: flex; align-items: center; justify-content: center;">
                                                     <input type="text" id="checker_name" class="checker name"
-                                                        value="점검자" maxlength="20"
+                                                        placeholder="점검자" maxlength="20"
                                                         style="width: 100%; height: 115%; text-align: center; border: none; background: transparent;" />
                                                 </div>
                                             </div>
@@ -699,7 +701,7 @@
                                             <div class="hcI" style="width: 100%; height: 100%; left: 0; top: 0;">
                                                 <div
                                                     style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1000;">
-                                                    <textarea class="cs31" id="HC01T00_TIME" placeholder="HH:mm"
+                                                    <textarea class="cs31" id="HC01T00_TIME"
                                                         style="width: 100%; height: 110%; text-align: center; border: none; background: transparent; resize: none; overflow: hidden; padding-top: 4px; box-sizing: border-box; line-height: 1.2;"
                                                         oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"></textarea>
                                                 </div>
@@ -797,7 +799,7 @@
                                             <div class="hcI" style="width: 100%; height: 100%; left: 0; top: 0;">
                                                 <div
                                                     style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1000;">
-                                                    <textarea class="cs31" id="HC01T01_TIME" placeholder="HH:mm"
+                                                    <textarea class="cs31" id="HC01T01_TIME"
                                                         style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; resize: none; overflow: hidden; padding-top: 4px; box-sizing: border-box; line-height: 1.2;"
                                                         oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"></textarea>
                                                 </div>
@@ -1842,7 +1844,7 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    <!-- 조치자 칸 -->
                                     <div class="hce s235_2">
                                         <div class="hcD">
                                             <div class="hcI">
@@ -1858,7 +1860,10 @@
                                     <div class="hce s235_3">
                                         <div class="hcD">
                                             <div class="hcI">
-                                                <div class="hls ps6"></div>
+                                                <div class="hls ps6">
+                                                    <textarea id="verifier" class="cell-textarea" placeholder=""
+                                                        style="font-size: 9pt;"></textarea>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -2543,10 +2543,11 @@ class Mes extends Functions
             {$whereClause} 
             ORDER BY {$orderby} {$asc} 
             {$limitClause}
-        ";                     
+        ";
+        //$this->debugLog("query",$query);
         $this->query($query);
         $results = $this->fetchAll();
-    
+        //$this->debugLog("results",$results);
         $this->response = [            
             'data' => array_map(function($data) {
                 return [

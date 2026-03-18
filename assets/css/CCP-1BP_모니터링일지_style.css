@@ -1,4 +1,4 @@
-﻿/* ===== Base ===== */
+/* ===== Base ===== */
 body {
     margin: 0;
     padding: 2mm 0 0;
@@ -568,17 +568,39 @@ body {
 }
 
 .hce.hd6 .hcI {
-    top: 4.12mm;
+    top: 1mm;
 }
 
 .hce.hd6 .hls.ps6 {
     left: 0mm;
     top: -0.19mm;
     width: 23.71mm;
-    height: 3.88mm;
+    height: 11.64mm;
     line-height: 3.1mm;
-    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.hce.hd6 .hls.ps6 .writer-textarea {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    min-height: 0;
+    margin: 0;
+    padding: 0.5mm;
+    border: none;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+    box-sizing: border-box;
+    text-align: center;
+    font: inherit;
+    font-size: 0.8em;
+    line-height: 1.40;
+}
+
 
 /* cell 7 (승인자 칸) */
 .hce.hd7 {
@@ -594,16 +616,35 @@ body {
 }
 
 .hce.hd7 .hcI {
-    top: 4.12mm;
+    top: 1mm;
 }
 
 .hce.hd7 .hls.ps6 {
     left: 0mm;
     top: -0.19mm;
     width: 20.81mm;
-    height: 3.88mm;
+    height: 11.64mm;
     line-height: 3.1mm;
     white-space: nowrap;
+}
+
+.hce.hd7 .hls.ps6 .approver-textarea {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    min-height: 0;
+    margin: 0;
+    padding: 0.5mm;
+    border: none;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+    box-sizing: border-box;
+    text-align: center;
+    font: inherit;
+    font-size: 0.8em;
+    line-height: 1.40;
 }
 
 /* cell 8 (작성일자 라벨) */
@@ -1508,6 +1549,25 @@ body {
     /* ○/× */
 }
 
+/* ===========================
+   공통 HACCP 한글 폰트 설정
+   - 폰트 크기는 기존 설정 유지
+   - Windows 기본 한글 폰트 기준
+   =========================== */
+body,
+table,
+th,
+td,
+input,
+textarea,
+select,
+button,
+label,
+span,
+div {
+    font-family: 'Malgun Gothic', '맑은 고딕', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
 /* 단위 표시 */
 .hc-unit {
     white-space: nowrap;
@@ -1837,7 +1897,7 @@ body {
     background: transparent;
     text-align: center;
     /* font: inherit; */
-    font-size: 12px;
+    font-size: 10px;
     height: 3.53mm;
     line-height: 2.79mm;
 }
