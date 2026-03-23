@@ -4,7 +4,8 @@
         <div class='search-box'>
             <div class='search-section'>
                 <div class='search-input'>
-                    <input type="text" id='searchText' placeholder="검색">
+                    <input type="text" id='searchText' placeholder="불량유형명, 불량 증상, 불량 처리 방법 검색"
+                    style="min-width: 250px; flex: 1 1 auto;">
                     <button class='btn-large primary' id='btnSearch'>검색</button>
                     <button class='btn-large success revision' id='btnRevision'>새로고침</button>
                     <button class='btn-large' id='btnExcelDownload'>엑셀 다운로드</button>

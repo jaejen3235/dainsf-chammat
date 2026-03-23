@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/assets/css/CCP-2BP_모니터링일지_style.css" />
+<link rel="stylesheet" type="text/css" href="/assets/css/CCP-3P_모니터링일지_style.css" />
 <style>
     .ccp1bp-split-container {
         display: flex;
@@ -374,7 +374,7 @@
             <!-- 오른쪽 영역 (70%) -->
             <div class="ccp1bp-right-panel">
                 <?php
-                    $lines = file(__DIR__ . '/HC02_CCP-2BP_모니터링일지.html');
+                    $lines = file(__DIR__ . '/HC03_CCP-3P_모니터링일지.html');
 
                     // form 시작/종료 태그 기준으로 동적으로 슬라이스
                     $startIndex = null;

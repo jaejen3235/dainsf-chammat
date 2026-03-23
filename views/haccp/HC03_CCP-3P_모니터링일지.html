@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
@@ -348,11 +348,11 @@
                                                     white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.19mm;
-                                                    height: 3.88mm;
+                                                    height: 11.64mm;
                                                     width: 21.73mm;">
-                                                    <input type="text" id="writer_name" class="writer_name"
-                                                        placeholder="작성자" maxlength="20"
-                                                        style="width: 100%; height: 115%; text-align: center; border: none; background: transparent;" />
+                                                    <textarea name="writer_name" id="writer_name" rows="2"
+                                                        class="text-input writer-textarea"
+                                                        style="width: 100%; max-height: 100%; text-align: center; border: none; background: transparent; outline: none; resize: none; overflow: hidden; padding: 2px; box-sizing: border-box; line-height: 1.4;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -366,9 +366,13 @@
                                                     white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.19mm;
-                                                    height: 3.88mm;
+                                                    height: 11.64mm;
                                                     width: 24.07mm;
-                                                "></div>
+                                                ">
+                                                    <textarea name="approver_name" id="approver_name" rows="2"
+                                                        class="text-input writer-textarea"
+                                                        style="width: 100%; max-height: 100%; text-align: center; border: none; background: transparent; outline: none; resize: none; overflow: hidden; padding: 2px; box-sizing: border-box; line-height: 1.4;"></textarea>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -434,8 +438,7 @@
                                             <div class="hcI" style="top: 0.0mm">
                                                 <div class="hls ps7" style="line-height: 3.1mm; white-space: nowrap; left: 0mm; top: -1mm; height: 3.88mm; width: 59.69mm;">
                                                     <input type="text" id="CCP-3P_INSPECTOR" name="CCP-3P_INSPECTOR"
-                                                        class="inspector-input" placeholder="점검자"
-                                                        style="font-size: 14px; width: 100%; height: 100%; text-align: center; border: none; 
+                                                        class="inspector-input" style="font-size: 14px; width: 100%; height: 100%; text-align: center; border: none; 
                                                             background: transparent;" />
                                                 </div>
                                             </div>
@@ -824,14 +827,14 @@
                                     <div class="hce" style="left: 0mm; top: 92.11mm; width: 20.96mm; height: 7.68mm">
                                         <div class="hcD" style="left: 0mm; top: 0mm; width: 100%; height: 100%;">
                                             <div class="hcI"
-                                                style="top: 1.8mm; width: 100%; height: 100%; left: 0mm; top: 0mm;">
+                                                style="top: 0.0mm; width: 100%; height: 100%; left: 0mm; top: 0mm;">
                                                 <div class="hls ps4" style="line-height: 2.79mm; white-space: nowrap; left: 0mm; top: 0mm;
                                                         height: 100%; width: 100%;">
                                                     <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; 
                                                     position: relative; z-index: 1000;left: 0mm; top: 0mm;">
                                                         <textarea id="CCP-3P_row1_time" name="CCP-3P_row1_time"
-                                                            placeholder="HH:mm" style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
-                                                            resize: none; overflow: hidden; padding-top: 9px; 
+                                                            style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
+                                                            resize: none; overflow: hidden; padding-top: 6px; 
                                                             line-height: 1.2; font-size: 13px; left: 0mm; top: 0mm;"
                                                             oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"></textarea>
                                                     </div>
@@ -854,7 +857,7 @@
                                                     width: 31.93mm;
                                                 ">
                                                     <input type="text" id="HC03_row1_productName" name="HC03_row1_productName"
-                                                        style="border-width: 0px;"
+                                                        style="border-width: 0px; text-align: center;"
                                                         class="table-input text" placeholder="품명" />
                                                 </div>
                                             </div>
@@ -912,17 +915,17 @@
                                             <div class="hcI" style="top: 1.6mm">
                                                 <div class="hls ps14" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 13.22mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check">
-                                                        <input type="checkbox" id="HC03_row1_productOnlyPass" name="HC03_row1_productOnlyPass"
-                                                            value="Y" />
-                                                        <span class="check-mark"></span>
-                                                    </label>
+                                                    <textarea id="HC03_row1_productOnlyPass" name="HC03_row1_productOnlyPass" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; border: none; background: transparent; outline: none; resize: none; overflow: hidden; padding: 0 1px; box-sizing: border-box; font-size: 8px; line-height: 1.2;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1025,17 +1028,19 @@
                                             <div class="hcI" style="top: 1.8mm">
                                                 <div class="hls ps31" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 34.57mm;
-                                                ">
-                                                    <label class="table-check">
-                                                        <input type="checkbox" id="HC03_row1_foreignDetected" name="HC03_row1_foreignDetected"
-                                                            value="Y" />
-                                                        <span class="check-mark"></span>
-                                                    </label>
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;">
+                                                    <textarea id="HC03_row1_foreignDetected" name="HC03_row1_foreignDetected" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; 
+                                                        border: none; background: transparent; outline: none; resize: none; overflow: 
+                                                        hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 10px; 
+                                                        line-height: 1.2; display: block; transform: translateY(-1.2mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1051,10 +1056,10 @@
                                                 <div class="hls ps4"
                                                     style="line-height: 2.79mm; white-space: nowrap; left: 0mm; height: 100%; width: 100%; top: 0mm;">
                                                     <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; 
-                                                position: relative; z-index: 1000;left: 0mm; top: 1mm;">
+                                                position: relative; z-index: 1000;left: 0mm; top: 0mm;">
                                                         <textarea id="CCP-3P_row2_time" name="CCP-3P_row2_time"
-                                                            placeholder="HH:mm" style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
-                                                        resize: none; overflow: hidden; padding-top: 9px; font-weight: bold; 
+                                                            style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
+                                                        resize: none; overflow: hidden; padding-top: 6px; 
                                                         line-height: 1.2; font-size: 13px; left: 0mm; top: 0mm;"
                                                             oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"></textarea>
                                                     </div>
@@ -1072,13 +1077,13 @@
                                                     line-height: 2.79mm;
                                                     white-space: nowrap;
                                                     left: 0mm;
-                                                    top: -0.18mm;
+                                                    top: -0.1mm;
                                                     height: 3.53mm;
                                                     width: 31.93mm;
                                                 ">
                                                     <input type="text" id="HC03_row2_productName" name="HC03_row2_productName"
-                                                        style="border-width: 0px;"
-                                                        class="table-input text" placeholder="품명" />
+                                                        style="border-width: 0px; text-align: center;"
+                                                        class="table-input text"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1135,17 +1140,20 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps14" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 13.22mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check">
-                                                        <input type="checkbox" id="HC03_row2_productOnlyPass" name="HC03_row2_productOnlyPass"
-                                                            value="Y" />
-                                                        <span class="check-mark"></span>
-                                                    </label>
+                                                    <textarea id="HC03_row2_productOnlyPass" name="HC03_row2_productOnlyPass" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; 
+                                                        border: none; background: transparent; outline: none; resize: none; overflow: 
+                                                        hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 8px; 
+                                                        line-height: 1.2; display: block; transform: translateY(-1.2mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1248,17 +1256,20 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps31" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 34.57mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check">
-                                                        <input type="checkbox" name="HC03_row2_foreignDetected"
-                                                            value="Y" />
-                                                        <span class="check-mark"></span>
-                                                    </label>
+                                                    <textarea name="HC03_row2_foreignDetected" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; 
+                                                        border: none; background: transparent; outline: none; resize: none; 
+                                                        overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 10px; 
+                                                        line-height: 1.2; display: block; transform: translateY(-0.8mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1278,11 +1289,11 @@
                                                     height: 100%;
                                                     width: 100%;
                                                 ">
-                                                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; 
-                                            position: relative; z-index: 1000;left: 0mm; top: 1mm;">
-                                                        <textarea id="CCP-3P_row3_time" id="CCP-3P_row3_time" name="CCP-3P_row3_time"
-                                                            placeholder="HH:mm" style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
-                                                    resize: none; overflow: hidden; padding-top: 9px; font-weight: bold; 
+                                                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; 
+                                                position: relative; z-index: 1000; left: 0mm; top: 0mm;">
+                                                        <textarea id="CCP-3P_row3_time" name="CCP-3P_row3_time"
+                                                            style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
+                                                    resize: none; overflow: hidden; padding-top: 6px; 
                                                     line-height: 1.2; font-size: 13px; left: 0mm; top: 0mm;"
                                                             oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"></textarea>
                                                     </div>
@@ -1305,8 +1316,8 @@
                                                     width: 31.93mm;
                                                 ">
                                                     <input type="text" id="HC03_row3_productName" name="HC03_row3_productName"
-                                                        style="border-width: 0px;"
-                                                        class="table-input text" placeholder="품명" />
+                                                        style="border-width: 0px; text-align: center;"
+                                                        class="table-input text"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1363,17 +1374,17 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps14" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 13.22mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check">
-                                                        <input type="checkbox" id="HC03_row3_productOnlyPass" name="HC03_row3_productOnlyPass"
-                                                            value="Y" />
-                                                        <span class="check-mark"></span>
-                                                    </label>
+                                                    <textarea id="HC03_row3_productOnlyPass" name="HC03_row3_productOnlyPass" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; border: none; background: transparent; outline: none; resize: none; overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 8px; line-height: 1.2; display: block; transform: translateY(-1.2mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1476,17 +1487,20 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps31" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 34.57mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check">
-                                                        <input type="checkbox" id="HC03_row3_foreignDetected" name="HC03_row3_foreignDetected"
-                                                            value="Y" />
-                                                        <span class="check-mark"></span>
-                                                    </label>
+                                                    <textarea name="HC03_row3_foreignDetected" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; 
+                                                        border: none; background: transparent; outline: none; resize: none; 
+                                                        overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 10px; 
+                                                        line-height: 1.2; display: block; transform: translateY(-0.8mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1510,8 +1524,8 @@
                                                     <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; 
                                                 position: relative; z-index: 1000;left: 0mm; top: 1mm;">
                                                         <textarea id="CCP-3P_row4_time" name="CCP-3P_row4_time"
-                                                            placeholder="HH:mm" style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
-                                                        resize: none; overflow: hidden; padding-top: 9px; font-weight: bold; 
+                                                            style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
+                                                        resize: none; overflow: hidden; padding-top: 6px; 
                                                         line-height: 1.2; font-size: 13px; left: 0mm; top: 0mm;"
                                                             oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"></textarea>
                                                     </div>
@@ -1590,15 +1604,17 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps14" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 13.22mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check"><input type="checkbox"
-                                                            id="HC03_row4_productOnlyPass" name="HC03_row4_productOnlyPass" value="Y" /><span
-                                                            class="check-mark"></span></label>
+                                                    <textarea id="HC03_row4_productOnlyPass" name="HC03_row4_productOnlyPass" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; border: none; background: transparent; outline: none; resize: none; overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 8px; line-height: 1.2; display: block; transform: translateY(-1.2mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1696,15 +1712,20 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps31" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 34.57mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check"><input type="checkbox"
-                                                            id="HC03_row4_foreignDetected" name="HC03_row4_foreignDetected" value="Y" /><span
-                                                            class="check-mark"></span></label>
+                                                    <textarea name="HC03_row4_foreignDetected" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; 
+                                                        border: none; background: transparent; outline: none; resize: none; 
+                                                        overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 10px; 
+                                                        line-height: 1.2; display: block; transform: translateY(-0.8mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1728,8 +1749,8 @@
                                                     <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; 
                                                 position: relative; z-index: 1000;left: 0mm; top: 1mm;">
                                                         <textarea id="CCP-3P_row5_time" name="CCP-3P_row5_time"
-                                                            placeholder="HH:mm" style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
-                                                        resize: none; overflow: hidden; padding-top: 9px; font-weight: bold; 
+                                                            style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
+                                                        resize: none; overflow: hidden; padding-top: 6px; 
                                                         line-height: 1.2; font-size: 13px; left: 0mm; top: 0mm;"
                                                             oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"></textarea>
                                                     </div>
@@ -1808,15 +1829,17 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps14" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 13.22mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check"><input type="checkbox"
-                                                            id="HC03_row5_productOnlyPass" name="HC03_row5_productOnlyPass" value="Y" /><span
-                                                            class="check-mark"></span></label>
+                                                    <textarea id="HC03_row5_productOnlyPass" name="HC03_row5_productOnlyPass" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; border: none; background: transparent; outline: none; resize: none; overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 8px; line-height: 1.2; display: block; transform: translateY(-1.2mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1913,15 +1936,20 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps31" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 34.57mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check"><input type="checkbox"
-                                                            id="HC03_row5_foreignDetected" name="HC03_row5_foreignDetected" value="Y" /><span
-                                                            class="check-mark"></span></label>
+                                                    <textarea name="HC03_row5_foreignDetected" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; 
+                                                        border: none; background: transparent; outline: none; resize: none; 
+                                                        overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 10px; 
+                                                        line-height: 1.2; display: block; transform: translateY(-0.8mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1946,8 +1974,8 @@
                                                     <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; 
                                                 position: relative; z-index: 1000;left: 0mm; top: 1mm;">
                                                         <textarea id="CCP-3P_row6_time" name="CCP-3P_row6_time"
-                                                            placeholder="HH:mm" style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
-                                                        resize: none; overflow: hidden; padding-top: 9px; font-weight: bold; 
+                                                            style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
+                                                        resize: none; overflow: hidden; padding-top: 6px; 
                                                         line-height: 1.2; font-size: 13px; left: 0mm; top: 0mm;"
                                                             oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"></textarea>
                                                     </div>
@@ -2026,15 +2054,17 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps14" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 13.22mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check"><input type="checkbox"
-                                                            id="HC03_row6_productOnlyPass" name="HC03_row6_productOnlyPass" value="Y" /><span
-                                                            class="check-mark"></span></label>
+                                                    <textarea id="HC03_row6_productOnlyPass" name="HC03_row6_productOnlyPass" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; border: none; background: transparent; outline: none; resize: none; overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 8px; line-height: 1.2; display: block; transform: translateY(-1.2mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -2131,15 +2161,20 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps31" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 34.57mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check"><input type="checkbox"
-                                                            id="HC03_row6_foreignDetected" name="HC03_row6_foreignDetected" value="Y" /><span
-                                                            class="check-mark"></span></label>
+                                                    <textarea name="HC03_row6_foreignDetected" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; 
+                                                        border: none; background: transparent; outline: none; resize: none; 
+                                                        overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 10px; 
+                                                        line-height: 1.2; display: block; transform: translateY(-0.8mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -2162,8 +2197,8 @@
                                                     <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; 
                                                 position: relative; z-index: 1000;left: 0mm; top: 1mm;">
                                                         <textarea id="CCP-3P_row7_time" name="CCP-3P_row7_time"
-                                                            placeholder="HH:mm" style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
-                                                        resize: none; overflow: hidden; padding-top: 9px; font-weight: bold; 
+                                                            style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
+                                                        resize: none; overflow: hidden; padding-top: 6px; 
                                                         line-height: 1.2; font-size: 13px; left: 0mm; top: 0mm;"
                                                             oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"></textarea>
                                                     </div>
@@ -2242,15 +2277,17 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps14" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 13.22mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check"><input type="checkbox"
-                                                            id="HC03_row7_productOnlyPass" name="HC03_row7_productOnlyPass" value="Y" /><span
-                                                            class="check-mark"></span></label>
+                                                    <textarea id="HC03_row7_productOnlyPass" name="HC03_row7_productOnlyPass" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; border: none; background: transparent; outline: none; resize: none; overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 8px; line-height: 1.2; display: block; transform: translateY(-1.2mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -2347,15 +2384,20 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps31" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 34.57mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check"><input type="checkbox"
-                                                            id="HC03_row7_foreignDetected" name="HC03_row7_foreignDetected" value="Y" /><span
-                                                            class="check-mark"></span></label>
+                                                    <textarea name="HC03_row7_foreignDetected" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; 
+                                                        border: none; background: transparent; outline: none; resize: none; 
+                                                        overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 10px; 
+                                                        line-height: 1.2; display: block; transform: translateY(-0.8mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -2380,8 +2422,8 @@
                                                     <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; 
                                                 position: relative; z-index: 1000;left: 0mm; top: 1mm;">
                                                         <textarea id="CCP-3P_row8_time" name="CCP-3P_row8_time"
-                                                            placeholder="HH:mm" style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
-                                                        resize: none; overflow: hidden; padding-top: 9px; font-weight: bold; 
+                                                            style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
+                                                        resize: none; overflow: hidden; padding-top: 6px; 
                                                         line-height: 1.2; font-size: 13px; left: 0mm; top: 0mm;"
                                                             oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"></textarea>
                                                     </div>
@@ -2460,15 +2502,17 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps14" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 13.22mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check"><input type="checkbox"
-                                                            id="HC03_row8_productOnlyPass" name="HC03_row8_productOnlyPass" value="Y" /><span
-                                                            class="check-mark"></span></label>
+                                                    <textarea id="HC03_row8_productOnlyPass" name="HC03_row8_productOnlyPass" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; border: none; background: transparent; outline: none; resize: none; overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 8px; line-height: 1.2; display: block; transform: translateY(-1.2mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -2565,15 +2609,20 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps31" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 34.57mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check"><input type="checkbox"
-                                                            id="HC03_row8_foreignDetected" name="HC03_row8_foreignDetected" value="Y" /><span
-                                                            class="check-mark"></span></label>
+                                                    <textarea name="HC03_row8_foreignDetected" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; 
+                                                        border: none; background: transparent; outline: none; resize: none; 
+                                                        overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 10px; 
+                                                        line-height: 1.2; display: block; transform: translateY(-0.8mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -2596,8 +2645,8 @@
                                                     <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; 
                                                 position: relative; z-index: 1000;left: 0mm; top: 1mm;">
                                                         <textarea id="CCP-3P_row9_time" name="CCP-3P_row9_time"
-                                                            placeholder="HH:mm" style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
-                                                        resize: none; overflow: hidden; padding-top: 9px; font-weight: bold; 
+                                                            style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
+                                                        resize: none; overflow: hidden; padding-top: 6px; 
                                                         line-height: 1.2; font-size: 13px; left: 0mm; top: 0mm;"
                                                             oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"></textarea>
                                                     </div>
@@ -2676,15 +2725,17 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps14" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 13.22mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check"><input type="checkbox"
-                                                            id="HC03_row9_productOnlyPass" name="HC03_row9_productOnlyPass" value="Y" /><span
-                                                            class="check-mark"></span></label>
+                                                    <textarea id="HC03_row9_productOnlyPass" name="HC03_row9_productOnlyPass" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; border: none; background: transparent; outline: none; resize: none; overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 8px; line-height: 1.2; display: block; transform: translateY(-1.2mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -2781,15 +2832,20 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps31" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 34.57mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check"><input type="checkbox"
-                                                            id="HC03_row9_foreignDetected" name="HC03_row9_foreignDetected" value="Y" /><span
-                                                            class="check-mark"></span></label>
+                                                    <textarea name="HC03_row9_foreignDetected" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; 
+                                                        border: none; background: transparent; outline: none; resize: none; 
+                                                        overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 10px; 
+                                                        line-height: 1.2; display: block; transform: translateY(-0.8mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -2814,8 +2870,8 @@
                                                     <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; 
                                                 position: relative; z-index: 1000;left: 0mm; top: 1mm;">
                                                         <textarea id="CCP-3P_row10_time" name="CCP-3P_row10_time"
-                                                            placeholder="HH:mm" style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
-                                                        resize: none; overflow: hidden; padding-top: 9px; font-weight: bold; 
+                                                            style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
+                                                        resize: none; overflow: hidden; padding-top: 6px; 
                                                         line-height: 1.2; font-size: 13px; left: 0mm; top: 0mm;"
                                                             oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"></textarea>
                                                     </div>
@@ -2894,15 +2950,17 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps14" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 13.22mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check"><input type="checkbox"
-                                                            id="HC03_row10_productOnlyPass" name="HC03_row10_productOnlyPass" value="Y" /><span
-                                                            class="check-mark"></span></label>
+                                                    <textarea id="HC03_row10_productOnlyPass" name="HC03_row10_productOnlyPass" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; border: none; background: transparent; outline: none; resize: none; overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 8px; line-height: 1.2; display: block; transform: translateY(-1.2mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -2999,15 +3057,20 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps31" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 34.57mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check"><input type="checkbox"
-                                                            id="HC03_row10_foreignDetected" name="HC03_row10_foreignDetected" value="Y" /><span
-                                                            class="check-mark"></span></label>
+                                                    <textarea name="HC03_row10_foreignDetected" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; 
+                                                        border: none; background: transparent; outline: none; resize: none; 
+                                                        overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 10px; 
+                                                        line-height: 1.2; display: block; transform: translateY(-0.8mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -3030,8 +3093,8 @@
                                                     <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; 
                                                 position: relative; z-index: 1000;left: 0mm; top: 1mm;">
                                                         <textarea id="CCP-3P_row11_time" name="CCP-3P_row11_time"
-                                                            placeholder="HH:mm" style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
-                                                        resize: none; overflow: hidden; padding-top: 9px; font-weight: bold; 
+                                                            style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
+                                                        resize: none; overflow: hidden; padding-top: 6px; 
                                                         line-height: 1.2; font-size: 13px; left: 0mm; top: 0mm;"
                                                             oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"></textarea>
                                                     </div>
@@ -3110,15 +3173,17 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps14" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 13.22mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check"><input type="checkbox"
-                                                            id="HC03_row11_productOnlyPass" name="HC03_row11_productOnlyPass" value="Y" /><span
-                                                            class="check-mark"></span></label>
+                                                    <textarea id="HC03_row11_productOnlyPass" name="HC03_row11_productOnlyPass" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; border: none; background: transparent; outline: none; resize: none; overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 8px; line-height: 1.2; display: block; transform: translateY(-1.2mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -3215,15 +3280,20 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps31" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 34.57mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check"><input type="checkbox"
-                                                            id="HC03_row11_foreignDetected" name="HC03_row11_foreignDetected" value="Y" /><span
-                                                            class="check-mark"></span></label>
+                                                    <textarea name="HC03_row11_foreignDetected" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; 
+                                                        border: none; background: transparent; outline: none; resize: none; 
+                                                        overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 10px; 
+                                                        line-height: 1.2; display: block; transform: translateY(-0.8mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -3247,8 +3317,8 @@
                                                     <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; 
                                                 position: relative; z-index: 1000;left: 0mm; top: 1mm;">
                                                         <textarea id="CCP-3P_row12_time" name="CCP-3P_row12_time"
-                                                            placeholder="HH:mm" style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
-                                                        resize: none; overflow: hidden; padding-top: 9px; font-weight: bold; 
+                                                            style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
+                                                        resize: none; overflow: hidden; padding-top: 6px; 
                                                         line-height: 1.2; font-size: 13px; left: 0mm; top: 0mm;"
                                                             oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"></textarea>
                                                     </div>
@@ -3327,15 +3397,17 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps14" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 13.22mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check"><input type="checkbox"
-                                                            id="HC03_row12_productOnlyPass" name="HC03_row12_productOnlyPass" value="Y" /><span
-                                                            class="check-mark"></span></label>
+                                                    <textarea id="HC03_row12_productOnlyPass" name="HC03_row12_productOnlyPass" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; border: none; background: transparent; outline: none; resize: none; overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 8px; line-height: 1.2; display: block; transform: translateY(-1.2mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -3432,15 +3504,20 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps31" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 34.57mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check"><input type="checkbox"
-                                                            id="HC03_row12_foreignDetected" name="HC03_row12_foreignDetected" value="Y" /><span
-                                                            class="check-mark"></span></label>
+                                                    <textarea name="HC03_row12_foreignDetected" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; 
+                                                        border: none; background: transparent; outline: none; resize: none; 
+                                                        overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 10px; 
+                                                        line-height: 1.2; display: block; transform: translateY(-0.8mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -3464,8 +3541,8 @@
                                                     <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; 
                                                 position: relative; z-index: 1000;left: 0mm; top: 1mm;">
                                                         <textarea id="CCP-3P_row13_time" name="CCP-3P_row13_time"
-                                                            placeholder="HH:mm" style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
-                                                        resize: none; overflow: hidden; padding-top: 9px; font-weight: bold; 
+                                                            style="width: 100%; height: 100%; text-align: center; border: none; background: transparent; 
+                                                        resize: none; overflow: hidden; padding-top: 6px; 
                                                         line-height: 1.2; font-size: 13px; left: 0mm; top: 0mm;"
                                                             oninput="var v = this.value.replace(/[^0-9]/g, ''); if (v.length > 4) v = v.substr(0, 4); if (v.length > 2) v = v.replace(/^(\d{2})(\d+)/, '$1:$2'); this.value = v;"></textarea>
                                                     </div>
@@ -3544,15 +3621,17 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps14" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 13.22mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check"><input type="checkbox"
-                                                            id="HC03_row13_productOnlyPass" name="HC03_row13_productOnlyPass" value="Y" /><span
-                                                            class="check-mark"></span></label>
+                                                    <textarea id="HC03_row13_productOnlyPass" name="HC03_row13_productOnlyPass" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; border: none; background: transparent; outline: none; resize: none; overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 8px; line-height: 1.2; display: block; transform: translateY(-1.2mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -3649,15 +3728,20 @@
                                             <div class="hcI" style="top: 2.3mm">
                                                 <div class="hls ps31" style="
                                                     line-height: 2.79mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
                                                     top: -0.18mm;
-                                                    height: 3.53mm;
+                                                    height: 6mm;
                                                     width: 34.57mm;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
                                                 ">
-                                                    <label class="table-check"><input type="checkbox"
-                                                            id="HC03_row13_foreignDetected" name="HC03_row13_foreignDetected" value="Y" /><span
-                                                            class="check-mark"></span></label>
+                                                    <textarea name="HC03_row13_foreignDetected" rows="2"
+                                                        class="text-input"
+                                                        style="width: 100%; height: 100%; max-height: 100%; text-align: center; 
+                                                        border: none; background: transparent; outline: none; resize: none; 
+                                                        overflow: hidden; padding: 0; margin: 0; box-sizing: border-box; font-size: 10px; 
+                                                        line-height: 1.2; display: block; transform: translateY(-0.8mm);"></textarea>
                                                 </div>
                                             </div>
                                         </div>

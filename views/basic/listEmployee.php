@@ -4,7 +4,8 @@
         <div class='search-box'>
             <div class='search-section'>
                 <div class='search-input'>
-                    <input type="text" id='searchText' placeholder="검색">
+                    <input type="text" id='searchText' placeholder="사원명, 성별, 부서, 직급 검색"
+                    style="min-width: 220px; flex: 1 1 auto;">
                     <button class='btn-large primary' id='btnSearch'>검색</button>
                     <button class='btn-large success revision' id='btnRevision'><i class='bx bx-revision'></i></button>
                     <button class='btn-large' id='btnExcelDownload'>엑셀 다운로드</button>
@@ -147,7 +148,7 @@ const getEmployeeList = async ({
         const searchText = document.getElementById('searchText');
         if(searchText) {
             if(searchText.value != '') {
-                where += ` and name like '%${searchText.value}%'`;
+                where += ` and (name like '%${searchText.value}%' or gender like '%${searchText.value}%' or department like '%${searchText.value}%' or rank like '%${searchText.value}%')`;
             }
         }
     } catch(e) {}

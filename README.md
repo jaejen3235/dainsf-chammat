@@ -75,3 +75,23 @@
     - 스크롤이 보이지 않도록 `overflow: hidden` 적용
     - 가독성 개선을 위해 폰트 크기를 단계적으로 축소(`0.8em`)하고 줄간격(`line-height`)을 소폭 확대
 
+## 작업 내역 (2026-03-18, 추가)
+- 공통/기초 화면 조정
+  - 품목관리(`views/basic/listItem.php`) 검색어 입력창 폭을 해당 페이지에서만 확장되도록 인라인 스타일로 조정
+  - `assets/css/CCP-1BP_모니터링일지_style.css`의 브라우저 호환 경고 대응(`appearance: none` 추가)
+
+- HACCP 화면 구조/렌더링 정리
+  - `views/haccp/CCP-2BP_모니터링일지.php`를 `CCP-1BP`와 동일한 좌/우 분할 구조로 사용
+  - 우측 문서 영역은 `HC02_CCP-2BP_모니터링일지.html`의 `<form>...</form>`만 동적 출력하도록 정리
+
+- HC03 입력영역 편집(`views/haccp/HC03_CCP-3P_모니터링일지.html`)
+  - 작성자 입력(`writer_name`)을 `input`에서 `textarea`로 변경
+  - `productOnlyPass` 항목:
+    - `row1`~`row13`에서 체크박스 기반 표시를 텍스트 입력(`textarea rows="2"`) 방식으로 단계적 전환
+    - `row2` 기준으로 `row3`~`row13`의 폭/높이/정렬/위치 보정(`transform`)을 동일화
+  - `foreignDetected` 항목:
+    - `row2` 기준으로 `row3`~`row13`을 `textarea rows="2"` + 동일 정렬/폰트/위치 보정으로 통일
+  - `time` 항목:
+    - `CCP-3P_row2_time`~`CCP-3P_row13_time`을 `CCP-3P_row1_time` 기준으로 통일(placeholder, padding-top, 스타일)
+    - 일부 `font-weight`(bold) 적용으로 인해 일반 입력과 다르게 보이던 문제를 normal 기준으로 정리
+

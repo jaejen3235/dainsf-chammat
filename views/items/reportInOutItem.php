@@ -27,6 +27,7 @@
                     <th>품목규격</th>
                     <th>입고수량</th>
                     <th>출고수량</th>
+                    
                     <th class='center'>입/출고 날짜 <span id='inout_sort_order' class='sort-btns' data-order='desc'><span class='sort-asc' title='오름차순'>▲</span><span class='sort-desc' title='내림차순'>▼</span></span></th>
                 </tr>
             </thead>
