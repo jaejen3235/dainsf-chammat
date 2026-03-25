@@ -386,9 +386,8 @@
                                                 <div class="hls ps4"
                                                     style="line-height: 3.1mm; white-space: nowrap; left: 0mm; top: -0.19mm; height: 3.88mm; width: 51.15mm;">
                                                     <input id="HC05_writeDate" name="HC05_writeDate" type="text"
-                                                        style="font-size: 14px; border-width: 0px;" class="date-input" />
-                                                    <script>
-                                                        (function () {
+                                                        style="font-size: 14px; border-width: 0px;" class="date-input"
+                                                        onclick="(function () {
                                                             var today = new Date();
                                                             var yyyy = today.getFullYear();
                                                             var mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -397,8 +396,7 @@
                                                             if (el && !el.value) {
                                                                 el.value = yyyy + '년 ' + mm + '월 ' + dd + '일';
                                                             }
-                                                        })();
-                                                    </script>
+                                                        })();"/>
                                                 </div>
                                             </div>
                                         </div>

@@ -370,22 +370,22 @@ $left_menu = [
             ],
             [
                 'controller' => 'haccp',
-                'action' => 'HC07_원부재료_입고_점검표',
+                'action' => '원부재료_입고_점검표',
                 'title' => '원부재료 입고 점검표'
             ],
             [
                 'controller' => 'haccp',
-                'action' => 'HC08_일반위생관리_및_공정점검표1',
+                'action' => '일반위생관리_공정점검표1',
                 'title' => '일반위생관리 공정점검표1'
             ],
             [
                 'controller' => 'haccp',
-                'action' => 'HC09_일반위생관리_및_공정점검표2',
+                'action' => '일반위생관리_공정점검표2',
                 'title' => '일반위생관리 공정점검표2'
             ],
             [
                 'controller' => 'haccp',
-                'action' => 'HC10_중요관리점(CCP)_검증점검표',
+                'action' => '중요관리점_검증점검표',
                 'title' => '중요관리점 검증점검표'
             ]
         ]

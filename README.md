@@ -114,3 +114,23 @@
     - 필드명 요청에 따라 `writerName` → `approverName`으로 변경(ROW 번호는 유지)
     - 변경 후 작아 보이던 텍스트 크기를 동일하게 보이도록 `font-size` 보정
 
+## 작업 내역 (2026-03-25)
+- HACCP 양식 입력영역 변환/정렬 보정
+  - `views/haccp/HC07_원부재료_입고_점검표.html`
+    - `HC07_packStatus_1~11`, `HC07_appearance/smell/freshness/certificate_1~11` 입력값을 중앙 정렬로 통일
+    - `HC07_writer_1~11`을 `input`에서 `textarea`로 변경하고 부모 영역(상단/폭/높이 100%) 기준으로 맞춤
+    - 승인 칸 1~11행에 `HC07_approver_1~11` `textarea` 추가(중앙 정렬, 부모 영역 맞춤)
+  - `views/haccp/HC08_일반위생관리_및_공정점검표1.html`
+    - 상단 안내 문구(`작업 시 (생산이 있는 날)`)를 `textarea`로 전환하고 크기/정렬/폰트 보정
+    - `HC08_writer`, `HC08_actor`를 `textarea`로 전환(부모 영역 100% 채움, 중앙 정렬)
+    - 하단 확인 영역에 `HC08_confirmer` `textarea` 추가(조치자 영역과 동일 높이/정렬)
+    - 체크박스 크기 불일치 이슈를 정리하여 `HC08_ROW02_RESULT_Y`를 다른 체크박스와 동일 규칙으로 통일
+    - `HC08_writeDate`는 페이지 로드시 오늘 날짜 자동 입력되도록 스크립트 적용 및 중복 리스너 정리
+  - `views/haccp/HC09_일반위생관리_및_공정점검표2.html`
+    - 상단 주기 안내(주/월/년)를 단일 `textarea`(`HC09_scheduleLegend`)로 통합하고 줄바꿈 기본값 적용
+    - `매주/월요일` 문구를 `textarea`(`HC09_weeklyCycleLabel`)로 전환, 부모 기준 100% 맞춤 및 중앙 정렬
+    - `HC09_writeDate` 페이지 로드시 오늘 날짜 자동 입력되도록 `</form>` 직전 스크립트 추가
+  - `views/haccp/HC10_중요관리점(CCP)_검증점검표.html`
+    - 상단 `매월 1일` 문구를 `textarea`(`HC10_cycleLabel`)로 전환하고 폰트 유지/중앙 정렬/부모 영역 맞춤 적용
+    - 공정 문구를 `textara`로 전환하고 폰트 유지/중앙정렬/부모 영역 맞춤 적용 (3개)
+  - HACCP 전체 문서 대상 작성일자를 onclick로 변경 (서버의 목록을 수정할 경우 항상 현재 날짜가 적용되는 문제 예방)

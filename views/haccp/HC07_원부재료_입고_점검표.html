@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
@@ -198,16 +198,19 @@
                                     </svg>
                                     <div class="hce" style="left: 0mm; top: 0mm; width: 25.47mm; height: 26.06mm">
                                         <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 10.59mm">
+                                            <div class="hcI" style="top: 0mm">
                                                 <div class="hls ps4" style="
                                                     line-height: 3.1mm;
                                                     white-space: nowrap;
                                                     left: 0mm;
-                                                    top: -0.19mm;
-                                                    height: 3.88mm;
+                                                    top: 0mm;
+                                                    height: 25.06mm;
                                                     width: 24.47mm;
                                                 ">
-                                                    <span class="hrt cs14">입고 시</span>
+                                                    <textarea id="HC07_inTime" name="HC07_inTime" class="hrt cs14"
+                                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; 
+                                                    outline: 0; background: transparent; text-align: center; resize: none; overflow: hidden; 
+                                                    box-sizing: border-box;">&#10;&#10;&#10;&#13;입고 시</textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -489,8 +492,8 @@
                                     <div class="hce" style="left: 0mm; top: 40.04mm; width: 14.49mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm;">
                                             <div class="hcI hc07-inner" style="left: 0mm; top:0mm;">
-                                                <input id="HC07_inDate" name="HC07_inDate" type="text"
-                                                    inputmode="numeric" placeholder="mm/dd" maxlength="5"
+                                                <input id="HC07_inDate_1" name="HC07_inDate_1" type="text"
+                                                    inputmode="numeric" maxlength="5"
                                                     style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
                                                     class="hc07-input hc07-date" />
                                             </div>
@@ -502,10 +505,10 @@
                                         style="left: 14.49mm; top: 40.04mm; width: 22.96mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_materialName" name="HC07_materialName" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
-                                                class="hc07-input" style="font-size: 10px;" />
+                                                <textarea id="HC07_materialName_1" name="HC07_materialName_1"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -515,10 +518,9 @@
                                         style="left: 37.45mm; top: 40.04mm; width: 13.35mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_packStatus" name="HC07_packStatus" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
-                                                    class="hc07-input" />
+                                                <input id="HC07_packStatus_1" name="HC07_packStatus_1" type="text"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center;" class="hc07-input" />
                                             </div>
                                         </div>
                                     </div>
@@ -528,9 +530,9 @@
                                         style="left: 50.8mm; top: 40.04mm; width: 13.35mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_appearance" name="HC07_appearance" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
+                                                <input id="HC07_appearance_1" name="HC07_appearance_1" type="text"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -541,9 +543,8 @@
                                         style="left: 64.15mm; top: 40.04mm; width: 13.35mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_smell" name="HC07_smell" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
+                                                <input id="HC07_smell_1" name="HC07_smell_1" type="text"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -554,9 +555,8 @@
                                         style="left: 77.49mm; top: 40.04mm; width: 13.35mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_freshness" name="HC07_freshness" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
+                                                <input id="HC07_freshness_1" name="HC07_freshness_1" type="text"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -567,9 +567,8 @@
                                         style="left: 90.84mm; top: 40.04mm; width: 13.35mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_certificate" name="HC07_certificate" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
+                                                <input id="HC07_certificate_1" name="HC07_certificate_1" type="text"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -581,8 +580,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW1_inResult_OK"
-                                                        name="HC07_ROW1_inResult_OK" value="OK" />
+                                                    <input type="checkbox" id="HC07_inResult_OK_1"
+                                                        name="HC07_inResult_OK_1" value="OK" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -595,8 +594,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW1_inResult_NG"
-                                                        name="HC07_ROW1_inResult_NG" value="NG" />
+                                                    <input type="checkbox" id="HC07_inResult_NG_1"
+                                                        name="HC07_inResult_NG_1" value="NG" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -609,8 +608,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW1_inResult_NG_PROC"
-                                                        name="HC07_ROW1_inResult_NG_PROC" value="NG_PROC" />
+                                                    <input type="checkbox" id="HC07_inResult_NG_PROC_1"
+                                                        name="HC07_inResult_NG_PROC_1" value="NG_PROC" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -622,27 +621,23 @@
                                         style="left: 146.65mm; top: 40.04mm; width: 13.53mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_writer" name="HC07_writer" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
-                                                    class="hc07-input" />
+                                                <textarea id="HC07_writer_1" name="HC07_writer_1"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- 승인 (요청: 그대로 둠 / 입력 없음) -->
+                                    <!-- 승인 -->
                                     <div class="hce"
                                         style="left: 160.17mm; top: 40.04mm; width: 13.53mm; height: 16.07mm">
-                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 5.77mm">
-                                                <div class="hls ps4" style="
-                                                    line-height: 2.79mm;
-                                                    white-space: nowrap;
-                                                    left: 0mm;
-                                                    top: -0.18mm;
-                                                    height: 3.53mm;
-                                                    width: 12.53mm;
-                                                "></div>
+                                        <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI hc07-inner" style="top: 0mm">
+                                                <textarea id="HC07_approver_1" name="HC07_approver_1"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -658,7 +653,6 @@
                                                 <input id="HC07_inDate_2" name="HC07_inDate_2" type="text"
                                                     inputmode="numeric" maxlength="5"
                                                     style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="mm/dd"
                                                     class="hc07-input hc07-date" />
                                             </div>
                                         </div>
@@ -669,10 +663,9 @@
                                         style="left: 14.49mm; top: 56.11mm; width: 22.96mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_materialName_2" name="HC07_materialName_2" type="text"
-                                                    style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
-                                                    class="hc07-input" />
+                                                <textarea id="HC07_materialName_2" name="HC07_materialName_2"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -683,8 +676,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_packStatus_2" name="HC07_packStatus_2" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -696,8 +689,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_appearance_2" name="HC07_appearance_2" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -709,8 +702,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_smell_2" name="HC07_smell_2" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -722,8 +715,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_freshness_2" name="HC07_freshness_2" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -735,8 +728,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_certificate_2" name="HC07_certificate_2" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -748,8 +741,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW2_inResult_OK"
-                                                        name="HC07_ROW2_inResult_OK" value="OK" />
+                                                    <input type="checkbox" id="HC07_inResult_OK_2"
+                                                        name="HC07_inResult_OK_2" value="OK" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -762,8 +755,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW2_inResult_NG"
-                                                        name="HC07_ROW2_inResult_NG" value="NG" />
+                                                    <input type="checkbox" id="HC07_inResult_NG_2"
+                                                        name="HC07_inResult_NG_2" value="NG" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -776,8 +769,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW2_inResult_NG_PROC"
-                                                        name="HC07_ROW2_inResult_NG_PROC" value="NG_PROC" />
+                                                    <input type="checkbox" id="HC07_inResult_NG_PROC_2"
+                                                        name="HC07_inResult_NG_PROC_2" value="NG_PROC" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -789,27 +782,23 @@
                                         style="left: 146.65mm; top: 56.11mm; width: 13.53mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_writer_2" name="HC07_writer_2" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
-                                                    class="hc07-input" />
+                                                <textarea id="HC07_writer_2" name="HC07_writer_2"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- 승인 (그대로 둠) -->
+                                    <!-- 승인 -->
                                     <div class="hce"
                                         style="left: 160.17mm; top: 56.11mm; width: 13.53mm; height: 16.07mm">
-                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 5.77mm">
-                                                <div class="hls ps4" style="
-                                                    line-height: 2.79mm;
-                                                    white-space: nowrap;
-                                                    left: 0mm;
-                                                    top: -0.18mm;
-                                                    height: 3.53mm;
-                                                    width: 12.53mm;
-                                                "></div>
+                                        <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI hc07-inner" style="top: 0mm">
+                                                <textarea id="HC07_approver_2" name="HC07_approver_2"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -823,7 +812,7 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_inDate_3" name="HC07_inDate_3" type="text"
-                                                    inputmode="numeric" placeholder="mm/dd" maxlength="5"
+                                                    inputmode="numeric" maxlength="5"
                                                     style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
                                                     class="hc07-input hc07-date" />
                                             </div>
@@ -835,10 +824,9 @@
                                         style="left: 14.49mm; top: 72.17mm; width: 22.96mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_materialName_3" name="HC07_materialName_3" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
-                                                    class="hc07-input" />
+                                                <textarea id="HC07_materialName_3" name="HC07_materialName_3"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -849,8 +837,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_packStatus_3" name="HC07_packStatus_3" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -862,8 +850,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_appearance_3" name="HC07_appearance_3" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -875,8 +863,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_smell_3" name="HC07_smell_3" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -888,8 +876,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_freshness_3" name="HC07_freshness_3" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -901,8 +889,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_certificate_3" name="HC07_certificate_3" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -914,8 +902,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW3_inResult_OK"
-                                                        name="HC07_ROW3_inResult_OK" value="OK" />
+                                                    <input type="checkbox" id="HC07_inResult_OK_3"
+                                                        name="HC07_inResult_OK_3" value="OK" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -928,8 +916,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW3_inResult_NG"
-                                                        name="HC07_ROW3_inResult_NG" value="NG" />
+                                                    <input type="checkbox" id="HC07_inResult_NG_3"
+                                                        name="HC07_inResult_NG_3" value="NG" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -942,8 +930,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW3_inResult_NG_PROC"
-                                                        name="HC07_ROW3_inResult_NG_PROC" value="NG_PROC" />
+                                                    <input type="checkbox" id="HC07_inResult_NG_PROC_3"
+                                                        name="HC07_inResult_NG_PROC_3" value="NG_PROC" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -955,27 +943,23 @@
                                         style="left: 146.65mm; top: 72.17mm; width: 13.53mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_writer_3" name="HC07_writer_3" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
-                                                    class="hc07-input" />
+                                                <textarea id="HC07_writer_3" name="HC07_writer_3"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- 승인 (그대로 둠) -->
+                                    <!-- 승인 -->
                                     <div class="hce"
                                         style="left: 160.17mm; top: 72.17mm; width: 13.53mm; height: 16.07mm">
-                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 5.77mm">
-                                                <div class="hls ps4" style="
-                                                    line-height: 2.79mm;
-                                                    white-space: nowrap;
-                                                    left: 0mm;
-                                                    top: -0.18mm;
-                                                    height: 3.53mm;
-                                                    width: 12.53mm;
-                                                "></div>
+                                        <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI hc07-inner" style="top: 0mm">
+                                                <textarea id="HC07_approver_3" name="HC07_approver_3"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -989,7 +973,7 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_inDate_4" name="HC07_inDate_4" type="text"
-                                                    inputmode="numeric" placeholder="mm/dd" maxlength="5"
+                                                    inputmode="numeric" maxlength="5"
                                                     style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
                                                     class="hc07-input hc07-date" />
                                             </div>
@@ -1001,10 +985,9 @@
                                         style="left: 14.49mm; top: 88.24mm; width: 22.96mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_materialName_4" name="HC07_materialName_4" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
-                                                    class="hc07-input" />
+                                                <textarea id="HC07_materialName_4" name="HC07_materialName_4"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -1015,8 +998,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_packStatus_4" name="HC07_packStatus_4" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1028,8 +1011,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_appearance_4" name="HC07_appearance_4" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1041,8 +1024,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_smell_4" name="HC07_smell_4" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1054,8 +1037,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_freshness_4" name="HC07_freshness_4" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1067,8 +1050,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_certificate_4" name="HC07_certificate_4" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1080,8 +1063,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW4_inResult_OK"
-                                                        name="HC07_ROW4_inResult_OK" value="OK" />
+                                                    <input type="checkbox" id="HC07_inResult_OK_4"
+                                                        name="HC07_inResult_OK_4" value="OK" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -1094,8 +1077,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW4_inResult_NG"
-                                                        name="HC07_ROW4_inResult_NG" value="NG" />
+                                                    <input type="checkbox" id="HC07_inResult_NG_4"
+                                                        name="HC07_inResult_NG_4" value="NG" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -1108,8 +1091,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW4_inResult_NG_PROC"
-                                                        name="HC07_ROW4_inResult_NG_PROC" value="NG_PROC" />
+                                                    <input type="checkbox" id="HC07_inResult_NG_PROC_4"
+                                                        name="HC07_inResult_NG_PROC_4" value="NG_PROC" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -1121,27 +1104,23 @@
                                         style="left: 146.65mm; top: 88.24mm; width: 13.53mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_writer_4" name="HC07_writer_4" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
-                                                    class="hc07-input" />
+                                                <textarea id="HC07_writer_4" name="HC07_writer_4"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- 승인 (그대로 둠) -->
+                                    <!-- 승인 -->
                                     <div class="hce"
                                         style="left: 160.17mm; top: 88.24mm; width: 13.53mm; height: 16.07mm">
-                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 5.77mm">
-                                                <div class="hls ps4" style="
-                                                    line-height: 2.79mm;
-                                                    white-space: nowrap;
-                                                    left: 0mm;
-                                                    top: -0.18mm;
-                                                    height: 3.53mm;
-                                                    width: 12.53mm;
-                                                "></div>
+                                        <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI hc07-inner" style="top: 0mm">
+                                                <textarea id="HC07_approver_4" name="HC07_approver_4"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -1155,7 +1134,7 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_inDate_5" name="HC07_inDate_5" type="text"
-                                                    inputmode="numeric" placeholder="mm/dd" maxlength="5"
+                                                    inputmode="numeric" maxlength="5"
                                                     style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
                                                     class="hc07-input hc07-date" />
                                             </div>
@@ -1167,10 +1146,9 @@
                                         style="left: 14.49mm; top: 104.3mm; width: 22.96mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_materialName_5" name="HC07_materialName_5" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
-                                                    class="hc07-input" />
+                                                <textarea id="HC07_materialName_5" name="HC07_materialName_5"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -1181,8 +1159,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_packStatus_5" name="HC07_packStatus_5" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1194,8 +1172,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_appearance_5" name="HC07_appearance_5" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1207,8 +1185,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_smell_5" name="HC07_smell_5" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1220,8 +1198,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_freshness_5" name="HC07_freshness_5" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1233,8 +1211,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_certificate_5" name="HC07_certificate_5" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1246,8 +1224,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW5_inResult_OK"
-                                                        name="HC07_ROW5_inResult_OK" value="OK" />
+                                                    <input type="checkbox" id="HC07_inResult_OK_5"
+                                                        name="HC07_inResult_OK_5" value="OK" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -1260,8 +1238,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW5_inResult_NG"
-                                                        name="HC07_ROW5_inResult_NG" value="NG" />
+                                                    <input type="checkbox" id="HC07_inResult_NG_5"
+                                                        name="HC07_inResult_NG_5" value="NG" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -1274,8 +1252,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW5_inResult_NG_PROC"
-                                                        name="HC07_ROW5_inResult_NG_PROC" value="NG_PROC" />
+                                                    <input type="checkbox" id="HC07_inResult_NG_PROC_5"
+                                                        name="HC07_inResult_NG_PROC_5" value="NG_PROC" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -1287,27 +1265,23 @@
                                         style="left: 146.65mm; top: 104.3mm; width: 13.53mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_writer_5" name="HC07_writer_5" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
-                                                    class="hc07-input" />
+                                                <textarea id="HC07_writer_5" name="HC07_writer_5"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- 승인 (그대로 둠) -->
+                                    <!-- 승인 -->
                                     <div class="hce"
                                         style="left: 160.17mm; top: 104.3mm; width: 13.53mm; height: 16.07mm">
-                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 5.77mm">
-                                                <div class="hls ps4" style="
-                                                    line-height: 2.79mm;
-                                                    white-space: nowrap;
-                                                    left: 0mm;
-                                                    top: -0.18mm;
-                                                    height: 3.53mm;
-                                                    width: 12.53mm;
-                                                "></div>
+                                        <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI hc07-inner" style="top: 0mm">
+                                                <textarea id="HC07_approver_5" name="HC07_approver_5"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -1321,7 +1295,7 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_inDate_6" name="HC07_inDate_6" type="text"
-                                                    inputmode="numeric" placeholder="mm/dd" maxlength="5"
+                                                    inputmode="numeric" maxlength="5"
                                                     style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
                                                     class="hc07-input hc07-date" />
                                             </div>
@@ -1333,10 +1307,9 @@
                                         style="left: 14.49mm; top: 120.37mm; width: 22.96mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_materialName_6" name="HC07_materialName_6" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
-                                                    class="hc07-input" />
+                                                <textarea id="HC07_materialName_6" name="HC07_materialName_6"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -1347,8 +1320,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_packStatus_6" name="HC07_packStatus_6" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1360,8 +1333,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_appearance_6" name="HC07_appearance_6" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1373,8 +1346,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_smell_6" name="HC07_smell_6" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1386,8 +1359,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_freshness_6" name="HC07_freshness_6" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1399,8 +1372,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_certificate_6" name="HC07_certificate_6" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1412,8 +1385,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW6_inResult_OK"
-                                                        name="HC07_ROW6_inResult_OK" value="OK" />
+                                                    <input type="checkbox" id="HC07_inResult_OK_6"
+                                                        name="HC07_inResult_OK_6" value="OK" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -1426,8 +1399,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW6_inResult_NG"
-                                                        name="HC07_ROW6_inResult_NG" value="NG" />
+                                                    <input type="checkbox" id="HC07_inResult_NG_6"
+                                                        name="HC07_inResult_NG_6" value="NG" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -1440,8 +1413,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW6_inResult_NG_PROC"
-                                                        name="HC07_ROW6_inResult_NG_PROC" value="NG_PROC" />
+                                                    <input type="checkbox" id="HC07_inResult_NG_PROC_6"
+                                                        name="HC07_inResult_NG_PROC_6" value="NG_PROC" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -1453,27 +1426,23 @@
                                         style="left: 146.65mm; top: 120.37mm; width: 13.53mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_writer_6" name="HC07_writer_6" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
-                                                    class="hc07-input" />
+                                                <textarea id="HC07_writer_6" name="HC07_writer_6"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- 승인 (그대로 둠) -->
+                                    <!-- 승인 -->
                                     <div class="hce"
                                         style="left: 160.17mm; top: 120.37mm; width: 13.53mm; height: 16.07mm">
-                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 5.77mm">
-                                                <div class="hls ps4" style="
-                                                    line-height: 2.79mm;
-                                                    white-space: nowrap;
-                                                    left: 0mm;
-                                                    top: -0.18mm;
-                                                    height: 3.53mm;
-                                                    width: 12.53mm;
-                                                "></div>
+                                        <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI hc07-inner" style="top: 0mm">
+                                                <textarea id="HC07_approver_6" name="HC07_approver_6"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -1487,7 +1456,7 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_inDate_7" name="HC07_inDate_7" type="text"
-                                                    inputmode="numeric" placeholder="mm/dd" maxlength="5"
+                                                    inputmode="numeric" maxlength="5"
                                                     style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
                                                     class="hc07-input hc07-date" />
                                             </div>
@@ -1499,10 +1468,9 @@
                                         style="left: 14.49mm; top: 136.43mm; width: 22.96mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_materialName_7" name="HC07_materialName_7" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
-                                                    class="hc07-input" />
+                                                <textarea id="HC07_materialName_7" name="HC07_materialName_7"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -1513,8 +1481,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_packStatus_7" name="HC07_packStatus_7" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1526,8 +1494,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_appearance_7" name="HC07_appearance_7" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1539,8 +1507,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_smell_7" name="HC07_smell_7" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1552,8 +1520,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_freshness_7" name="HC07_freshness_7" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1565,8 +1533,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_certificate_7" name="HC07_certificate_7" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1578,8 +1546,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW7_inResult_OK"
-                                                        name="HC07_ROW7_inResult_OK" value="OK" />
+                                                    <input type="checkbox" id="HC07_inResult_OK_7"
+                                                        name="HC07_inResult_OK_7" value="OK" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -1592,8 +1560,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW7_inResult_NG"
-                                                        name="HC07_ROW7_inResult_NG" value="NG" />
+                                                    <input type="checkbox" id="HC07_inResult_NG_7"
+                                                        name="HC07_inResult_NG_7" value="NG" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -1606,8 +1574,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW7_inResult_NG_PROC"
-                                                        name="HC07_ROW7_inResult_NG_PROC" value="NG_PROC" />
+                                                    <input type="checkbox" id="HC07_inResult_NG_PROC_7"
+                                                        name="HC07_inResult_NG_PROC_7" value="NG_PROC" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -1619,27 +1587,23 @@
                                         style="left: 146.65mm; top: 136.43mm; width: 13.53mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_writer_7" name="HC07_writer_7" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
-                                                    class="hc07-input" />
+                                                <textarea id="HC07_writer_7" name="HC07_writer_7"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- 승인 (그대로 둠) -->
+                                    <!-- 승인 -->
                                     <div class="hce"
                                         style="left: 160.17mm; top: 136.43mm; width: 13.53mm; height: 16.07mm">
-                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 5.77mm">
-                                                <div class="hls ps4" style="
-                                                    line-height: 2.79mm;
-                                                    white-space: nowrap;
-                                                    left: 0mm;
-                                                    top: -0.18mm;
-                                                    height: 3.53mm;
-                                                    width: 12.53mm;
-                                                "></div>
+                                        <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI hc07-inner" style="top: 0mm">
+                                                <textarea id="HC07_approver_7" name="HC07_approver_7"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -1652,7 +1616,7 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_inDate_8" name="HC07_inDate_8" type="text"
-                                                    inputmode="numeric" placeholder="mm/dd" maxlength="5"
+                                                    inputmode="numeric" maxlength="5"
                                                     style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
                                                     class="hc07-input hc07-date" />
                                             </div>
@@ -1664,10 +1628,9 @@
                                         style="left: 14.49mm; top: 152.5mm; width: 22.96mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_materialName_8" name="HC07_materialName_8" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
-                                                    class="hc07-input" />
+                                                <textarea id="HC07_materialName_8" name="HC07_materialName_8"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -1678,8 +1641,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_packStatus_8" name="HC07_packStatus_8" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1691,8 +1654,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_appearance_8" name="HC07_appearance_8" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1704,8 +1667,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_smell_8" name="HC07_smell_8" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1717,8 +1680,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_freshness_8" name="HC07_freshness_8" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1730,8 +1693,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_certificate_8" name="HC07_certificate_8" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                    placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                    
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1743,8 +1706,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW8_inResult_OK"
-                                                        name="HC07_ROW8_inResult_OK" value="OK" />
+                                                    <input type="checkbox" id="HC07_inResult_OK_8"
+                                                        name="HC07_inResult_OK_8" value="OK" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -1757,8 +1720,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW8_inResult_NG"
-                                                        name="HC07_ROW8_inResult_NG" value="NG" />
+                                                    <input type="checkbox" id="HC07_inResult_NG_8"
+                                                        name="HC07_inResult_NG_8" value="NG" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -1771,8 +1734,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW8_inResult_NG_PROC"
-                                                        name="HC07_ROW8_inResult_NG_PROC" value="NG_PROC" />
+                                                    <input type="checkbox" id="HC07_inResult_NG_PROC_8"
+                                                        name="HC07_inResult_NG_PROC_8" value="NG_PROC" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -1784,27 +1747,23 @@
                                         style="left: 146.65mm; top: 152.5mm; width: 13.53mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_writer_8" name="HC07_writer_8" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
-                                                    class="hc07-input" />
+                                                <textarea id="HC07_writer_8" name="HC07_writer_8"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- 승인 (그대로 둠) -->
+                                    <!-- 승인 -->
                                     <div class="hce"
                                         style="left: 160.17mm; top: 152.5mm; width: 13.53mm; height: 16.07mm">
-                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 5.77mm">
-                                                <div class="hls ps4" style="
-                                                    line-height: 2.79mm;
-                                                    white-space: nowrap;
-                                                    left: 0mm;
-                                                    top: -0.18mm;
-                                                    height: 3.53mm;
-                                                    width: 12.53mm;
-                                                "></div>
+                                        <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI hc07-inner" style="top: 0mm">
+                                                <textarea id="HC07_approver_8" name="HC07_approver_8"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -1818,7 +1777,7 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_inDate_9" name="HC07_inDate_9" type="text"
-                                                    inputmode="numeric" placeholder="mm/dd" maxlength="5"
+                                                    inputmode="numeric" maxlength="5"
                                                     style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
                                                     class="hc07-input hc07-date" />
                                             </div>
@@ -1830,10 +1789,9 @@
                                         style="left: 14.49mm; top: 168.56mm; width: 22.96mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_materialName_9" name="HC07_materialName_9" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
-                                                    class="hc07-input" />
+                                                <textarea id="HC07_materialName_9" name="HC07_materialName_9"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -1844,8 +1802,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_packStatus_9" name="HC07_packStatus_9" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1857,8 +1815,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_appearance_9" name="HC07_appearance_9" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1870,8 +1828,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_smell_9" name="HC07_smell_9" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1883,8 +1841,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_freshness_9" name="HC07_freshness_9" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1896,8 +1854,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_certificate_9" name="HC07_certificate_9" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -1909,8 +1867,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW9_inResult_OK"
-                                                        name="HC07_ROW9_inResult_OK" value="OK" />
+                                                    <input type="checkbox" id="HC07_inResult_OK_9"
+                                                        name="HC07_inResult_OK_9" value="OK" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -1923,8 +1881,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW9_inResult_NG"
-                                                        name="HC07_ROW9_inResult_NG" value="NG" />
+                                                    <input type="checkbox" id="HC07_inResult_NG_9"
+                                                        name="HC07_inResult_NG_9" value="NG" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -1937,8 +1895,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW9_inResult_NG_PROC"
-                                                        name="HC07_ROW9_inResult_NG_PROC" value="NG_PROC" />
+                                                    <input type="checkbox" id="HC07_inResult_NG_PROC_9"
+                                                        name="HC07_inResult_NG_PROC_9" value="NG_PROC" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -1950,27 +1908,23 @@
                                         style="left: 146.65mm; top: 168.56mm; width: 13.53mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_writer_9" name="HC07_writer_9" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
-                                                    class="hc07-input" />
+                                                <textarea id="HC07_writer_9" name="HC07_writer_9"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- 승인 (그대로 둠) -->
+                                    <!-- 승인 -->
                                     <div class="hce"
                                         style="left: 160.17mm; top: 168.56mm; width: 13.53mm; height: 16.07mm">
-                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 5.77mm">
-                                                <div class="hls ps4" style="
-                                                    line-height: 2.79mm;
-                                                    white-space: nowrap;
-                                                    left: 0mm;
-                                                    top: -0.18mm;
-                                                    height: 3.53mm;
-                                                    width: 12.53mm;
-                                                "></div>
+                                        <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI hc07-inner" style="top: 0mm">
+                                                <textarea id="HC07_approver_9" name="HC07_approver_9"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -1984,7 +1938,7 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_inDate_10" name="HC07_inDate_10" type="text"
-                                                    inputmode="numeric" maxlength="5" placeholder="mm/dd"
+                                                    inputmode="numeric" maxlength="5" 
                                                     style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
                                                     class="hc07-input hc07-date" />
                                             </div>
@@ -1996,10 +1950,9 @@
                                         style="left: 14.49mm; top: 184.63mm; width: 22.96mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_materialName_10" name="HC07_materialName_10" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
-                                                    class="hc07-input" />
+                                                <textarea id="HC07_materialName_10" name="HC07_materialName_10"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -2010,8 +1963,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_packStatus_10" name="HC07_packStatus_10" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -2023,8 +1976,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_appearance_10" name="HC07_appearance_10" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -2036,8 +1989,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_smell_10" name="HC07_smell_10" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -2049,8 +2002,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_freshness_10" name="HC07_freshness_10" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -2062,8 +2015,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_certificate_10" name="HC07_certificate_10" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -2075,8 +2028,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW10_inResult_OK"
-                                                        name="HC07_ROW10_inResult_OK" value="OK" />
+                                                    <input type="checkbox" id="HC07_inResult_OK_10"
+                                                        name="HC07_inResult_OK_10" value="OK" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -2089,8 +2042,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW10_inResult_NG"
-                                                        name="HC07_ROW10_inResult_NG" value="NG" />
+                                                    <input type="checkbox" id="HC07_inResult_NG_10"
+                                                        name="HC07_inResult_NG_10" value="NG" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -2103,8 +2056,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW10_inResult_NG_PROC"
-                                                        name="HC07_ROW10_inResult_NG_PROC" value="NG_PROC" />
+                                                    <input type="checkbox" id="HC07_inResult_NG_PROC_10"
+                                                        name="HC07_inResult_NG_PROC_10" value="NG_PROC" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -2116,27 +2069,23 @@
                                         style="left: 146.65mm; top: 184.63mm; width: 13.53mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_writer_10" name="HC07_writer_10" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
-                                                    class="hc07-input" />
+                                                <textarea id="HC07_writer_10" name="HC07_writer_10"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- 승인(그대로 유지) -->
+                                    <!-- 승인 -->
                                     <div class="hce"
                                         style="left: 160.17mm; top: 184.63mm; width: 13.53mm; height: 16.07mm">
-                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 5.77mm">
-                                                <div class="hls ps4" style="
-                                                    line-height: 2.79mm;
-                                                    white-space: nowrap;
-                                                    left: 0mm;
-                                                    top: -0.18mm;
-                                                    height: 3.53mm;
-                                                    width: 12.53mm;
-                                                "></div>
+                                        <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI hc07-inner" style="top: 0mm">
+                                                <textarea id="HC07_approver_10" name="HC07_approver_10"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -2150,7 +2099,7 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_inDate_11" name="HC07_inDate_11" type="text"
-                                                    inputmode="numeric" maxlength="5" placeholder="mm/dd"
+                                                    inputmode="numeric" maxlength="5" 
                                                     style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
                                                     class="hc07-input hc07-date" />
                                             </div>
@@ -2162,10 +2111,9 @@
                                         style="left: 14.49mm; top: 200.69mm; width: 22.96mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_materialName_11" name="HC07_materialName_11" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
-                                                    class="hc07-input" />
+                                                <textarea id="HC07_materialName_11" name="HC07_materialName_11"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -2176,8 +2124,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_packStatus_11" name="HC07_packStatus_11" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -2189,8 +2137,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_appearance_11" name="HC07_appearance_11" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                
                                                     class="hc07-input" />
                                             </div>
                                         </div>
@@ -2202,8 +2150,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_smell_11" name="HC07_smell_11" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                
                                                 class="hc07-input" />
                                             </div>
                                         </div>
@@ -2215,8 +2163,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_freshness_11" name="HC07_freshness_11" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                
                                                 class="hc07-input" />
                                             </div>
                                         </div>
@@ -2228,8 +2176,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <input id="HC07_certificate_11" name="HC07_certificate_11" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
+                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px; text-align: center;"
+                                                
                                                 class="hc07-input" />
                                             </div>
                                         </div>
@@ -2241,8 +2189,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW11_inResult_OK"
-                                                        name="HC07_ROW11_inResult_OK" value="OK" />
+                                                    <input type="checkbox" id="HC07_inResult_OK_11"
+                                                        name="HC07_inResult_OK_11" value="OK" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -2255,8 +2203,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW11_inResult_NG"
-                                                        name="HC07_ROW11_inResult_NG" value="NG" />
+                                                    <input type="checkbox" id="HC07_inResult_NG_11"
+                                                        name="HC07_inResult_NG_11" value="NG" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -2269,8 +2217,8 @@
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
                                                 <label class="hc07-radio">
-                                                    <input type="checkbox" id="HC07_ROW11_inResult_NG_PROC"
-                                                        name="HC07_ROW11_inResult_NG_PROC" value="NG_PROC" />
+                                                    <input type="checkbox" id="HC07_inResult_NG_PROC_11"
+                                                        name="HC07_inResult_NG_PROC_11" value="NG_PROC" />
                                                     <span></span>
                                                 </label>
                                             </div>
@@ -2282,27 +2230,23 @@
                                         style="left: 146.65mm; top: 200.69mm; width: 13.53mm; height: 16.07mm">
                                         <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
                                             <div class="hcI hc07-inner" style="top: 0mm">
-                                                <input id="HC07_writer_11" name="HC07_writer_11" type="text"
-                                                style="font-size: 12px; position: absolute; padding: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                placeholder="-"
-                                                class="hc07-input" />
+                                                <textarea id="HC07_writer_11" name="HC07_writer_11"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- 승인(그대로 유지) -->
+                                    <!-- 승인 -->
                                     <div class="hce"
                                         style="left: 160.17mm; top: 200.69mm; width: 13.53mm; height: 16.07mm">
-                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 5.77mm">
-                                                <div class="hls ps4" style="
-                                                    line-height: 2.79mm;
-                                                    white-space: nowrap;
-                                                    left: 0mm;
-                                                    top: -0.18mm;
-                                                    height: 3.53mm;
-                                                    width: 12.53mm;
-                                                "></div>
+                                        <div class="hcD hc07-cell" style="left: 0.5mm; top: 0.5mm">
+                                            <div class="hcI hc07-inner" style="top: 0mm">
+                                                <textarea id="HC07_approver_11" name="HC07_approver_11"
+                                                class="hc07-input"
+                                                style="font-size: 12px; position: absolute; top: 0; left: 0; padding: 0; width: 100%; height: 100%; 
+                                                border-width: 0px; text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -2488,62 +2432,59 @@
                         </div>
                     </div>
                 </div>
+                <script>
+                    (function () {
+                        function formatMMDD(raw) {
+                            var digits = (raw || "").replace(/\D/g, "").slice(0, 4);
+                            if (digits.length <= 2) return digits;
+                            return digits.slice(0, 2) + "/" + digits.slice(2);
+                        }
+
+                        function bindMmddInput(el) {
+                            el.addEventListener("input", function () {
+                                var start = el.selectionStart || 0;
+                                var before = el.value;
+                                var formatted = formatMMDD(before);
+
+                                el.value = formatted;
+
+                                var hadSlash = before.indexOf("/") !== -1;
+                                var hasSlash = formatted.indexOf("/") !== -1;
+
+                                var next = start;
+                                if (!hadSlash && hasSlash && start >= 2) next = start + 1;
+                                if (next > el.value.length) next = el.value.length;
+
+                                el.setSelectionRange(next, next);
+                            });
+
+                            el.addEventListener("keydown", function (e) {
+                                var allowKeys = ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab", "Home", "End"];
+                                if (allowKeys.indexOf(e.key) !== -1) return;
+                                if (e.ctrlKey || e.metaKey) return;
+
+                                if (/^\d$/.test(e.key)) return;
+
+                                e.preventDefault();
+                            });
+
+                            el.addEventListener("paste", function (e) {
+                                e.preventDefault();
+                                var text = (e.clipboardData || window.clipboardData).getData("text");
+                                el.value = formatMMDD(text);
+                                el.dispatchEvent(new Event("input", { bubbles: true }));
+                            });
+                        }
+
+                        for (var i = 1; i <= 11; i++) {
+                            var el = document.getElementById("HC07_inDate_" + i);
+                            if (el) bindMmddInput(el);
+                        }
+                    })();
+                </script>
             </form>
         </div>
     </div>
 </body>
 
 </html>
-<script>
-    (function () {
-        function formatMMDD(raw) {
-            const digits = (raw || "").replace(/\D/g, "").slice(0, 4); // 최대 4자리
-            if (digits.length <= 2) return digits;
-            return digits.slice(0, 2) + "/" + digits.slice(2);
-        }
-
-        function bindMmddInput(el) {
-            // 입력 중 포맷
-            el.addEventListener("input", (e) => {
-                const start = el.selectionStart || 0;
-                const before = el.value;
-                const formatted = formatMMDD(before);
-
-                el.value = formatted;
-
-                // 커서 보정('/' 생기는 순간만 1칸 당겨줌)
-                // before에 '/' 없었고 formatted에 '/' 생겼으면 커서 +1
-                const hadSlash = before.indexOf("/") !== -1;
-                const hasSlash = formatted.indexOf("/") !== -1;
-
-                let next = start;
-                if (!hadSlash && hasSlash && start >= 2) next = start + 1;
-                if (next > el.value.length) next = el.value.length;
-
-                el.setSelectionRange(next, next);
-            });
-
-            // 키다운에서 불필요 문자 차단(한글/영문 등)
-            el.addEventListener("keydown", (e) => {
-                const allowKeys = ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab", "Home", "End"];
-                if (allowKeys.includes(e.key)) return;
-
-                // 숫자만 허용
-                if (/^\d$/.test(e.key)) return;
-
-                // 그 외 차단
-                e.preventDefault();
-            });
-
-            // 붙여넣기 대응
-            el.addEventListener("paste", (e) => {
-                e.preventDefault();
-                const text = (e.clipboardData || window.clipboardData).getData("text");
-                el.value = formatMMDD(text);
-                el.dispatchEvent(new Event("input", { bubbles: true }));
-            });
-        }
-
-        document.querySelectorAll(".hc07-date").forEach(bindMmddInput);
-    })();
-</script>

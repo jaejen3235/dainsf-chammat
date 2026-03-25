@@ -456,16 +456,14 @@
                                                 ">
                                                     <div class="date-row" style="width: 100%;">
                                                         <input id="HC10_writeDate" name="HC10_writeDate" type="text"
-                                                            class="date-input" style="width: 100%;" />
-                                                        <script>
-                                                            (function () {
+                                                            class="date-input" style="width: 100%;"
+                                                            onclick="(function () {
                                                                 var today = new Date();
                                                                 var yyyy = today.getFullYear();
                                                                 var mm = String(today.getMonth() + 1).padStart(2, '0');
                                                                 var dd = String(today.getDate()).padStart(2, '0');
                                                                 document.getElementById('HC10_writeDate').value = yyyy + '년 ' + mm + '월 ' + dd + '일';
-                                                            })();
-                                                        </script>
+                                                            })();" />
                                                     </div>
                                                 </div>
                                             </div>
