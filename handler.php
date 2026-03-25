@@ -26,7 +26,13 @@ try {
 
     // 컨트롤러 출력(JSON)만 클라이언트로 보내기 위해 출력 버퍼 사용
     ob_start();
-    $ajax->{$param['mode']}();
+    $mode = $param['mode'] ?? '';
+    $method = $mode;
+    // haccpRecords는 Database 상속 충돌을 피하기 위해 deleteRecord()로 분리
+    if ($mode === 'delete' && method_exists($ajax, 'deleteRecord')) {
+        $method = 'deleteRecord';
+    }
+    $ajax->{$method}();
     $jsonOutput = ob_get_clean();
 } catch (Throwable $e) {
     if (ob_get_level()) ob_end_clean();

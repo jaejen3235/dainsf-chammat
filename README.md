@@ -134,3 +134,16 @@
     - 상단 `매월 1일` 문구를 `textarea`(`HC10_cycleLabel`)로 전환하고 폰트 유지/중앙 정렬/부모 영역 맞춤 적용
     - 공정 문구를 `textara`로 전환하고 폰트 유지/중앙정렬/부모 영역 맞춤 적용 (3개)
   - HACCP 전체 문서 대상 작성일자를 onclick로 변경 (서버의 목록을 수정할 경우 항상 현재 날짜가 적용되는 문제 예방)
+
+## 작업 내역 (2026-03-25, 추가)
+- HACCP REST CRUD 전환(저장/조회/수정/삭제) + 공통 모듈 연동
+  - DB: `haccp_records` 공통 테이블 생성(`payload_json` LONGTEXT 저장) 및 인덱스 추가
+  - Backend: `controllers/haccpRecords.php`에서 `create/list/getOne/update` 구현 및 `delete` 모드 충돌 회피를 위해 `deleteRecord()`로 분리
+  - 라우팅: `handler.php`에서 `mode=delete` 요청을 `deleteRecord()`로 매핑
+  - Frontend: `views/haccp/haccpFormClient.js` 추가
+    - DOM→payload 변환/조회 시 payload→DOM 적용
+    - “새로 작성” 시 HTML default 값 복구(기본값 스냅샷/리셋)
+    - 목록 페이징 버튼이 `total/per`에 맞게 숨김/비활성화되도록 UI 갱신
+- UI: `views/haccp/*.php`(10개) 좌측 목록을 더미(tr) 제거 후 `handler.php` fetch 기반으로 연동
+- 인쇄/미리보기 레이아웃 수정
+  - CCP-1BP 제외 문서들에서 `@media print` 기본 여백/overflow 이슈를 수정하여 A4 영역 잘림/우측 컷 문제 완화

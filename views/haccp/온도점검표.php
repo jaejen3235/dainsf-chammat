@@ -187,8 +187,10 @@
     /* 인쇄 시 우측 문서 영역만 출력 */
     @media print {
         html, body {
-            overflow: hidden !important;
+            overflow: visible !important;
             height: auto !important;
+            margin: 0 !important;
+            padding: 0 !important;
         }
 
         /* 헤더, 좌측메뉴, 토글버튼, 좌측패널 숨김 */
@@ -228,37 +230,157 @@
     }
 </style>
 
+<script src="/views/haccp/haccpFormClient.js"></script>
 <script>
     // ── 좌측 패널 CRUD 함수 ──
+    const HaccpResourceKey = 'HC06_온도점검표';
+    const MetaConfig = {
+        page_no: 1,
+        write_date: 'HC06_writeDate',
+        writer: 'HC06_ROW1_writerName',
+        inspector: 'HC06_ROW1_approverName',
+        action_person: 'HC06_actioner',
+    };
+
+    let currentUid = null;
+    let currentPage = 1;
+    const per = 10;
+
+    function getFormRoot() {
+        return document.querySelector('form#monitoringForm') || document.querySelector('form');
+    }
+
+    function clearForm() {
+        const root = getFormRoot();
+        if (!root) return;
+        HaccpFormClient.resetToDefaults(root);
+    }
+
     function ccp1bpNew() {
-        // TODO: DB 연동 시 구현
-        alert('새로 작성');
+        currentUid = null;
+        clearForm();
     }
     function ccp1bpPrint() {
         window.print();
     }
-    function ccp1bpSave() {
-        // TODO: DB 연동 시 구현
-        alert('저장');
-    }
-    function ccp1bpView(uid) {
-        // TODO: DB 연동 시 구현
-        alert('보기: uid=' + uid);
-    }
-    function ccp1bpEdit(uid) {
-        // TODO: DB 연동 시 구현
-        alert('수정: uid=' + uid);
-    }
-    function ccp1bpDelete(uid) {
-        if (confirm('삭제하시겠습니까?')) {
-            // TODO: DB 연동 시 구현
-            alert('삭제: uid=' + uid);
+    async function ccp1bpSave() {
+        const root = getFormRoot();
+        if (!root) return;
+
+        const payload = HaccpFormClient.buildPayloadFromForm(root);
+        const meta = HaccpFormClient.buildMetaFromForm(root, MetaConfig);
+
+        if (currentUid) {
+            const res = await HaccpFormClient.updateRecord({
+                resourceKey: HaccpResourceKey,
+                id: currentUid,
+                meta,
+                payload
+            });
+            if (res && res.result === 'success') {
+                await ccp1bpGoPage(currentPage);
+            } else {
+                alert(res?.message || '수정 실패');
+            }
+        } else {
+            const res = await HaccpFormClient.createRecord({
+                resourceKey: HaccpResourceKey,
+                meta,
+                payload
+            });
+            if (res && res.result === 'success') {
+                currentUid = res.uid;
+                await ccp1bpGoPage(currentPage);
+            } else {
+                alert(res?.message || '저장 실패');
+            }
         }
     }
-    function ccp1bpGoPage(page) {
-        // TODO: DB 연동 시 구현
-        alert('페이지 이동: ' + page);
+    async function ccp1bpView(uid) {
+        const root = getFormRoot();
+        if (!root) return;
+
+        const res = await HaccpFormClient.getOneRecord({ resourceKey: HaccpResourceKey, id: uid });
+        if (res && res.result === 'success') {
+            currentUid = uid;
+            HaccpFormClient.applyPayloadToForm(root, res.payload || {});
+
+            document.querySelectorAll('#ccp1bp-list-body tr').forEach(tr => tr.classList.remove('selected'));
+            const tr = document.querySelector(`#ccp1bp-list-body tr[data-uid="${uid}"]`);
+            if (tr) tr.classList.add('selected');
+        } else {
+            alert(res?.message || '데이터 조회 실패');
+        }
     }
+    function ccp1bpEdit(uid) {
+        ccp1bpView(uid);
+    }
+    async function ccp1bpDelete(uid) {
+        if (confirm('삭제하시겠습니까?')) {
+            const res = await HaccpFormClient.deleteRecord({ resourceKey: HaccpResourceKey, id: uid });
+            if (res && res.result === 'success') {
+                if (currentUid === uid) currentUid = null;
+                await ccp1bpGoPage(currentPage);
+            } else {
+                alert(res?.message || '삭제 실패');
+            }
+        }
+    }
+
+    function renderRows(items) {
+        const tbody = document.getElementById('ccp1bp-list-body');
+        if (!tbody) return;
+
+        if (!items || items.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="8">검색된 자료가 없습니다</td></tr>`;
+            return;
+        }
+
+        tbody.innerHTML = items.map(item => `
+            <tr data-uid="${item.uid}">
+                <td>${item.write_date || ''}</td>
+                <td>${item.page_no ?? ''}</td>
+                <td>${item.writer || ''}</td>
+                <td>${item.inspector || ''}</td>
+                <td>${item.action_person || ''}</td>
+                <td><button class="btn-tbl btn-view" onclick="ccp1bpView(${item.uid})">보기</button></td>
+                <td><button class="btn-tbl btn-edit" onclick="ccp1bpEdit(${item.uid})">수정</button></td>
+                <td><button class="btn-tbl btn-del" onclick="ccp1bpDelete(${item.uid})">삭제</button></td>
+            </tr>
+        `).join('');
+    }
+
+    function setActivePagination(page) {
+        const buttons = document.querySelectorAll('.ccp1bp-pagination button');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        buttons.forEach(btn => {
+            if ((btn.textContent || '').trim() === String(page)) btn.classList.add('active');
+        });
+    }
+
+    async function ccp1bpGoPage(page) {
+        currentPage = page;
+        setActivePagination(page);
+
+        const res = await HaccpFormClient.listRecords({ resourceKey: HaccpResourceKey, page, per });
+        if (!res || res.result !== 'success') {
+            alert(res?.message || '목록 조회 실패');
+            return;
+        }
+
+        HaccpFormClient.updatePaginationUI(
+            document.querySelector('.ccp1bp-pagination'),
+            page,
+            res.total,
+            per
+        );
+        renderRows(res.data);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        HaccpFormClient.snapshotDefaults(getFormRoot());
+        ccp1bpGoPage(1);
+    });
 </script>
 
 <div class='main-container'>
@@ -286,57 +408,7 @@
                         </tr>
                     </thead>
                     <tbody id="ccp1bp-list-body">
-                        <!-- 샘플 데이터 (DB 연동 전 화면 확인용) -->
-                        <tr>
-                            <td>2026-02-11</td>
-                            <td>1</td>
-                            <td>홍길동</td>
-                            <td>김점검</td>
-                            <td>이조치</td>
-                            <td><button class="btn-tbl btn-view" onclick="ccp1bpView(1)">보기</button></td>
-                            <td><button class="btn-tbl btn-edit" onclick="ccp1bpEdit(1)">수정</button></td>
-                            <td><button class="btn-tbl btn-del"  onclick="ccp1bpDelete(1)">삭제</button></td>
-                        </tr>
-                        <tr>
-                            <td>2026-02-10</td>
-                            <td>2</td>
-                            <td>홍길동</td>
-                            <td>김점검</td>
-                            <td>이조치</td>
-                            <td><button class="btn-tbl btn-view" onclick="ccp1bpView(2)">보기</button></td>
-                            <td><button class="btn-tbl btn-edit" onclick="ccp1bpEdit(2)">수정</button></td>
-                            <td><button class="btn-tbl btn-del"  onclick="ccp1bpDelete(2)">삭제</button></td>
-                        </tr>
-                        <tr>
-                            <td>2026-02-09</td>
-                            <td>1</td>
-                            <td>박작성</td>
-                            <td>김점검</td>
-                            <td>최조치</td>
-                            <td><button class="btn-tbl btn-view" onclick="ccp1bpView(3)">보기</button></td>
-                            <td><button class="btn-tbl btn-edit" onclick="ccp1bpEdit(3)">수정</button></td>
-                            <td><button class="btn-tbl btn-del"  onclick="ccp1bpDelete(3)">삭제</button></td>
-                        </tr>
-                        <tr>
-                            <td>2026-02-08</td>
-                            <td>1</td>
-                            <td>홍길동</td>
-                            <td>박점검</td>
-                            <td>이조치</td>
-                            <td><button class="btn-tbl btn-view" onclick="ccp1bpView(4)">보기</button></td>
-                            <td><button class="btn-tbl btn-edit" onclick="ccp1bpEdit(4)">수정</button></td>
-                            <td><button class="btn-tbl btn-del"  onclick="ccp1bpDelete(4)">삭제</button></td>
-                        </tr>
-                        <tr>
-                            <td>2026-02-07</td>
-                            <td>1</td>
-                            <td>박작성</td>
-                            <td>김점검</td>
-                            <td>이조치</td>
-                            <td><button class="btn-tbl btn-view" onclick="ccp1bpView(5)">보기</button></td>
-                            <td><button class="btn-tbl btn-edit" onclick="ccp1bpEdit(5)">수정</button></td>
-                            <td><button class="btn-tbl btn-del"  onclick="ccp1bpDelete(5)">삭제</button></td>
-                        </tr>
+                        <!-- DB 연동 전 화면 표시용 더미 제거 -->
                     </tbody>
                 </table>
 
