@@ -241,7 +241,10 @@
                                                     height: 3.88mm;
                                                     width: 24.82mm;
                                                 ">
-                                                    <span class="hrt cs15">매주 월요일</span>
+                                                    <input type="text" id="HC05_weekly_check_day" class="hrt cs15"
+                                                        value="매주 월요일"
+                                                        style="width: 100%; max-width: 100%; box-sizing: border-box; text-align: 
+                                                        center; border: 0; outline: 0; background: transparent; padding: 0;" />
                                                 </div>
                                             </div>
                                         </div>
@@ -268,7 +271,7 @@
                                                 <div class="hls ps27" style="
                                                     line-height: 2.79mm;
                                                     white-space: nowrap;
-                                                    left: 0mm;
+                                                    left: 1mm;
                                                     top: -0.18mm;
                                                     height: 3.53mm;
                                                     width: 5.08mm;
@@ -278,7 +281,7 @@
                                                 <div class="hls ps27" style="
                                                     line-height: 2.79mm;
                                                     white-space: nowrap;
-                                                    left: 0mm;
+                                                    left: 1mm;
                                                     top: 4.41mm;
                                                     height: 3.53mm;
                                                     width: 5.08mm;
@@ -322,34 +325,38 @@
                                     </div>
                                     <div class="hce"
                                         style="left: 124.18mm; top: 5.87mm; width: 23.07mm; height: 16.87mm">
-                                        <div class="hcD" style="left: 1mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 4.17mm">
+                                        <div class="hcD" style="left: 0mm; top: 0mm">
+                                            <div class="hcI" style="top: 0mm">
                                                 <div class="hls ps13" style="
                                                     line-height: 2.79mm;
                                                     white-space: nowrap;
                                                     left: 0mm;
-                                                    top: -0.18mm;
-                                                    height: 3.53mm;
-                                                    width: 21.07mm;">
-                                                    <input type="text" id="writer_name" class="writer_name"
-                                                    placeholder="작성자" maxlength="20"
-                                                    style="width: 100%; height: 115%; text-align: center; border: none; background: transparent;" />
+                                                    top: 0mm;
+                                                    height: 16.87mm;
+                                                    width: 23.07mm;">
+                                                    <textarea id="HC05_writer_name" class="writer_name" maxlength="20"
+                                                    style="width: 100%; height: 115%; text-align: center; border: none; background: transparent; 
+                                                    resize: none; overflow: hidden;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="hce"
                                         style="left: 147.26mm; top: 5.87mm; width: 25.1mm; height: 16.87mm">
-                                        <div class="hcD" style="left: 1mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 6.17mm">
+                                        <div class="hcD" style="left: 0mm; top: 0mm">
+                                            <div class="hcI" style="top: 0mm">
                                                 <div class="hls ps13" style="
                                                     line-height: 2.79mm;
                                                     white-space: nowrap;
                                                     left: 0mm;
-                                                    top: -0.18mm;
-                                                    height: 3.53mm;
-                                                    width: 23.1mm;
-                                                "></div>
+                                                    top: 0mm;
+                                                    height: 16.86mm;
+                                                    width: 25.1mm;
+                                                ">
+                                                    <textarea id="HC05_approver_name" class="writer_name" maxlength="20"
+                                                    style="width: 100%; height: 115%; text-align: center; border: none; background: transparent; 
+                                                    resize: none; overflow: hidden;"></textarea>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -379,14 +386,19 @@
                                                 <div class="hls ps4"
                                                     style="line-height: 3.1mm; white-space: nowrap; left: 0mm; top: -0.19mm; height: 3.88mm; width: 51.15mm;">
                                                     <input id="HC05_writeDate" name="HC05_writeDate" type="text"
-                                                        style="font-size: 14px; border-width: 0px;" class="date-input"
-                                                        onclick="(function () {
-                                                        var today = new Date();
-                                                        var yyyy = today.getFullYear();
-                                                        var mm = String(today.getMonth() + 1).padStart(2, '0');
-                                                        var dd = String(today.getDate()).padStart(2, '0');
-                                                        document.getElementById('HC05_writeDate').value = yyyy + '년 ' + mm + '월 ' + dd + '일';
-                                                    })();" />
+                                                        style="font-size: 14px; border-width: 0px;" class="date-input" />
+                                                    <script>
+                                                        (function () {
+                                                            var today = new Date();
+                                                            var yyyy = today.getFullYear();
+                                                            var mm = String(today.getMonth() + 1).padStart(2, '0');
+                                                            var dd = String(today.getDate()).padStart(2, '0');
+                                                            var el = document.getElementById('HC05_writeDate');
+                                                            if (el && !el.value) {
+                                                                el.value = yyyy + '년 ' + mm + '월 ' + dd + '일';
+                                                            }
+                                                        })();
+                                                    </script>
                                                 </div>
                                             </div>
                                         </div>
@@ -423,7 +435,7 @@
                                                     height: 3.88mm;
                                                     width: 66.18mm;">
                                                     <input id="HC05_inspector" name="HC05_inspector" type="text"
-                                                        class="sign-input" style="width: 100%; border-width: 0px;" placeholder="점검자" />
+                                                        class="sign-input" style="width: 100%; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -649,7 +661,7 @@
                                                 <div class="hls ps13"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm;">
                                                     <input type="text" id="HC05_TB01_ROW1_fly" name="HC05_TB01_ROW1_fly"
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -663,7 +675,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB01_ROW1_mosquito" name="HC05_TB01_ROW1_mosquito" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -677,7 +689,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB01_ROW1_moth" name="HC05_TB01_ROW1_moth" 
-                                                        class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                        class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -691,7 +703,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB01_ROW1_mayfly" name="HC05_TB01_ROW1_mayfly" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -705,7 +717,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB01_ROW1_ladybug" name="HC05_TB01_ROW1_ladybug" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -719,7 +731,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 33.09mm">
                                                     <input type="text" id="HC05_TB01_ROW1_etc" name="HC05_TB01_ROW1_etc"
-                                                        class="insect-input etc" style="position: absolute; border-width: 0px;" value="-" />
+                                                        class="insect-input etc" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -751,7 +763,7 @@
                                                 <div class="hls ps13 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB01_ROW2_fly" name="HC05_TB01_ROW2_fly"
-                                                        class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                        class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -764,7 +776,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB01_ROW2_mosquito" name="HC05_TB01_ROW2_mosquito" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -777,7 +789,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB01_ROW2_moth" name="HC05_TB01_ROW2_moth" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -790,7 +802,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB01_ROW2_mayfly" name="HC05_TB01_ROW2_mayfly" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -803,7 +815,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB01_ROW2_ladybug" name="HC05_TB01_ROW2_ladybug" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -816,7 +828,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 33.09mm">
                                                     <input type="text" id="HC05_TB01_ROW2_etc" name="HC05_TB01_ROW2_etc"
-                                                        class="insect-input etc" style="position: absolute; border-width: 0px;" value="-" />
+                                                        class="insect-input etc" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -848,7 +860,7 @@
                                                 <div class="hls ps13 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB01_ROW3_fly" name="HC05_TB01_ROW3_fly"
-                                                        class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                        class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -861,7 +873,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB01_ROW3_mosquito" name="HC05_TB01_ROW3_mosquito" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -874,7 +886,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB01_ROW3_moth" name="HC05_TB01_ROW3_moth" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -887,7 +899,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB01_ROW3_mayfly" name="HC05_TB01_ROW3_mayfly" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -900,7 +912,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB01_ROW3_ladybug" name="HC05_TB01_ROW3_ladybug" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -913,7 +925,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 33.09mm">
                                                     <input type="text" id="HC05_TB01_ROW3_etc" name="HC05_TB01_ROW3_etc"
-                                                        class="insect-input etc" style="position: absolute; border-width: 0px;" value="-" />
+                                                        class="insect-input etc" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -945,7 +957,7 @@
                                                 <div class="hls ps13 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB01_ROW4_fly" name="HC05_TB01_ROW4_fly"
-                                                        class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                        class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -958,7 +970,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB01_ROW4_mosquito" name="HC05_TB01_ROW4_mosquito" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -971,7 +983,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB01_ROW4_moth" name="HC05_TB01_ROW4_moth" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -984,7 +996,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB01_ROW4_mayfly" name="HC05_TB01_ROW4_mayfly" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -997,7 +1009,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB01_ROW4_ladybug" name="HC05_TB01_ROW4_ladybug" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1010,7 +1022,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 33.09mm">
                                                     <input type="text" id="HC05_TB01_ROW4_etc" name="HC05_TB01_ROW4_etc"
-                                                        class="insect-input etc" style="position: absolute; border-width: 0px;" value="-" />
+                                                        class="insect-input etc" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1204,7 +1216,7 @@
                                                 <div class="hls ps13 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB02_ROW1_ant" name="HC05_TB02_ROW1_ant"
-                                                        class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                        class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1217,7 +1229,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB02_ROW1_spider" name="HC05_TB02_ROW1_spider" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1230,7 +1242,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB02_ROW1_centipede" name="HC05_TB02_ROW1_centipede" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1243,7 +1255,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB02_ROW1_roach" name="HC05_TB02_ROW1_roach" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1256,7 +1268,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB02_ROW1_housecentipede" name="HC05_TB02_ROW1_houseentipede" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1269,7 +1281,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 33.09mm">
                                                     <input type="text" id="HC05_TB02_ROW1_etc" name="HC05_TB02_ROW1_etc"
-                                                        class="insect-input etc" style="position: absolute; border-width: 0px;" value="-" />
+                                                        class="insect-input etc" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1300,7 +1312,7 @@
                                                 <div class="hls ps13 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB02_ROW2_ant" name="HC05_TB02_ROW2_ant"
-                                                        class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                        class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1313,7 +1325,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB02_ROW2_spider" name="HC05_TB02_ROW2_spider" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1326,7 +1338,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB02_ROW2_centipede" name="HC05_TB02_ROW2_centipede" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1339,7 +1351,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB02_ROW2_roach" name="HC05_TB02_ROW2_roach" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1352,7 +1364,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB02_ROW2_housecentipede" name="HC05_TB02_ROW2_housecentipede" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1365,7 +1377,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 33.09mm">
                                                     <input type="text" id="HC05_TB02_ROW2_etc" name="HC05_TB02_ROW2_etc"
-                                                        class="insect-input etc" style="position: absolute; border-width: 0px;" value="-" />
+                                                        class="insect-input etc" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1416,7 +1428,7 @@
                                                 <div class="hls ps13 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB02_ROW3_ant" name="HC05_TB02_ROW3_ant"
-                                                        class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                        class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1429,7 +1441,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB02_ROW3_spider" name="HC05_TB02_ROW3_spider" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1442,7 +1454,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB02_ROW3_centipede" name="HC05_TB02_ROW3_centipede" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1455,7 +1467,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB02_ROW3_roach" name="HC05_TB02_ROW3_roach" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1468,7 +1480,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB02_ROW3_housecentipede" name="HC05_TB02_ROW3_housecentipede" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1481,7 +1493,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 33.09mm">
                                                     <input type="text" id="HC05_TB02_ROW3_etc" name="HC05_TB02_ROW3_etc"
-                                                        class="insect-input etc" style="position: absolute; border-width: 0px;" value="-" />
+                                                        class="insect-input etc" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1513,7 +1525,7 @@
                                                 <div class="hls ps13 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB02_ROW4_ant" name="HC05_TB02_ROW4_ant"
-                                                        class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                        class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1526,7 +1538,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB02_ROW4_spider" name="HC05_TB02_ROW4_spider" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1539,7 +1551,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB02_ROW4_centipede" name="HC05_TB02_ROW4_centipede" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1552,7 +1564,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB02_ROW4_roach" name="HC05_TB02_ROW4_roach" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1565,7 +1577,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 15.54mm">
                                                     <input type="text" id="HC05_TB02_ROW4_housecentipede" name="HC05_TB02_ROW4_housecentipede" 
-                                                    class="insect-input" style="position: absolute; border-width: 0px;" value="-" />
+                                                    class="insect-input" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1578,7 +1590,7 @@
                                                 <div class="hls ps27 insect-box"
                                                     style="left: 0mm; top: -0.18mm; height: 3.53mm; width: 33.09mm">
                                                     <input type="text" id="HC05_TB02_ROW4_etc" name="HC05_TB02_ROW4_etc"
-                                                        class="insect-input etc" style="position: absolute; border-width: 0px;" value="-" />
+                                                        class="insect-input etc" style="position: absolute; border-width: 0px;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -1633,7 +1645,7 @@
                                                     <input type="text" id="HC05_TB02_ROW5_ant" name="HC05_TB02_ROW5_ant"
                                                         class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -1653,7 +1665,7 @@
                                                     <input type="text" id="HC05_TB02_ROW5_spider"
                                                         name="HC05_TB02_ROW5_spider" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -1673,7 +1685,7 @@
                                                     <input type="text" id="HC05_TB02_ROW5_centipede"
                                                         name="HC05_TB02_ROW5_centipede" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -1693,7 +1705,7 @@
                                                     <input type="text" id="HC05_TB02_ROW5_roach"
                                                         name="HC05_TB02_ROW5_roach" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -1713,7 +1725,7 @@
                                                     <input type="text" id="HC05_TB02_ROW5_housecentipede"
                                                         name="HC05_TB02_ROW5_housecentipede" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -1733,7 +1745,7 @@
                                                     <input type="text" id="HC05_TB02_ROW5_etc" name="HC05_TB02_ROW5_etc"
                                                         class="insect-input etc"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -1771,7 +1783,7 @@
                                                     <input type="text" id="HC05_TB02_ROW6_ant" name="HC05_TB02_ROW6_ant"
                                                         class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -1791,7 +1803,7 @@
                                                     <input type="text" id="HC05_TB02_ROW6_spider"
                                                         name="HC05_TB02_ROW6_spider" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -1811,7 +1823,7 @@
                                                     <input type="text" id="HC05_TB02_ROW6_centipede"
                                                         name="HC05_TB02_ROW6_centipede" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -1831,7 +1843,7 @@
                                                     <input type="text" id="HC05_TB02_ROW6_roach"
                                                         name="HC05_TB02_ROW6_roach" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -1851,7 +1863,7 @@
                                                     <input type="text" id="HC05_TB02_ROW6_housecentipede"
                                                         name="HC05_TB02_ROW6_housecentipede" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -1871,7 +1883,7 @@
                                                     <input type="text" id="HC05_TB02_ROW6_etc" name="HC05_TB02_ROW6_etc"
                                                         class="insect-input etc"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -1926,7 +1938,7 @@
                                                     <input type="text" id="HC05_TB02_ROW7_ant" name="HC05_TB02_ROW7_ant"
                                                         class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -1946,7 +1958,7 @@
                                                     <input type="text" id="HC05_TB02_ROW7_spider"
                                                         name="HC05_TB02_ROW7_spider" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -1966,7 +1978,7 @@
                                                     <input type="text" id="HC05_TB02_ROW7_centipede"
                                                         name="HC05_TB02_ROW7_centipede" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -1986,7 +1998,7 @@
                                                     <input type="text" id="HC05_TB02_ROW7_roach"
                                                         name="HC05_TB02_ROW7_roach" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2006,7 +2018,7 @@
                                                     <input type="text" id="HC05_TB02_ROW7_housecentipede"
                                                         name="HC05_TB02_ROW7_housecentipede" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2026,7 +2038,7 @@
                                                     <input type="text" id="HC05_TB02_ROW7_etc" name="HC05_TB02_ROW7_etc"
                                                         class="insect-input etc"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2064,7 +2076,7 @@
                                                     <input type="text" id="HC05_TB02_ROW8_ant" name="HC05_TB02_ROW8_ant"
                                                         class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2084,7 +2096,7 @@
                                                     <input type="text" id="HC05_TB02_ROW8_spider"
                                                         name="HC05_TB02_ROW8_spider" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2104,7 +2116,7 @@
                                                     <input type="text" id="HC05_TB02_ROW8_centipede"
                                                         name="HC05_TB02_ROW8_centipede" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2124,7 +2136,7 @@
                                                     <input type="text" id="HC05_TB02_ROW8_roach"
                                                         name="HC05_TB02_ROW8_roach" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2144,7 +2156,7 @@
                                                     <input type="text" id="HC05_TB02_ROW8_housecentipede"
                                                         name="HC05_TB02_ROW8_housecentipede" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2164,7 +2176,7 @@
                                                     <input type="text" id="HC05_TB02_ROW8_etc" name="HC05_TB02_ROW8_etc"
                                                         class="insect-input etc"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2218,7 +2230,7 @@
                                                     <input type="text" id="HC05_TB02_ROW9_ant" name="HC05_TB02_ROW9_ant"
                                                         class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2238,7 +2250,7 @@
                                                     <input type="text" id="HC05_TB02_ROW9_spider"
                                                         name="HC05_TB02_ROW9_spider" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2258,7 +2270,7 @@
                                                     <input type="text" id="HC05_TB02_ROW9_centipede"
                                                         name="HC05_TB02_ROW9_centipede" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2278,7 +2290,7 @@
                                                     <input type="text" id="HC05_TB02_ROW9_roach"
                                                         name="HC05_TB02_ROW9_roach" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2298,7 +2310,7 @@
                                                     <input type="text" id="HC05_TB02_ROW9_housecentipede"
                                                         name="HC05_TB02_ROW9_housecentipede" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2318,7 +2330,7 @@
                                                     <input type="text" id="HC05_TB02_ROW9_etc" name="HC05_TB02_ROW9_etc"
                                                         class="insect-input etc"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2356,7 +2368,7 @@
                                                     <input type="text" id="HC05_TB02_ROW10_ant"
                                                         name="HC05_TB02_ROW10_ant" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2376,7 +2388,7 @@
                                                     <input type="text" id="HC05_TB02_ROW10_spider"
                                                         name="HC05_TB02_ROW10_spider" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2396,7 +2408,7 @@
                                                     <input type="text" id="HC05_TB02_ROW10_centipede"
                                                         name="HC05_TB02_ROW10_centipede" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2416,7 +2428,7 @@
                                                     <input type="text" id="HC05_TB02_ROW10_roach"
                                                         name="HC05_TB02_ROW10_roach" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2436,7 +2448,7 @@
                                                     <input type="text" id="HC05_TB02_ROW10_housecentipede"
                                                         name="HC05_TB02_ROW10_housecentipede" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2456,7 +2468,7 @@
                                                     <input type="text" id="HC05_TB02_ROW10_etc"
                                                         name="HC05_TB02_ROW10_etc" class="insect-input etc"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2597,7 +2609,7 @@
                                                     <input type="text" id="HC05_TB03_ROW1_mouse"
                                                         name="HC05_TB03_ROW1_mouse" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2618,7 +2630,7 @@
                                                     <input type="text" id="HC05_TB03_ROW1_etc" name="HC05_TB03_ROW1_etc"
                                                         class="insect-input etc"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2657,7 +2669,7 @@
                                                     <input type="text" id="HC05_TB03_ROW2_mouse"
                                                         name="HC05_TB03_ROW2_mouse" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2678,7 +2690,7 @@
                                                     <input type="text" id="HC05_TB03_ROW2_etc" name="HC05_TB03_ROW2_etc"
                                                         class="insect-input etc"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2744,7 +2756,7 @@
                                                     <input type="text" id="HC05_TB03_ROW3_mouse"
                                                         name="HC05_TB03_ROW3_mouse" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2765,7 +2777,7 @@
                                                     <input type="text" id="HC05_TB03_ROW3_etc" name="HC05_TB03_ROW3_etc"
                                                         class="insect-input etc"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2804,7 +2816,7 @@
                                                     <input type="text" id="HC05_TB03_ROW4_mouse"
                                                         name="HC05_TB03_ROW4_mouse" class="insect-input"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2825,7 +2837,7 @@
                                                     <input type="text" id="HC05_TB03_ROW4_etc" name="HC05_TB03_ROW4_etc"
                                                         class="insect-input etc"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; padding: 0; margin: 0;"
-                                                        value="-" />
+                                                       />
                                                 </div>
                                             </div>
                                         </div>
@@ -2928,11 +2940,13 @@
                                     <div class="hce"
                                         style="left: 117.1mm; top: 206.52mm; width: 21.38mm; height: 53.73mm">
                                         <div class="hcD" style="left: 1mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 24.43mm">
+                                            <div class="hcI" style="top: 0mm">
                                                 <div class="hls ps4"
-                                                    style="line-height: 3.1mm; height: 3.88mm; width: 19.37mm">
-                                                    <input type="text" id="HC05_actor" name="HC05_actor"
-                                                        class="underline-input" style="border-width: 0px;" placeholder="조치자" />
+                                                    style="left: 0mm; top: 0mm; line-height: 3.1mm; width: 19.37mm; height: 52.73mm">
+                                                    <textarea id="HC05_action_person" name="HC05_action_person"
+                                                        class="underline-input"
+                                                        style="width: 100%; height: 100%; border-width: 0px; text-align: center; resize: none; 
+                                                        overflow: hidden; box-sizing: border-box;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -2941,16 +2955,19 @@
                                     <div class="hce"
                                         style="left: 138.48mm; top: 206.52mm; width: 33.88mm; height: 53.73mm">
                                         <div class="hcD" style="left: 1mm; top: 0.5mm">
-                                            <!-- 확인은 기존처럼 비워둠 -->
-                                            <div class="hcI" style="top: 24.43mm">
+                                            <div class="hcI" style="top: 0mm">
                                                 <div class="hls ps4" style="
                                                     line-height: 3.1mm;
-                                                    white-space: nowrap;
                                                     left: 0mm;
-                                                    top: -0.19mm;
-                                                    height: 3.88mm;
+                                                    top: 0mm;
+                                                    height: 52.73mm;
                                                     width: 31.88mm;
-                                                "></div>
+                                                ">
+                                                    <textarea id="HC05_check" name="HC05_check"
+                                                        class="underline-input"
+                                                        style="width: 100%; height: 100%; border-width: 0px; text-align: center; resize: none; 
+                                                        overflow: hidden; box-sizing: border-box;"></textarea>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

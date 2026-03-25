@@ -95,3 +95,22 @@
     - `CCP-3P_row2_time`~`CCP-3P_row13_time`을 `CCP-3P_row1_time` 기준으로 통일(placeholder, padding-top, 스타일)
     - 일부 `font-weight`(bold) 적용으로 인해 일반 입력과 다르게 보이던 문제를 normal 기준으로 정리
 
+## 작업 내역 (2026-03-24)
+- HACCP 문서 입력영역 통일/보정
+  - `views/haccp/HC03_CCP-3P_모니터링일지.html`
+    - `HC03_row2_productName`~`HC03_row13_productName`을 `textarea` 전환 후 정렬/폰트 보정 과정을 거쳐 최종 `row1`과 동일하게 `input` 구조로 통일
+    - `HC03_actionPerson`, `HC03_check`를 `textarea`로 전환하고 부모 영역 맞춤(높이 100%), 스크롤/리사이즈 비노출 처리
+  - `views/haccp/HC04_검교정_성적서.html`
+    - 상단 텍스트 영역 일부를 `input`/`textarea`로 전환하고 작성자/승인자 입력영역(`HC04_writer_name`, `HC04_approver_name`) 추가/정렬
+    - 내부 자체 검교정 표에서 row 2개 추가(`row6`, `row7`) 및 하단 섹션(`한계기준 이탈내용/개선조치 및 결과/조치자/확인`) 좌표 재배치
+    - 표 라인(SVG path) 중복/오정렬 정리 및 하단 렌더링 라인 위치 보정
+  - `views/haccp/HC05_방충_및_방서점검표.html`
+    - 상단 주기 텍스트(`매주 월요일`)를 중앙 정렬 `input`으로 전환(경계/배경 제거, 부모 폭 맞춤)
+    - 작성자/승인자 영역을 `textarea`로 전환하고 스크롤/리사이즈 비노출 적용
+    - `HC05_writeDate`를 클릭 입력 방식에서 페이지 로드시 자동 오늘 날짜 입력 방식으로 변경
+    - `HC05_action_person`, `HC05_check`를 `textarea`로 전환하고 부모 영역(`top/width/height`) 기준으로 확장/중앙 정렬
+  - `views/haccp/HC06_온도점검표.html`
+    - `ROW1/2/3/5/7/9` 서명/승인 입력영역을 `textarea`로 전환, 부모 영역 100% 채움 및 중앙 정렬 적용
+    - 필드명 요청에 따라 `writerName` → `approverName`으로 변경(ROW 번호는 유지)
+    - 변경 후 작아 보이던 텍스트 크기를 동일하게 보이도록 `font-size` 보정
+

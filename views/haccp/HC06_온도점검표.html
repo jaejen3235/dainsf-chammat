@@ -255,7 +255,7 @@
                                                     <span class="hrt" style="width: 100%;">
                                                         <input type="text" id="HC06_tempRange" name="HC06_tempRange"
                                                             style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; 
-                                                            font-size: 18pt; font-weight: bold; margin: 0; text-align: center;"
+                                                            font-size: 16pt; font-weight: bold; margin: 0; text-align: center;"
                                                             value="[ 냉장 : 0℃~10℃ / 냉동 : -18℃이하 ]" />
                                                     </span>
                                                 </div>
@@ -380,7 +380,7 @@
                                                     width: 30.34mm;">
                                                     <input id="HC06_frig3" name="HC06_frig3" type="text" class="hrt cs1"
                                                         style="width: 100%; height: 100%; border: 0; outline: 0; background: transparent; 
-                                                                margin: 0; text-align: center;" value="-" />
+                                                                margin: 0; text-align: center;"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -475,7 +475,7 @@
                                                     height: 3.88mm;
                                                     width: 25.95mm;">
                                                     <input type="text" id="HC06_ROW1_time" name="HC06_ROW1_time"
-                                                        class="time-input hh" placeholder="HH:mm"
+                                                        class="time-input hh"
                                                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
                                                         oninput="formatTimeInput(this)" />
                                                 </div>
@@ -496,7 +496,7 @@
                                                 ">
                                                     <input type="text" id="HC06_ROW1_frig1_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW1_frig1_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW1_frig1_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -516,7 +516,7 @@
                                                 ">
                                                     <input type="text" id="HC06_ROW1_frig2_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW1_frig2_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW1_frig2_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -535,7 +535,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW1_frig3_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW1_frig3_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW1_frig3_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -543,19 +543,19 @@
 
                                     <div class="hce"
                                         style="left: 133.47mm; top: 51.56mm; width: 19.33mm; height: 23.72mm">
-                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 9.42mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0mm">
+                                            <div class="hcI" style="top: 0mm">
                                                 <div class="hls ps29" style="
                                                     line-height: 3.1mm;
                                                     white-space: nowrap;
                                                     left: 0mm;
-                                                    top: -0.19mm;
-                                                    height: 3.88mm;
-                                                    width: 19.33mm;
+                                                    top: 1mm;
+                                                    height: 23.72mm;
+                                                    width: 18.33mm;
                                                 ">
-                                                    <input type="text" id="HC06_ROW1_writerName"
-                                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW1_writerName" class="sign-input" value="-" />
+                                                    <textarea id="HC06_ROW1_writerName" name="HC06_ROW1_writerName"
+                                                    style="width: 100%; height: 100%; border-width: 0px; 
+                                                    text-align: center; resize: none; overflow: hidden; line-height: 1.4;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -563,16 +563,20 @@
 
                                     <div class="hce"
                                         style="left: 152.79mm; top: 51.56mm; width: 19.33mm; height: 23.72mm">
-                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 9.42mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0mm">
+                                            <div class="hcI" style="top: 0mm">
                                                 <div class="hls ps29" style="
                                                     line-height: 3.1mm;
                                                     white-space: nowrap;
                                                     left: 0mm;
-                                                    top: -0.19mm;
-                                                    height: 3.88mm;
-                                                    width: 16.57mm;
-                                                "></div>
+                                                    top: 1mm;
+                                                    height: 23.72mm;
+                                                    width: 18.33mm;
+                                                ">
+                                                    <textarea id="HC06_ROW1_approverName" name="HC06_ROW1_approverName"
+                                                    style="width: 100%; height: 100%; border-width: 0px; 
+                                                    text-align: center; resize: none; overflow: hidden; line-height: 1.4;"></textarea>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -600,7 +604,7 @@
                                                     height: 4.88mm;
                                                     width: 25.95mm;">
                                                     <input type="text" id="HC06_ROW2_time" name="HC06_ROW2_time"
-                                                        class="time-input hh" placeholder="HH:mm"
+                                                        class="time-input hh"
                                                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
                                                         oninput="formatTimeInput(this)" />
                                                 </div>
@@ -620,7 +624,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW2_frig1_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW2_frig1_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW2_frig1_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -639,7 +643,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW2_frig2_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW2_frig2_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW2_frig2_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -657,7 +661,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW2_frig3_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW2_frig3_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW2_frig3_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -701,7 +705,7 @@
                                                     height: 3.88mm;
                                                     width: 25.95mm;">
                                                     <input type="text" id="HC06_ROW3_time" name="HC06_ROW3_time"
-                                                        class="time-input hh" placeholder="HH:mm"
+                                                        class="time-input hh"
                                                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
                                                         oninput="formatTimeInput(this)" />
                                                 </div>
@@ -723,7 +727,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW3_frig1_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW3_frig1_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW3_frig1_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -742,7 +746,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW3_frig2_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW3_frig2_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW3_frig2_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -761,7 +765,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW3_frig3_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW3_frig3_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW3_frig3_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -769,34 +773,38 @@
                                     <!-- 화요일 결재 - 작성자 -->
                                     <div class="hce"
                                         style="left: 133.47mm; top: 75.28mm; width: 19.33mm; height: 23.72mm">
-                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 9.42mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0mm">
+                                            <div class="hcI" style="top: 0mm">
                                                 <div class="hls ps29" style="
                                                     line-height: 3.1mm;
                                                     white-space: nowrap;
                                                     left: 0mm;
-                                                    top: -0.19mm;
-                                                    height: 3.88mm;
-                                                    width: 19.33mm;">
-                                                    <input type="text" id="HC06_ROW3_writerName"
-                                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW3_writerName" class="temp-input" value="-" />
-                                                </div>
+                                                    top: 1mm;
+                                                    height: 23.72mm;
+                                                    width: 18.33mm;">
+                                                        <textarea id="HC06_ROW3_writerName" name="HC06_ROW3_writerName"
+                                                        style="width: 100%; height: 100%; border-width: 0px; 
+                                                        text-align: center; resize: none; overflow: hidden; line-height: 1.4;"></textarea>
+                                                    </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="hce"
                                         style="left: 152.79mm; top: 75.28mm; width: 19.33mm; height: 23.72mm">
-                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 9.42mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0mm">
+                                            <div class="hcI" style="top: 0mm">
                                                 <div class="hls ps29" style="
                                                     line-height: 3.1mm;
                                                     white-space: nowrap;
                                                     left: 0mm;
-                                                    top: -0.19mm;
-                                                    height: 3.88mm;
-                                                    width: 16.57mm;
-                                                "></div>
+                                                    top: 1mm;
+                                                    height: 23.72mm;
+                                                    width: 18.57mm;
+                                                ">
+                                                    <textarea id="HC06_ROW3_approverName" name="HC06_ROW3_approverName"
+                                                    style="width: 100%; height: 100%; border-width: 0px; 
+                                                    text-align: center; resize: none; overflow: hidden; line-height: 1.4;"></textarea>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -823,7 +831,7 @@
                                                     height: 3.88mm;
                                                     width: 25.95mm;">
                                                     <input type="text" id="HC06_ROW4_time" name="HC06_ROW4_time"
-                                                        class="time-input hh" placeholder="HH:mm"
+                                                        class="time-input hh"
                                                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
                                                         oninput="formatTimeInput(this)" />
                                                 </div>
@@ -845,7 +853,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW4_frig1_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW4_frig1_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW4_frig1_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -864,7 +872,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW4_frig2_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW4_frig2_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW4_frig2_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -883,7 +891,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW4_frig3_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW4_frig3_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW4_frig3_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -928,7 +936,7 @@
                                                     height: 3.88mm;
                                                     width: 25.95mm;">
                                                     <input type="text" id="HC06_ROW5_time" name="HC06_ROW5_time"
-                                                        class="time-input hh" placeholder="HH:mm"
+                                                        class="time-input hh"
                                                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
                                                         oninput="formatTimeInput(this)" />
                                                 </div>
@@ -949,7 +957,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW5_frig1_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW5_frig1_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW5_frig1_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -967,7 +975,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW5_frig2_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW5_frig2_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW5_frig2_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -985,7 +993,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW5_frig3_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW5_frig3_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW5_frig3_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -993,34 +1001,38 @@
 
                                     <!-- ✅ 수요일 결재 - 작성자(입력), 확인자(빈칸 유지) -->
                                     <div class="hce" style="left: 133.47mm; top: 99mm; width: 19.33mm; height: 23.72mm">
-                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 9.42mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0mm">
+                                            <div class="hcI" style="top: 0mm">
                                                 <div class="hls ps29" style="
                                                     line-height: 3.1mm;
                                                     white-space: nowrap;
                                                     left: 0mm;
-                                                    top: -0.19mm;
-                                                    height: 3.88mm;
-                                                    width: 16.57mm;">
-                                                    <input type="text" id="HC06_ROW5_writerName"
-                                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW5_writerName" class="temp-input" value="-" />
+                                                    top: 1mm;
+                                                    height: 23.72mm;
+                                                    width: 18.57mm;">
+                                                    <textarea id="HC06_ROW5_writerName" name="HC06_ROW5_writerName"
+                                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px; 
+                                                    text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="hce" style="left: 152.79mm; top: 99mm; width: 19.33mm; height: 23.72mm">
-                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 9.42mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0mm">
+                                            <div class="hcI" style="top: 0mm">
                                                 <div class="hls ps29" style="
                                                     line-height: 3.1mm;
                                                     white-space: nowrap;
                                                     left: 0mm;
-                                                    top: -0.19mm;
-                                                    height: 3.88mm;
-                                                    width: 16.57mm;
-                                                "></div>
+                                                    top: 1mm;
+                                                    height: 23.72mm;
+                                                    width: 18.33mm;
+                                                ">
+                                                    <textarea id="HC06_ROW5_approverName" name="HC06_ROW5_approverName"
+                                                    style="width: 100%; height: 100%; border-width: 0px; 
+                                                    text-align: center; resize: none; overflow: hidden; line-height: 1.4;"></textarea>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1048,7 +1060,7 @@
                                                     height: 3.88mm;
                                                     width: 25.95mm;">
                                                     <input type="text" id="HC06_ROW6_time" name="HC06_ROW6_time"
-                                                        class="time-input hh" placeholder="HH:mm"
+                                                        class="time-input hh"
                                                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
                                                         oninput="formatTimeInput(this)" />
                                                 </div>
@@ -1070,7 +1082,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW6_frig1_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW6_frig1_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW6_frig1_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1089,7 +1101,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW6_frig2_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW6_frig2_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW6_frig2_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1108,7 +1120,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW6_frig3_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW6_frig3_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW6_frig3_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1155,7 +1167,7 @@
                                                     height: 3.88mm;
                                                     width: 25.95mm;">
                                                     <input type="text" id="HC06_ROW7_time" name="HC06_ROW7_time"
-                                                        class="time-input hh" placeholder="HH:mm"
+                                                        class="time-input hh"
                                                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
                                                         oninput="formatTimeInput(this)" />
                                                 </div>
@@ -1177,7 +1189,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW7_frig1_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW7_frig1_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW7_frig1_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1196,7 +1208,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW7_frig2_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW7_frig2_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW7_frig2_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1215,7 +1227,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW7_frig3_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW7_frig3_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW7_frig3_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1224,18 +1236,18 @@
                                     <!-- ✅ 목요일 결재 - 작성자(입력), 확인자(빈칸 유지) -->
                                     <div class="hce"
                                         style="left: 133.47mm; top: 122.72mm; width: 19.33mm; height: 23.72mm">
-                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 9.42mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0mm">
+                                            <div class="hcI" style="top: 0mm">
                                                 <div class="hls ps29" style="
                                                     line-height: 3.1mm;
                                                     white-space: nowrap;
                                                     left: 0mm;
-                                                    top: -0.19mm;
-                                                    height: 3.88mm;
+                                                    top: 1mm;
+                                                    height: 23.72mm;
                                                     width: 16.57mm;">
-                                                    <input type="text" id="HC06_ROW7_writerName"
-                                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW7_writerName" class="temp-input" value="-" />
+                                                    <textarea id="HC06_ROW7_writerName" name="HC06_ROW7_writerName"
+                                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px; 
+                                                    text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1243,16 +1255,20 @@
 
                                     <div class="hce"
                                         style="left: 152.79mm; top: 122.72mm; width: 19.33mm; height: 23.72mm">
-                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 9.42mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0mm">
+                                            <div class="hcI" style="top: 0mm">
                                                 <div class="hls ps29" style="
                                                     line-height: 3.1mm;
                                                     white-space: nowrap;
                                                     left: 0mm;
-                                                    top: -0.19mm;
-                                                    height: 3.88mm;
-                                                    width: 16.57mm;
-                                                "></div>
+                                                    top: 1mm;
+                                                    height: 23.72mm;
+                                                    width: 18.33mm;
+                                                ">
+                                                    <textarea id="HC06_ROW7_approverName" name="HC06_ROW7_approverName"
+                                                    style="width: 100%; height: 100%; border-width: 0px; 
+                                                    text-align: center; resize: none; overflow: hidden; line-height: 1.4;"></textarea>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1280,7 +1296,7 @@
                                                     height: 3.88mm;
                                                     width: 25.95mm;">
                                                     <input type="text" id="HC06_ROW8_time" name="HC06_ROW8_time"
-                                                        class="time-input hh" placeholder="HH:mm"
+                                                        class="time-input hh"
                                                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
                                                         oninput="formatTimeInput(this)" />
                                                 </div>
@@ -1302,7 +1318,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW8_frig1_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW8_frig1_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW8_frig1_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1321,7 +1337,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW8_frig2_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW8_frig2_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW8_frig2_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1340,7 +1356,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW8_frig3_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW8_frig3_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW8_frig3_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1387,7 +1403,7 @@
                                                     height: 3.88mm;
                                                     width: 25.95mm;">
                                                     <input type="text" id="HC06_ROW9_time" name="HC06_ROW9_time"
-                                                        class="time-input hh" placeholder="HH:mm"
+                                                        class="time-input hh"
                                                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
                                                         oninput="formatTimeInput(this)" />
                                                 </div>
@@ -1409,7 +1425,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW9_frig3_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW9_frig3_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW9_frig3_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1428,7 +1444,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW9_frig2_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW9_frig2_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW9_frig2_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1447,7 +1463,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW9_frig3_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW9_frig3_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW9_frig3_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1456,18 +1472,18 @@
                                     <!-- ✅ 금요일 결재 - 작성자(입력), 확인자(빈칸 유지) -->
                                     <div class="hce"
                                         style="left: 133.47mm; top: 146.44mm; width: 19.33mm; height: 23.72mm">
-                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 9.42mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0mm">
+                                            <div class="hcI" style="top: 0mm">
                                                 <div class="hls ps29" style="
                                                     line-height: 3.1mm;
                                                     white-space: nowrap;
                                                     left: 0mm;
-                                                    top: -0.19mm;
-                                                    height: 3.88mm;
+                                                    top: 1mm;
+                                                    height: 23.72mm;
                                                     width: 16.57mm;">
-                                                    <input type="text" id="HC06_ROW9_writerName"
-                                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW9_writerName" class="temp-input" value="-" />
+                                                    <textarea id="HC06_ROW9_writerName" name="HC06_ROW9_writerName"
+                                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px; 
+                                                    text-align: center; resize: none; overflow: hidden; box-sizing: border-box;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -1475,16 +1491,20 @@
 
                                     <div class="hce"
                                         style="left: 152.79mm; top: 146.44mm; width: 19.33mm; height: 23.72mm">
-                                        <div class="hcD" style="left: 0.5mm; top: 0.5mm">
-                                            <div class="hcI" style="top: 9.42mm">
+                                        <div class="hcD" style="left: 0.5mm; top: 0mm">
+                                            <div class="hcI" style="top: 0mm">
                                                 <div class="hls ps29" style="
                                                     line-height: 3.1mm;
                                                     white-space: nowrap;
                                                     left: 0mm;
-                                                    top: -0.19mm;
-                                                    height: 3.88mm;
-                                                    width: 16.57mm;
-                                                "></div>
+                                                    top: 1mm;
+                                                    height: 23.72mm;
+                                                    width: 18.33mm;
+                                                ">
+                                                    <textarea id="HC06_ROW9_approverName" name="HC06_ROW9_approverName"
+                                                    style="width: 100%; height: 100%; border-width: 0px; 
+                                                    text-align: center; resize: none; overflow: hidden; line-height: 1.4;"></textarea>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1512,7 +1532,7 @@
                                                     height: 3.88mm;
                                                     width: 25.95mm;">
                                                     <input type="text" id="HC06_ROW10_time" name="HC06_ROW10_time"
-                                                        class="time-input hh" placeholder="HH:mm"
+                                                        class="time-input hh"
                                                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
                                                         oninput="formatTimeInput(this)" />
                                                 </div>
@@ -1534,7 +1554,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW10_frig1_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW10_frig1_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW10_frig1_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1553,7 +1573,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW10_frig2_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW10_frig2_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW10_frig2_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1572,7 +1592,7 @@
                                                     width: 28.57mm;">
                                                     <input type="text" id="HC06_ROW10_frig3_temp"
                                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-width: 0px;"
-                                                        name="HC06_ROW10_frig3_temp" class="temp-input" value="- ℃" />
+                                                        name="HC06_ROW10_frig3_temp" class="temp-input" value=" ℃" />
                                                 </div>
                                             </div>
                                         </div>

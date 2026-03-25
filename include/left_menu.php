@@ -355,17 +355,17 @@ $left_menu = [
             ],
             [
                 'controller' => 'haccp',
-                'action' => 'HC04_검교정_성적서',
+                'action' => '검교정_성적서',
                 'title' => '검교정 성적서'
             ],
             [
                 'controller' => 'haccp',
-                'action' => 'HC05_방충_및_방서점검표',
+                'action' => '방충_및_방서점검표',
                 'title' => '방충 및 방서점검표'
             ],
             [
                 'controller' => 'haccp',
-                'action' => 'HC06_온도점검표',
+                'action' => '온도점검표',
                 'title' => '온도점검표'
             ],
             [
