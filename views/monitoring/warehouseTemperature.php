@@ -133,6 +133,109 @@
             width: 100% !important;
             height: 100% !important;
         }
+
+        .view-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .view-tab-btn {
+            border: 1px solid #cfd8dc;
+            background: #fff;
+            color: #333;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .view-tab-btn.active {
+            background: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+        .view-pane {
+            display: none;
+            flex: 1;
+            min-height: 0;
+        }
+        .view-pane.active {
+            display: flex;
+            flex-direction: column;
+        }
+        .table-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .table-controls .left,
+        .table-controls .right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .table-controls input[type="date"] {
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            padding: 6px 8px;
+            font-size: 13px;
+        }
+        .btn-small {
+            border: 1px solid #007bff;
+            background: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            padding: 6px 10px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        .temp-history-table-wrap {
+            border: 1px solid var(--table-border);
+            border-radius: 8px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            max-height: 310px; /* 헤더 + 약 6행 표시 후 스크롤 */
+            background: #fff;
+        }
+        .temp-history-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .temp-history-table th,
+        .temp-history-table td {
+            border-bottom: 1px solid #eee;
+            padding: 10px 8px;
+            text-align: center;
+            font-size: 13px;
+        }
+        .temp-history-table thead th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        .history-pagination {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .history-pagination button {
+            border: 1px solid #cfd8dc;
+            background: #fff;
+            color: #333;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .history-pagination button.active {
+            background: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
     </style>
 </head>
 <body>
@@ -141,14 +244,56 @@
         <div class='content-wrapper'>
             
             <div id="temperature-monitor">
-                <div class="report-title">🌡️ 창고 온도 실시간 모니터링 (전체 비교)</div>
+                <div class="report-title">🌡️ 창고 온도 실시간 모니터링</div>
 
                 <div class="temp-dashboard" id="warehouse-summary">
                 </div>
 
-                <div class="chart-container">
-                    <div id="chartTitle"></div>
-                    <canvas id="tempChart"></canvas>
+                <div class="view-tabs">
+                    <button type="button" class="view-tab-btn active" data-tab="chart">실시간 차트</button>
+                    <button type="button" class="view-tab-btn" data-tab="table">시간별 조회</button>
+                </div>
+
+                <div class="view-pane active" id="chart-pane">
+                    <div class="chart-container">
+                        <div id="chartTitle"></div>
+                        <canvas id="tempChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="view-pane" id="table-pane">
+                    <div class="table-controls">
+                        <div class="left">
+                            <label for="history_start_date">시작일</label>
+                            <input type="date" id="history_start_date">
+                            <label for="history_end_date">종료일</label>
+                            <input type="date" id="history_end_date">
+                            <label for="history_order">정렬</label>
+                            <select id="history_order">
+                                <option value="desc" selected>내림차순</option>
+                                <option value="asc">오름차순</option>
+                            </select>
+                            <button type="button" class="btn-small" id="btnSearchHistory">조회</button>
+                        </div>
+                        <div class="right">
+                            <span id="historyCountText">총 0건</span>
+                        </div>
+                    </div>
+
+                    <div class="temp-history-table-wrap">
+                        <table class="temp-history-table">
+                            <thead>
+                                <tr>
+                                    <th>측정시간(10분 단위)</th>
+                                    <th>냉장창고 A (제품)</th>
+                                    <th>냉장창고 B (혼합)</th>
+                                    <th>냉장창고 C (원자재)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="hourly-history-body"></tbody>
+                        </table>
+                    </div>
+                    <div class="history-pagination" id="hourly-history-pagination"></div>
                 </div>
             </div>
         </div>
@@ -179,6 +324,142 @@
             { code: 'frig_mix', name: '냉장창고 B (혼합)', color: '#28a745' }, 
             { code: 'frig_stuff', name: '냉장창고 C (원자재)', color: '#ffc107' }, 
         ];
+
+        const HISTORY_PER_PAGE = 20;
+        let historyPage = 1;
+
+        function getTodayStr() {
+            const d = new Date();
+            const y = d.getFullYear();
+            const m = String(d.getMonth() + 1).padStart(2, '0');
+            const day = String(d.getDate()).padStart(2, '0');
+            return `${y}-${m}-${day}`;
+        }
+
+        function initHistoryFilters() {
+            const startInput = document.getElementById('history_start_date');
+            const endInput = document.getElementById('history_end_date');
+            const today = getTodayStr();
+            if (startInput) startInput.value = today;
+            if (endInput) endInput.value = today;
+        }
+
+        function initTabs() {
+            const tabButtons = document.querySelectorAll('.view-tab-btn');
+            const chartPane = document.getElementById('chart-pane');
+            const tablePane = document.getElementById('table-pane');
+
+            tabButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tabButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const tab = btn.dataset.tab;
+                    if (tab === 'chart') {
+                        chartPane?.classList.add('active');
+                        tablePane?.classList.remove('active');
+                    } else {
+                        tablePane?.classList.add('active');
+                        chartPane?.classList.remove('active');
+                        loadHourlyHistory(1);
+                    }
+                });
+            });
+        }
+
+        function bindHistoryEvents() {
+            const btn = document.getElementById('btnSearchHistory');
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    loadHourlyHistory(1);
+                });
+            }
+        }
+
+        async function loadHourlyHistory(page = 1) {
+            historyPage = page;
+            const startDate = document.getElementById('history_start_date')?.value || getTodayStr();
+            const endDate = document.getElementById('history_end_date')?.value || getTodayStr();
+            const order = document.getElementById('history_order')?.value || 'desc';
+
+            const response = await fetchData('getWarehouseTempHourlyHistory', {
+                start_date: startDate,
+                end_date: endDate,
+                order,
+                page: historyPage,
+                per: HISTORY_PER_PAGE
+            });
+
+            renderHistoryTable(response);
+            renderHistoryPagination(response.total_count || 0, historyPage, HISTORY_PER_PAGE);
+        }
+
+        function renderHistoryTable(response) {
+            const tbody = document.getElementById('hourly-history-body');
+            const countText = document.getElementById('historyCountText');
+            if (!tbody) return;
+
+            const rows = Array.isArray(response?.data) ? response.data : [];
+            if (countText) {
+                countText.textContent = `총 ${Number(response?.total_count || 0).toLocaleString()}건`;
+            }
+
+            if (rows.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="4">조회된 데이터가 없습니다.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = rows.map(row => `
+                <tr>
+                    <td>${escapeHtml(row.measure_slot || '-')}</td>
+                    <td>${formatTemp(row.frig_goods_temp)}</td>
+                    <td>${formatTemp(row.frig_mix_temp)}</td>
+                    <td>${formatTemp(row.frig_stuff_temp)}</td>
+                </tr>
+            `).join('');
+        }
+
+        function renderHistoryPagination(totalCount, currentPage, per) {
+            const wrap = document.getElementById('hourly-history-pagination');
+            if (!wrap) return;
+
+            const totalPages = Math.max(1, Math.ceil(totalCount / per));
+            if (totalPages <= 1) {
+                wrap.innerHTML = '';
+                return;
+            }
+
+            const pages = [];
+            const start = Math.max(1, currentPage - 2);
+            const end = Math.min(totalPages, currentPage + 2);
+
+            pages.push(`<button type="button" data-page="${Math.max(1, currentPage - 1)}">이전</button>`);
+            for (let p = start; p <= end; p++) {
+                pages.push(`<button type="button" data-page="${p}" class="${p === currentPage ? 'active' : ''}">${p}</button>`);
+            }
+            pages.push(`<button type="button" data-page="${Math.min(totalPages, currentPage + 1)}">다음</button>`);
+
+            wrap.innerHTML = pages.join('');
+            wrap.querySelectorAll('button[data-page]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const nextPage = parseInt(btn.getAttribute('data-page') || '1', 10);
+                    loadHourlyHistory(nextPage);
+                });
+            });
+        }
+
+        function formatTemp(val) {
+            if (val === null || val === undefined || val === '') return '-';
+            const n = Number(val);
+            if (Number.isNaN(n)) return '-';
+            return `${n.toFixed(2)}°C`;
+        }
+
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = String(str);
+            return div.innerHTML;
+        }
         
         
         // ===============================================
@@ -404,7 +685,7 @@
                 }
             });
             
-            document.getElementById('chartTitle').textContent = `모든 창고 실시간 온도 변화 추이 (최근 10분)`;
+            document.getElementById('chartTitle').textContent = `실시간 온도 변화 추이`;
         }
 
         /** 캐시된 모든 데이터를 이용해 차트 갱신 */
@@ -492,6 +773,9 @@
             // 0. DOM 구조 및 차트 초기화
             initializeSummaryCards(); 
             initChart(); 
+            initTabs();
+            initHistoryFilters();
+            bindHistoryEvents();
             
             // 1. 페이지 로드 시 최초 1회 즉시 실행 (카드 & 차트 초기 데이터 로딩)
             loadCurrentTemp(); 

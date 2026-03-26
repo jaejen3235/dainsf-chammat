@@ -499,7 +499,7 @@
             'frig_stuff': '냉동창고'
         };
 
-        // 세척기 가동 기준 전력량 (kW) - 이 값 이상이면 가동으로 표시
+        // 세척기 가동 기준 전류 - 이 값 이상이면 가동으로 표시
         const WASHER_POWER_THRESHOLD = 1.0;
         
         // 차트 인스턴스
@@ -975,7 +975,7 @@
                     </div>
                     <div>
                         <span class="washer-header-power">${currentPower.toFixed(2)}</span>
-                        <span class="washer-header-unit">kW</span>
+                        <span class="washer-header-unit">A</span>
                     </div>
                 `;
             }
@@ -1107,7 +1107,7 @@
                     data: {
                         labels: [],
                         datasets: [{
-                            label: '전력량 (kW)',
+                            label: '전류 (A)',
                             data: [],
                             borderColor: '#45b7d1',
                             backgroundColor: 'rgba(69, 183, 209, 0.1)',
@@ -1137,7 +1137,7 @@
                                 beginAtZero: true,
                                 title: {
                                     display: true,
-                                    text: '전력량 (kW)'
+                                    text: '전류 (A)'
                                 }
                             },
                             x: {
@@ -1182,7 +1182,7 @@
                     data: {
                         labels: labels,
                         datasets: [{
-                            label: '전력량 (kW)',
+                            label: '전류 (A)',
                             data: powerValues,
                             borderColor: '#45b7d1',
                             backgroundColor: 'rgba(69, 183, 209, 0.1)',
@@ -1218,7 +1218,7 @@
                                 beginAtZero: true,
                                 title: {
                                     display: true,
-                                    text: '전력량 (kW)'
+                                    text: '전류 (A)'
                                 }
                             },
                             x: {

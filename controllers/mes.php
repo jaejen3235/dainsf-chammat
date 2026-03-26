@@ -8525,6 +8525,80 @@ class Mes extends Functions
         echo json_encode($this->response);
     }
 
+    /**
+     * 냉장창고 3개 10분 단위 온도 테이블 조회 (20건 페이징)
+     * columns:
+     * - frig_goods: 냉장창고 A (제품)
+     * - frig_mix: 냉장창고 B (혼합)
+     * - frig_stuff: 냉장창고 C (원자재)
+     */
+    public function getWarehouseTempHourlyHistory() {
+        $start_date = $this->escapeString($this->param['start_date'] ?? date('Y-m-d'));
+        $end_date = $this->escapeString($this->param['end_date'] ?? date('Y-m-d'));
+        $order = strtolower($this->escapeString($this->param['order'] ?? 'desc'));
+        if ($order !== 'asc' && $order !== 'desc') {
+            $order = 'desc';
+        }
+        $page = isset($this->param['page']) ? max(1, (int)$this->param['page']) : 1;
+        $per = isset($this->param['per']) ? max(1, (int)$this->param['per']) : 20;
+        $start = ($page - 1) * $per;
+
+        $start_dt = "{$start_date} 00:00:00";
+        $end_dt = "{$end_date} 23:59:59";
+
+        $where = "
+            data_type='temp'
+            AND machine IN ('frig_goods','frig_mix','frig_stuff')
+            AND timestamp >= '{$start_dt}'
+            AND timestamp <= '{$end_dt}'
+        ";
+
+        $count_query = "
+            SELECT COUNT(*) AS cnt
+            FROM (
+                SELECT CONCAT(
+                    DATE_FORMAT(timestamp, '%Y-%m-%d %H:'),
+                    LPAD(FLOOR(MINUTE(timestamp)/10)*10, 2, '0'),
+                    ':00'
+                ) AS time_bucket_10m
+                FROM mes_machine_data
+                WHERE {$where}
+                GROUP BY time_bucket_10m
+            ) t
+        ";
+        $this->query($count_query);
+        $count_row = $this->fetch();
+        $total_count = isset($count_row['cnt']) ? (int)$count_row['cnt'] : 0;
+
+        $query = "
+            SELECT
+                CONCAT(
+                    DATE_FORMAT(timestamp, '%Y-%m-%d %H:'),
+                    LPAD(FLOOR(MINUTE(timestamp)/10)*10, 2, '0'),
+                    ':00'
+                ) AS measure_slot,
+                ROUND(AVG(CASE WHEN machine='frig_goods' THEN (value + 0) END), 2) AS frig_goods_temp,
+                ROUND(AVG(CASE WHEN machine='frig_mix' THEN (value + 0) END), 2) AS frig_mix_temp,
+                ROUND(AVG(CASE WHEN machine='frig_stuff' THEN (value + 0) END), 2) AS frig_stuff_temp
+            FROM mes_machine_data
+            WHERE {$where}
+            GROUP BY measure_slot
+            ORDER BY measure_slot {$order}
+            LIMIT {$start}, {$per}
+        ";
+        $this->query($query);
+        $results = $this->fetchAll();
+
+        $this->response = [
+            'result' => 'success',
+            'total_count' => $total_count,
+            'page' => $page,
+            'per' => $per,
+            'data' => $results,
+        ];
+        echo json_encode($this->response);
+    }
+
     // 금속검출(생산하는) 품목 등록
     public function startDetection() {
         $item_name = $this->param['item_name'];
@@ -8884,6 +8958,128 @@ class Mes extends Functions
         $this->response = [
             'result' => 'success',
             'data'   => $data
+        ];
+        echo json_encode($this->response);
+    }
+
+    // cleaner 가동 시간 이력 조회 (값 흔들림 방지: 연속 3회 기준으로 시작/종료 기록)
+    public function getCleanerRunHistory() {
+        $machine = 'cleaner';
+        $today = date('Y-m-d');
+
+        $start_date = $this->escapeString($this->param['start_date'] ?? $today);
+        $end_date = $this->escapeString($this->param['end_date'] ?? $today);
+
+        $page = isset($this->param['page']) ? max(1, (int)$this->param['page']) : 1;
+        $per = isset($this->param['per']) ? max(1, (int)$this->param['per']) : 20;
+        $start = ($page - 1) * $per;
+
+        $start_dt = "{$start_date} 00:00:00";
+        $end_dt = "{$end_date} 23:59:59";
+
+        // 기간 내 겹치는 가동 시간(초) 합계
+        $queryTotal = "
+            SELECT
+                IFNULL(SUM(
+                    GREATEST(
+                        TIMESTAMPDIFF(
+                            SECOND,
+                            GREATEST(started_at, '{$start_dt}'),
+                            LEAST(COALESCE(ended_at, NOW()), '{$end_dt}')
+                        ),
+                        0
+                    )
+                ), 0) AS total_seconds
+            FROM cleaner_run_history
+            WHERE machine='{$machine}'
+              AND started_at <= '{$end_dt}'
+              AND (ended_at IS NULL OR ended_at >= '{$start_dt}')
+        ";
+        $this->query($queryTotal);
+        $totalRow = $this->fetch();
+        $total_seconds = isset($totalRow['total_seconds']) ? (int)$totalRow['total_seconds'] : 0;
+
+        $queryCount = "
+            SELECT COUNT(*) AS cnt
+            FROM cleaner_run_history
+            WHERE machine='{$machine}'
+              AND started_at <= '{$end_dt}'
+              AND (ended_at IS NULL OR ended_at >= '{$start_dt}')
+        ";
+        $this->query($queryCount);
+        $countRow = $this->fetch();
+        $total_count = isset($countRow['cnt']) ? (int)$countRow['cnt'] : 0;
+
+        // 이력 리스트
+        $limit_sql = "LIMIT {$start}, {$per}";
+        $queryList = "
+            SELECT
+                id,
+                started_at,
+                ended_at,
+                start_current,
+                end_current,
+                TIMESTAMPDIFF(SECOND, started_at, COALESCE(ended_at, NOW())) AS duration_seconds
+            FROM cleaner_run_history
+            WHERE machine='{$machine}'
+              AND started_at <= '{$end_dt}'
+              AND (ended_at IS NULL OR ended_at >= '{$start_dt}')
+            ORDER BY started_at DESC
+            {$limit_sql}
+        ";
+        $this->query($queryList);
+        $results = $this->fetchAll();
+
+        $this->response = [
+            'result' => 'success',
+            'total_seconds' => $total_seconds,
+            'total_count' => $total_count,
+            'data' => $results
+        ];
+        echo json_encode($this->response);
+    }
+
+    /**
+     * EMS KPI: mes_day_power 기준 이번 주(월~당일) 합계 전력량, 금일 전력량
+     */
+    public function getEmsPowerKpi() {
+        $today = new DateTime('today');
+
+        $y = (int)$today->format('Y');
+        $m = (int)$today->format('n');
+        $d = (int)$today->format('j');
+        $dayField = 'day' . $d;
+
+        $day_kwh = 0.0;
+        $qDay = "SELECT `{$dayField}` AS v FROM mes_day_power WHERE year={$y} AND month={$m} LIMIT 1";
+        $this->query($qDay);
+        $rowDay = $this->fetch();
+        if ($rowDay && isset($rowDay['v']) && $rowDay['v'] !== null && $rowDay['v'] !== '') {
+            $day_kwh = (float)$rowDay['v'];
+        }
+
+        $dow = (int)$today->format('N');
+        $weekStart = clone $today;
+        $weekStart->modify('-' . ($dow - 1) . ' days');
+
+        $week_kwh = 0.0;
+        for ($cur = clone $weekStart; $cur <= $today; $cur->modify('+1 day')) {
+            $cy = (int)$cur->format('Y');
+            $cm = (int)$cur->format('n');
+            $cd = (int)$cur->format('j');
+            $field = 'day' . $cd;
+            $q = "SELECT `{$field}` AS v FROM mes_day_power WHERE year={$cy} AND month={$cm} LIMIT 1";
+            $this->query($q);
+            $r = $this->fetch();
+            if ($r && isset($r['v']) && $r['v'] !== null && $r['v'] !== '') {
+                $week_kwh += (float)$r['v'];
+            }
+        }
+
+        $this->response = [
+            'result' => 'success',
+            'week_kwh' => round($week_kwh, 2),
+            'day_kwh' => round($day_kwh, 2),
         ];
         echo json_encode($this->response);
     }

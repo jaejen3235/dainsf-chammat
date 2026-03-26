@@ -111,6 +111,7 @@ file_put_contents(__DIR__ . '/log.txt', $log_prefix . print_r(isset($_GET) ? $_G
 $log_prefix = sprintf("[%s] RAW DATA (php://input): ", date('Y-m-d H:i:s'));
 file_put_contents(__DIR__ . '/log.txt', $log_prefix . ($json_data ? $json_data : '(empty)') . "\n", FILE_APPEND);
 
+
 // Content-Type 확인
 $content_type = isset($_SERVER['CONTENT_TYPE']) ? $_SERVER['CONTENT_TYPE'] : 'not set';
 $log_prefix = sprintf("[%s] CONTENT_TYPE: %s\n", date('Y-m-d H:i:s'), $content_type);
@@ -275,7 +276,7 @@ foreach ($data_list as $index => $item) {
     $query = "insert into mes_machine_data (machine, data_type, value, timestamp) values ('{$machine}', '{$data_type}', '{$value}', '{$timestamp}')";
     $result = mysqli_query($conn, $query);
 
-    //file_put_contents('log.txt', $query . " success\n", FILE_APPEND);
+    file_put_contents('log.txt', $query . " success\n", FILE_APPEND);
     
     if(!$result) {
         $error_message = "Error occurred while saving data. Query: {$query}, Error: " . mysqli_error($conn);
@@ -287,6 +288,260 @@ foreach ($data_list as $index => $item) {
         echo json_encode($response);
         exit;
     } else {
+        // cleaner current 값 기반 가동/정지 이력 관리 (값 흔들림 방지: 연속 3회 기준)
+        if ($machine === 'cleaner' && $data_type === 'current') {
+            $threshold_on = 0.4;   // 이 값 초과: 가동
+            $threshold_off = 0.4;  // 이 값 이하: 정지
+            $confirm_count = 3;    // 연속 3회 카운트
+            $now_ts = date('Y-m-d H:i:s');
+
+            $is_high = $value > $threshold_on;
+
+            // DB에 저장되는 상태를 이용해 연속 카운트를 관리한다(요청은 stateless).
+            // cleaner_run_state: 현재 가동 여부/연속 카운트/현재 open run id
+            // cleaner_run_history: 가동/정지 세션 기록
+            mysqli_begin_transaction($conn);
+            $ok = false;
+
+            try {
+                // 1) 현재 상태 row 잠금 조회
+                $state_select_sql = "SELECT is_running, on_count, off_count, current_run_id 
+                                      FROM cleaner_run_state 
+                                      WHERE machine=? FOR UPDATE";
+                $stmt = mysqli_prepare($conn, $state_select_sql);
+                if (!$stmt) {
+                    throw new Exception("cleaner_run_state prepare failed: " . mysqli_error($conn));
+                }
+
+                mysqli_stmt_bind_param($stmt, "s", $machine);
+                if (!mysqli_stmt_execute($stmt)) {
+                    throw new Exception("cleaner_run_state execute failed: " . mysqli_stmt_error($stmt));
+                }
+
+                $state_row = null;
+                $res = mysqli_stmt_get_result($stmt);
+                if ($res) {
+                    $state_row = mysqli_fetch_assoc($res);
+                }
+
+                $is_running = 0;
+                $on_count = 0;
+                $off_count = 0;
+                $current_run_id = 0;
+
+                if ($state_row) {
+                    $is_running = (int)($state_row['is_running'] ?? 0);
+                    $on_count = (int)($state_row['on_count'] ?? 0);
+                    $off_count = (int)($state_row['off_count'] ?? 0);
+                    $current_run_id = (int)($state_row['current_run_id'] ?? 0);
+                } else {
+                    // 상태 row이 없으면 생성
+                    $state_insert_sql = "INSERT INTO cleaner_run_state (machine, is_running, on_count, off_count, current_run_id, last_current, updated_at)
+                                          VALUES (?, 0, 0, 0, 0, ?, NOW())
+                                          ON DUPLICATE KEY UPDATE last_current=VALUES(last_current), updated_at=NOW()";
+                    $stmt2 = mysqli_prepare($conn, $state_insert_sql);
+                    if (!$stmt2) {
+                        throw new Exception("cleaner_run_state insert prepare failed: " . mysqli_error($conn));
+                    }
+                    mysqli_stmt_bind_param($stmt2, "sd", $machine, $value);
+                    if (!mysqli_stmt_execute($stmt2)) {
+                        throw new Exception("cleaner_run_state insert execute failed: " . mysqli_stmt_error($stmt2));
+                    }
+                    mysqli_stmt_close($stmt2);
+                }
+
+                mysqli_stmt_close($stmt);
+
+                // 2) 연속 카운트 업데이트
+                if ($is_high) {
+                    $on_count = min($confirm_count, $on_count + 1);
+                    $off_count = 0;
+                } else {
+                    $off_count = min($confirm_count, $off_count + 1);
+                    $on_count = 0;
+                }
+
+                $new_is_running = $is_running;
+                $new_current_run_id = $current_run_id;
+
+                // 3) 전환 조건 체크 (연속 confirm_count 충족 시에만 상태 전환)
+                if ($is_running === 0 && $on_count >= $confirm_count) {
+                    // 가동 시작 (새 세션 생성)
+                    $history_insert_sql = "INSERT INTO cleaner_run_history 
+                                            (machine, started_at, start_current, threshold_on, threshold_off, confirm_count)
+                                            VALUES (?, ?, ?, ?, ?, ?)";
+                    $stmt3 = mysqli_prepare($conn, $history_insert_sql);
+                    if (!$stmt3) {
+                        throw new Exception("cleaner_run_history insert prepare failed: " . mysqli_error($conn));
+                    }
+                    mysqli_stmt_bind_param($stmt3, "ssdddi", $machine, $now_ts, $value, $threshold_on, $threshold_off, $confirm_count);
+                    if (!mysqli_stmt_execute($stmt3)) {
+                        throw new Exception("cleaner_run_history insert execute failed: " . mysqli_stmt_error($stmt3));
+                    }
+
+                    $new_current_run_id = (int)mysqli_insert_id($conn);
+                    $new_is_running = 1;
+
+                    // 가동 전환 후에는 카운트를 초기화
+                    $on_count = 0;
+                    $off_count = 0;
+
+                    mysqli_stmt_close($stmt3);
+                } elseif ($is_running === 1 && $off_count >= $confirm_count) {
+                    // 정지 종료 (open 세션 종료)
+                    if ($current_run_id === 0) {
+                        // state에 open run id가 없을 경우를 대비해 open run을 찾아본다.
+                        $open_select_sql = "SELECT id FROM cleaner_run_history 
+                                             WHERE machine=? AND ended_at IS NULL
+                                             ORDER BY started_at DESC
+                                             LIMIT 1 FOR UPDATE";
+                        $stmt_open = mysqli_prepare($conn, $open_select_sql);
+                        if (!$stmt_open) {
+                            throw new Exception("cleaner_run_history open select prepare failed: " . mysqli_error($conn));
+                        }
+                        mysqli_stmt_bind_param($stmt_open, "s", $machine);
+                        if (!mysqli_stmt_execute($stmt_open)) {
+                            throw new Exception("cleaner_run_history open select execute failed: " . mysqli_stmt_error($stmt_open));
+                        }
+                        $open_res = mysqli_stmt_get_result($stmt_open);
+                        if ($open_res) {
+                            $open_row = mysqli_fetch_assoc($open_res);
+                            $current_run_id = (int)($open_row['id'] ?? 0);
+                        }
+                        mysqli_stmt_close($stmt_open);
+                    }
+
+                    $history_update_sql = "UPDATE cleaner_run_history 
+                                            SET ended_at=?, end_current=?
+                                            WHERE id=? AND ended_at IS NULL";
+                    $stmt4 = mysqli_prepare($conn, $history_update_sql);
+                    if (!$stmt4) {
+                        throw new Exception("cleaner_run_history update prepare failed: " . mysqli_error($conn));
+                    }
+                    mysqli_stmt_bind_param($stmt4, "sdi", $now_ts, $value, $current_run_id);
+                    if (!mysqli_stmt_execute($stmt4)) {
+                        throw new Exception("cleaner_run_history update execute failed: " . mysqli_stmt_error($stmt4));
+                    }
+                    mysqli_stmt_close($stmt4);
+
+                    $new_is_running = 0;
+                    $new_current_run_id = 0;
+
+                    // 정지 전환 후에는 카운트를 초기화
+                    $on_count = 0;
+                    $off_count = 0;
+                }
+
+                // 4) 상태 row 업데이트
+                $state_update_sql = "UPDATE cleaner_run_state
+                                      SET is_running=?, on_count=?, off_count=?, current_run_id=?, last_current=?, updated_at=NOW()
+                                      WHERE machine=?";
+                $stmt5 = mysqli_prepare($conn, $state_update_sql);
+                if (!$stmt5) {
+                    throw new Exception("cleaner_run_state update prepare failed: " . mysqli_error($conn));
+                }
+                mysqli_stmt_bind_param($stmt5, "iiiids", $new_is_running, $on_count, $off_count, $new_current_run_id, $value, $machine);
+                if (!mysqli_stmt_execute($stmt5)) {
+                    throw new Exception("cleaner_run_state update execute failed: " . mysqli_stmt_error($stmt5));
+                }
+                mysqli_stmt_close($stmt5);
+
+                mysqli_commit($conn);
+                $ok = true;
+            } catch (Throwable $e) {
+                mysqli_rollback($conn);
+                write_error_log("cleaner run state update failed: " . $e->getMessage());
+            }
+
+            // cleaner 일별 소비전력 누적 (mes_day_power)
+            // 전제:
+            // - 설비: 3상 380V
+            // - 수신 current: 1개 상 전류값(line current)
+            // - 수신 주기: 약 5초
+            try {
+                $current_ampere = max(0, (float)$value);
+                $voltage = 380.0;
+                $power_factor = 0.9;
+                $sample_seconds = 5.0;
+                $sqrt3 = 1.7320508;
+
+                // P(kW) = sqrt(3) * V * I * PF / 1000
+                $power_kw = ($sqrt3 * $voltage * $current_ampere * $power_factor) / 1000.0;
+                $energy_kwh = $power_kw * ($sample_seconds / 3600.0); // 샘플 구간 에너지(kWh)
+
+                if ($energy_kwh > 0) {
+                    $year = (int)date('Y');
+                    $month = (int)date('n');
+                    $day = (int)date('j');
+                    $day_col = 'day' . $day; // day1 ~ day31
+
+                    $check_sql = "SELECT uid FROM mes_day_power WHERE year=? AND month=? LIMIT 1";
+                    $stmt_check = mysqli_prepare($conn, $check_sql);
+                    if (!$stmt_check) {
+                        throw new Exception("mes_day_power check prepare failed: " . mysqli_error($conn));
+                    }
+                    mysqli_stmt_bind_param($stmt_check, "ii", $year, $month);
+                    if (!mysqli_stmt_execute($stmt_check)) {
+                        throw new Exception("mes_day_power check execute failed: " . mysqli_stmt_error($stmt_check));
+                    }
+
+                    $check_result = mysqli_stmt_get_result($stmt_check);
+                    $row = $check_result ? mysqli_fetch_assoc($check_result) : null;
+                    mysqli_stmt_close($stmt_check);
+
+                    if ($row && isset($row['uid'])) {
+                        $uid = (int)$row['uid'];
+                        $update_sql = "UPDATE mes_day_power SET `{$day_col}` = COALESCE(`{$day_col}`, 0) + ? WHERE uid=?";
+                        $stmt_update = mysqli_prepare($conn, $update_sql);
+                        if (!$stmt_update) {
+                            throw new Exception("mes_day_power update prepare failed: " . mysqli_error($conn));
+                        }
+                        mysqli_stmt_bind_param($stmt_update, "di", $energy_kwh, $uid);
+                        if (!mysqli_stmt_execute($stmt_update)) {
+                            throw new Exception("mes_day_power update execute failed: " . mysqli_stmt_error($stmt_update));
+                        }
+                        mysqli_stmt_close($stmt_update);
+                    } else {
+                        $columns = ['year', 'month'];
+                        $placeholders = ['?', '?'];
+                        $types = "ii";
+                        $params = [$year, $month];
+
+                        for ($i = 1; $i <= 31; $i++) {
+                            $columns[] = "day{$i}";
+                            $placeholders[] = '?';
+                            $types .= 'd';
+                            $params[] = ($i === $day) ? $energy_kwh : 0.0;
+                        }
+
+                        $insert_sql = "INSERT INTO mes_day_power (" . implode(',', $columns) . ") VALUES (" . implode(',', $placeholders) . ")";
+                        $stmt_insert = mysqli_prepare($conn, $insert_sql);
+                        if (!$stmt_insert) {
+                            throw new Exception("mes_day_power insert prepare failed: " . mysqli_error($conn));
+                        }
+
+                        $bind_params = [];
+                        $bind_params[] = &$types;
+                        foreach ($params as $k => $v) {
+                            $bind_params[] = &$params[$k];
+                        }
+
+                        if (!call_user_func_array('mysqli_stmt_bind_param', array_merge([$stmt_insert], $bind_params))) {
+                            throw new Exception("mes_day_power insert bind failed: " . mysqli_stmt_error($stmt_insert));
+                        }
+                        if (!mysqli_stmt_execute($stmt_insert)) {
+                            throw new Exception("mes_day_power insert execute failed: " . mysqli_stmt_error($stmt_insert));
+                        }
+                        mysqli_stmt_close($stmt_insert);
+                    }
+                }
+            } catch (Throwable $e) {
+                write_error_log("mes_day_power cleaner energy update failed: " . $e->getMessage());
+            }
+
+            // $ok는 현재 사용하지 않지만 디버깅용으로 남겨둘 수 있다.
+        }
+
         $work_date = date('Y-m-d');
         $current_item_query = "select * from mes_current_item";
         $current_item_result = mysqli_query($conn, $current_item_query);
@@ -494,19 +749,13 @@ foreach ($data_list as $index => $item) {
                 // 품목의 재고수량 변경
             }
         }
-        
-
-
-        //file_put_contents('log.txt', $query . " success\n", FILE_APPEND);
-                // ------------------------------------------------------------------
         // [확률 기반 삭제 로직 추가]
-        // 10분의 1 확률로만 삭제 로직 실행 (10초에 1번 꼴)
         if (rand(1, 600) === 1) { 
             
-            $one_day_in_seconds = 86400;
-            $threshold_datetime = date('Y-m-d H:i:s', time() - $one_day_in_seconds);
+            $retention_seconds = 14 * 86400; // 2주(14일)
+            $threshold_datetime = date('Y-m-d H:i:s', time() - $retention_seconds);
 
-            // 24시간보다 오래된 데이터 삭제 (DELETE)
+            // 14일보다 오래된 데이터 삭제 (DELETE)
             $delete_query = "DELETE FROM mes_machine_data WHERE timestamp < ?";
             $stmt = mysqli_prepare($conn, $delete_query);
             if (!$stmt) {
@@ -520,9 +769,7 @@ foreach ($data_list as $index => $item) {
                     }
                 }
             }
-            
         }
-        // 10번 중 9번은 이 로직을 건너뛰고 INSERT만 실행
     }
         
 }

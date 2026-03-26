@@ -553,3 +553,32 @@ CREATE TABLE IF NOT EXISTS `system_admin` (
 -- 테이블 데이터 mbiz.system_admin:~0 rows (대략적) 내보내기
 INSERT INTO `system_admin` (`uid`, `adminId`, `adminPwd`, `logo`) VALUES
 	(1, 'sysadmin', '$2y$10$oJytfOqujALdZmYtCZlD9OPsANGU3eq44L5UmkAsFbfTo6sWACjrG', 'DainLab');
+
+-- 테이블 cleaner_run_state: cleaner 가동/정지 세션 전환을 위한 카운터 상태
+CREATE TABLE IF NOT EXISTS `cleaner_run_state` (
+  `machine` varchar(50) NOT NULL,
+  `is_running` tinyint(1) NOT NULL DEFAULT 0,
+  `on_count` tinyint(3) NOT NULL DEFAULT 0,
+  `off_count` tinyint(3) NOT NULL DEFAULT 0,
+  `current_run_id` bigint(20) unsigned NOT NULL DEFAULT 0,
+  `last_current` double DEFAULT NULL,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`machine`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='cleaner 실행/정지 상태';
+
+-- 테이블 cleaner_run_history: cleaner 가동/정지 히스토리(세션 단위)
+CREATE TABLE IF NOT EXISTS `cleaner_run_history` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `machine` varchar(50) NOT NULL,
+  `started_at` datetime NOT NULL,
+  `ended_at` datetime DEFAULT NULL,
+  `start_current` double DEFAULT NULL,
+  `end_current` double DEFAULT NULL,
+  `threshold_on` double NOT NULL DEFAULT 0.4,
+  `threshold_off` double NOT NULL DEFAULT 0.4,
+  `confirm_count` int(11) NOT NULL DEFAULT 3,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `idx_machine_started_at` (`machine`, `started_at`),
+  KEY `idx_machine_ended_at` (`machine`, `ended_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='cleaner 가동/정지 이력';

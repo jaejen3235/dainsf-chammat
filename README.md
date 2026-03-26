@@ -147,3 +147,38 @@
 - UI: `views/haccp/*.php`(10개) 좌측 목록을 더미(tr) 제거 후 `handler.php` fetch 기반으로 연동
 - 인쇄/미리보기 레이아웃 수정
   - CCP-1BP 제외 문서들에서 `@media print` 기본 여백/overflow 이슈를 수정하여 A4 영역 잘림/우측 컷 문제 완화
+
+## 작업 내역 (2026-03-26)
+- 장비 수신/로그/보관 정책
+  - `apis/machine.php` 수신 로그 파일(`apis/log.txt`) 권한 문제를 정리하여 로그 기록이 정상 동작하도록 조치
+  - 서버 `logrotate` 설정 추가: `apis/log.txt`를 5MB 단위로 롤링하고 최대 5개 보관
+  - 로그 로테이션 산출물(`apis/log.txt.*`)이 Git 변경사항에 포함되지 않도록 `.gitignore` 보강
+  - `mes_machine_data` 확률 삭제 로직의 보관 기간을 24시간에서 14일(2주)로 변경
+
+- 세척기(cleaner) 가동/정지 이력 + 전력 집계
+  - `apis/machine.php`에서 `machine=cleaner`, `data_type=current` 수신 시 상태 전환 이력 처리 추가
+    - 기준: `value > 0.4` 가동 / 이하 정지
+    - 노이즈 완화: 연속 3회 수신 시에만 상태 전환
+  - DB 테이블 추가
+    - `cleaner_run_state`: 현재 상태/카운트 관리
+    - `cleaner_run_history`: 가동 시작/종료 이력 관리
+  - `controllers/mes.php`
+    - `getCleanerRunHistory` API 추가(가동시간 합계/목록 조회)
+    - `getEmsPowerKpi` API 추가(주간/일간 소비전력 KPI)
+  - `apis/machine.php`에서 cleaner 전류값으로 샘플별 소비전력(kWh) 계산 후 `mes_day_power` 일자 컬럼(`day1~day31`) 누적 반영
+    - 3상 380V, 수신 전류 1상값 기준 계산식 적용
+
+- EMS 화면 개선 (`views/monitoring/ems.php`)
+  - KPI 카드를 좌/우 2분할로 구성하고 항목을 `주간 소비전력량`, `일간 소비전력량`으로 변경
+  - KPI 값은 `mes_day_power` 기반 API(`getEmsPowerKpi`)를 통해 갱신
+  - 하단 테이블은 전류 실시간 목록 대신 `cleaner_run_history` 가동/정지 이력 표시로 전환
+    - 20개 row 기준 페이징 처리
+  - 카드 타이틀 가시성/간격 스타일 조정
+
+- 창고 온도 모니터링 개선 (`views/monitoring/warehouseTemperature.php`)
+  - 기존 상단 카드 + 실시간 차트는 유지
+  - 하단 영역에 `실시간 차트 / 시간별 조회` 탭 구조 추가
+  - 시간별 조회 탭에 냉장창고 3개(`frig_goods`, `frig_mix`, `frig_stuff`) 10분 단위 온도 집계 테이블 추가
+    - 20개 row 페이징
+    - 오름차순/내림차순 정렬 옵션
+    - 테이블 row 6개 초과 시 세로 스크롤 적용

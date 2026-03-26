@@ -6,3 +6,8 @@ attach/
 *.bak
 *.log
 
+# machine.php 로그 로테이션 산출물
+apis/log.txt
+apis/log.txt.*
+apis/log.txt-*.gz
+
