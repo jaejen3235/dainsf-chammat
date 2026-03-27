@@ -2,12 +2,11 @@
     <div class="page-title"><i class='bx bxs-food-menu'></i> 자재 수불부</div> 
     <div class='content-wrapper'>
         <div class='right'>
-            <input type='text' class='input' id='search_classification' placeholder='구분' />
-            <input type='text' class='input' id='search_item_name' placeholder='품목명' />
+            <input type='text' class='input' id='search_keyword' placeholder='구분, 품목명, 품목코드' />
             <input type='text' class='input datepicker' id='start_date' placeholder='시작일' />
             <input type='text' class='input datepicker' id='end_date' placeholder='종료일' />
             <input type='button' class='btn-middle primary' value='검색' id='btnSearch' />
-            <input type='button' class='btn-middle success' value='검색일 초기화' id='btnReset' />
+            <input type='button' class='btn-middle success' value='엑셀 다운로드' id='btnExcelDownload' />
         </div>
         <table class='list mt10' id='inout-list'>
             <colgroup>
@@ -27,7 +26,6 @@
                     <th>품목규격</th>
                     <th>입고수량</th>
                     <th>출고수량</th>
-                    
                     <th class='center'>입/출고 날짜 <span id='inout_sort_order' class='sort-btns' data-order='desc'><span class='sort-asc' title='오름차순'>▲</span><span class='sort-desc' title='내림차순'>▼</span></span></th>
                 </tr>
             </thead>
@@ -65,15 +63,21 @@ window.addEventListener('DOMContentLoaded', ()=>{
     } catch(e) {}
 
     try {
-        const btnReset = document.getElementById('btnReset');
-        if(btnReset) {
-            btnReset.addEventListener('click', function() {
-                document.getElementById('search_classification').value = '';
-                document.getElementById('search_item_name').value = '';
-                document.getElementById('start_date').value = '';
-                document.getElementById('end_date').value = '';
-                getInOutList({ page: 1 });
+        const searchKeyword = document.getElementById('search_keyword');
+        if (searchKeyword) {
+            searchKeyword.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    getInOutList({ page: 1 });
+                }
             });
+        }
+    } catch(e) {}
+
+    try {
+        const btnExcelDownload = document.getElementById('btnExcelDownload');
+        if (btnExcelDownload) {
+            btnExcelDownload.addEventListener('click', downloadInOutExcel);
         }
     } catch(e) {}
 
@@ -121,13 +125,10 @@ const getInOutList = async ({
     let where = `where 1=1`;
 
     try {
-        const classification = document.getElementById('search_classification');
-        const itemName = document.getElementById('search_item_name');
-        if (classification && classification.value.trim() !== '') {
-            where += ` and classification like '%${classification.value.trim().replace(/'/g, "''")}%'`;
-        }
-        if (itemName && itemName.value.trim() !== '') {
-            where += ` and item_name like '%${itemName.value.trim().replace(/'/g, "''")}%'`;
+        const keyword = document.getElementById('search_keyword');
+        if (keyword && keyword.value.trim() !== '') {
+            const q = keyword.value.trim().replace(/'/g, "''");
+            where += ` and (classification like '%${q}%' or item_name like '%${q}%' or item_code like '%${q}%')`;
         }
     } catch(e) {}
 
@@ -170,7 +171,7 @@ const getInOutList = async ({
 
 const generateTableContent = (data) => {
     if (!data || data.data.length === 0) {
-        return `<tr><td class='center' colspan='20'>${NO_DATA_MESSAGE}</td></tr>`;
+        return `<tr><td class='center' colspan='7'>${NO_DATA_MESSAGE}</td></tr>`;
     }
 
     return data.data.map(item => `
@@ -194,9 +195,56 @@ const modifyItem = (uid) => {
 // 새로고침
 const revision = () => {
     try {
-        const el = document.getElementById('search_classification'); if (el) el.value = '';
-        const el2 = document.getElementById('search_item_name'); if (el2) el2.value = '';
+        const el = document.getElementById('search_keyword'); if (el) el.value = '';
     } catch(e) {}
     getInOutList({ page: 1 });
 }
+
+const downloadInOutExcel = () => {
+    let where = `where 1=1`;
+
+    try {
+        const keyword = document.getElementById('search_keyword');
+        if (keyword && keyword.value.trim() !== '') {
+            const q = keyword.value.trim().replace(/'/g, "''");
+            where += ` and (classification like '%${q}%' or item_name like '%${q}%' or item_code like '%${q}%')`;
+        }
+    } catch(e) {}
+
+    try {
+        const start_date = document.getElementById('start_date').value;
+        const end_date = document.getElementById('end_date').value;
+        if (start_date && end_date) {
+            where += ` and register_date between '${start_date}' and '${end_date}'`;
+        }
+    } catch(e) {}
+
+    const order = (document.getElementById('inout_sort_order') && document.getElementById('inout_sort_order').getAttribute('data-order')) || 'desc';
+
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = './handler.php';
+    form.target = '_blank';
+    form.style.display = 'none';
+
+    const fields = {
+        controller: 'mes',
+        mode: 'getItemsInOutListExcel',
+        where,
+        orderby: 'register_date',
+        asc: order
+    };
+
+    Object.entries(fields).forEach(([key, value]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = value;
+        form.appendChild(input);
+    });
+
+    document.body.appendChild(form);
+    form.submit();
+    form.remove();
+};
 </script>

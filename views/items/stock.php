@@ -67,9 +67,10 @@
                         <select class='input' id='searchType'>
                             <option value='0'>== 구분 ==</option>
                         </select>
-                        <input type="text" id='searchText' placeholder="검색">
+                        <input type="text" id='searchText' placeholder="품목명, 품목코드">
                         <button class='btn-small primary hands' id='btnSearch'>검색</button>
                         <button class='btn-small success revision' id='btnRevision'><i class='bx bx-revision'></i></button>
+                        <button class='btn-small' id='btnExcelDownload'>엑셀 다운로드</button>
                     </div>
                 </div>
                 <div class='button-box'>
@@ -206,6 +207,13 @@ window.addEventListener('DOMContentLoaded', ()=>{
             btnRevision.addEventListener('click', function() {
                 revision();
             });
+        }
+    } catch(e) {}
+
+    try {
+        const btnExcelDownload = document.getElementById('btnExcelDownload');
+        if (btnExcelDownload) {
+            btnExcelDownload.addEventListener('click', downloadItemListExcel);
         }
     } catch(e) {}
 
@@ -355,5 +363,50 @@ const closeStock = async () => {
 
 const closeStockAdmin = () => {
     openModal('modalRegisterStockClose', 900, 450);
+}
+
+const downloadItemListExcel = () => {
+    let where = `where 1=1`;
+
+    try {
+        const searchType = document.getElementById('searchType');
+        if (searchType && searchType.value !== '0') {
+            where += ` and classification='${searchType.value}'`;
+        }
+    } catch(e) {}
+
+    try {
+        const searchText = document.getElementById('searchText');
+        if (searchText && searchText.value !== '') {
+            const q = searchText.value.replace(/'/g, "''");
+            where += ` and (item_name like '%${q}%' or item_code like '%${q}%')`;
+        }
+    } catch(e) {}
+
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = './handler.php';
+    form.target = '_blank';
+    form.style.display = 'none';
+
+    const fields = {
+        controller: 'mes',
+        mode: 'getItemListExcel',
+        where,
+        orderby: DEFAULT_ORDER_BY,
+        asc: DEFAULT_ORDER
+    };
+
+    Object.entries(fields).forEach(([key, value]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = value;
+        form.appendChild(input);
+    });
+
+    document.body.appendChild(form);
+    form.submit();
+    form.remove();
 }
 </script>

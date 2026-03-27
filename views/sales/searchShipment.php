@@ -1,4 +1,32 @@
 <div class='main-container'>
+    <style>
+        .sort-btns .sort-asc,
+        .sort-btns .sort-desc {
+            cursor: pointer;
+            color: #666;
+            transition: color 0.15s ease;
+            display: inline-block;
+            margin-left: 4px;
+            user-select: none;
+        }
+        .sort-btns .sort-asc:hover,
+        .sort-btns .sort-desc:hover {
+            color: #007bff;
+        }
+        .sort-btns .delivery-sort-asc,
+        .sort-btns .delivery-sort-desc {
+            cursor: pointer;
+            color: #666;
+            transition: color 0.15s ease;
+            display: inline-block;
+            margin-left: 4px;
+            user-select: none;
+        }
+        .sort-btns .delivery-sort-asc:hover,
+        .sort-btns .delivery-sort-desc:hover {
+            color: #007bff;
+        }
+    </style>
     <div class="page-title"><i class='bx bxs-food-menu'></i> 출하 현황 조회</div>  
     <div class='content-wrapper'>
         <div class='card-title flex'>
@@ -7,8 +35,9 @@
                 <input type='date' class='input' name='searchStartDate' id='searchStartDate' />
                 <span>~</span>
                 <input type='date' class='input' name='searchEndDate' id='searchEndDate' />
-                <input type='text' class='input' name='searchAccount' id='searchAccount' />
+                <input type='text' class='input' name='searchAccount' id='searchAccount' placeholder='거래처, 품목, 출하상태' />
                 <input type='button' class='btn-mini success' id='btnSearchAccount' value='조회' />
+                <input type='button' class='btn-mini' id='btnShipmentExcelDownload' value='엑셀 다운로드' />
             </div>
         </div>
         <div class='mt10'>
@@ -23,7 +52,13 @@
                 </colgroup>
                 <thead>
                     <tr>
-                        <th>출하지시일</th>
+                        <th>
+                            출하지시일
+                            <span class="sort-btns">
+                                <span class="sort-asc" data-col="delivery_date" title="오름차순">▲</span>
+                                <span class="sort-desc" data-col="delivery_date" title="내림차순">▼</span>
+                            </span>
+                        </th>
                         <th>거래처</th>
                         <th>품목</th>
                         <th>출하지시수량</th>
@@ -41,7 +76,7 @@
         <div class='card-title flex '>
             <div>출하 품목 내역</div>
             <div>
-                <input type='text' class='input' name='searchItem' id='searchItem' />
+                <input type='text' class='input' name='searchItem' id='searchItem' placeholder="거래처, 품목" />
                 <input type='button' class='btn-mini success' id='btnSearchItem' value='조회' />
                 <input type='button' class='btn-mini' id='btnDeliveryExcelDownload' value='엑셀 다운로드' />
             </div>
@@ -49,10 +84,10 @@
         <div class='mt10'>
             <table class='delivery-report-list list'>
                 <colgroup>                                            
-                    <col width='150' />
+                    <col width='270' />
+                    <col width='310' />
+                    <col width='100' />
                     <col width='200' />
-                    <col />
-                    <col width='300' />
                     <col width='200' />
                     <col width='150' />
                 </colgroup>
@@ -63,7 +98,13 @@
                         <th>품번</th>
                         <th>규격</th>
                         <th>출하수량</th>
-                        <th>출하일자</th>
+                        <th>
+                            출하일자
+                            <span class="sort-btns">
+                                <span class="delivery-sort-asc" data-col="delivery_date" title="오름차순">▲</span>
+                                <span class="delivery-sort-desc" data-col="delivery_date" title="내림차순">▼</span>
+                            </span>
+                        </th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -79,20 +120,31 @@ include "./views/modal/modalRegisterShipment.php";
 
 <script>
 window.addEventListener('DOMContentLoaded', ()=>{
+    const toDateString = (date) => date.toISOString().slice(0, 10);
+
     try {
         const startDate = document.getElementById('searchStartDate');
         const endDate = document.getElementById('searchEndDate');
         if (startDate && endDate && !startDate.value && !endDate.value) {
             const today = new Date();
-            const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
-            const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-            const toDateString = (date) => date.toISOString().slice(0, 10);
-            startDate.value = toDateString(firstDay);
-            endDate.value = toDateString(lastDay);
+            startDate.value = toDateString(today);
+            endDate.value = toDateString(today);
         }
     } catch(e) {}
 
+    // 출하지시일 정렬 (ASC/DESC)
+    try {
+        document.querySelectorAll('.sort-asc, .sort-desc').forEach(btn => {
+            btn.addEventListener('click', (event) => {
+                const col = event.currentTarget.getAttribute('data-col');
+                const order = event.currentTarget.classList.contains('sort-asc') ? 'asc' : 'desc';
+                getShipmentOrderList({ page: 1, orderBy: col, order });
+            });
+        });
+    } catch(e) {}
+
     getShipmentOrderList({page : 1});
+    getDeliveryReportList({page : 1});
 
     try {
         const btnSearchAccount = document.getElementById('btnSearchAccount');
@@ -113,28 +165,54 @@ window.addEventListener('DOMContentLoaded', ()=>{
     } catch(e) {}
 
     try {
+        const btnShipmentExcelDownload = document.getElementById('btnShipmentExcelDownload');
+        if (btnShipmentExcelDownload) {
+            btnShipmentExcelDownload.addEventListener('click', downloadShipmentOrderExcel);
+        }
+    } catch(e) {}
+
+    try {
         const btnDeliveryExcelDownload = document.getElementById('btnDeliveryExcelDownload');
         if (btnDeliveryExcelDownload) {
             btnDeliveryExcelDownload.addEventListener('click', downloadDeliveryReportExcel);
         }
+    } catch(e) {}
+
+    // 출하 품목 내역(하단) 출하일자 정렬
+    try {
+        document.querySelectorAll('.delivery-sort-asc, .delivery-sort-desc').forEach(btn => {
+            btn.addEventListener('click', (event) => {
+                const col = event.currentTarget.getAttribute('data-col');
+                const order = event.currentTarget.classList.contains('delivery-sort-asc') ? 'asc' : 'desc';
+                getDeliveryReportList({ page: 1, orderBy: col, order });
+            });
+        });
     } catch(e) {}
 });
 
 // 상수 정의
 const CONTROLLER = 'mes';
 const MODE = 'getShipmentOrderList';
-const DEFAULT_ORDER_BY = 'uid';
+const DEFAULT_ORDER_BY = 'delivery_date';
 const DEFAULT_ORDER = 'desc';
+const DELIVERY_REPORT_DEFAULT_ORDER_BY = 'delivery_date';
+const DELIVERY_REPORT_DEFAULT_ORDER = 'desc';
 const NO_DATA_MESSAGE = '검색된 자료가 없습니다';
 let currentDeliveryOrderUid = null;
+let currentOrderBy = DEFAULT_ORDER_BY;
+let currentOrder = DEFAULT_ORDER;
+let currentDeliveryReportOrderBy = DELIVERY_REPORT_DEFAULT_ORDER_BY;
+let currentDeliveryReportOrder = DELIVERY_REPORT_DEFAULT_ORDER;
 
 const getShipmentOrderList = async ({
     page,
     per = 5,
     block = 4,
-    orderBy = DEFAULT_ORDER_BY,
-    order = DEFAULT_ORDER
+    orderBy = currentOrderBy,
+    order = currentOrder
 }) => {
+    currentOrderBy = orderBy;
+    currentOrder = order;
     let where = `where 1=1`;
 
     // 검색어가 있다면
@@ -142,7 +220,7 @@ const getShipmentOrderList = async ({
         const searchText = document.getElementById('searchAccount');
         if(searchText) {
             if(searchText.value != '') {
-                where += ` and account_name like '%${searchText.value}%'`;
+                where += ` and (account_name like '%${searchText.value}%' or item_name like '%${searchText.value}%' or status like '%${searchText.value}%')`;
             }
         }
     } catch(e) {}
@@ -210,8 +288,8 @@ const getDeliveryReportList = async (options = {}, uid = currentDeliveryOrderUid
     let page = 1;
     let per = 5;
     let block = 4;
-    let orderBy = DEFAULT_ORDER_BY;
-    let order = DEFAULT_ORDER;
+    let orderBy = currentDeliveryReportOrderBy;
+    let order = currentDeliveryReportOrder;
 
     if (typeof options === 'number') {
         page = options;
@@ -227,6 +305,9 @@ const getDeliveryReportList = async (options = {}, uid = currentDeliveryOrderUid
         currentDeliveryOrderUid = uid;
     }
 
+    currentDeliveryReportOrderBy = orderBy;
+    currentDeliveryReportOrder = order;
+
     if (!currentDeliveryOrderUid) {
         const tableBody = document.querySelector('.delivery-report-list tbody');
         tableBody.innerHTML = `<tr><td class='center' colspan='20'>${NO_DATA_MESSAGE}</td></tr>`;
@@ -236,11 +317,12 @@ const getDeliveryReportList = async (options = {}, uid = currentDeliveryOrderUid
 
     let where = `where fid=${currentDeliveryOrderUid}`;
 
+    // 거래처/품목 통합 조건
     try {
         const searchText = document.getElementById('searchItem');
         if (searchText && searchText.value !== '') {
             const keyword = searchText.value;
-            where += ` and (item_name like '%${keyword}%' or item_code like '%${keyword}%' or account_name like '%${keyword}%')`;
+            where += ` and (account_name like '%${keyword}%' or item_name like '%${keyword}%' or item_code like '%${keyword}%')`;
         }
     } catch(e) {}
 
@@ -294,14 +376,14 @@ const downloadDeliveryReportExcel = () => {
 
     let where = `where fid=${currentDeliveryOrderUid}`;
 
+    
     try {
         const searchText = document.getElementById('searchItem');
         if (searchText && searchText.value !== '') {
             const keyword = searchText.value;
-            where += ` and (item_name like '%${keyword}%' or item_code like '%${keyword}%' or account_name like '%${keyword}%')`;
+            where += ` and (account_name like '%${keyword}%' or item_name like '%${keyword}%' or item_code like '%${keyword}%')`;
         }
     } catch(e) {}
-
     const form = document.createElement('form');
     form.method = 'POST';
     form.action = './handler.php';
@@ -311,7 +393,61 @@ const downloadDeliveryReportExcel = () => {
     const fields = {
         controller: 'mes',
         mode: 'getDeliveryReportListExcel',
-        where
+        where,
+        orderby: currentDeliveryReportOrderBy || DELIVERY_REPORT_DEFAULT_ORDER_BY,
+        asc: currentDeliveryReportOrder || DELIVERY_REPORT_DEFAULT_ORDER
+    };
+
+    Object.entries(fields).forEach(([key, value]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = value;
+        form.appendChild(input);
+    });
+
+    document.body.appendChild(form);
+    form.submit();
+    form.remove();
+};
+
+// 출하지시서(첫 번째 테이블) 엑셀 다운로드
+const downloadShipmentOrderExcel = () => {
+    let where = `where 1=1`;
+
+    try {
+        const searchText = document.getElementById('searchAccount');
+        if (searchText && searchText.value != '') {
+            where += ` and (account_name like '%${searchText.value}%' or item_name like '%${searchText.value}%' or status like '%${searchText.value}%')`;
+        }
+    } catch (e) {}
+
+    try {
+        const startDate = document.getElementById('searchStartDate');
+        if (startDate && startDate.value) {
+            where += ` and DATE(delivery_date) >= '${startDate.value}'`;
+        }
+    } catch (e) {}
+
+    try {
+        const endDate = document.getElementById('searchEndDate');
+        if (endDate && endDate.value) {
+            where += ` and DATE(delivery_date) <= '${endDate.value}'`;
+        }
+    } catch (e) {}
+
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = './handler.php';
+    form.target = '_blank';
+    form.style.display = 'none';
+
+    const fields = {
+        controller: 'mes',
+        mode: 'getShipmentOrderListExcel',
+        where,
+        orderby: currentOrderBy || 'delivery_date',
+        asc: currentOrder || 'desc',
     };
 
     Object.entries(fields).forEach(([key, value]) => {

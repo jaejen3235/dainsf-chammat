@@ -182,3 +182,43 @@
     - 20개 row 페이징
     - 오름차순/내림차순 정렬 옵션
     - 테이블 row 6개 초과 시 세로 스크롤 적용
+
+## 작업 내역 (2026-03-27)
+- 작업일보/품질/입출하 화면 검색·정렬·엑셀 기능 확장
+  - `views/product/reportDayWork.php`
+    - 작업일보 목록: `작업자+품목` 통합 LIKE 검색, 작업일 ASC/DESC, 엑셀 다운로드 추가
+  - `views/quality/shortCircuitTest.php`
+    - 검색 조건에 `작업자+품목` 통합 LIKE, Enter 검색, 작업일 ASC/DESC, 엑셀 다운로드 추가
+  - `views/quality/metalDetection.php`
+    - `시작시간/종료시간` 정렬(ASC/DESC) 추가, 품목 검색 Enter 이벤트 추가
+  - `views/shipment/inManagement.php`
+    - 입고 대기/완료 검색창을 각각 통합 키워드(`거래처, 품목명`) LIKE 방식으로 변경
+    - 입고 대기/완료 목록 엑셀 다운로드 버튼 및 로직 추가
+  - `views/shipment/outManagement.php`
+    - 검색 UI(키워드+기간) 추가, Enter/검색 버튼 조회 연결
+    - 출하 요청일 ASC/DESC 정렬 추가, 엑셀 다운로드 추가
+
+- 재고/수불/시스템 화면 검색·엑셀 기능 보강
+  - `views/items/stock.php`
+    - 검색 영역에 엑셀 다운로드 버튼 추가, 조건 기반 `getItemListExcel` 다운로드 구현
+  - `views/items/reportInOutItem.php`
+    - 검색 조건을 단일 키워드(`구분, 품목명, 품목코드`)로 통합 LIKE 처리
+    - Enter 검색 이벤트 추가
+    - `검색일 초기화` 버튼을 `엑셀 다운로드`로 교체하고 `getItemsInOutListExcel` 구현
+    - 검색 결과 없음 행 colspan을 실제 컬럼 수에 맞게 조정(헤더/바디 폭 불일치 해소)
+  - `views/system/configSystem.php`
+    - 사용자명/로그인아이디 동시 LIKE 검색 구현
+    - 검색 버튼/Enter 검색 동작 점검 및 수정
+    - 엑셀 다운로드 버튼과 `getUserListExcel` 추가
+  - `views/system/loginReport.php`
+    - 상단 조회 조건(시작일/종료일/로그인아이디), 검색 버튼, 엑셀 다운로드 버튼 추가
+    - 로그인 일시 ASC/DESC 정렬 추가
+    - `getLoginReportExcel` API 추가
+
+- EMS 화면 고도화 (`views/monitoring/ems.php`, `controllers/mes.php`)
+  - 세척기 이력 영역에 시작일/종료일 조회, 조회 버튼, 엑셀 다운로드 추가
+  - 세척기 이력 `가동 시작` 컬럼 ASC/DESC 정렬 추가
+  - 조회 영역과 테이블 사이 간격(갭) 및 KPI 숫자 색상 가독성 개선
+  - 접속 시 이력 조회 날짜를 오늘~오늘로 자동 설정하고 즉시 조회
+  - KPI 0 표시 이슈 대응:
+    - `mes_day_power` 값이 0일 때 `mes_machine_data(cleaner/current)` 기반 fallback 계산으로 주간/일간 소비전력 산출 보완

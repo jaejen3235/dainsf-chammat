@@ -4,9 +4,10 @@
         <div class='search-box'>
             <div class='search-section'>
                 <div class='search-input'>
-                    <input type="text" id='searchText' placeholder="검색">
+                    <input type="text" id='searchText' placeholder="사용자명, 로그인 아이디">
                     <button class='btn-large primary' id='btnSearch'>검색</button>
                     <button class='btn-large success revision' id='btnRevision'><i class='bx bx-revision'></i></button>
+                    <button class='btn-large' id='btnExcelDownload'>엑셀 다운로드</button>
                 </div>
             </div>                            
             <div class='button-box'>
@@ -52,13 +53,13 @@ include "./views/modal/modalRegisterUser.php";
 
 <script>
 window.addEventListener('DOMContentLoaded', ()=>{
+    const runSearch = () => getUserList({ page: 1 });
+
     // 검색
     try {
-        const search = document.querySelector('.fa-search');
-        if(search) {
-            search.addEventListener('click', () => {
-                getUserList({page : 1});
-            });
+        const btnSearch = document.getElementById('btnSearch');
+        if(btnSearch) {
+            btnSearch.addEventListener('click', runSearch);
         }
     } catch(e) {}
 
@@ -90,6 +91,13 @@ window.addEventListener('DOMContentLoaded', ()=>{
         }
     } catch(e) {}
 
+    try {
+        const btnExcelDownload = document.getElementById('btnExcelDownload');
+        if (btnExcelDownload) {
+            btnExcelDownload.addEventListener('click', downloadUserExcel);
+        }
+    } catch(e) {}
+
     // 선택삭제
     try {
         const btnDeleteSelected = document.getElementById('btnDeleteSelected');
@@ -101,7 +109,8 @@ window.addEventListener('DOMContentLoaded', ()=>{
     try {
         document.getElementById('searchText').addEventListener('keydown', function(event) {
             if (event.key === 'Enter') {  // Enter 키를 감지
-                getUserList({page:1});
+                event.preventDefault();
+                runSearch();
             }
         });
     } catch(e) {}
@@ -130,7 +139,8 @@ const getUserList = async ({
         const searchText = document.getElementById('searchText');
         if(searchText) {
             if(searchText.value != '') {
-                where += ` and name like '%${searchText.value}%'`;
+                const keyword = searchText.value.replace(/'/g, "''");
+                where += ` and (employeeName like '%${keyword}%' or loginId like '%${keyword}%')`;
             }
         }
     } catch(e) {}
@@ -266,5 +276,42 @@ const deleteSelected = () => {
 const revision = () => {
     document.getElementById('searchText').value = '';
     getUserList({page:1});
+}
+
+const downloadUserExcel = () => {
+    let where = `where 1=1`;
+    try {
+        const searchText = document.getElementById('searchText');
+        if (searchText && searchText.value !== '') {
+            const keyword = searchText.value.replace(/'/g, "''");
+            where += ` and (employeeName like '%${keyword}%' or loginId like '%${keyword}%')`;
+        }
+    } catch(e) {}
+
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = './handler.php';
+    form.target = '_blank';
+    form.style.display = 'none';
+
+    const fields = {
+        controller: 'mes',
+        mode: 'getUserListExcel',
+        where,
+        orderby: DEFAULT_ORDER_BY,
+        asc: DEFAULT_ORDER
+    };
+
+    Object.entries(fields).forEach(([key, value]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = value;
+        form.appendChild(input);
+    });
+
+    document.body.appendChild(form);
+    form.submit();
+    form.remove();
 }
 </script>

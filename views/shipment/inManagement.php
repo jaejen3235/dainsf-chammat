@@ -6,24 +6,24 @@
             <button class="btn btn-primary" id="btnRegisterItemIn">+ 신규 입고 등록</button>
         </div>
         <div class="btn-box mt10">
-            <input type="text" class="input" id="pending_account" placeholder="거래처"/>
-            <input type="text" class="input" id="pending_item_name" placeholder="품목명"/>
+            <input type="text" class="input" id="pending_keyword" placeholder="거래처, 품목명"/>
             <input type="text" class="input datepicker" id="pending_start_date" placeholder="시작일"/>
             <input type="text" class="input datepicker" id="pending_end_date" placeholder="종료일"/>
             <input type="button" class="btn primary" value="검색" id="btnSearchPending"/>
             <input type="button" class="btn danger" value="선택 삭제" id="btnDeleteSelectedPending"/>
+            <input type="button" class="btn" value="엑셀 다운로드" id="btnPendingExcelDownload"/>
         </div>
         <table class="list mt10" id="pending-list">
             <colgroup>
                 <col style="width:3em"/>
-                <col style="width:14%"/>
-                <col style="width:6%"/>
                 <col style="width:18%"/>
+                <col style="width:12%"/>
+                <col style="width:26%"/>
                 <col/>
                 <col style="width:6em"/>
-                <col style="width:9em"/>
-                <col style="width:5em"/>
-                <col style="width:8em"/>
+                <col style="width:15em"/>
+                <col style="width:10em"/>
+                <col style="width:10em"/>
             </colgroup>
             <thead>
                 <tr>
@@ -45,23 +45,23 @@
     <div class='content-wrapper mt10'>   
         <div class="title red">입고 완료 이력</div>
         <div class="btn-box mt10">
-            <input type="text" class="input" id="completed_account" placeholder="거래처"/>
-            <input type="text" class="input" id="completed_item_name" placeholder="품목명"/>
+            <input type="text" class="input" id="completed_keyword" placeholder="거래처, 품목명"/>
             <input type="text" class="input datepicker" id="completed_start_date" placeholder="시작일"/>
             <input type="text" class="input datepicker" id="completed_end_date" placeholder="종료일"/>
             <input type="button" class="btn primary" value="검색" id="btnSearchCompleted"/>
             <input type="button" class="btn danger" value="선택 삭제" id="btnDeleteSelectedCompleted"/>
+            <input type="button" class="btn" value="엑셀 다운로드" id="btnCompletedExcelDownload"/>
         </div>
         <table class="list mt10" id="completed-list">
             <colgroup>
                 <col style="width:3em"/>
-                <col style="width:14%"/>
-                <col style="width:6%"/>
                 <col style="width:18%"/>
+                <col style="width:12%"/>
+                <col style="width:26%"/>
                 <col/>
                 <col style="width:6em"/>
-                <col style="width:9em"/>
-                <col style="width:5em"/>
+                <col style="width:12em"/>
+                <col style="width:10em"/>
             </colgroup>
             <thead>
                 <tr>
@@ -116,6 +116,8 @@ window.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('btnSearchCompleted').addEventListener('click', () => getCompletedList({ page: 1 }));
         document.getElementById('btnDeleteSelectedPending').addEventListener('click', deleteSelectedPending);
         document.getElementById('btnDeleteSelectedCompleted').addEventListener('click', deleteSelectedCompleted);
+        document.getElementById('btnPendingExcelDownload').addEventListener('click', downloadPendingExcel);
+        document.getElementById('btnCompletedExcelDownload').addEventListener('click', downloadCompletedExcel);
         document.getElementById('pending-check-all').addEventListener('change', function () {
             document.querySelectorAll('#pending-list tbody input[name="pending_uid"]').forEach(cb => { cb.checked = this.checked; });
         });
@@ -126,6 +128,15 @@ window.addEventListener('DOMContentLoaded', async () => {
         document.querySelector('#pending_sort_order .sort-desc').addEventListener('click', () => { setPendingSort('desc'); getPurchaseList({ page: 1 }); });
         document.querySelector('#completed_sort_order .sort-asc').addEventListener('click', () => { setCompletedSort('asc'); getCompletedList({ page: 1 }); });
         document.querySelector('#completed_sort_order .sort-desc').addEventListener('click', () => { setCompletedSort('desc'); getCompletedList({ page: 1 }); });
+        const pendingKeyword = document.getElementById('pending_keyword');
+        if (pendingKeyword) {
+            pendingKeyword.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    getPurchaseList({ page: 1 });
+                }
+            });
+        }
     } catch (e) {}
 
     setPendingSort('desc');
@@ -149,12 +160,13 @@ function setCompletedSort(dir) {
 
 function buildPendingWhere() {
     let where = `where 1=1 and status="입고대기"`;
-    const account = document.getElementById('pending_account');
-    const itemName = document.getElementById('pending_item_name');
+    const keyword = document.getElementById('pending_keyword');
     const startDate = document.getElementById('pending_start_date');
     const endDate = document.getElementById('pending_end_date');
-    if (account && account.value.trim() !== '') where += ` and account_name like '%${account.value.trim().replace(/'/g, "''")}%'`;
-    if (itemName && itemName.value.trim() !== '') where += ` and item_name like '%${itemName.value.trim().replace(/'/g, "''")}%'`;
+    if (keyword && keyword.value.trim() !== '') {
+        const q = keyword.value.trim().replace(/'/g, "''");
+        where += ` and (account_name like '%${q}%' or item_name like '%${q}%')`;
+    }
     if (startDate && startDate.value) where += ` and purchase_date >= '${startDate.value}'`;
     if (endDate && endDate.value) where += ` and purchase_date <= '${endDate.value}'`;
     return where;
@@ -162,12 +174,13 @@ function buildPendingWhere() {
 
 function buildCompletedWhere() {
     let where = `where 1=1 and status="입고완료"`;
-    const account = document.getElementById('completed_account');
-    const itemName = document.getElementById('completed_item_name');
+    const keyword = document.getElementById('completed_keyword');
     const startDate = document.getElementById('completed_start_date');
     const endDate = document.getElementById('completed_end_date');
-    if (account && account.value.trim() !== '') where += ` and account_name like '%${account.value.trim().replace(/'/g, "''")}%'`;
-    if (itemName && itemName.value.trim() !== '') where += ` and item_name like '%${itemName.value.trim().replace(/'/g, "''")}%'`;
+    if (keyword && keyword.value.trim() !== '') {
+        const q = keyword.value.trim().replace(/'/g, "''");
+        where += ` and (account_name like '%${q}%' or item_name like '%${q}%')`;
+    }
     if (startDate && startDate.value) where += ` and in_date >= '${startDate.value}'`;
     if (endDate && endDate.value) where += ` and in_date <= '${endDate.value}'`;
     return where;
@@ -347,5 +360,69 @@ const completePurchaseItem = (uid) => {
             } else alert(data.message);
         })
         .catch(() => alert('입고 처리 중 오류가 발생했습니다'));
+};
+
+const downloadCompletedExcel = () => {
+    const where = buildCompletedWhere();
+    const orderBy = 'in_date';
+    const order = (document.getElementById('completed_sort_order') && document.getElementById('completed_sort_order').getAttribute('data-order')) || 'desc';
+
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = './handler.php';
+    form.target = '_blank';
+    form.style.display = 'none';
+
+    const fields = {
+        controller: 'mes',
+        mode: 'getPurchaseItemListExcel',
+        where,
+        orderby: orderBy,
+        asc: order
+    };
+
+    Object.entries(fields).forEach(([key, value]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = value;
+        form.appendChild(input);
+    });
+
+    document.body.appendChild(form);
+    form.submit();
+    form.remove();
+};
+
+const downloadPendingExcel = () => {
+    const where = buildPendingWhere();
+    const orderBy = 'purchase_date';
+    const order = (document.getElementById('pending_sort_order') && document.getElementById('pending_sort_order').getAttribute('data-order')) || 'desc';
+
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = './handler.php';
+    form.target = '_blank';
+    form.style.display = 'none';
+
+    const fields = {
+        controller: 'mes',
+        mode: 'getPurchaseItemListExcel',
+        where,
+        orderby: orderBy,
+        asc: order
+    };
+
+    Object.entries(fields).forEach(([key, value]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = value;
+        form.appendChild(input);
+    });
+
+    document.body.appendChild(form);
+    form.submit();
+    form.remove();
 };
 </script>

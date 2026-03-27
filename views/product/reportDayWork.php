@@ -14,8 +14,9 @@
                         <option value='부분작업완료'>부분작업완료</option>
                         <option value='작업완료'>작업완료</option>
                     </select>
-                    <input type='text' class='input' name='order_item_name' id='order_item_name' placeholder='작업 품목'/>
+                    <input type='text' class='input' name='order_item_name' id='order_item_name' placeholder='작업품목, 거래처, 지시 수량'/>
                     <input type='button' class='btn primary' value='검색' onclick='searchOrderList()' />
+                    <input type='button' class='btn' value='엑셀 다운로드' id='btnOrderExcelDownload' />
                 </div>
             </div>
             <table class='work-order-list list mt10'>
@@ -36,7 +37,7 @@
                 <thead>
                     <tr>
                         <th>생산구분</th>
-                        <th>작업지시일</th>
+                        <th class='center'>작업지시일 <span id='order_date_sort' class='sort-btns' data-order='desc'><span class='sort-asc' title='오름차순'>▲</span><span class='sort-desc' title='내림차순'>▼</span></span></th>
                         <th>거래처</th>
                         <th>작업품목</th>
                         <th>품번</th>
@@ -61,8 +62,9 @@
                 <div class='btn-box'>
                     <input type='text' class='input datepicker' name='start_work_date' id='start_work_date' placeholder='시작일'/>
                     <input type='text' class='input datepicker' name='end_work_date' id='end_work_date' placeholder='종료일'/>
-                    <input type='text' class='input' name='work_item_name' id='work_item_name' placeholder='품목'/>
+                    <input type='text' class='input' name='work_item_name' id='work_item_name' placeholder='작업자, 품목'/>
                     <input type='button' class='btn primary' value='검색' onclick='searchWorkReportList()' />
+                    <input type='button' class='btn' value='엑셀 다운로드' id='btnWorkReportExcelDownload' />
                 </div>
             </div>
             <table class='work-report-list list mt10'>
@@ -78,7 +80,7 @@
                 </colgroup>
                 <thead>
                     <tr>
-                        <th>작업일</th>
+                        <th class='center'>작업일 <span id='work_report_date_sort' class='sort-btns' data-order='desc'><span class='sort-asc' title='오름차순'>▲</span><span class='sort-desc' title='내림차순'>▼</span></span></th>
                         <th>작업자</th>
                         <th>품목</th>
                         <th>품번</th>
@@ -99,6 +101,15 @@
 
 <input type='hidden' id='currentPage' value='1'>
 <input type='hidden' id='currentWorkReportPage' value='1'>
+<input type='hidden' id='orderDateSortOrder' value='desc'>
+<input type='hidden' id='workReportDateSortOrder' value='desc'>
+
+<style>
+.sort-btns { margin-left: 4px; vertical-align: middle; }
+.sort-btns .sort-asc, .sort-btns .sort-desc { cursor: pointer; opacity: 0.5; padding: 0 1px; }
+.sort-btns .sort-asc:hover, .sort-btns .sort-desc:hover { opacity: 1; }
+.sort-btns .sort-active { opacity: 1; font-weight: bold; }
+</style>
 
 <?php
     include "./views/modal/modalRegisterWorkReport.php";
@@ -126,7 +137,97 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
     getWorkOrderList({page : document.getElementById('currentPage').value});
     getWorkReportList({page : document.getElementById('currentWorkReportPage').value});
+
+    try {
+        const btnOrderExcelDownload = document.getElementById('btnOrderExcelDownload');
+        if (btnOrderExcelDownload) {
+            btnOrderExcelDownload.addEventListener('click', downloadWorkOrderExcel);
+        }
+    } catch(e) {}
+
+    try {
+        const btnWorkReportExcelDownload = document.getElementById('btnWorkReportExcelDownload');
+        if (btnWorkReportExcelDownload) {
+            btnWorkReportExcelDownload.addEventListener('click', downloadWorkReportExcel);
+        }
+    } catch(e) {}
+
+
+    try {
+        document.getElementById('order_item_name').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {  // Enter 키를 감지
+                searchOrderList();
+            }
+        });
+    } catch(e) {}
+    try {
+        document.getElementById('work_item_name').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {  // Enter 키를 감지
+                searchWorkReportList();
+            }
+        });
+    } catch(e) {}
+
+    // 생산지시서 목록: 작업지시일 정렬
+    try {
+        const wrap = document.getElementById('order_date_sort');
+        if (wrap) {
+            wrap.querySelector('.sort-asc').addEventListener('click', () => {
+                setOrderDateSort('asc');
+                getWorkOrderList({page:1});
+            });
+            wrap.querySelector('.sort-desc').addEventListener('click', () => {
+                setOrderDateSort('desc');
+                getWorkOrderList({page:1});
+            });
+            setOrderDateSort('desc');
+        }
+    } catch(e) {}
+
+    // 작업일보 목록: 작업일 정렬
+    try {
+        const wrap = document.getElementById('work_report_date_sort');
+        if (wrap) {
+            wrap.querySelector('.sort-asc').addEventListener('click', () => {
+                setWorkReportDateSort('asc');
+                getWorkReportList({page:1});
+            });
+            wrap.querySelector('.sort-desc').addEventListener('click', () => {
+                setWorkReportDateSort('desc');
+                getWorkReportList({page:1});
+            });
+            setWorkReportDateSort('desc');
+        }
+    } catch(e) {}
 });
+
+function setOrderDateSort(dir) {
+    const wrap = document.getElementById('order_date_sort');
+    const hidden = document.getElementById('orderDateSortOrder');
+    if (!wrap) return;
+    wrap.setAttribute('data-order', dir);
+    if (hidden) hidden.value = dir;
+    wrap.querySelectorAll('.sort-asc, .sort-desc').forEach(el => {
+        el.classList.remove('sort-active');
+        if ((el.classList.contains('sort-asc') && dir === 'asc') || (el.classList.contains('sort-desc') && dir === 'desc')) {
+            el.classList.add('sort-active');
+        }
+    });
+}
+
+function setWorkReportDateSort(dir) {
+    const wrap = document.getElementById('work_report_date_sort');
+    const hidden = document.getElementById('workReportDateSortOrder');
+    if (!wrap) return;
+    wrap.setAttribute('data-order', dir);
+    if (hidden) hidden.value = dir;
+    wrap.querySelectorAll('.sort-asc, .sort-desc').forEach(el => {
+        el.classList.remove('sort-active');
+        if ((el.classList.contains('sort-asc') && dir === 'asc') || (el.classList.contains('sort-desc') && dir === 'desc')) {
+            el.classList.add('sort-active');
+        }
+    });
+}
 
 const searchOrderList = () => {
     const start_order_date = document.getElementById('start_order_date').value;
@@ -159,10 +260,10 @@ const getWorkOrderList = async ({page, order_uid = null, status = null, itemName
         where += ` and status='${statusFilter}'`;
     }
 
-    // 작업 품목(품목명) 조건
+    // 작업품목/거래처/지시수량 통합 LIKE 조건
     const itemFilter = (itemName !== null ? itemName : document.getElementById('order_item_name').value) || '';
     if (itemFilter) {
-        where += ` and item_name like '%${itemFilter}%'`;
+        where += ` and (item_name like '%${itemFilter}%' or account_name like '%${itemFilter}%' or CAST(order_qty AS CHAR) like '%${itemFilter}%')`;
     }
     
     const formData = new FormData();
@@ -171,8 +272,8 @@ const getWorkOrderList = async ({page, order_uid = null, status = null, itemName
     formData.append('where', where);
     formData.append('page', page);
     formData.append('per', 5);
-    formData.append('orderby', 'uid');
-    formData.append('asc', 'desc');
+    formData.append('orderby', 'order_date');
+    formData.append('asc', (document.getElementById('orderDateSortOrder')?.value || 'desc'));
 
     try {
         const response = await fetch('./handler.php', {
@@ -188,6 +289,52 @@ const getWorkOrderList = async ({page, order_uid = null, status = null, itemName
     } catch (error) {
         console.error('데이터를 가져오는 중 오류가 발생했습니다:', error);
     }
+};
+
+const downloadWorkOrderExcel = () => {
+    let where = `where 1=1`;
+    const start_order_date = document.getElementById('start_order_date').value;
+    const end_order_date = document.getElementById('end_order_date').value;
+    const status = document.getElementById('order_status_filter').value;
+    const itemFilter = document.getElementById('order_item_name').value || '';
+
+    if(start_order_date && end_order_date) {
+        where += ` and order_date between '${start_order_date}' and '${end_order_date}'`;
+    }
+
+    if (status && status !== 'ALL') {
+        where += ` and status='${status}'`;
+    }
+
+    if (itemFilter) {
+        where += ` and (item_name like '%${itemFilter}%' or account_name like '%${itemFilter}%' or CAST(order_qty AS CHAR) like '%${itemFilter}%')`;
+    }
+
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = './handler.php';
+    form.target = '_blank';
+    form.style.display = 'none';
+
+    const fields = {
+        controller: 'mes',
+        mode: 'getWorkOrderListExcel',
+        where,
+        orderby: 'order_date',
+        asc: (document.getElementById('orderDateSortOrder')?.value || 'desc')
+    };
+
+    Object.entries(fields).forEach(([key, value]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = value;
+        form.appendChild(input);
+    });
+
+    document.body.appendChild(form);
+    form.submit();
+    form.remove();
 };
 
 const generateWorkOrderTableContent = (data) => {
@@ -296,7 +443,7 @@ const searchWorkReportList = () => {
     }
 }
 
-const getWorkReportList = async ({page, work_order_uid = null, itemName = null}) => {
+const getWorkReportList = async ({page, work_order_uid = null, itemName = null, orderBy = 'work_date', order = (document.getElementById('workReportDateSortOrder')?.value || 'desc')}) => {
     document.getElementById('currentWorkReportPage').value = page;
     let where = `where 1=1`;
     const start_work_date = document.getElementById('start_work_date').value;
@@ -308,7 +455,7 @@ const getWorkReportList = async ({page, work_order_uid = null, itemName = null})
 
     const itemFilter = (itemName !== null ? itemName : document.getElementById('work_item_name').value) || '';
     if (itemFilter) {
-        where += ` and item_name like '%${itemFilter}%'`;
+        where += ` and (item_name like '%${itemFilter}%' or worker like '%${itemFilter}%')`;
     }
 
     const formData = new FormData();
@@ -317,8 +464,8 @@ const getWorkReportList = async ({page, work_order_uid = null, itemName = null})
     formData.append('where', where);
     formData.append('page', page);
     formData.append('per', 5);
-    formData.append('orderby', 'uid');
-    formData.append('asc', 'desc');
+    formData.append('orderby', orderBy);
+    formData.append('asc', order);
 
     try {
         const response = await fetch('./handler.php', {
@@ -378,5 +525,48 @@ const deleteWorkReport = async (uid) => {
     }
         
     alert(data.message);
+};
+
+const downloadWorkReportExcel = () => {
+    let where = `where 1=1`;
+    const start_work_date = document.getElementById('start_work_date').value;
+    const end_work_date = document.getElementById('end_work_date').value;
+    const keyword = document.getElementById('work_item_name').value || '';
+
+    if(start_work_date && end_work_date) {
+        where += ` and work_date between '${start_work_date}' and '${end_work_date}'`;
+    }
+
+    if (keyword) {
+        where += ` and (item_name like '%${keyword}%' or worker like '%${keyword}%')`;
+    }
+
+    const order = document.getElementById('workReportDateSortOrder')?.value || 'desc';
+
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = './handler.php';
+    form.target = '_blank';
+    form.style.display = 'none';
+
+    const fields = {
+        controller: 'mes',
+        mode: 'getWorkReportListExcel',
+        where,
+        orderby: 'work_date',
+        asc: order
+    };
+
+    Object.entries(fields).forEach(([key, value]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = value;
+        form.appendChild(input);
+    });
+
+    document.body.appendChild(form);
+    form.submit();
+    form.remove();
 };
 </script>

@@ -56,8 +56,8 @@
                         </label>
                     </th>
                     <th>품목</th>
-                    <th>시작시간</th>
-                    <th>종료시간</th>
+                    <th class='center'>시작시간 <span id='started_at_sort' class='sort-btns' data-order='desc'><span class='sort-asc' title='오름차순'>▲</span><span class='sort-desc' title='내림차순'>▼</span></span></th>
+                    <th class='center'>종료시간 <span id='ended_at_sort' class='sort-btns' data-order='desc'><span class='sort-asc' title='오름차순'>▲</span><span class='sort-desc' title='내림차순'>▼</span></span></th>
                     <th>검출수량</th>
                     <th>양품수량</th>
                     <th>생산수량</th>
@@ -70,6 +70,9 @@
 </div>
 
 <script>
+let currentOrderBy = 'started_at';
+let currentOrder = 'desc';
+
 // ===============================================
 // Utility Functions
 // ===============================================
@@ -130,6 +133,7 @@ async function updateSummaryCards() {
         alert('검출 현황 조회 중 오류가 발생했습니다.');
     }
 
+    
     updateCurrentItemCard();
 }
 
@@ -194,7 +198,15 @@ const buildWhereClause = ({ start_date, end_date, item_name }) => {
     return clauses.length ? `WHERE ${clauses.join(' AND ')}` : '';
 };
 
-async function getData({ page = 1, per = getPerPage(), block = DEFAULT_PAGE_BLOCK } = {}) {
+async function getData({
+    page = 1,
+    per = getPerPage(),
+    block = DEFAULT_PAGE_BLOCK,
+    orderBy = currentOrderBy,
+    order = currentOrder
+} = {}) {
+    currentOrderBy = orderBy;
+    currentOrder = order;
     // 서버로 보낼 데이터 준비
     const filters = getFilters();
     const formData = new FormData();
@@ -205,6 +217,8 @@ async function getData({ page = 1, per = getPerPage(), block = DEFAULT_PAGE_BLOC
     formData.append('item_name', filters.item_name);
     formData.append('page', page);
     formData.append('per', per);
+    formData.append('orderby', orderBy);
+    formData.append('asc', order);
 
     //console.log(formData);
 
@@ -255,6 +269,20 @@ const generateTableContent = (data) => {
     `).join('');
 };
 
+function setSortState(targetId, dir) {
+    document.querySelectorAll('.sort-btns').forEach((wrap) => {
+        wrap.querySelectorAll('.sort-asc, .sort-desc').forEach((el) => el.classList.remove('sort-active'));
+    });
+    const wrap = document.getElementById(targetId);
+    if (!wrap) return;
+    wrap.setAttribute('data-order', dir);
+    wrap.querySelectorAll('.sort-asc, .sort-desc').forEach((el) => {
+        if ((el.classList.contains('sort-asc') && dir === 'asc') || (el.classList.contains('sort-desc') && dir === 'desc')) {
+            el.classList.add('sort-active');
+        }
+    });
+}
+
 // ===============================================
 // Initial Load
 // ===============================================
@@ -284,6 +312,44 @@ window.onload = () => {
     // 2. 테이블 데이터 렌더링
     getData({ page: 1 }); 
 
+    try {
+        const startedSort = document.getElementById('started_at_sort');
+        if (startedSort) {
+            startedSort.querySelector('.sort-asc').addEventListener('click', () => {
+                currentOrderBy = 'started_at';
+                currentOrder = 'asc';
+                setSortState('started_at_sort', 'asc');
+                getData({ page: 1, orderBy: currentOrderBy, order: currentOrder });
+            });
+            startedSort.querySelector('.sort-desc').addEventListener('click', () => {
+                currentOrderBy = 'started_at';
+                currentOrder = 'desc';
+                setSortState('started_at_sort', 'desc');
+                getData({ page: 1, orderBy: currentOrderBy, order: currentOrder });
+            });
+        }
+    } catch (e) {}
+
+    try {
+        const endedSort = document.getElementById('ended_at_sort');
+        if (endedSort) {
+            endedSort.querySelector('.sort-asc').addEventListener('click', () => {
+                currentOrderBy = 'ended_at';
+                currentOrder = 'asc';
+                setSortState('ended_at_sort', 'asc');
+                getData({ page: 1, orderBy: currentOrderBy, order: currentOrder });
+            });
+            endedSort.querySelector('.sort-desc').addEventListener('click', () => {
+                currentOrderBy = 'ended_at';
+                currentOrder = 'desc';
+                setSortState('ended_at_sort', 'desc');
+                getData({ page: 1, orderBy: currentOrderBy, order: currentOrder });
+            });
+        }
+    } catch (e) {}
+
+    setSortState('started_at_sort', 'desc');
+
     const chkAll = document.getElementById('chkAll');
     if (chkAll) {
         chkAll.addEventListener('click', () => {
@@ -299,6 +365,18 @@ window.onload = () => {
     if (btnDeleteSelected) {
         btnDeleteSelected.addEventListener('click', deleteSelected);
     }
+
+    try {
+        const itemNameInput = document.getElementById('item_name');
+        if (itemNameInput) {
+            itemNameInput.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    getData({ page: 1, orderBy: currentOrderBy, order: currentOrder });
+                }
+            });
+        }
+    } catch (e) {}
 };
 
 const downloadMetalDetectionExcel = () => {
@@ -329,6 +407,16 @@ const downloadMetalDetectionExcel = () => {
     form.submit();
     form.remove();
 };
+
+// 정렬 아이콘 스타일
+const sortStyle = document.createElement('style');
+sortStyle.textContent = `
+.sort-btns { margin-left: 4px; vertical-align: middle; }
+.sort-btns .sort-asc, .sort-btns .sort-desc { cursor: pointer; opacity: 0.5; padding: 0 1px; }
+.sort-btns .sort-asc:hover, .sort-btns .sort-desc:hover { opacity: 1; }
+.sort-btns .sort-active { opacity: 1; font-weight: bold; }
+`;
+document.head.appendChild(sortStyle);
 
 const deleteSelected = () => {
     let ids = '';

@@ -4,8 +4,7 @@
         <div class='search-box'>
             <div class='search-section'>
                 <div class='search-input'>
-                    <input type="text" id='searchAccount' placeholder="거래처">
-                    <input type="text" id='searchItem' placeholder="수주품목">
+                    <input type="text" id='searchKeyword' placeholder="거래처, 수주품목">
                     <input type="text" class='input datepicker' id='startOrderDate' placeholder="수주/납기 시작일">
                     <input type="text" class='input datepicker' id='endOrderDate' placeholder="수주/납기 종료일">
                     <button class='btn-large primary' id='btnSearch'>검색</button>
@@ -59,7 +58,7 @@
             <div class='flex'>
                 <div class='title red'>생산지시 목록</div>
                 <div class='btn-box'>
-                    <input type="text" id='searchWorkItem' class='input' placeholder="작업품목">
+                    <input type="text" id='searchWorkItem' class='input' placeholder="생산구분, 거래처, 작업품목">
                     <select id='searchWorkStatus' class='input'>
                         <option value="ALL">상태 전체</option>
                         <option value="생산대기">생산대기</option>
@@ -230,15 +229,11 @@ const getOrdersList = async({page}) => {
     document.getElementById('currentPage').value = page;
     let where = `where product_status='주문' or product_status='생산중'`;
 
-    // 거래처 / 수주품목 검색
+    // 거래처 / 수주품목 통합 검색
     try {
-        const account = document.getElementById('searchAccount').value;
-        const item = document.getElementById('searchItem').value;
-        if (account) {
-            where += ` and account_name like '%${account}%'`;
-        }
-        if (item) {
-            where += ` and item_name like '%${item}%'`;
+        const keyword = document.getElementById('searchKeyword').value;
+        if (keyword) {
+            where += ` and (account_name like '%${keyword}%' or item_name like '%${keyword}%')`;
         }
     } catch(e) {}
 
@@ -335,11 +330,11 @@ const getWorkOrderList = async ({page, order_uid = null}) => {
         }
     } catch(e) {}
 
-    // 작업품목
+    // 생산구분 / 거래처 / 작업품목 통합 검색
     try {
-        const item = document.getElementById('searchWorkItem').value;
-        if (item) {
-            where += ` and item_name like '%${item}%'`;
+        const keyword = document.getElementById('searchWorkItem').value;
+        if (keyword) {
+            where += ` and (classification like '%${keyword}%' or account_name like '%${keyword}%' or item_name like '%${keyword}%')`;
         }
     } catch(e) {}
 

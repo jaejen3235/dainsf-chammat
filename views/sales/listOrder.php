@@ -4,9 +4,9 @@
         <div class='search-box'>
             <div class='search-section'>
                 <div class='search-input'>
-                    <input type='text' class='datepicker' id='start_date' placeholder='검색일' />
-                    <input type='text' class='datepicker' id='end_date' placeholder='검색일' />
-                    <input type="text" id='searchText' placeholder="거래처명">
+                    <input type='text' class='datepicker' id='start_date' placeholder='수주 시작일' />
+                    <input type='text' class='datepicker' id='end_date' placeholder='수주 종료일' />
+                    <input type="text" id='searchText' placeholder="거래처명, 주문품목">
                     <button class='btn-large primary' id='btnSearch'>검색</button>
                     <button class='btn-large success revision' id='btnRevision'>새로고침</button>
                     <button class='btn-large' id='btnExcelDownload'>엑셀 다운로드</button>
@@ -40,8 +40,20 @@
                         </th>
                         <th>거래처</th>
                         <th>주문품목</th>
-                        <th>수주일</th>
-                        <th>납기일</th>
+                        <th>
+                            수주일
+                            <span class="sort-btns">
+                                <span class="sort-asc" data-col="order_date" title="오름차순">▲</span>
+                                <span class="sort-desc" data-col="order_date" title="내림차순">▼</span>
+                            </span>
+                        </th>
+                        <th>
+                            납기일
+                            <span class="sort-btns">
+                                <span class="sort-asc" data-col="shipment_date" title="오름차순">▲</span>
+                                <span class="sort-desc" data-col="shipment_date" title="내림차순">▼</span>
+                            </span>
+                        </th>
                         <th>상태</th>                            
                         <th>관리</th>
                     </tr>
@@ -64,6 +76,17 @@ window.addEventListener('DOMContentLoaded', ()=>{
                 getOrdersList({page : 1});
             });
         }
+    } catch(e) {}
+
+    // 수주일/납기일 정렬
+    try {
+        document.querySelectorAll('.sort-asc, .sort-desc').forEach(btn => {
+            btn.addEventListener('click', (event) => {
+                const col = event.currentTarget.getAttribute('data-col');
+                const order = event.currentTarget.classList.contains('sort-asc') ? 'asc' : 'desc';
+                getOrdersList({ page: 1, orderBy: col, order });
+            });
+        });
     } catch(e) {}
 
     // 체크박스
@@ -132,24 +155,44 @@ window.addEventListener('DOMContentLoaded', ()=>{
 // 상수 정의
 const CONTROLLER = 'mes';
 const MODE = 'getOrdersList';
-const DEFAULT_ORDER_BY = 'uid';
+const DEFAULT_ORDER_BY = 'order_date';
 const DEFAULT_ORDER = 'desc';
 const NO_DATA_MESSAGE = '검색된 자료가 없습니다';
+let currentOrderBy = DEFAULT_ORDER_BY;
+let currentOrder = DEFAULT_ORDER;
 
 const getOrdersList = async ({
     page,
     per = 15,
     block = 4,
-    orderBy = DEFAULT_ORDER_BY,
-    order = DEFAULT_ORDER
+    orderBy = currentOrderBy,
+    order = currentOrder
 }) => {    
+    currentOrderBy = orderBy;
+    currentOrder = order;
     let where = `where 1=1`;
+    // 수주일(order_date) 기간 검색
+    try {
+        const startDate = document.getElementById('start_date')?.value?.trim() || '';
+        const endDate = document.getElementById('end_date')?.value?.trim() || '';
+
+        if(startDate && endDate) {
+            where += ` and order_date >= '${startDate}' and order_date <= '${endDate}'`;
+        } else if(startDate) {
+            where += ` and order_date >= '${startDate}'`;
+        } else if(endDate) {
+            where += ` and order_date <= '${endDate}'`;
+        }
+    } catch(e) {
+        console.log(e);
+    }
+
     // 검색어가 있다면
     try {
         const searchText = document.getElementById('searchText');
         if(searchText) {
             if(searchText.value != '') {
-                where += ` and account_name like '%${searchText.value}%'`;
+                where += ` and (account_name like '%${searchText.value}%' or items like '%${searchText.value}%')`;
             }
         }
     } catch(e) {

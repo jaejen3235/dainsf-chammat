@@ -9,6 +9,7 @@
                     <input type='text' class='input datepicker' id='end_date' placeholder='종료일' />
                     <input type='text' class='input' id='item_name' placeholder='품목' />
                     <input type='button' class='btn-middle primary' value='검색' id='btnSearch' />
+                    <input type='button' class='btn-middle' value='엑셀 다운로드' id='btnExcelDownload' />
                 </div>
             </div>
             <table class='list mt10'>
@@ -62,6 +63,13 @@ window.addEventListener('DOMContentLoaded', async() => {
             btn.addEventListener('click', () => {
                 getPeriodProductList({page : 1});
             });
+        }
+    } catch(e) {}
+
+    try {
+        const btnExcel = document.getElementById('btnExcelDownload');
+        if (btnExcel) {
+            btnExcel.addEventListener('click', downloadDailyWorkExcel);
         }
     } catch(e) {}
 
@@ -166,5 +174,50 @@ const generateTableContent = (data) => {
     `;
 
     return rows + totalRow;
+};
+
+const downloadDailyWorkExcel = () => {
+    let where = `where 1=1`;
+
+    const start_date = document.getElementById('start_date').value;
+    const end_date = document.getElementById('end_date').value;
+    const itemName = document.getElementById('item_name').value;
+
+    if(start_date && end_date) {
+        where += ` and work_date between '${start_date}' and '${end_date}'`;
+    }
+    if (itemName) {
+        where += ` and item_name like '%${itemName}%'`;
+    }
+
+    const sortWrap = document.getElementById('work_date_sort');
+    const orderBy = 'work_date';
+    const order = sortWrap ? (sortWrap.getAttribute('data-order') || 'desc') : 'desc';
+
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = './handler.php';
+    form.target = '_blank';
+    form.style.display = 'none';
+
+    const fields = {
+        controller: 'mes',
+        mode: 'getDailyWorkListExcel',
+        where,
+        orderby: orderBy,
+        asc: order
+    };
+
+    Object.entries(fields).forEach(([key, value]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = value;
+        form.appendChild(input);
+    });
+
+    document.body.appendChild(form);
+    form.submit();
+    form.remove();
 };
 </script>

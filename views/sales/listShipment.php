@@ -1,10 +1,22 @@
 <div class='main-container'>
+    <style>
+        .sort-btns .sort-asc,
+        .sort-btns .sort-desc {
+            cursor: pointer;
+            color: #666;
+            transition: color 0.15s ease;
+        }
+        .sort-btns .sort-asc:hover,
+        .sort-btns .sort-desc:hover {
+            color: #007bff;
+        }
+    </style>
     <div class="page-title"><i class='bx bxs-food-menu'></i> 출하 지시 관리</div> 
     <div class='search-wrapper'>
         <div class='search-box'>
             <div class='search-section'>
                 <div class='search-input'>
-                    <input type="text" id='searchText' placeholder="검색">
+                    <input type="text" id='searchText' placeholder="거래처, 수주품목 검색">
                     <button class='btn-large primary' id='btnSearch'>검색</button>
                     <button class='btn-large success revision' id='btnRevision'>새로고침</button>
                     <button class='btn-large' id='btnExcelDownload'>엑셀 다운로드</button>
@@ -42,8 +54,20 @@
                         <th>수주수량</th>
                         <th>잔여납품수량</th>
                         <th>재고수량</th>
-                        <th>수주일</th>
-                        <th>납기일</th>
+                        <th>
+                            수주일
+                            <span class="sort-btns">
+                                <span class="sort-asc" data-col="order_date" title="오름차순">▲</span>
+                                <span class="sort-desc" data-col="order_date" title="내림차순">▼</span>
+                            </span>
+                        </th>
+                        <th>
+                            납기일
+                            <span class="sort-btns">
+                                <span class="sort-asc" data-col="shipment_date" title="오름차순">▲</span>
+                                <span class="sort-desc" data-col="shipment_date" title="내림차순">▼</span>
+                            </span>
+                        </th>
                         <th>출하상태</th>
                         <th>관리</th>
                     </tr>
@@ -70,6 +94,17 @@ window.addEventListener('DOMContentLoaded', ()=>{
                 getOrdersItemList({page : 1});
             });
         }
+    } catch(e) {}
+
+    // 수주일/납기일 정렬
+    try {
+        document.querySelectorAll('.sort-asc, .sort-desc').forEach(btn => {
+            btn.addEventListener('click', (event) => {
+                const col = event.currentTarget.getAttribute('data-col');
+                const order = event.currentTarget.classList.contains('sort-asc') ? 'asc' : 'desc';
+                getOrdersItemList({ page: 1, orderBy: col, order });
+            });
+        });
     } catch(e) {}
 
     try {
@@ -111,17 +146,21 @@ window.addEventListener('DOMContentLoaded', ()=>{
 // 상수 정의
 const CONTROLLER = 'mes';
 const MODE = 'getOrdersItemList';
-const DEFAULT_ORDER_BY = 'uid';
+const DEFAULT_ORDER_BY = 'order_date';
 const DEFAULT_ORDER = 'desc';
 const NO_DATA_MESSAGE = '검색된 자료가 없습니다';
+let currentOrderBy = DEFAULT_ORDER_BY;
+let currentOrder = DEFAULT_ORDER;
 
 const getOrdersItemList = async ({
     page,
     per = 10,
     block = 4,
-    orderBy = DEFAULT_ORDER_BY,
-    order = DEFAULT_ORDER
+    orderBy = currentOrderBy,
+    order = currentOrder
 }) => {    
+    currentOrderBy = orderBy;
+    currentOrder = order;
     let where = `where 1=1`;
 
     // 검색어가 있다면

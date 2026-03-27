@@ -318,11 +318,11 @@ $left_menu = [
                 'title' => '공지사항 관리'
             ],
             */
-            [
-                'controller' => 'system',
-                'action' => 'haccpDocs',
-                'title' => 'HACCP 문서 관리'
-            ],
+            // [
+            //     'controller' => 'system',
+            //     'action' => 'haccpDocs',
+            //     'title' => 'HACCP 문서 관리'
+            // ],
             [
                 'controller' => 'system',
                 'action' => 'loginReport',

@@ -660,6 +660,65 @@ class Mes extends Functions
         echo json_encode($this->response);
     }
 
+    // 재고 현황 목록 엑셀 다운로드
+    public function getItemListExcel() {
+        $where = !empty($this->param['where']) ? $this->param['where'] : '';
+        $orderby = !empty($this->param['orderby']) ? $this->param['orderby'] : 'uid';
+        $asc = !empty($this->param['asc']) ? strtoupper($this->param['asc']) : 'DESC';
+
+        $allowed_orderby = ['uid', 'classification', 'item_name', 'item_code', 'standard', 'safety_stock_qty', 'stock_qty', 'price'];
+        if (!in_array($orderby, $allowed_orderby, true)) {
+            $orderby = 'uid';
+        }
+        if ($asc !== 'ASC' && $asc !== 'DESC') {
+            $asc = 'DESC';
+        }
+
+        $whereClause = !empty($where) ? "{$where}" : '';
+        $query = "
+            SELECT
+                classification,
+                item_name,
+                item_code,
+                standard,
+                safety_stock_qty,
+                stock_qty,
+                price
+            FROM mes_items
+            {$whereClause}
+            ORDER BY {$orderby} {$asc}
+        ";
+        $this->query($query);
+        $results = $this->fetchAll();
+
+        $filename = 'mes_stock_status_' . date('Ymd_His') . '.csv';
+        header('Content-Type: text/csv; charset=UTF-8');
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        header('Pragma: no-cache');
+        header('Expires: 0');
+
+        echo "\xEF\xBB\xBF";
+        $output = fopen('php://output', 'w');
+        fputcsv($output, ['구분', '품목명', '품목코드', '품목규격', '안전재고수량', '재고수량', '단가', '재고금액']);
+
+        foreach ($results as $row) {
+            $stockAmount = ((float)$row['stock_qty']) * ((float)$row['price']);
+            fputcsv($output, [
+                $row['classification'],
+                $row['item_name'],
+                $row['item_code'],
+                $row['standard'],
+                $row['safety_stock_qty'],
+                $row['stock_qty'],
+                $row['price'],
+                $stockAmount,
+            ]);
+        }
+
+        fclose($output);
+        exit;
+    }
+
     // 모든 품목 리스트 (selectbox용)
     public function getAllItemList() {
         $where = !empty($this->param['where']) ? $this->param['where'] : '';
@@ -2568,6 +2627,63 @@ class Mes extends Functions
         echo json_encode($this->response);
     }
 
+    // 자재 수불부 엑셀 다운로드
+    public function getItemsInOutListExcel() {
+        $where = !empty($this->param['where']) ? $this->param['where'] : '';
+        $orderby = !empty($this->param['orderby']) ? $this->param['orderby'] : 'register_date';
+        $asc = !empty($this->param['asc']) ? strtoupper($this->param['asc']) : 'DESC';
+
+        $allowed_orderby = ['uid', 'classification', 'item_name', 'item_code', 'in_qty', 'out_qty', 'register_date'];
+        if (!in_array($orderby, $allowed_orderby, true)) {
+            $orderby = 'register_date';
+        }
+        if ($asc !== 'ASC' && $asc !== 'DESC') {
+            $asc = 'DESC';
+        }
+
+        $whereClause = !empty($where) ? "{$where}" : '';
+        $query = "
+            SELECT
+                classification,
+                item_name,
+                item_code,
+                standard,
+                in_qty,
+                out_qty,
+                register_date
+            FROM mes_stock_log
+            {$whereClause}
+            ORDER BY {$orderby} {$asc}
+        ";
+        $this->query($query);
+        $results = $this->fetchAll();
+
+        $filename = 'mes_items_inout_' . date('Ymd_His') . '.csv';
+        header('Content-Type: text/csv; charset=UTF-8');
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        header('Pragma: no-cache');
+        header('Expires: 0');
+
+        echo "\xEF\xBB\xBF";
+        $output = fopen('php://output', 'w');
+        fputcsv($output, ['구분', '품목명', '품목코드', '품목규격', '입고수량', '출고수량', '입/출고 날짜']);
+
+        foreach ($results as $row) {
+            fputcsv($output, [
+                $row['classification'],
+                $row['item_name'],
+                $row['item_code'],
+                $row['standard'],
+                $row['in_qty'],
+                $row['out_qty'],
+                $row['register_date'],
+            ]);
+        }
+
+        fclose($output);
+        exit;
+    }
+
     // 입출고내역 하나 가져오기
     public function getItemsInOut() {
         $uid = $this->param['uid'];
@@ -3513,6 +3629,73 @@ class Mes extends Functions
         echo json_encode($this->response);
     }
 
+    // 생산지시서 목록 엑셀 다운로드 (작업일보 관리 > 생산지시서 목록)
+    public function getWorkOrderListExcel() {
+        $where = !empty($this->param['where']) ? $this->param['where'] : '';
+        $orderby = !empty($this->param['orderby']) ? $this->param['orderby'] : 'uid';
+        $asc = !empty($this->param['asc']) ? strtoupper($this->param['asc']) : 'DESC';
+
+        $allowed_orderby = ['uid', 'order_date', 'account_name', 'item_name', 'order_qty', 'work_qty', 'status'];
+        if (!in_array($orderby, $allowed_orderby, true)) {
+            $orderby = 'uid';
+        }
+        if ($asc !== 'ASC' && $asc !== 'DESC') {
+            $asc = 'DESC';
+        }
+
+        $whereClause = !empty($where) ? "{$where}" : '';
+        $query = "
+            SELECT
+                classification,
+                order_date,
+                account_name,
+                item_name,
+                item_code,
+                standard,
+                order_qty,
+                work_qty,
+                pass_qty,
+                fail_qty,
+                quality_qty,
+                status
+            FROM mes_work_order
+            {$whereClause}
+            ORDER BY {$orderby} {$asc}
+        ";
+        $this->query($query);
+        $results = $this->fetchAll();
+
+        $filename = 'mes_work_order_' . date('Ymd_His') . '.csv';
+        header('Content-Type: text/csv; charset=UTF-8');
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        header('Pragma: no-cache');
+        header('Expires: 0');
+
+        echo "\xEF\xBB\xBF";
+        $output = fopen('php://output', 'w');
+        fputcsv($output, ['생산구분', '작업지시일', '거래처', '작업품목', '품번', '규격', '지시 수량', '작업한 수량', '합격 수량', '불량 수량', '검사 대기 수량', '상태']);
+
+        foreach ($results as $row) {
+            fputcsv($output, [
+                $row['classification'],
+                $row['order_date'],
+                $row['account_name'],
+                $row['item_name'],
+                $row['item_code'],
+                $row['standard'],
+                $row['order_qty'],
+                $row['work_qty'],
+                $row['pass_qty'],
+                $row['fail_qty'],
+                $row['quality_qty'],
+                $row['status'],
+            ]);
+        }
+
+        fclose($output);
+        exit;
+    }
+
     // 계획 생산지시 한 건 조회 (수정 모달용)
     public function getPlanWorkOrder() {
         $uid = isset($this->param['uid']) ? (int)$this->param['uid'] : 0;
@@ -3998,6 +4181,63 @@ class Mes extends Functions
         echo json_encode($this->response);
     }
 
+    // 작업일보 목록 엑셀 다운로드
+    public function getWorkReportListExcel() {
+        $where = !empty($this->param['where']) ? $this->param['where'] : '';
+        $orderby = !empty($this->param['orderby']) ? $this->param['orderby'] : 'work_date';
+        $asc = !empty($this->param['asc']) ? strtoupper($this->param['asc']) : 'DESC';
+
+        $allowed_orderby = ['uid', 'work_date', 'worker', 'item_name', 'item_code', 'standard', 'work_qty', 'quality_status'];
+        if (!in_array($orderby, $allowed_orderby, true)) {
+            $orderby = 'work_date';
+        }
+        if ($asc !== 'ASC' && $asc !== 'DESC') {
+            $asc = 'DESC';
+        }
+
+        $whereClause = !empty($where) ? "{$where}" : '';
+        $query = "
+            SELECT
+                work_date,
+                worker,
+                item_name,
+                item_code,
+                standard,
+                work_qty,
+                quality_status
+            FROM mes_daily_work
+            {$whereClause}
+            ORDER BY {$orderby} {$asc}
+        ";
+        $this->query($query);
+        $results = $this->fetchAll();
+
+        $filename = 'mes_daily_work_report_' . date('Ymd_His') . '.csv';
+        header('Content-Type: text/csv; charset=UTF-8');
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        header('Pragma: no-cache');
+        header('Expires: 0');
+
+        echo "\xEF\xBB\xBF";
+        $output = fopen('php://output', 'w');
+        fputcsv($output, ['작업일', '작업자', '품목', '품번', '규격', '작업수량', '품질검사상태']);
+
+        foreach ($results as $row) {
+            fputcsv($output, [
+                $row['work_date'],
+                $row['worker'],
+                $row['item_name'],
+                $row['item_code'],
+                $row['standard'],
+                $row['work_qty'],
+                $row['quality_status'],
+            ]);
+        }
+
+        fclose($output);
+        exit;
+    }
+
     public function getWorkReport() {
         $uid = $this->param['uid'];
         
@@ -4169,6 +4409,64 @@ class Mes extends Functions
         ];
     
         echo json_encode($this->response);
+    }
+
+    // 작업일보(기간별 생산실적) 엑셀 다운로드
+    public function getDailyWorkListExcel() {
+        $where = !empty($this->param['where']) ? $this->param['where'] : '';
+        $orderby = !empty($this->param['orderby']) ? $this->param['orderby'] : 'work_date';
+        $asc = !empty($this->param['asc']) ? $this->param['asc'] : 'DESC';
+
+        $allowed_orderby = ['uid', 'work_date', 'worker', 'item_name', 'item_code', 'standard', 'work_qty'];
+        if (!in_array($orderby, $allowed_orderby, true)) {
+            $orderby = 'work_date';
+        }
+
+        $asc = strtoupper($asc);
+        if ($asc !== 'ASC' && $asc !== 'DESC') {
+            $asc = 'DESC';
+        }
+
+        $whereClause = !empty($where) ? "{$where}" : '';
+
+        $query = "
+            SELECT
+                work_date,
+                worker,
+                item_name,
+                item_code,
+                standard,
+                work_qty
+            FROM mes_daily_work
+            {$whereClause}
+            ORDER BY {$orderby} {$asc}
+        ";
+        $this->query($query);
+        $results = $this->fetchAll();
+
+        $filename = 'mes_daily_work_' . date('Ymd_His') . '.csv';
+        header('Content-Type: text/csv; charset=UTF-8');
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        header('Pragma: no-cache');
+        header('Expires: 0');
+
+        echo "\xEF\xBB\xBF";
+        $output = fopen('php://output', 'w');
+        fputcsv($output, ['작업일자', '작업자', '품목', '품번', '규격', '생산수량']);
+
+        foreach ($results as $row) {
+            fputcsv($output, [
+                $row['work_date'],
+                $row['worker'],
+                $row['item_name'],
+                $row['item_code'],
+                $row['standard'],
+                $row['work_qty'],
+            ]);
+        }
+
+        fclose($output);
+        exit;
     }
 
     public function getDailyWork() {
@@ -4726,6 +5024,66 @@ class Mes extends Functions
         ];
     
         echo json_encode($this->response);
+    }
+
+    // 출하지시서 엑셀 다운로드 (mes_delivery)
+    public function getShipmentOrderListExcel() {
+        $where = !empty($this->param['where']) ? $this->param['where'] : '';
+        $orderby = !empty($this->param['orderby']) ? $this->param['orderby'] : 'delivery_date';
+        $asc = !empty($this->param['asc']) ? $this->param['asc'] : 'DESC';
+
+        // orderby/asc 안전 제한 (테이블 컬럼 기반)
+        $allowed_orderby = ['uid', 'delivery_date', 'account_name', 'item_name', 'delivery_qty', 'status'];
+        if (!in_array($orderby, $allowed_orderby, true)) {
+            $orderby = 'delivery_date';
+        }
+
+        $ascUpper = strtoupper($asc);
+        if ($ascUpper !== 'ASC' && $ascUpper !== 'DESC') {
+            $ascUpper = 'DESC';
+        }
+
+        $whereClause = !empty($where) ? "{$where}" : '';
+
+        $query = "
+            SELECT
+                uid,
+                delivery_date,
+                account_name,
+                item_name,
+                item_code,
+                delivery_qty,
+                status
+            FROM mes_delivery
+            {$whereClause}
+            ORDER BY {$orderby} {$ascUpper}
+        ";
+
+        $this->query($query);
+        $results = $this->fetchAll();
+
+        $filename = 'mes_delivery_' . date('Ymd_His') . '.csv';
+        header('Content-Type: text/csv; charset=UTF-8');
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        header('Pragma: no-cache');
+        header('Expires: 0');
+
+        echo "\xEF\xBB\xBF";
+        $output = fopen('php://output', 'w');
+        fputcsv($output, ['출하지시일', '거래처', '수주품목', '출하수량', '출하상태']);
+
+        foreach ($results as $row) {
+            fputcsv($output, [
+                $row['delivery_date'],
+                $row['account_name'],
+                $row['item_name'] . ' (' . $row['item_code'] . ')',
+                $row['delivery_qty'],
+                $row['status'],
+            ]);
+        }
+
+        fclose($output);
+        exit;
     }
 
     public function getShipmentList() {
@@ -5327,6 +5685,67 @@ class Mes extends Functions
         ];
 
         echo json_encode($this->response);
+    }
+
+    // 구매품(입고) 목록 엑셀 다운로드
+    public function getPurchaseItemListExcel() {
+        $where = !empty($this->param['where']) ? $this->param['where'] : '';
+        $orderby = !empty($this->param['orderby']) ? $this->param['orderby'] : 'in_date';
+        $asc = !empty($this->param['asc']) ? strtoupper($this->param['asc']) : 'DESC';
+
+        $allowed_orderby = ['uid', 'account_name', 'classification', 'item_name', 'purchase_qty', 'purchase_date', 'in_date', 'status'];
+        if (!in_array($orderby, $allowed_orderby, true)) {
+            $orderby = 'in_date';
+        }
+        if ($asc !== 'ASC' && $asc !== 'DESC') {
+            $asc = 'DESC';
+        }
+
+        $whereClause = !empty($where) ? "{$where}" : '';
+        $query = "
+            SELECT
+                account_name,
+                classification,
+                item_name,
+                item_code,
+                standard,
+                purchase_qty,
+                purchase_date,
+                in_date,
+                status
+            FROM mes_purchase_item
+            {$whereClause}
+            ORDER BY {$orderby} {$asc}
+        ";
+        $this->query($query);
+        $results = $this->fetchAll();
+
+        $filename = 'mes_purchase_item_' . date('Ymd_His') . '.csv';
+        header('Content-Type: text/csv; charset=UTF-8');
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        header('Pragma: no-cache');
+        header('Expires: 0');
+
+        echo "\xEF\xBB\xBF";
+        $output = fopen('php://output', 'w');
+        fputcsv($output, ['거래처', '구분', '품목명', '품번', '규격', '입고 수량', '구매 요청 일자', '입고 일자', '상태']);
+
+        foreach ($results as $row) {
+            fputcsv($output, [
+                $row['account_name'],
+                $row['classification'],
+                $row['item_name'],
+                $row['item_code'],
+                $row['standard'],
+                $row['purchase_qty'],
+                $row['purchase_date'],
+                $row['in_date'],
+                $row['status'],
+            ]);
+        }
+
+        fclose($output);
+        exit;
     }
 
     // 수입검사 완료된 구매품 입고 처리
@@ -6038,6 +6457,55 @@ class Mes extends Functions
             
         echo json_encode($this->response);
     }
+
+    // 사용자 목록 엑셀 다운로드
+    public function getUserListExcel() {
+        $where = !empty($this->param['where']) ? $this->param['where'] : '';
+        $orderby = !empty($this->param['orderby']) ? $this->param['orderby'] : 'uid';
+        $asc = !empty($this->param['asc']) ? strtoupper($this->param['asc']) : 'DESC';
+
+        $allowed_orderby = ['uid', 'employeeName', 'loginId', 'auth'];
+        if (!in_array($orderby, $allowed_orderby, true)) {
+            $orderby = 'uid';
+        }
+        if ($asc !== 'ASC' && $asc !== 'DESC') {
+            $asc = 'DESC';
+        }
+
+        $whereClause = !empty($where) ? "{$where}" : '';
+        $query = "
+            SELECT
+                employeeName,
+                loginId,
+                auth
+            FROM mes_user
+            {$whereClause}
+            ORDER BY {$orderby} {$asc}
+        ";
+        $this->query($query);
+        $results = $this->fetchAll();
+
+        $filename = 'mes_user_' . date('Ymd_His') . '.csv';
+        header('Content-Type: text/csv; charset=UTF-8');
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        header('Pragma: no-cache');
+        header('Expires: 0');
+
+        echo "\xEF\xBB\xBF";
+        $output = fopen('php://output', 'w');
+        fputcsv($output, ['사용자명', '로그인 아이디', '권한']);
+
+        foreach ($results as $row) {
+            fputcsv($output, [
+                $row['employeeName'],
+                $row['loginId'],
+                $row['auth'],
+            ]);
+        }
+
+        fclose($output);
+        exit;
+    }
     
     public function deleteUser() {
         $uid = $this->param['uid'];
@@ -6519,6 +6987,53 @@ class Mes extends Functions
         ];
             
         echo json_encode($this->response);
+    }
+
+    // 로그인 이력 엑셀 다운로드
+    public function getLoginReportExcel() {
+        $where = !empty($this->param['where']) ? $this->param['where'] : '';
+        $orderby = !empty($this->param['orderby']) ? $this->param['orderby'] : 'registerDate';
+        $asc = !empty($this->param['asc']) ? strtoupper($this->param['asc']) : 'DESC';
+
+        $allowed_orderby = ['uid', 'registerDate', 'loginId'];
+        if (!in_array($orderby, $allowed_orderby, true)) {
+            $orderby = 'registerDate';
+        }
+        if ($asc !== 'ASC' && $asc !== 'DESC') {
+            $asc = 'DESC';
+        }
+
+        $whereClause = !empty($where) ? "{$where}" : '';
+        $query = "
+            SELECT
+                registerDate,
+                loginId
+            FROM mes_user_login
+            {$whereClause}
+            ORDER BY {$orderby} {$asc}
+        ";
+        $this->query($query);
+        $results = $this->fetchAll();
+
+        $filename = 'mes_user_login_' . date('Ymd_His') . '.csv';
+        header('Content-Type: text/csv; charset=UTF-8');
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        header('Pragma: no-cache');
+        header('Expires: 0');
+
+        echo "\xEF\xBB\xBF";
+        $output = fopen('php://output', 'w');
+        fputcsv($output, ['로그인 일시', '로그인 아이디']);
+
+        foreach ($results as $row) {
+            fputcsv($output, [
+                $row['registerDate'],
+                $row['loginId'],
+            ]);
+        }
+
+        fclose($output);
+        exit;
     }
 
     public function getWorkOrderProgress() {
@@ -8742,9 +9257,19 @@ class Mes extends Functions
         $start_date = $this->escapeString($this->param['start_date'] ?? $today);
         $end_date = $this->escapeString($this->param['end_date'] ?? $today);
         $item_name = $this->escapeString(trim($this->param['item_name'] ?? ''));
+        $orderby = $this->escapeString($this->param['orderby'] ?? 'started_at');
+        $asc = strtoupper($this->escapeString($this->param['asc'] ?? 'DESC'));
         $page = isset($this->param['page']) ? max(1, (int)$this->param['page']) : 1;
         $per = isset($this->param['per']) ? max(1, (int)$this->param['per']) : 10;
         $start = ($page - 1) * $per;
+
+        $allowed_orderby = ['started_at', 'ended_at'];
+        if (!in_array($orderby, $allowed_orderby, true)) {
+            $orderby = 'started_at';
+        }
+        if ($asc !== 'ASC' && $asc !== 'DESC') {
+            $asc = 'DESC';
+        }
 
         $where_clauses = [];
         if (!empty($start_date)) {
@@ -8771,7 +9296,7 @@ class Mes extends Functions
                 h.produced_qty
             FROM metal_detection_history h
             {$where_sql}
-            ORDER BY h.started_at DESC
+            ORDER BY h.{$orderby} {$asc}
             {$limit_sql}
         ";
         $this->query($query);
@@ -8969,10 +9494,20 @@ class Mes extends Functions
 
         $start_date = $this->escapeString($this->param['start_date'] ?? $today);
         $end_date = $this->escapeString($this->param['end_date'] ?? $today);
+        $orderby = $this->escapeString($this->param['orderby'] ?? 'started_at');
+        $asc = strtoupper($this->escapeString($this->param['asc'] ?? 'DESC'));
 
         $page = isset($this->param['page']) ? max(1, (int)$this->param['page']) : 1;
         $per = isset($this->param['per']) ? max(1, (int)$this->param['per']) : 20;
         $start = ($page - 1) * $per;
+
+        $allowed_orderby = ['started_at'];
+        if (!in_array($orderby, $allowed_orderby, true)) {
+            $orderby = 'started_at';
+        }
+        if ($asc !== 'ASC' && $asc !== 'DESC') {
+            $asc = 'DESC';
+        }
 
         $start_dt = "{$start_date} 00:00:00";
         $end_dt = "{$end_date} 23:59:59";
@@ -9024,7 +9559,7 @@ class Mes extends Functions
             WHERE machine='{$machine}'
               AND started_at <= '{$end_dt}'
               AND (ended_at IS NULL OR ended_at >= '{$start_dt}')
-            ORDER BY started_at DESC
+            ORDER BY {$orderby} {$asc}
             {$limit_sql}
         ";
         $this->query($queryList);
@@ -9037,6 +9572,58 @@ class Mes extends Functions
             'data' => $results
         ];
         echo json_encode($this->response);
+    }
+
+    // cleaner 가동 이력 엑셀 다운로드
+    public function getCleanerRunHistoryExcel() {
+        $machine = 'cleaner';
+        $today = date('Y-m-d');
+        $start_date = $this->escapeString($this->param['start_date'] ?? $today);
+        $end_date = $this->escapeString($this->param['end_date'] ?? $today);
+
+        $start_dt = "{$start_date} 00:00:00";
+        $end_dt = "{$end_date} 23:59:59";
+
+        $query = "
+            SELECT
+                started_at,
+                ended_at,
+                start_current,
+                end_current,
+                TIMESTAMPDIFF(SECOND, started_at, COALESCE(ended_at, NOW())) AS duration_seconds
+            FROM cleaner_run_history
+            WHERE machine='{$machine}'
+              AND started_at <= '{$end_dt}'
+              AND (ended_at IS NULL OR ended_at >= '{$start_dt}')
+            ORDER BY started_at DESC
+        ";
+        $this->query($query);
+        $results = $this->fetchAll();
+
+        $filename = 'cleaner_run_history_' . date('Ymd_His') . '.csv';
+        header('Content-Type: text/csv; charset=UTF-8');
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        header('Pragma: no-cache');
+        header('Expires: 0');
+
+        echo "\xEF\xBB\xBF";
+        $output = fopen('php://output', 'w');
+        fputcsv($output, ['가동 시작', '가동 종료', '시작 전류(A)', '종료 전류(A)', '가동 시간(초)', '상태']);
+
+        foreach ($results as $row) {
+            $status = empty($row['ended_at']) ? '가동중' : '정지';
+            fputcsv($output, [
+                $row['started_at'],
+                $row['ended_at'],
+                $row['start_current'],
+                $row['end_current'],
+                $row['duration_seconds'],
+                $status,
+            ]);
+        }
+
+        fclose($output);
+        exit;
     }
 
     /**
@@ -9074,6 +9661,42 @@ class Mes extends Functions
             if ($r && isset($r['v']) && $r['v'] !== null && $r['v'] !== '') {
                 $week_kwh += (float)$r['v'];
             }
+        }
+
+        // mes_day_power가 0일 경우(정수 컬럼/누적 미반영 등) mes_machine_data(cleaner current)로 fallback 계산
+        // kWh/sample = sqrt(3) * 380 * I * 0.9 / 1000 * (5/3600)
+        $kwh_per_amp_sample = (1.7320508 * 380.0 * 0.9 / 1000.0) * (5.0 / 3600.0);
+
+        if ($day_kwh <= 0) {
+            $dayStart = $today->format('Y-m-d') . ' 00:00:00';
+            $dayEnd = $today->format('Y-m-d') . ' 23:59:59';
+            $qDayFallback = "
+                SELECT COALESCE(SUM(GREATEST(CAST(value AS DECIMAL(12,6)), 0)), 0) AS sum_amp
+                FROM mes_machine_data
+                WHERE machine='cleaner'
+                  AND data_type='current'
+                  AND `timestamp` BETWEEN '{$dayStart}' AND '{$dayEnd}'
+            ";
+            $this->query($qDayFallback);
+            $rowDayFallback = $this->fetch();
+            $sumAmpDay = ($rowDayFallback && isset($rowDayFallback['sum_amp'])) ? (float)$rowDayFallback['sum_amp'] : 0.0;
+            $day_kwh = $sumAmpDay * $kwh_per_amp_sample;
+        }
+
+        if ($week_kwh <= 0) {
+            $weekStartDt = $weekStart->format('Y-m-d') . ' 00:00:00';
+            $weekEndDt = $today->format('Y-m-d') . ' 23:59:59';
+            $qWeekFallback = "
+                SELECT COALESCE(SUM(GREATEST(CAST(value AS DECIMAL(12,6)), 0)), 0) AS sum_amp
+                FROM mes_machine_data
+                WHERE machine='cleaner'
+                  AND data_type='current'
+                  AND `timestamp` BETWEEN '{$weekStartDt}' AND '{$weekEndDt}'
+            ";
+            $this->query($qWeekFallback);
+            $rowWeekFallback = $this->fetch();
+            $sumAmpWeek = ($rowWeekFallback && isset($rowWeekFallback['sum_amp'])) ? (float)$rowWeekFallback['sum_amp'] : 0.0;
+            $week_kwh = $sumAmpWeek * $kwh_per_amp_sample;
         }
 
         $this->response = [

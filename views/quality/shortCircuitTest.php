@@ -6,8 +6,10 @@
                 <div class='search-input'>
                     <input type="text" class='datepicker'id='start_date' placeholder="시작일">
                     <input type="text" class='datepicker'id='end_date' placeholder="종료일">
+                    <input type='text' class='input' id='searchText' placeholder='작업자, 품목'>
                     <button class='btn-large primary' id='btnSearch'>검색</button>                                
                     <button class='btn-large success revision' id='btnRevision'><i class='bx bx-revision'></i></button>
+                    <button class='btn-large' id='btnExcelDownload'>엑셀 다운로드</button>
                 </div>  
             </div>          
             <div class='button-box'>                  
@@ -29,7 +31,7 @@
                 </colgroup>
                 <thead>
                     <tr>
-                        <th>작업일</th>
+                        <th class='center'>작업일 <span id='work_date_sort' class='sort-btns' data-order='desc'><span class='sort-asc' title='오름차순'>▲</span><span class='sort-desc' title='내림차순'>▼</span></span></th>
                         <th>작업자</th>
                         <th>품목</th>
                         <th>품번</th>
@@ -50,7 +52,17 @@
 include "./views/modal/modalRegisterShortCircuitTest.php";
 ?>
 
+<style>
+.sort-btns { margin-left: 4px; vertical-align: middle; }
+.sort-btns .sort-asc, .sort-btns .sort-desc { cursor: pointer; opacity: 0.5; padding: 0 1px; }
+.sort-btns .sort-asc:hover, .sort-btns .sort-desc:hover { opacity: 1; }
+.sort-btns .sort-active { opacity: 1; font-weight: bold; }
+</style>
+
 <script>
+let currentOrderBy = 'work_date';
+let currentOrder = 'desc';
+
 window.addEventListener('DOMContentLoaded', ()=>{
     // 검색
     try {
@@ -71,6 +83,13 @@ window.addEventListener('DOMContentLoaded', ()=>{
         }
     } catch(e) {}
 
+    try {
+        const btnExcelDownload = document.getElementById('btnExcelDownload');
+        if (btnExcelDownload) {
+            btnExcelDownload.addEventListener('click', downloadWorkReportExcel);
+        }
+    } catch(e) {}
+
     // 선택삭제
     try {
         const btnDeleteSelected = document.getElementById('btnDeleteSelected');
@@ -82,13 +101,43 @@ window.addEventListener('DOMContentLoaded', ()=>{
     try {
         document.getElementById('searchText').addEventListener('keydown', function(event) {
             if (event.key === 'Enter') {  // Enter 키를 감지
-                getWorkReportList({page:1});
+                getWorkReportList({page:1, orderBy: currentOrderBy, order: currentOrder});
             }
         });
     } catch(e) {}
 
-    getWorkReportList({page : 1});
+    // 작업일 정렬
+    try {
+        const wrap = document.getElementById('work_date_sort');
+        if (wrap) {
+            wrap.querySelector('.sort-asc').addEventListener('click', () => {
+                setWorkDateSort('asc');
+                getWorkReportList({page:1, orderBy: currentOrderBy, order: currentOrder});
+            });
+            wrap.querySelector('.sort-desc').addEventListener('click', () => {
+                setWorkDateSort('desc');
+                getWorkReportList({page:1, orderBy: currentOrderBy, order: currentOrder});
+            });
+            setWorkDateSort('desc');
+        }
+    } catch(e) {}
+
+    getWorkReportList({page : 1, orderBy: currentOrderBy, order: currentOrder});
 });
+
+function setWorkDateSort(dir) {
+    const wrap = document.getElementById('work_date_sort');
+    if (!wrap) return;
+    currentOrderBy = 'work_date';
+    currentOrder = dir;
+    wrap.setAttribute('data-order', dir);
+    wrap.querySelectorAll('.sort-asc, .sort-desc').forEach(el => {
+        el.classList.remove('sort-active');
+        if ((el.classList.contains('sort-asc') && dir === 'asc') || (el.classList.contains('sort-desc') && dir === 'desc')) {
+            el.classList.add('sort-active');
+        }
+    });
+}
 
 const searchDateList = () => {
     const start_date = document.getElementById('start_date').value;
@@ -102,7 +151,7 @@ const searchDateList = () => {
 // 상수 정의
 const CONTROLLER = 'mes';
 const MODE = 'getWorkReportList';
-const DEFAULT_ORDER_BY = 'uid';
+const DEFAULT_ORDER_BY = 'work_date';
 const DEFAULT_ORDER = 'desc';
 const NO_DATA_MESSAGE = '검색된 자료가 없습니다';
 
@@ -113,13 +162,20 @@ const getWorkReportList = async ({
     orderBy = DEFAULT_ORDER_BY,
     order = DEFAULT_ORDER
 }) => {
+    currentOrderBy = orderBy;
+    currentOrder = order;
     let where = `where quality_status = '품질검사대기'`;
     const start_date = document.getElementById('start_date').value;
     const end_date = document.getElementById('end_date').value;
+    const searchText = (document.getElementById('searchText')?.value || '').trim();
 
     // 검색어가 있다면
     if(start_date && end_date) {
         where += ` and work_date between '${start_date}' and '${end_date}'`;
+    }
+
+    if (searchText) {
+        where += ` and (worker like '%${searchText}%' or item_name like '%${searchText}%')`;
     }
     
 
@@ -189,6 +245,46 @@ const registerQualityTest = (uid) => {
 // 새로고침
 const revision = () => {
     document.getElementById('searchText').value = '';
-    getWorkReportList({page:1});
+    getWorkReportList({page:1, orderBy: currentOrderBy, order: currentOrder});
+}
+
+const downloadWorkReportExcel = () => {
+    let where = `where quality_status = '품질검사대기'`;
+    const start_date = document.getElementById('start_date').value;
+    const end_date = document.getElementById('end_date').value;
+    const searchText = (document.getElementById('searchText')?.value || '').trim();
+
+    if (start_date && end_date) {
+        where += ` and work_date between '${start_date}' and '${end_date}'`;
+    }
+    if (searchText) {
+        where += ` and (worker like '%${searchText}%' or item_name like '%${searchText}%')`;
+    }
+
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = './handler.php';
+    form.target = '_blank';
+    form.style.display = 'none';
+
+    const fields = {
+        controller: 'mes',
+        mode: 'getWorkReportListExcel',
+        where,
+        orderby: currentOrderBy,
+        asc: currentOrder
+    };
+
+    Object.entries(fields).forEach(([key, value]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = value;
+        form.appendChild(input);
+    });
+
+    document.body.appendChild(form);
+    form.submit();
+    form.remove();
 }
 </script>
