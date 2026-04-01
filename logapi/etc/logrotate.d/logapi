@@ -1,0 +1,16 @@
+# MES 로그 API 로컬 파일 — /etc/logrotate.d/ 에 복사 후 사용
+# 복사 예: sudo cp etc/logrotate.d/logapi /etc/logrotate.d/logapi
+#
+# 크기 5MB 도달 시 로테이트, 백업 5개만 유지 (prompt.md)
+# logapi.log: API 요청/응답 append · simulator.log: 시뮬레이터 데몬 로그(기본 경로)
+
+/var/www/html/dainlab/dainsf/chammat/logapi/logs/logapi.log
+/var/www/html/dainlab/dainsf/chammat/logapi/logs/simulator.log {
+    size 5M
+    rotate 5
+    missingok
+    notifempty
+    compress
+    delaycompress
+    copytruncate
+}

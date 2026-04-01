@@ -11,3 +11,10 @@ apis/log.txt
 apis/log.txt.*
 apis/log.txt-*.gz
 
+# Log API 시뮬레이터
+logapi/logs/*.log
+logapi/logs/*.log.*
+logapi/logs/*.log-*.gz
+logapi/logs/*.pid
+logapi/logs/*.pid.*
+logapi/logs/holidays/*.txt
