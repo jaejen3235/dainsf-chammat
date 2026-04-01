@@ -44,16 +44,17 @@ try {
 }
 
 // 스마트공장 로그API 적재 (MES 컨트롤러 액션 후) - 여기서 나오는 경고/노티스는 응답에 섞이지 않도록 버퍼로 흡수
-if ($param['controller'] === 'mes' && $jsonOutput !== '') {
-    ob_start();
-    try {
-        require_once("apis/SmartFactoryLogger.php");
-        SmartFactoryLogger::hookAfterAction($param['mode']);
-    } catch (Exception $e) {
-        // 로그 적재 실패가 MES 기능에 영향을 주지 않도록 예외 무시
-    }
-    ob_end_clean();
-}
+// 2026-04-02 로그 API 시뮬레이터 연동 추가 ./logapi 에서 시뮬레이터로 처리
+// if ($param['controller'] === 'mes' && $jsonOutput !== '') {
+//     ob_start();
+//     try {
+//         require_once("apis/SmartFactoryLogger.php");
+//         SmartFactoryLogger::hookAfterAction($param['mode']);
+//     } catch (Exception $e) {
+//         // 로그 적재 실패가 MES 기능에 영향을 주지 않도록 예외 무시
+//     }
+//     ob_end_clean();
+// }
 
 echo $jsonOutput;
 ?>
