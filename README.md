@@ -222,3 +222,14 @@
   - 접속 시 이력 조회 날짜를 오늘~오늘로 자동 설정하고 즉시 조회
   - KPI 0 표시 이슈 대응:
     - `mes_day_power` 값이 0일 때 `mes_machine_data(cleaner/current)` 기반 fallback 계산으로 주간/일간 소비전력 산출 보완
+
+## 작업 내역 (2026-05-05)
+
+- MES 품목 API (`controllers/mes.php`)
+  - `classification = '완제품'`인 품목만 조회하는 `getAllFinishedProductItemList` 추가(selectbox·목록용, 응답 필드는 `getAllItemList`와 동일)
+
+- 금속검출 태블릿 UI (`item_new.html`)
+  - 품목 카드 목록 API 모드를 `getAllItemList`에서 `getAllFinishedProductItemList`로 변경(완제품만 표시)
+
+- 세척기 On/Off 판단 (`machine.php`)
+  - Threshold 0.4 에서 0.3으로 변경

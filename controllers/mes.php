@@ -743,6 +743,26 @@ class Mes extends Functions
         echo json_encode($this->response);
     }
 
+    // 완제품 품목만 (selectbox용)
+    public function getAllFinishedProductItemList() {
+        $query = "SELECT * FROM mes_items WHERE classification = '완제품' ORDER BY uid desc";
+        $this->query($query);
+        $results = $this->fetchAll();
+
+        $this->response = array_map(function($data) {
+            return [
+                'uid' => $data['uid'],
+                'classification' => $data['classification'],
+                'item_code' => $data['item_code'],
+                'item_name' => $data['item_name'],
+                'standard' => $data['standard'],
+                'unit' => $data['unit']
+            ];
+        }, $results);
+
+        echo json_encode($this->response);
+    }
+
     public function registerAdjustItemStock() {
         $adjust_item_uid = $this->param['adjust_item_uid'];
         $adjust_stock_qty = $this->param['adjust_stock_qty'];

@@ -290,8 +290,8 @@ foreach ($data_list as $index => $item) {
     } else {
         // cleaner current 값 기반 가동/정지 이력 관리 (값 흔들림 방지: 연속 3회 기준)
         if ($machine === 'cleaner' && $data_type === 'current') {
-            $threshold_on = 0.4;   // 이 값 초과: 가동
-            $threshold_off = 0.4;  // 이 값 이하: 정지
+            $threshold_on = 0.3;   // 이 값 초과: 가동
+            $threshold_off = 0.3;  // 이 값 이하: 정지
             $confirm_count = 3;    // 연속 3회 카운트
             $now_ts = date('Y-m-d H:i:s');
 

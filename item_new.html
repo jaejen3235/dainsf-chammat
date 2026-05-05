@@ -615,7 +615,7 @@ const getItemList = async () => {
 
     const formData = new FormData();
     formData.append('controller', 'mes');
-    formData.append('mode', 'getAllItemList');
+    formData.append('mode', 'getAllFinishedProductItemList');
 
     try {
         const response = await fetch('./handler.php', {
